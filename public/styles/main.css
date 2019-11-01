@@ -43,6 +43,7 @@ p {
 /*** Login ***/
 .login__body {
 	background: url("../images/login_clouds.jpg");
+	
 	align-content: center;
 }
 .login__h2 {
