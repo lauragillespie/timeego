@@ -41,12 +41,12 @@ p {
 }
 
 /*** Login ***/
-body {
-	background: var(--color-primary);
+.login__body {
+	background: url("../images/login_clouds.jpg");
 	align-content: center;
 }
-h2 {
-	background: var(--color-secondary);
+.login__h2 {
+	background: --color-primary;
 	text-align: center;
 	font-size: 30pt;
 }

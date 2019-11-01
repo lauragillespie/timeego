@@ -37,9 +37,9 @@
 
 </head>
 
-<body>
+<body class="login__body">
    <main>
-      <h2>Timeego</h2>
+      <h2 class="login__h2">Timeego</h2>
       <div id="firebaseui-auth-container"></div>
       <div id="loader">Loading...</div>
    </main>
@@ -64,14 +64,14 @@
          },
          // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
          signInFlow: 'popup',
-         signInSuccessUrl: 'main.html',
+         signInSuccessUrl: 'dashboard.html',
          signInOptions: [
             firebase.auth.EmailAuthProvider.PROVIDER_ID,
          ],
          // Terms of service url.
-         tosUrl: 'main.html',
+         tosUrl: 'dashboard.html',
          // Privacy policy url.
-         privacyPolicyUrl: 'main.html'
+         privacyPolicyUrl: 'dashboard.html'
 
 
       };
