@@ -1,5 +1,7 @@
 /*** Imports ***/
 
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
 /*** Variables ***/
 :root {
 	--color-primary: rgb(196, 181, 181);
@@ -26,6 +28,7 @@ img {
 
 body {
 	margin: 0;
+	font-family: 'Comfortaa', cursive;
 	font-size: 16px;
 }
 
