@@ -4,7 +4,10 @@
 
 /*** Variables ***/
 :root {
-	--color-primary: rgb(196, 181, 181);
+	--color-primary: #3127ca;
+	--color-secondary: #555555;
+	--color-danger: #ff6a56;
+
 	--font-family: "Comfortaa";
 }
 
