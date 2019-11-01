@@ -40,7 +40,17 @@ p {
 	line-height: 1.4;
 }
 
-/*** Home ***/
-h1 {
+/*** Login ***/
+body {
 	background: var(--color-primary);
+	align-content: center;
+}
+h2 {
+	background: var(--color-secondary);
+	text-align: center;
+	font-size: 30pt;
+}
+#firebaseui-auth-container {
+	margin-left: 5%;
+	margin-right: 5%;
 }
