@@ -6,9 +6,16 @@
 :root {
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
+	--color-success: #6dd75c;
 	--color-danger: #ff6a56;
+	--color-background-main: #f4f4f4;
+	--color-background-card: #ffffff;
 
 	--font-family: "Comfortaa";
+
+	--shadow-box: 0px -3px 20px rgba(0, 0, 0, 0.04);
+
+	--border-radius: 10px;
 }
 
 /*** Resets ***/
@@ -31,19 +38,45 @@ img {
 }
 
 body {
-	margin: 0;
+	margin: 0 auto;
 	font-family: var(--font-family);
-	font-size: 16px;
+	font-size: 14px;
+	background: var(--color-background-main);
+	overflow: hidden;
 }
 
 p {
 	line-height: 1.4;
 }
 
+.container {
+	width: 100%;
+	max-width: 500px;
+	border: 1px red solid;
+	margin: 0 auto;
+}
+
+/*** Cards ***/
+
+.card {
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	padding: 15px;
+	margin: 20px auto;
+	width: calc(100% - 40px);
+}
+
+.card__header {
+	font-size: 22px;
+}
+
+.card__content {
+}
+
 /*** Login ***/
 .login__body {
 	background: url("../images/login_clouds.jpg");
-
 	align-content: center;
 }
 h2 {
@@ -53,4 +86,95 @@ h2 {
 #firebaseui-auth-container {
 	margin-left: 5%;
 	margin-right: 5%;
+}
+
+/*** Footer & Nav ***/
+
+footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	background: var(--color-background-card);
+	height: 80px;
+	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+}
+
+.nav__container {
+	width: 100%;
+	max-width: 500px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.nav__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-items: space-evenly;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.nav__list-item {
+	flex: 1;
+	height: 100%;
+	line-height: 70px;
+	text-align: center;
+}
+
+.nav__timer-button {
+	border: none;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	background-color: var(--color-danger);
+	cursor: pointer;
+	position: relative;
+	top: -15px;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav__timer-button i {
+	font-size: 48px;
+	color: #ffffff;
+}
+
+/*** Timer ***/
+.timer__container {
+	height: 600px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 620px);
+	z-index: 4;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	transition: transform 250ms ease-in-out;
+	width: 100%;
+	max-width: 500px;
+	background: var(--color-background-main);
+}
+.timer__container--active {
+	transform: translate(-50%, 0px);
+}
+.timer__background {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 2;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 200ms ease-in-out;
+}
+.timer__background--active {
+	pointer-events: all;
+	opacity: 1;
 }
