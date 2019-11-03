@@ -10,6 +10,12 @@
 	--color-danger: #ff6a56;
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
+	--color-blue-gradient: linear-gradient(
+			353.28deg,
+			#1ea2db 7.78%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		#3127ca;
 
 	--font-family: "Comfortaa";
 
@@ -61,8 +67,7 @@ p {
 .card {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-	padding: 15px;
+	box-shadow: var(--shadow-box);
 	margin: 20px auto;
 	width: calc(100% - 40px);
 }
@@ -144,22 +149,97 @@ footer {
 }
 
 /*** Timer ***/
+/* Timer - Card */
 .timer__container {
-	height: 600px;
+	width: 100%;
+	max-width: 500px;
+	height: 100vh;
 	position: absolute;
-	bottom: 0;
 	left: 50%;
-	transform: translate(-50%, 620px);
+	top: 0;
+	pointer-events: none;
+	transform: translate(-50%, 0);
 	z-index: 4;
+}
+
+.timer__card {
+	pointer-events: auto;
+	height: 600px;
+	width: 100%;
+	position: absolute;
+	bottom: -620px;
+	z-index: 5;
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
 	transition: transform 250ms ease-in-out;
-	width: 100%;
-	max-width: 500px;
 	background: var(--color-background-main);
 }
-.timer__container--active {
-	transform: translate(-50%, 0px);
+.timer__card--active {
+	transform: translate(0, -620px);
+}
+
+.timer__toggle {
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+	position: relative;
+}
+
+.timer__toggle-option {
+	/* border: 1px red solid; */
+	flex: 1;
+	display: block;
+	height: 100%;
+	padding: 15px;
+	text-align: center;
+	color: var(--color-secondary);
+}
+
+.timer__toggle-block {
+	background: var(--color-blue-gradient);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-box);
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 6;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform 200ms ease-in-out;
+}
+
+.timer__toggle-block--right {
+	transform: translateX(100%);
+}
+
+/* Timer - Close BTN and Background */
+.timer__close-btn {
+	border: none;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: var(--color-danger);
+	cursor: pointer;
+	position: relative;
+	top: -40px;
+	right: 25px;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	transition: transform 250ms ease-in-out;
+	pointer-events: auto;
+}
+.timer__close-btn i {
+	color: white;
+	font-size: 28px;
+}
+.timer__close-btn--active {
+	transform: translate(0, 55px);
 }
 .timer__background {
 	position: absolute;
@@ -168,12 +248,12 @@ footer {
 	right: 0;
 	left: 0;
 	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 2;
+	z-index: 1;
 	pointer-events: none;
 	opacity: 0;
 	transition: opacity 200ms ease-in-out;
 }
 .timer__background--active {
-	pointer-events: all;
+	pointer-events: auto;
 	opacity: 1;
 }
