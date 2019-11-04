@@ -10,11 +10,9 @@
 	--color-danger: #ff6a56;
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
-	--color-blue-gradient: linear-gradient(
-			353.28deg,
+	--color-blue-gradient: linear-gradient(353.28deg,
 			#1ea2db 7.78%,
-			rgba(255, 255, 255, 0) 100%
-		),
+			rgba(255, 255, 255, 0) 100%),
 		#3127ca;
 
 	--font-family: "Comfortaa";
@@ -55,12 +53,12 @@ p {
 	line-height: 1.4;
 }
 
-.container {
+/* .container {
 	width: 100%;
 	max-width: 500px;
 	border: 1px red solid;
 	margin: 0 auto;
-}
+} */
 
 /*** Cards ***/
 
@@ -76,21 +74,105 @@ p {
 	font-size: 22px;
 }
 
-.card__content {
-}
+.card__content {}
 
 /*** Login ***/
 .login__body {
 	background: radial-gradient(aqua, blue);
 }
+
 h2 {
 	text-align: center;
 	font-size: 30pt;
 }
+
 #firebaseui-auth-container {
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+/****************************************************
+********************* Cyra's CSS ********************
+*****************************************************/
+.container {
+	width: 100%;
+	background-color: var(--color-background-main);
+	font-family: var(--font-family);
+	display: grid;
+	height: 100vh;
+	grid-template-rows: 5vh 90vh 5vh;
+}
+
+/* TOP BANNER */
+.banner {
+	top: 0;
+	position: sticky;
+	background-color: var(--color-background-main);
+	color: var(--color-primary);
+	font-size: 20pt;
+	grid-row: 1;
+	text-align: center;
+}
+
+/** INNER CONTAINER **/
+.inner-container {
+	grid-row: 2;
+	background-color: var(--color-background-main);
+}
+
+/** GREETING **/
+.greeting h1 {
+	text-align: center;
+	font-size: 30pt;
+	margin-top: 20%;
+}
+
+/** RECENT HIGHLIGHTS **/
+.highlights h2 {
+	font-size: 20pt;
+	display: inline;
+	margin: 5%;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+/** CONTENT **/
+.content {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	align-content: stretch;
+}
+
+.content div {
+	font-size: 11pt;
+	color: rgba(0, 0, 0, 0.5);
+	background-color: var(--color-background-card);
+	padding: 5%;
+	border: var(--border-card);
+	border-radius: 12px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	margin: 5%;
+}
+
+/** SMALL BOXES **/
+.card {
+	flex: 1 2 165px;
+	/* height: 200px; */
+}
+
+/* * GRAPH BOX **/
+.graphs {
+	flex: 1 2 300px;
+	text-align: center;
+}
+
+.graph {
+	width: 100%;
+}
+/*************************************
+**************************************
+**************************************/
 
 /*** Footer & Nav ***/
 
@@ -104,6 +186,7 @@ footer {
 	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
+	grid-row: 3;
 }
 
 .nav__container {
@@ -174,6 +257,7 @@ footer {
 	transition: transform 250ms ease-in-out;
 	background: var(--color-background-main);
 }
+
 .timer__card--active {
 	transform: translate(0, -620px);
 }
@@ -234,13 +318,16 @@ footer {
 	transition: transform 250ms ease-in-out;
 	pointer-events: auto;
 }
+
 .timer__close-btn i {
 	color: white;
 	font-size: 28px;
 }
+
 .timer__close-btn--active {
 	transform: translate(0, 55px);
 }
+
 .timer__background {
 	position: absolute;
 	top: 0;
@@ -253,6 +340,7 @@ footer {
 	opacity: 0;
 	transition: opacity 200ms ease-in-out;
 }
+
 .timer__background--active {
 	pointer-events: auto;
 	opacity: 1;
