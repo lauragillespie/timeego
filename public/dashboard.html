@@ -47,10 +47,34 @@
    <div class="timer__container">
       <div class="timer__card">
          <div class="timer__toggle card">
-            <div class="timer__toggle-option">Stopwatch</div>
-            <div class="timer__toggle-option">Timer</div>
-            <div class="timer__toggle-block"><span>Stopwatch</span></div>
+            <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
+            <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
+            <div class="timer__toggle-block"></div>
          </div>
+         <div class="timer__timer card">
+            <span class="timer__text">00:00:00</span>
+            <div class="timer__control-btns">
+               <button class="timer__control-btn">
+                  <i class="material-icons">
+                     play_arrow
+                  </i>
+               </button>
+               <button class="timer__control-btn">
+                  <i class="material-icons">
+                     pause
+                  </i>
+               </button>
+               <button class="timer__control-btn">
+                  <i class="material-icons">
+                     replay
+                  </i>
+               </button>
+
+            </div>
+         </div>
+         <button class="timer__set-class btn">
+            Select Class
+         </button>
       </div>
 
       <button class="timer__close-btn">

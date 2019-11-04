@@ -1,22 +1,21 @@
 // Timer element variables
-const timerToggleBtn = document.querySelector('#timer-toggle-btn');
+const toggleNavBtn = document.querySelector('#timer-toggle-btn');
 const timerBackground = document.querySelector('.timer__background');
 const timerCard = document.querySelector('.timer__card');
 const timerCloseBtn = document.querySelector('.timer__close-btn');
 const timerToggle = document.querySelector('.timer__toggle');
 const timerToggleBlock = document.querySelector('.timer__toggle-block');
+const timerToggleLeft = document.querySelector('#timer__toggle--left');
+const timerToggleRight = document.querySelector('#timer__toggle--right');
 
 timerToggle.addEventListener('click', e => {
 	timerToggleBlock.classList.toggle('timer__toggle-block--right');
-	if (timerToggleBlock.classList.contains('timer__toggle-block--right')) {
-		timerToggleBlock.innerHTML = '<span>Timer</span>';
-	} else {
-		timerToggleBlock.innerHTML = '<span>Stopwatch</span>';
-	}
+	timerToggleLeft.classList.toggle('timer__toggle-option--active');
+	timerToggleRight.classList.toggle('timer__toggle-option--active');
 });
 
 // Timer btn event listener
-timerToggleBtn.addEventListener('click', e => {
+toggleNavBtn.addEventListener('click', e => {
 	timerBackground.classList.toggle('timer__background--active');
 	timerCard.classList.toggle('timer__card--active');
 	timerCloseBtn.classList.toggle('timer__close-btn--active');
