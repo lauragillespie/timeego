@@ -81,7 +81,7 @@ p {
 
 /*** Login ***/
 .login__body {
-	background: radial-gradient(aqua, blue);
+		background: var(--color-blue-gradient);
 }
 h2 {
 	text-align: center;
