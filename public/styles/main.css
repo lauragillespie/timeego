@@ -10,11 +10,9 @@
 	--color-danger: #ff6a56;
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
-	--color-blue-gradient: linear-gradient(
-			353.28deg,
+	--color-blue-gradient: linear-gradient(353.28deg,
 			#1ea2db 7.78%,
-			rgba(255, 255, 255, 0) 100%
-		),
+			rgba(255, 255, 255, 0) 100%),
 		#3127ca;
 
 	--font-family: "Comfortaa";
@@ -55,12 +53,12 @@ p {
 	line-height: 1.4;
 }
 
-.container {
+/* .container {
 	width: 100%;
 	max-width: 500px;
 	border: 1px red solid;
 	margin: 0 auto;
-}
+} */
 
 /*** Cards ***/
 
@@ -68,7 +66,7 @@ p {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-box);
-	margin: 20px auto;
+	margin: 0 auto;
 	width: calc(100% - 40px);
 }
 
@@ -76,21 +74,119 @@ p {
 	font-size: 22px;
 }
 
-.card__content {
+<<<<<<< HEAD
+.card__content {}
+=======
+.btn {
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-box);
+	margin: 20px auto;
+	width: calc(100% - 40px);
+	border: none;
+	display: block;
+	font-family: var(--font-family);
+	padding: 15px;
 }
+>>>>>>> 6424765e672a7cd7d86ede9a43d373762eee2643
 
 /*** Login ***/
 .login__body {
 		background: var(--color-blue-gradient);
 }
+
 h2 {
 	text-align: center;
 	font-size: 30pt;
 }
+
 #firebaseui-auth-container {
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+/****************************************************
+********************* Cyra's CSS ********************
+*****************************************************/
+.container {
+	width: 100%;
+	background-color: var(--color-background-main);
+	font-family: var(--font-family);
+	display: grid;
+	height: 100vh;
+	grid-template-rows: 5vh 90vh 5vh;
+}
+
+/* TOP BANNER */
+.banner {
+	top: 0;
+	position: sticky;
+	background-color: var(--color-background-main);
+	color: var(--color-primary);
+	font-size: 20pt;
+	grid-row: 1;
+	text-align: center;
+}
+
+/** INNER CONTAINER **/
+.inner-container {
+	grid-row: 2;
+	background-color: var(--color-background-main);
+}
+
+/** GREETING **/
+.greeting h1 {
+	text-align: center;
+	font-size: 30pt;
+	margin-top: 20%;
+}
+
+/** RECENT HIGHLIGHTS **/
+.highlights h2 {
+	font-size: 20pt;
+	display: inline;
+	margin: 5%;
+	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+/** CONTENT **/
+.content {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	align-content: stretch;
+}
+
+.content div {
+	font-size: 11pt;
+	color: rgba(0, 0, 0, 0.5);
+	background-color: var(--color-background-card);
+	padding: 5%;
+	border: var(--border-card);
+	border-radius: 12px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	margin: 5%;
+}
+
+/** SMALL BOXES **/
+.card {
+	flex: 1 2 165px;
+	/* height: 200px; */
+}
+
+/* * GRAPH BOX **/
+.graphs {
+	flex: 1 2 300px;
+	text-align: center;
+}
+
+.graph {
+	width: 100%;
+}
+/*************************************
+**************************************
+**************************************/
 
 /*** Footer & Nav ***/
 
@@ -104,6 +200,7 @@ footer {
 	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
+	grid-row: 3;
 }
 
 .nav__container {
@@ -164,35 +261,50 @@ footer {
 
 .timer__card {
 	pointer-events: auto;
-	height: 600px;
+	height: 75vh;
+	min-height: 450px;
 	width: 100%;
 	position: absolute;
-	bottom: -620px;
+	bottom: -80vh;
 	z-index: 5;
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
 	transition: transform 250ms ease-in-out;
 	background: var(--color-background-main);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
+
 .timer__card--active {
-	transform: translate(0, -620px);
+	transform: translate(0, -80vh);
 }
 
 .timer__toggle {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	overflow: hidden;
 	position: relative;
+	cursor: pointer;
+	min-height: 10%;
+	margin: 20px auto;
 }
 
 .timer__toggle-option {
 	/* border: 1px red solid; */
+	z-index: 7;
 	flex: 1;
 	display: block;
-	height: 100%;
-	padding: 15px;
+	/* height: 100%;
+	padding: 20px 15px; */
 	text-align: center;
 	color: var(--color-secondary);
+	transition: color 100ms ease-in-out 100ms;
+}
+
+.timer__toggle-option--active {
+	color: white;
 }
 
 .timer__toggle-block {
@@ -215,6 +327,45 @@ footer {
 	transform: translateX(100%);
 }
 
+.timer__timer {
+	padding: 40px 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.timer__text {
+	text-align: center;
+	display: block;
+	font-size: 55px;
+	color: var(--color-secondary);
+	letter-spacing: 2px;
+}
+
+.timer__control-btns {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 50px;
+}
+
+.timer__control-btn {
+	border: none;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: var(--color-blue-gradient);
+	box-shadow: var(--shadow-box);
+}
+.timer__control-btn i {
+	color: white;
+}
+.timer__set-class {
+	padding: 20px 0;
+	font-size: 18px;
+}
+
 /* Timer - Close BTN and Background */
 .timer__close-btn {
 	border: none;
@@ -234,13 +385,16 @@ footer {
 	transition: transform 250ms ease-in-out;
 	pointer-events: auto;
 }
+
 .timer__close-btn i {
 	color: white;
 	font-size: 28px;
 }
+
 .timer__close-btn--active {
 	transform: translate(0, 55px);
 }
+
 .timer__background {
 	position: absolute;
 	top: 0;
@@ -253,6 +407,7 @@ footer {
 	opacity: 0;
 	transition: opacity 200ms ease-in-out;
 }
+
 .timer__background--active {
 	pointer-events: auto;
 	opacity: 1;
