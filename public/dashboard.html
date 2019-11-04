@@ -16,22 +16,55 @@
 </head>
 
 <body>
-   <header>
-      <div class="container">
-         <h3>TIMEEGO</h2>
-      </div>
-   </header>
+   <!-- OUTER CONTAINER -->
    <div class="container">
+      <header>
+         <div class="banner">
+            <h3>TIMEEGO</h2>
+         </div>
+      </header>
 
-      <main>
-         <div class="card">
+      <!-- INNER CONTAINER -->
+      <div class="inner-container">
+
+         <main>
+            <!-- <div class="card">
             <h2 class="card__header">Demo Card</h2>
             <p class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas deserunt sapiente ea
                tempora. Doloribus dolore ducimus voluptatum rerum iusto?</p>
-         </div>
-      </main>
+         </div> -->
 
+
+            <!-- GREETING -->
+            <div class="greeting">
+               <h1>Welcome User</h1>
+            </div>
+
+            <!-- RECENT HIGHLIGHTS BANNER -->
+            <div class="highlights">
+               <h2>Progress</h2>
+            </div>
+
+            <!-- CONTENT BOXES -->
+            <div class="content">
+               <!-- <div class="card">
+                
+                </div>
+                <div class="card">
+                    
+                </div> -->
+               <div class="card">
+                  <!-- graph placeholder image -->
+                  <img class="graph" src="./images/graph_placeholder.png">
+               </div>
+            </div>
+
+         </main>
+
+      </div>
    </div>
+
+   <!-- NAVIGATION BAR -->
    <footer>
       <nav class="nav__container">
          <ul class="nav__list">
@@ -44,6 +77,8 @@
          </ul>
       </nav>
    </footer>
+
+   <!-- TIMER -->
    <div class="timer__container">
       <div class="timer__card">
          <div class="timer__toggle card">
@@ -85,6 +120,7 @@
    </div>
    <div class="timer__background"></div>
    </div>
+
 
    <!-- Firebase - General -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
