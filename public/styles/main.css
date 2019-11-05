@@ -365,7 +365,7 @@ a.nav_active {
 	display: block;
 	text-align: center;
 	color: var(--color-secondary);
-	transition: color 100ms ease-in-out 100ms;
+	transition: color 200ms ease-in-out 200ms;
 }
 
 .timer__toggle-option--active {
@@ -385,7 +385,7 @@ a.nav_active {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: transform 200ms ease-in-out;
+	transition: transform 400ms ease-in-out;
 }
 
 .timer__toggle-block--right {
@@ -397,6 +397,8 @@ a.nav_active {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	box-shadow: none;
+	background: var(--color-background-main);
 }
 
 .timer__text {
@@ -478,4 +480,59 @@ a.nav_active {
 .timer__background--active {
 	pointer-events: auto;
 	opacity: 1;
+}
+
+/* New Timer Styles */
+
+.card__content {
+	text-align: center;
+	position: relative;
+	padding: 15em 5em;
+	transition: transform 600ms;
+	height: 100%;
+	transform-style: preserve-3d;
+}
+
+.cardd-active .card__content {
+	transform: rotateY(.5turn);
+}
+
+.card__front,
+.card__back {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	/* padding: 5em 3em; */
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-content: center;
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-box);
+}
+
+.timer__text {
+	/* font-size: 3.5rem; */
+	transform: translateZ(100px);
+}
+.timer__control-btn {
+	border: none;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: var(--color-blue-gradient);
+	box-shadow: var(--shadow-box);
+	transform: translateZ(100px);
+}
+.timer__control-btn i {
+	color: white;
+}
+
+.card__back {
+	transform: rotateY(.5turn);
 }

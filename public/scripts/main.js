@@ -35,11 +35,14 @@ const timerToggle = document.querySelector('.timer__toggle');
 const timerToggleBlock = document.querySelector('.timer__toggle-block');
 const timerToggleLeft = document.querySelector('#timer__toggle--left');
 const timerToggleRight = document.querySelector('#timer__toggle--right');
+//Timer Spin
+const cardd = document.querySelector('.cardd');
 
 timerToggle.addEventListener('click', e => {
 	timerToggleBlock.classList.toggle('timer__toggle-block--right');
 	timerToggleLeft.classList.toggle('timer__toggle-option--active');
 	timerToggleRight.classList.toggle('timer__toggle-option--active');
+	cardd.classList.toggle('cardd-active');
 });
 
 // Stopwatch Btn Vars
