@@ -113,15 +113,11 @@ img {
 	width: 100%;
 }
 
-.card__header {
-	font-size: 22px;
-}
-
 .btn {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-box);
-	margin: 20px auto;
+	margin: 25px auto;
 	width: 100%;
 	border: none;
 	display: block;
@@ -279,6 +275,21 @@ a.nav_active {
 	margin: 5% 0;
 	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 }
+/** CARD ROW **/
+.card-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 25px;
+	justify-content: space-between;
+	margin-top: 25px;
+}
+.card--half {
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-box);
+	height: 200px;
+	width: 100%;
+}
 
 /** CONTENT **/
 .content {
@@ -325,7 +336,7 @@ a.nav_active {
 	transform: translate(-50%, 0);
 	z-index: 4;
 	display: flex;
-	align-items: flex-end;
+	align-items: flex-start;
 }
 
 .timer__card {
@@ -335,12 +346,12 @@ a.nav_active {
 	height: 80vh;
 	width: 100%;
 	padding: 0 25px;
-	position: absolute;
+	position: relative;
 	bottom: -100vh;
 	z-index: 5;
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
-	/* border-radius: var(--border-radius); */
+	border-radius: var(--border-radius);
 	transition: transform 250ms ease-in-out;
 	background: var(--color-background-main);
 	display: flex;
@@ -349,7 +360,7 @@ a.nav_active {
 }
 
 .timer__card--active {
-	transform: translate(0, -100vh);
+	transform: translate(0, -90vh);
 }
 
 .timer__toggle {
@@ -435,7 +446,7 @@ a.nav_active {
 .timer__set-class {
 	font-size: 18px;
 	height: 50px;
-	margin-bottom: 70px;
+	/* margin-bottom: 70px; */
 }
 /* New Timer Styles */
 
