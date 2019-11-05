@@ -49,8 +49,11 @@ body {
 	margin: 0 auto;
 	font-family: var(--font-family);
 	font-size: 14px;
-	background: var(--color-background-main);
+	/* background: var(--color-background-main); */
 	overflow: hidden;
+	background: var(--color-primary)
+		linear-gradient(-95deg, #1ea2db 7.78%, rgba(255, 255, 255, 0) 100%);
+	height: 100vh;
 }
 
 p {
@@ -90,12 +93,11 @@ p {
 	padding: 15px;
 }
 
-
 /*** Login ***/
 .login__body {
 	background: var(--color-blue-gradient);
 	height: 100vh;
-   }
+}
 
 h2 {
 	text-align: center;
@@ -118,39 +120,50 @@ h2 {
 *****************************************************/
 .container {
 	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	border: 1px red solid;
 	/* background-color: var(--color-background-main); */
 	font-family: var(--font-family);
-	display: grid;
-	height: 100vh;
-	grid-template-rows: 5vh 90vh 5vh;
-	background: var(--color-blue-gradient);
+	/* display: grid;
+	height: 100vh; */
+	/* grid-template-rows: 5vh 90vh 5vh; */
+	/* background: red; */
 	color: var(--color-background-main);
 }
 
 /* TOP BANNER */
 .banner {
-	top: 0;
-	position: sticky;
-	background: var(--color-blue-gradient);
-	color: var(--color-background-main);
+	/* top: 0; */
+	/* position: sticky; */
+	/* background: var(--color-blue-gradient); */
+	/* color: var(--color-background-main);
 	font-size: 20pt;
-	grid-row: 1;
-	text-align: center;
-	margin-top: 0%;
-	padding-top: 5%;
+	grid-row: 1; */
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	/* text-align: center; */
+	/*margin-top: 0%;
+	padding-top: 5%; */
 }
 
 /** INNER CONTAINER **/
 .inner-container {
 	grid-row: 2;
 	background-color: var(--color-background-main);
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	max-width: 500px;
 }
 
 /** GREETING **/
 .greeting h1 {
 	text-align: center;
-	font-size: 30pt;
-	margin-top: 20%;
+	font-size: 20pt;
+	padding-top: 10px;
+	margin: 0;
+	color: var(--color-secondary);
 }
 
 /** RECENT HIGHLIGHTS **/
