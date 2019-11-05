@@ -117,17 +117,17 @@
          <div class="timer__timer card">
             <span class="timer__text">00:00:00</span>
             <div class="timer__control-btns">
-               <button class="timer__control-btn">
+               <button class="timer__control-btn" id="stopwatch_play_btn">
                   <i class="material-icons">
                      play_arrow
                   </i>
                </button>
-               <button class="timer__control-btn">
+               <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
                   <i class="material-icons">
                      pause
                   </i>
                </button>
-               <button class="timer__control-btn">
+               <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
                   <i class="material-icons">
                      replay
                   </i>
@@ -157,7 +157,7 @@
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
    <script src="./scripts/firebase.js"></script>
-   <script src="./scripts/main.js"></script>
+   <script type="module" src="./scripts/main.js"></script>
 </body>
 
 </html>
