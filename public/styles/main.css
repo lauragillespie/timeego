@@ -90,7 +90,6 @@ p {
 	padding: 15px;
 }
 
-
 /*** Login ***/
 .login__body {
 	background: var(--color-blue-gradient);
@@ -144,6 +143,8 @@ h2 {
 .inner-container {
 	grid-row: 2;
 	background-color: var(--color-background-main);
+	border-radius: 12px;
+	border: none;
 }
 
 /** GREETING **/
@@ -238,8 +239,24 @@ footer {
 .nav__list-item {
 	flex: 1;
 	height: 100%;
-	line-height: 70px;
+	line-height: 10px;
+	margin-top: 2%;
 	text-align: center;
+}
+
+.nav__list-item a {
+	font-size: 15pt;
+    color: var(--color-secondary);
+	padding-right: 15%;
+	text-decoration: none;
+}
+
+.nav__list-item i{
+	font-size: 25pt;
+}
+
+a.nav_active{
+	color: var(--color-primary);
 }
 
 .nav__timer-button {
