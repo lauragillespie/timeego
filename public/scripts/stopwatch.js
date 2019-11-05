@@ -21,11 +21,11 @@ export function stopwatchStop(e) {
 }
 
 function increaseSecs() {
-	if (stopwatchTime.seconds < 60) {
+	if (stopwatchTime.seconds < 59) {
 		stopwatchTime.seconds++;
 	} else {
 		stopwatchTime.seconds = 0;
-		if (stopwatchTime.minutes < 60) {
+		if (stopwatchTime.minutes < 59) {
 			stopwatchTime.minutes++;
 		} else {
 			stopwatchTime.minutes = 0;
