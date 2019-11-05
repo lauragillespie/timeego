@@ -1,6 +1,7 @@
 /*** Imports ***/
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap');
 
 /*** Variables ***/
 :root {
@@ -10,12 +11,15 @@
 	--color-danger: #ff6a56;
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
-	--color-blue-gradient: linear-gradient(353.28deg,
+	--color-blue-gradient: linear-gradient(
+			353.28deg,
 			#1ea2db 7.78%,
-			rgba(255, 255, 255, 0) 100%),
+			rgba(255, 255, 255, 0) 100%
+		),
 		#3127ca;
 
 	--font-family: "Comfortaa";
+	--font-family-serif: "Roboto Slab";
 
 	--shadow-box: 0px -3px 20px rgba(0, 0, 0, 0.04);
 
@@ -74,10 +78,9 @@ p {
 	font-size: 22px;
 }
 
-<<<<<<< HEAD
-.card__content {}
-=======
-.btn {
+<<<<<<< HEAD .card__content {
+}
+======= .btn {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-box);
@@ -88,10 +91,7 @@ p {
 	font-family: var(--font-family);
 	padding: 15px;
 }
->>>>>>> 6424765e672a7cd7d86ede9a43d373762eee2643
-
-/*** Login ***/
-.login__body {
+>>>>>>>6424765e672a7cd7d86ede9a43d373762eee2643 /*** Login ***/ .login__body {
 	background: radial-gradient(aqua, blue);
 }
 
