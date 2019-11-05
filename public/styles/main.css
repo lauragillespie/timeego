@@ -95,6 +95,7 @@ p {
 .login__body {
 	background: var(--color-blue-gradient);
 	height: 100vh;
+   }
 
 h2 {
 	text-align: center;
