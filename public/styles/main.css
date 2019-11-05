@@ -78,9 +78,15 @@ p {
 	font-size: 22px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD .card__content {
 }
 ======= .btn {
+=======
+.card__content {}
+
+.btn {
+>>>>>>> f6cad7ac0a36f1fe04fa5f5300c8287d6b783733
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-box);
@@ -91,13 +97,27 @@ p {
 	font-family: var(--font-family);
 	padding: 15px;
 }
+<<<<<<< HEAD
 >>>>>>>6424765e672a7cd7d86ede9a43d373762eee2643 /*** Login ***/ .login__body {
 	background: radial-gradient(aqua, blue);
+=======
+
+/*** Login ***/
+.login__body {
+	background: var(--color-blue-gradient);
+	height: 100vh;
+>>>>>>> f6cad7ac0a36f1fe04fa5f5300c8287d6b783733
 }
 
 h2 {
 	text-align: center;
 	font-size: 30pt;
+	color: var(--color-background-main);
+}
+
+#large_t {
+	font-size: 38pt;
+	font-weight: 300;
 }
 
 #firebaseui-auth-container {
@@ -184,6 +204,7 @@ h2 {
 .graph {
 	width: 100%;
 }
+
 /*************************************
 **************************************
 **************************************/
@@ -358,9 +379,11 @@ footer {
 	background: var(--color-blue-gradient);
 	box-shadow: var(--shadow-box);
 }
+
 .timer__control-btn i {
 	color: white;
 }
+
 .timer__set-class {
 	padding: 20px 0;
 	font-size: 18px;
