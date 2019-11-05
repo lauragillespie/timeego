@@ -74,9 +74,7 @@ p {
 	font-size: 22px;
 }
 
-<<<<<<< HEAD
 .card__content {}
-=======
 .btn {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
@@ -88,7 +86,6 @@ p {
 	font-family: var(--font-family);
 	padding: 15px;
 }
->>>>>>> 6424765e672a7cd7d86ede9a43d373762eee2643
 
 /*** Login ***/
 .login__body {
