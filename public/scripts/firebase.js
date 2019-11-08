@@ -43,3 +43,27 @@ var uiConfig = {
 };
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
+
+// Database call
+db.collection('quotes').doc('123').onSnapshot(function(snap) {
+	console.log('Current data is ....', snap.data());
+	document.getElementById('stuff').innerHTML = snap.data().messages;
+});
+
+createUser();
+
+// Fucntion that creates a new document in the users collection
+function createUser() {
+	// if the current user logged in user
+	// is authenticated, then grab "uid" "displayName" and "email"
+	// use "set()" with merge (if document did not exist it will be created)
+	firebase.auth().onAuthStateChanged(function(user) {
+		db.collection('users').doc(user.uid).set(
+			{
+				name  : user.displayName,
+				email : user.email
+			},
+			{ merge: true }
+		);
+	});
+}
