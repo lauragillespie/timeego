@@ -10,6 +10,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
 // Firebase Auth
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
