@@ -74,3 +74,10 @@ function changeStopwatchButtons() {
 		stopwatchPauseBtn.classList.add('hidden');
 	}
 }
+
+[
+	{
+		name   : 'course 1',
+		userId : 'Anthony'
+	}
+];

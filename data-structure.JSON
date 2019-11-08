@@ -1,0 +1,18 @@
+{
+	"user": {
+		"id": "id",
+		"name": "String",
+		"email": "String",
+		"date": "Date",
+		"course": {
+			"name": "String",
+			"color": "String",
+			"date": "Date",
+			"session": {
+				"length": "Number",
+				"isActive": "Boolean",
+				"date": "Date"
+			}
+		}
+	}
+}
