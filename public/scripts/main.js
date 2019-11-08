@@ -74,10 +74,6 @@ function changeStopwatchButtons() {
 		stopwatchPauseBtn.classList.add('hidden');
 	}
 }
+// Course home stuff
 
-[
-	{
-		name   : 'course 1',
-		userId : 'Anthony'
-	}
-];
+

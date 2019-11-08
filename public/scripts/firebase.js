@@ -10,7 +10,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// Initialize Firebase
+// Initialize FireStore
 var db = firebase.firestore();
 
 // Firebase Auth
