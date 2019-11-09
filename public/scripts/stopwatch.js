@@ -1,3 +1,7 @@
+// This file is logic to start and stop the stopwatch,
+// and update current time displayed in HTML when the
+// stopwatch is running
+
 const timerText = document.querySelector('.timer__text');
 
 export let stopwatchActive = false;

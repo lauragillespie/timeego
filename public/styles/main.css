@@ -1,15 +1,38 @@
 /***************************/
-/***       Imports       ***/
+/***  Table of Contents  ***/
+/***************************/
+/*** 
+	1. Imports
+	2. Variables
+	3. CSS Resets
+	4. Global Styling
+	5. Components - Styles for entire components shared across the app
+		ex. buttons, forms
+	6. Main Layout - These are section styles shared across all pages of the app
+		6.1 Header
+		6.2 Main
+		6.3 Footer
+		6.4 Nav
+	7. Pages - These are styles for sections of one specific page
+		7.1 Login Page
+		7.2 Dashboard Page
+		7.3 Courses Page
+		
+***/
+
+/***************************/
+/***    1. Imports       ***/
 /***************************/
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap');
 
 /***************************/
-/***      Variables      ***/
+/***    2. Variables     ***/
 /***************************/
 
 :root {
+	/*** Colors ***/
 	--color-primary: #3127ca;
 	--color-primary-gradient: #1ea2db;
 	--color-secondary: #555555;
@@ -24,15 +47,18 @@
 		),
 		#3127ca;
 
+	/*** Fonts ***/
 	--font-family: "Comfortaa";
 	--font-family-serif: "Roboto Slab";
 
+	/*** Shadows ***/
 	--shadow-box: 0px -3px 20px rgba(0, 0, 0, 0.04);
 
+	/*** Border ***/
 	--border-radius: 16px;
 }
 /***************************/
-/***      CSS Resets     ***/
+/***   3. CSS Resets     ***/
 /***************************/
 
 html {
@@ -45,16 +71,12 @@ html {
 	box-sizing: inherit;
 }
 /***************************/
-/***    Global Styling   ***/
+/*** 4. Global Styling   ***/
 /***************************/
 
 body {
-	margin: 0 auto;
 	font-family: var(--font-family);
 	font-size: 14px;
-	overflow: hidden;
-	height: 100vh;
-	width: 100%;
 }
 
 h1,
@@ -94,42 +116,121 @@ img {
 }
 
 /***************************/
-/***     Components      ***/
+/***    5. Components    ***/
 /***************************/
 
-.container {
-	width: 100%;
-	max-width: 500px;
-	margin: 0 auto;
-	/* border: 1px red solid; */
-	padding: 0 25px;
-}
-
 .card {
-	background: var(--color-background-card);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-box);
-	margin: 0 auto;
-	width: 100%;
 }
 
 .btn {
-	background: var(--color-background-card);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-box);
-	margin: 25px auto;
-	width: 100%;
-	border: none;
-	display: block;
-	font-family: var(--font-family);
-	padding: 15px;
 }
 
 .hidden {
 	display: none;
 }
+
 /***************************/
-/***      Login Page     ***/
+/***  6. Main Layout     ***/
+/***************************/
+
+/***************************/
+/***     6.1 Header      ***/
+/***************************/
+.header {
+}
+.banner {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	color: white;
+}
+.banner__title {
+	color: var(--color-primary);
+	margin: 15px 0;
+}
+
+/***************************/
+/***      6.2 Body       ***/
+/***************************/
+.body {
+	background: var(--color-background-main);
+}
+
+.main {
+	width: 100%;
+	padding-bottom: 100px;
+}
+
+/***************************/
+/***     6.3 Footer      ***/
+/***************************/
+footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	background: var(--color-background-card);
+	height: 70px;
+	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+}
+
+/***************************/
+/***       6.4 Nav       ***/
+/***************************/
+
+.nav-item {
+	line-height: 10px;
+	text-align: center;
+}
+
+.nav-link {
+	font-size: 14pt;
+	display: block;
+	height: 100%;
+}
+
+/* This is needed to overwrite the default bootstrap hover state */
+.nav-link:hover {
+	color: var(--color-primary);
+}
+
+.nav-item i {
+	font-size: 25pt;
+	padding-bottom: 5px;
+}
+
+a.nav_active {
+	color: var(--color-primary);
+}
+
+.nav__timer-button {
+	border: none;
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	background-color: var(--color-danger);
+	cursor: pointer;
+	position: relative;
+	top: -15px;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav__timer-button i {
+	font-size: 40px;
+	color: #ffffff;
+}
+/***************************/
+/***   Main Layout Ends  ***/
+/***************************/
+
+/***************************/
+/*** 	   7. Pages      ***/
+/***************************/
+
+/***************************/
+/***   7.1 Login Page    ***/
 /***************************/
 .login__body {
 	background: var(--color-blue-gradient);
@@ -154,112 +255,7 @@ img {
 }
 
 /***************************/
-/*** 	 Main Layout     ***/
-/***************************/
-
-/***** Header *****/
-.header {
-}
-.banner {
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	color: white;
-}
-.banner__title {
-	color: white;
-	margin: 15px 0;
-}
-
-/***** Body *****/
-.body {
-	background: radial-gradient(
-		ellipse at top,
-		var(--color-primary),
-		var(--color-primary-gradient)
-	);
-}
-
-.main {
-	width: 100%;
-	height: 100%;
-	background: var(--color-background-main);
-	border-radius: var(--border-radius);
-}
-/***** Footer *****/
-
-footer {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	width: 100%;
-	background: var(--color-background-card);
-	height: 70px;
-	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
-	border-top-left-radius: var(--border-radius);
-	border-top-right-radius: var(--border-radius);
-}
-
-/*****  Nav *****/
-.nav__container {
-	height: 100%;
-}
-
-.nav__list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	display: flex;
-	justify-items: space-evenly;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-}
-
-.nav__list-item {
-	flex: 1;
-	height: 100%;
-	line-height: 10px;
-	margin-top: 2%;
-	text-align: center;
-}
-
-.nav__list-item a {
-	font-size: 15pt;
-	color: var(--color-secondary);
-	padding-right: 15%;
-}
-
-.nav__list-item i {
-	font-size: 25pt;
-}
-
-a.nav_active {
-	color: var(--color-primary);
-}
-
-.nav__timer-button {
-	border: none;
-	width: 65px;
-	height: 65px;
-	border-radius: 50%;
-	background-color: var(--color-danger);
-	cursor: pointer;
-	position: relative;
-	top: -25px;
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-}
-
-.nav__timer-button i {
-	font-size: 40px;
-	color: #ffffff;
-}
-/***************************/
-/***   Main Layout Ends  ***/
-/***************************/
-
-/***************************/
-/*** 	 Dashboard Page  ***/
+/*** 7.2 Dashboard Page  ***/
 /***************************/
 /** GREETING **/
 .greeting h1 {
@@ -322,231 +318,5 @@ a.nav_active {
 }
 
 /***************************/
-/***        Timer        ***/
+/***  7.3 Courses Page   ***/
 /***************************/
-/* Timer - Card */
-.timer__container {
-	width: 100%;
-	max-width: 500px;
-	height: 100vh;
-	position: absolute;
-	left: 50%;
-	top: 0;
-	pointer-events: none;
-	transform: translate(-50%, 0);
-	z-index: 4;
-	display: flex;
-	align-items: flex-start;
-}
-
-.timer__card {
-	pointer-events: auto;
-	/* height: 75vh; */
-	/* min-height: 500px; */
-	height: 80vh;
-	width: 100%;
-	padding: 0 25px;
-	position: relative;
-	bottom: -100vh;
-	z-index: 5;
-	border-top-left-radius: var(--border-radius);
-	border-top-right-radius: var(--border-radius);
-	border-radius: var(--border-radius);
-	transition: transform 250ms ease-in-out;
-	background: var(--color-background-main);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.timer__card--active {
-	transform: translate(0, -90vh);
-}
-
-.timer__toggle {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	overflow: hidden;
-	position: relative;
-	cursor: pointer;
-	min-height: 50px;
-	margin: 25px auto;
-}
-
-.timer__toggle-option {
-	z-index: 7;
-	flex: 1;
-	display: block;
-	text-align: center;
-	color: var(--color-secondary);
-	transition: color 200ms ease-in-out 200ms;
-}
-
-.timer__toggle-option--active {
-	color: white;
-}
-
-.timer__toggle-block {
-	background: var(--color-blue-gradient);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-box);
-	width: 50%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	z-index: 6;
-	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition: transform 400ms ease-in-out;
-}
-
-.timer__toggle-block--right {
-	transform: translateX(100%);
-}
-
-.timer__timer {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	box-shadow: none;
-	background: var(--color-background-main);
-}
-
-.timer__text {
-	text-align: center;
-	display: block;
-	font-size: 55px;
-	color: var(--color-secondary);
-	letter-spacing: 2px;
-}
-
-.timer__control-btns {
-	width: 100%;
-	display: flex;
-	justify-content: space-evenly;
-}
-
-.timer__control-btn {
-	border: none;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background: var(--color-blue-gradient);
-	box-shadow: var(--shadow-box);
-}
-
-.timer__control-btn i {
-	color: white;
-}
-
-.timer__set-class {
-	font-size: 18px;
-	height: 50px;
-	/* margin-bottom: 70px; */
-}
-/* New Timer Styles */
-
-.card__content {
-	/* text-align: center; */
-	position: relative;
-	/* padding: 15em 5em; */
-	transition: transform 600ms;
-	height: 100%;
-	transform-style: preserve-3d;
-}
-
-.cardd-active .card__content {
-	transform: rotateY(.5turn);
-}
-
-.card__front,
-.card__back {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	padding: 5em 3em;
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-content: center;
-	background: var(--color-background-card);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-box);
-}
-
-.timer__text {
-	/* font-size: 3.5rem; */
-	transform: translateZ(100px);
-}
-.timer__control-btn {
-	border: none;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background: var(--color-blue-gradient);
-	box-shadow: var(--shadow-box);
-	transform: translateZ(100px);
-}
-.timer__control-btn i {
-	color: white;
-}
-
-.card__back {
-	transform: rotateY(.5turn);
-}
-
-/* Timer - Close BTN and Background */
-.timer__close-btn {
-	border: none;
-	width: 32px;
-	height: 32px;
-	border-radius: 50%;
-	background-color: var(--color-danger);
-	cursor: pointer;
-	position: relative;
-	top: -40px;
-	right: 25px;
-	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	transition: transform 250ms ease-in-out;
-	pointer-events: auto;
-	z-index: 6;
-}
-
-.timer__close-btn i {
-	color: white;
-	font-size: 28px;
-}
-
-.timer__close-btn--active {
-	transform: translate(0, 55px);
-}
-
-.timer__background {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 1;
-	pointer-events: none;
-	opacity: 0;
-	transition: opacity 200ms ease-in-out;
-}
-
-.timer__background--active {
-	pointer-events: auto;
-	opacity: 1;
-}

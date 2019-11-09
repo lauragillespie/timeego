@@ -5,16 +5,23 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Timeego</title>
+   <title>Timeego - Dashboard</title>
    <link rel="icon" type="image/png" href="./images/favicon.png">
-
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <!-- Firebase CSS -->
    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-   <!-- Material Icons -->
+   <!-- Material Icons CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!-- Timeego CSS -->
+   <!-- Our custom Timeego CSS Stylesheets -->
    <link rel="stylesheet" href="./styles/main.css">
+   <link rel="stylesheet" href="./styles/timer.css">
 </head>
+
+<!-- 
+   Note: class "container" now comes from Bootstrap -Anthony
+ -->
 
 <body class="body">
 
@@ -47,7 +54,7 @@
 
          <!-- CONTENT BOXES -->
          <div class="content">
-            <div class="card">
+            <div>
                <img class="graph" src="./images/graph_placeholder.png">
             </div>
          </div>
@@ -55,16 +62,21 @@
       </div>
    </main>
 
-
-
-
    <!-- NAVIGATION BAR -->
+   <!-- 
+      Note: the following nav classes now come from Bootstrap -Anthony
+         -container
+         -nav
+         -nav-justified
+         -nav-item
+         -nav-link
+      https://getbootstrap.com/docs/4.3/components/navs/
+   -->
    <footer>
-      <nav class="nav__container container">
-         <ul class="nav__list">
-
-            <li class="nav__list-item">
-               <a class="nav_active" href="#">
+      <nav class="container">
+         <ul class="nav nav-justified">
+            <li class="nav-item">
+               <a class="nav-link nav_active" href="./dashboard.html">
                   <i class="material-icons">
                      home
                   </i>
@@ -72,8 +84,8 @@
                </a>
             </li>
 
-            <li class="nav__list-item">
-               <a href="course-home.html">
+            <li class="nav-item">
+               <a class="nav-link" href="./course-home.html">
                   <i class="material-icons">
                      chrome_reader_mode
                   </i>
@@ -81,14 +93,14 @@
                </a>
             </li>
 
-            <!-- timer button -->
-            <li class="nav__list-item"><button class="nav__timer-button" id="timer-toggle-btn">
+            <!-- Timer button -->
+            <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
                   <i class="material-icons">timer</i>
                </button>
             </li>
 
-            <li class="nav__list-item">
-               <a href="#">
+            <li class="nav-item">
+               <a class="nav-link" href="#">
                   <i class="material-icons">
                      check_box
                   </i>
@@ -96,8 +108,8 @@
                </a>
             </li>
 
-            <li class="nav__list-item">
-               <a href="#">
+            <li class="nav-item">
+               <a class="nav-link" href="#">
                   <i class="material-icons">
                      settings_applications
                   </i>
@@ -109,10 +121,10 @@
       </nav>
    </footer>
 
-   <!-- TIMER -->
+   <!-- TIMER Pop-up -->
    <div class="timer__container">
       <div class="timer__card">
-         <div class="timer__toggle card">
+         <div class="timer__toggle">
             <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
             <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
             <div class="timer__toggle-block"></div>
@@ -166,7 +178,7 @@
 
             </div>
          </div>
-         <button class="timer__set-class btn">
+         <button class="timer__set-class">
             Select Class
          </button>
       </div>
@@ -178,15 +190,31 @@
       </button>
    </div>
    <div class="timer__background"></div>
+   <!-- Timer Pop-up HTML Ends -->
 
-   <!-- Firebase - General -->
+   <!-- SCRIPTS -->
+   <!-- jQuery Scirpt - Needed for Bootstrap -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+   <!-- popper.js Scirpt - Needed for Bootstrap -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+   <!-- Bootstrap Script -->
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+   <!-- Firebase Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-   <!-- Firebase  - Products -->
+   <!-- Firebase Auth Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-   <script src="./scripts/firebase.js"></script>
-   <script type="module" src="./scripts/main.js"></script>
+   <!-- Firebase Firestore Script -->
+   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+   <!-- Our Custom Scripts -->
+   <script src="./scripts/firebase/firebase.js" type="module"></script>
+   <script src="./scripts/main.js" type="module"></script>
 
 </body>
 
