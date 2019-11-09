@@ -5,16 +5,18 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Timeego</title>
+   <title>Timeego - Welcome</title>
    <link rel="icon" type="image/png" href="./images/favicon.png">
-
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <!-- Firebase CSS -->
    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-   <!-- Material Icons -->
+   <!-- Material Icons CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-   <!-- Timeego CSS -->
+   <!-- Our custom Timeego CSS Stylesheets -->
    <link rel="stylesheet" href="./styles/main.css">
+   <link rel="stylesheet" href="./styles/timer.css">
 </head>
 
 <body class="login__body">
@@ -24,14 +26,29 @@
       <div id="loader">Loading...</div>
    </main>
 
-   <!-- Firebase - General -->
+   <!-- SCRIPTS -->
+   <!-- jQuery Scirpt - Needed for Bootstrap -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+   <!-- popper.js Scirpt - Needed for Bootstrap -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+   <!-- Bootstrap Script -->
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+   <!-- Firebase Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-   <!-- Firebase  - Products -->
+   <!-- Firebase Auth Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-   <script src="./scripts/firebase.js"></script>
-   <script src="./scripts/main.js"></script>
+   <!-- Firebase Firestore Script -->
+   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+   <!-- Our Custom Scripts -->
+   <script src="./scripts/firebase/firebase.js" type="module"></script>
+   <script src="./scripts/main.js" type="module"></script>
 </body>
 
 </html>
