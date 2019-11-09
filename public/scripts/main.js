@@ -46,7 +46,11 @@ timerToggle.addEventListener('click', e => {
 });
 
 // Stopwatch Btn Vars
-import { stopwatchActive, stopwatchStart, stopwatchStop } from './stopwatch.js';
+import {
+	stopwatchActive,
+	stopwatchStart,
+	stopwatchStop
+} from './stopwatch.js';
 
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
@@ -75,5 +79,3 @@ function changeStopwatchButtons() {
 	}
 }
 // Course home stuff
-
-

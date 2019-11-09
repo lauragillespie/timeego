@@ -77,3 +77,13 @@ function createUser() {
 
 
 }
+function addCourse(name, color) {
+			firebase.database().ref('users/' + user.uid).set({
+			  coursename: name,
+			  coursecolor: color,
+			});
+		  };
+		db.collection('users').doc(uid.course).onSnapshot(function (snap) {
+            // console.log("Current data is...", snap.data());
+            document.getElementById("courseName").innerHTML = snap.data().coursename;
+         });
