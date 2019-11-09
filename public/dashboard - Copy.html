@@ -33,22 +33,25 @@
    <script src="./scripts/firebase.js"></script>
    <script type="module" src="./scripts/main.js"></script>
    <script>
-      // retrieves the course name inputed by the user
+      // retrieves the course name input by the user
       var courseName = document.getElementById('coursename');
 
       document.getElementById('courseform').addEventListener('submit', function (e) {
          e.preventDefault();
-         console.log(nameInput.value);
+         console.log(courseName.value);
 
             firebase.auth().onAuthStateChanged(function (user) {
                db.collection("users").doc(user.uid).set({
-                  "courses": {
-                     "name": nameInput.value
+                  "course": {
+                     "name": courseName.value
                   }
                }, {merge: true});
 
 
          })
+
+
+
 
       });
    </script>
