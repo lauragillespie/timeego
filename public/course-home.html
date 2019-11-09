@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Timeego - Courses</title>
+    <title>Timeego - Dashboard</title>
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -25,12 +25,30 @@
             <div class="banner">
                 <h3 class="banner__title">TIMEEGO</h3>
             </div>
+            <div id="username">
+
+            </div>
         </div>
     </header>
     <div class="course_options">
         <h5><u>Active Courses</u></h5>
         <h5><u>Archived Courses</u></h5>
     </div>
+
+
+    <!-- Form for Adding Courses-->
+    <div class="card">
+        <form id="courseForm">
+            <fieldset>
+                <label>Course Name:</label>
+                <input type="text" id="courseName" name="courseName" value="" />
+                <label>Set A Color:</label>
+                <input type="color" id="courseColor" name="courseColor" value="" />
+                <input type="submit" id="submit" />
+            </fieldset>
+        </form>
+    </div>
+
     <div>
         <div class="btn-group-vertical" role="group" aria-label="Basic example">
             <div class="btn_course">
@@ -38,14 +56,17 @@
                 <p>Course 1</p>
             </div>
             <div class="btn_course">
-                    <p class="course_color"></p>
-                    <p>Course 2</p>
+                <p class="course_color"></p>
+                <p>Course 2</p>
             </div>
             <div class="btn_course">
-                    <p class="course_color"></p>
-                    <p>Course 2</p>
+                <p class="course_color"></p>
+                <p>Course 2</p>
             </div>
         </div>
+
+
+
     </div>
     <!-- <div>
         <form>
@@ -60,54 +81,53 @@
         </form>
     </div> -->
     <footer>
-            <nav class="container">
-               <ul class="nav nav-justified">
-                  <li class="nav-item">
-                     <a class="nav-link nav_active" href="./dashboard.html">
+        <nav class="container">
+            <ul class="nav nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link nav_active" href="./dashboard.html">
                         <i class="material-icons">
-                           home
+                            home
                         </i>
                         Home
-                     </a>
-                  </li>
-      
-                  <li class="nav-item">
-                     <a class="nav-link" href="./course-home.html">
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./course-home.html">
                         <i class="material-icons">
-                           chrome_reader_mode
+                            chrome_reader_mode
                         </i>
                         Courses
-                     </a>
-                  </li>
-      
-                  <!-- Timer button -->
-                  <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
+                    </a>
+                </li>
+
+                <!-- Timer button -->
+                <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
                         <i class="material-icons">timer</i>
-                     </button>
-                  </li>
-      
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">
+                    </button>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">
-                           check_box
+                            check_box
                         </i>
                         Goals
-                     </a>
-                  </li>
-      
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
                         <i class="material-icons">
-                           settings_applications
+                            settings_applications
                         </i>
                         Settings
-                     </a>
-                  </li>
-      
-               </ul>
-            </nav>
-         </footer>
+                    </a>
+                </li>
 
+            </ul>
+        </nav>
+    </footer>
     <!-- SCRIPTS -->
     <!-- jQuery Scirpt - Needed for Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -131,13 +151,7 @@
     <!-- Our Custom Scripts -->
     <script src="./scripts/firebase/firebase.js" type="module"></script>
     <script src="./scripts/main.js" type="module"></script>
-    <script>
-        // db.collection('users').doc(users).onSnapshot(function (snap) {
-        //     document.getElementById('stuff').innerHTML = snap.data().name;
-        // });
 
-        addCourse();
-    </script>
 </body>
 
 </html>
