@@ -55,14 +55,49 @@ function createUser() {
 		});
 	});
 }
-function addCourse(name, color) {
-	firebase.database().ref('users/' + user.uid).set({
-		coursename  : name,
-		coursecolor : color
+
+
+ // Retrieves the course name and color selected by the user
+ function addCourse() {
+
+	// for an <input type='text'> with id = 'courseName'
+	var courseName = document.getElementById('courseName');
+	// for an <input type='color'> with id = 'courseColor'
+	var courseColor = document.getElementById('courseColor');
+	var courseDate = new Date();
+
+	// for a <form> with an id = 'courseForm'
+	// if no courses have been added yet, creates a course collection for the user
+	// submit: adds course documents with a name, color, and date to the course collection
+	document.getElementById('courseForm').addEventListener('submit', function (e) {
+
+	   console.log(courseName.value);
+	   firebase.auth().onAuthStateChanged(function (user) {
+		  db.collection("users").doc(user.uid).collection("courses").doc().set({
+			 "course": {
+				"name": courseName.value,
+				"color": courseColor.value,
+				"date": courseDate
+			 }
+		  }, {
+			 merge: true
+		  });
+
+	   });
+
 	});
-}
-db.collection('users').doc(uid.course).onSnapshot(function(snap) {
-	document.getElementById('courseName').innerHTML = snap.data().coursename;
-});
+ }
+
+// function addCourse(name, color) {
+// 	firebase.database().ref('users/' + user.uid).set({
+// 		coursename  : name,
+// 		coursecolor : color
+// 	});
+// }
+// db.collection('users').doc(uid.course).onSnapshot(function(snap) {
+// 	document.getElementById('courseName').innerHTML = snap.data().coursename;
+// });
+
+
 
 /*** Firestore Database ENDS ***/
