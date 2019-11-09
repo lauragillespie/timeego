@@ -350,9 +350,7 @@ a.nav_active {
 	margin-left: 10%;
 	height: 100%;
 }
- /* a:hover {
-	background: var(--color-primary-gradient);
-} */
+
 .course_color {
 
 	border: solid 5px var(--color-success);
