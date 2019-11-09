@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Timeego</title>
+   <link rel="icon" type="image/png" href="./images/favicon.png">
 
    <!-- Firebase CSS -->
    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
@@ -15,112 +16,13 @@
    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
-<body>
-   <!-- OUTER CONTAINER -->
-   <div class="container">
-      <header>
-         <div class="banner">
-            <h3>TIMEEGO</h2>
-         </div>
-      </header>
-
-      <!-- INNER CONTAINER -->
-      <div class="inner-container">
-
-         <main>
-            <!-- <div class="card">
-            <h2 class="card__header">Demo Card</h2>
-            <p class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas deserunt sapiente ea
-               tempora. Doloribus dolore ducimus voluptatum rerum iusto?</p>
-         </div> -->
-
-
-            <!-- GREETING -->
-            <div class="greeting">
-               <h1>Welcome User</h1>
-            </div>
-
-            <!-- RECENT HIGHLIGHTS BANNER -->
-            <div class="highlights">
-               <h2>Progress</h2>
-            </div>
-
-            <!-- CONTENT BOXES -->
-            <div class="content">
-               <!-- <div class="card">
-                
-                </div>
-                <div class="card">
-                    
-                </div> -->
-               <div class="card">
-                  <!-- graph placeholder image -->
-                  <img class="graph" src="./images/graph_placeholder.png">
-               </div>
-            </div>
-
-         </main>
-
-      </div>
-   </div>
-
-   <!-- NAVIGATION BAR -->
-   <footer>
-      <nav class="nav__container">
-         <ul class="nav__list">
-
-            <li class="nav__list-item"><button class="nav__timer-button" id="timer-toggle-btn">
-                  <i class="material-icons">timer</i>
-               </button>
-            </li>
-
-         </ul>
-      </nav>
-   </footer>
-
-   <!-- TIMER -->
-   <div class="timer__container">
-      <div class="timer__card">
-         <div class="timer__toggle card">
-            <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
-            <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
-            <div class="timer__toggle-block"></div>
-         </div>
-         <div class="timer__timer card">
-            <span class="timer__text">00:00:00</span>
-            <div class="timer__control-btns">
-               <button class="timer__control-btn">
-                  <i class="material-icons">
-                     play_arrow
-                  </i>
-               </button>
-               <button class="timer__control-btn">
-                  <i class="material-icons">
-                     pause
-                  </i>
-               </button>
-               <button class="timer__control-btn">
-                  <i class="material-icons">
-                     replay
-                  </i>
-               </button>
-
-            </div>
-         </div>
-         <button class="timer__set-class btn">
-            Select Class
-         </button>
-      </div>
-
-      <button class="timer__close-btn">
-         <i class="material-icons">
-            close
-         </i>
-      </button>
-   </div>
-   <div class="timer__background"></div>
-   </div>
-
+<body class="body">
+   <form id="courseform">
+      <fieldset>
+         <input type="text" id="coursename" name="coursename" value="" />
+         <input type="submit" id="submit" />
+      </fieldset>
+   </form>
 
    <!-- Firebase - General -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
@@ -129,7 +31,27 @@
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
    <script src="./scripts/firebase.js"></script>
-   <script src="./scripts/main.js"></script>
+   <script type="module" src="./scripts/main.js"></script>
+   <script>
+      // retrieves the course name inputed by the user
+      var courseName = document.getElementById('coursename');
+
+      document.getElementById('courseform').addEventListener('submit', function (e) {
+         e.preventDefault();
+         console.log(nameInput.value);
+
+            firebase.auth().onAuthStateChanged(function (user) {
+               db.collection("users").doc(user.uid).set({
+                  "courses": {
+                     "name": nameInput.value
+                  }
+               }, {merge: true});
+
+
+         })
+
+      });
+   </script>
 </body>
 
 </html>
