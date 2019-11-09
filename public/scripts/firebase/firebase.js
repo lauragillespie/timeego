@@ -27,9 +27,9 @@ ui.start('#firebaseui-auth-container', uiConfig);
 const db = firebase.firestore();
 
 // Database call
-db.collection('quotes').doc('123').onSnapshot(function(snap) {
+db.collection('users').doc(users.uid).onSnapshot(function(snap) {
 	console.log('Current data is ....', snap.data());
-	document.getElementById('stuff').innerHTML = snap.data().messages;
+	document.getElementById('course_name').innerHTML = snap.course().name;
 });
 
 createUser();
