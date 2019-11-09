@@ -64,6 +64,16 @@ function createUser() {
 				email : user.email
 			},
 			{ merge: true }
-		);
+		);	
+
+		// Prints welcome message for active user
+		db.collection('users').doc(user.uid).onSnapshot(function (snap) {
+            console.log("Current data is...", snap.data());
+            document.getElementById("username").innerHTML = snap.data().name;
+         });
+
+	  
 	});
+
+
 }
