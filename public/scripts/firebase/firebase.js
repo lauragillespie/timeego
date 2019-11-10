@@ -5,6 +5,7 @@ import { firebaseConfig } from './firebaseConfig.js';
 // Importing firebase auth config
 import { uiConfig } from './firebaseAuth.js';
 
+
 /*** Imports ENDS ***/
 
 // Initialize Firebase App

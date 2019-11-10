@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Timeego - Dashboard</title>
+    <title>Timeego - Courses</title>
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,6 +17,7 @@
     <!-- Our custom Timeego CSS Stylesheets -->
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/timer.css">
+
 </head>
 
 <body class="body">
@@ -25,14 +26,25 @@
             <div class="banner">
                 <h3 class="banner__title">TIMEEGO</h3>
             </div>
-            <div id="username">
-
+            <div>
+                <span id="username">User</span>
             </div>
         </div>
     </header>
-    <div class="course_options">
-        <h5><u>Courses</u></h5>
-        <h5><u>Archived</u></h5>
+
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="add_course" href="#">Add Course</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Archived</a>
+            </li>
+        </ul>
+
     </div>
 
 
@@ -49,19 +61,16 @@
         </form>
     </div>
 
-    <div>
+    <div id="course_list">
         <div class="btn-group-vertical" role="group" aria-label="Basic example">
             <div class="btn_course">
-                <p class="course_color"></p>
-                <p id="course_name">Course 1</p>
+                <p class="course_name">Course 1</p>
             </div>
             <div class="btn_course">
-                <p class="course_color"></p>
-                <p>Course 2</p>
+                <p class="course_name">Course 2</p>
             </div>
             <div class="btn_course">
-                <p class="course_color"></p>
-                <p>Course 2</p>
+                <p class="course_name">Course 2</p>
             </div>
         </div>
 

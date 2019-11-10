@@ -64,7 +64,11 @@ timerToggle.addEventListener('click', e => {
 /*** Stopwatch Start/Pause Buttons Triggers ***/
 
 // imports stopwatch logic functions from stopwatch.js
-import { stopwatchActive, stopwatchStart, stopwatchStop } from './stopwatch.js';
+import {
+	stopwatchActive,
+	stopwatchStart,
+	stopwatchStop
+} from './stopwatch.js';
 
 // Grabs HTML elements needed to start, pause, reset stopwatch
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
@@ -98,3 +102,20 @@ function changeStopwatchButtons() {
 }
 
 /*** Stopwatch Start/Pause Buttons Triggers ENDS ***/
+
+/***courses page change */
+
+document.getElementById("add_course").addEventListener("click",
+	function (click) {
+		var ac = document.getElementById("courseForm");
+		ac.style.display = "contents";
+		var ch = document.getElementById("course_list");
+		ch.style.display = "none";
+	}, false);
+
+// document.getElementById("add_course").addEventListener("click",
+// 	function (event) {
+// 		var ac = document.getElementById("courseForm");
+// 		ac.style.display = "contents";
+// 		var ch = document.getElementById("courseForm");
+// 	}, false);
