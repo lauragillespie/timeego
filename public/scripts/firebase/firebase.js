@@ -26,12 +26,7 @@ ui.start('#firebaseui-auth-container', uiConfig);
 // Initialize Firestore database
 const db = firebase.firestore();
 
-// Database call
-db.collection('users').doc(users.uid).onSnapshot(function(snap) {
-	console.log('Current data is ....', snap.data());
-	document.getElementById('course_name').innerHTML = snap.course().name;
-});
-
+/** Creates a User**/
 createUser();
 
 // Function that creates a new document in the users collection
@@ -56,6 +51,8 @@ function createUser() {
 	});
 }
 
+/** Adds a Course **/
+addCourse();
 
  // Retrieves the course name and color selected by the user
  function addCourse() {
@@ -87,17 +84,6 @@ function createUser() {
 
 	});
  }
-
-// function addCourse(name, color) {
-// 	firebase.database().ref('users/' + user.uid).set({
-// 		coursename  : name,
-// 		coursecolor : color
-// 	});
-// }
-// db.collection('users').doc(uid.course).onSnapshot(function(snap) {
-// 	document.getElementById('courseName').innerHTML = snap.data().coursename;
-// });
-
 
 
 /*** Firestore Database ENDS ***/
