@@ -52,7 +52,7 @@
 	--font-family-serif: "Roboto Slab";
 
 	/*** Shadows ***/
-	--shadow-box: 0px -3px 20px rgba(0, 0, 0, 0.04);
+	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);;
 
 	/*** Border ***/
 	--border-radius: 16px;
@@ -292,10 +292,12 @@ a.nav_active {
 
 .card--half {
 	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-box);
+	box-shadow: var(--shadow-card);
 	color: var(--color-background-card);
 	text-align: center;
-	padding: 10%;
+	font-size: 20pt;
+	font-weight: 900;
+	padding: 10% 15%;
 	height: 200px;
 	width: 100%;
 }
@@ -304,8 +306,18 @@ a.nav_active {
 	background: var(--color-primary);
 }
 
+.card_primary i{
+	font-size: 40pt;
+}
+
 .card_success{
 	background: var(--color-success);
+}
+
+.card_success span{
+	color: var(--color-background-card);
+	display: block;
+	margin-top: 30%;
 }
 /** CONTENT **/
 .content {
@@ -323,7 +335,7 @@ a.nav_active {
 	padding: 5%;
 	border: var(--border-card);
 	border-radius: 12px;
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	box-shadow: var(--shadow-card);
 	margin-top: 5%;
 }
 
