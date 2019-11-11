@@ -33,38 +33,30 @@
         </div>
     </header>
 
-    <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Courses</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" id="add_course" href="#">Add Course</a>
-            </li> -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">Archived</a>
-            </li>
-        </ul>
-
-    </div>
-
-    <div id="course_list">
-        <div class="btn-group-vertical" role="group" aria-label="Basic example">
-
-            <button type="button" class=btn_course>Course 1</button>
-
-            <button type="button" class=btn_course>Course 2</button>
-
-            <button type="button" class=btn_course>Course 3</button>
-
-        </div>
-
-
-
-    </div>
     <div>
-        <a class="nav-link" href="./course-add.html">
-            <button type="button" id=btn_add_course>Add Course</button>
+        <h2 class=add_course_h2>Add Course</h2>
+    </div>
+
+
+    <!-- Form for Adding Courses-->
+    <div class="card">
+        <form id="courseForm">
+            <fieldset>
+                <div>
+                    <label>Course Name:</label>
+                    <input type="text" id="courseName" name="courseName" placeholder="Course Name" value="" />
+                </div>
+                <div>
+                    <label>Set A Color:</label>
+                    <input type="color" id="courseColor" name="courseColor" value="" />
+                </div>
+                <div class="coure_form_buttons">
+                    <input type="reset" id="reset" name="reset" value="Reset" />
+                    <input type="submit" id="submit" />
+                </div>
+
+            </fieldset>
+        </form>
     </div>
     <!-- <div>
         <form>
@@ -78,48 +70,54 @@
             </div>
         </form>
     </div> -->
+    <footer>
+        <nav class="container">
+            <ul class="nav nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link nav_active" href="./dashboard.html">
+                        <i class="material-icons">
+                            home
+                        </i>
+                        Home
+                    </a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="./course-home.html">
+                        <i class="material-icons">
+                            chrome_reader_mode
+                        </i>
+                        Courses
+                    </a>
+                </li>
 
- <!-- NAVIGATION BAR -->
-   <!-- 
-      Note: the following nav classes now come from Bootstrap -Anthony
-         -container
-         -nav
-         -nav-justified
-         -nav-item
-         -nav-link
-      https://getbootstrap.com/docs/4.3/components/navs/
-   -->
-   <footer>
-    <nav class="container">
-       <ul class="nav nav-justified">
-          <li class="nav-item">
-             <a class="nav-link nav_active" href="./dashboard.html">
-                <i class="material-icons">
-                   home
-                </i>
-                Home
-             </a>
-          </li>
+                <!-- Timer button -->
+                <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
+                        <i class="material-icons">timer</i>
+                    </button>
+                </li>
 
-          <!-- Timer button -->
-          <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
-                <i class="material-icons">timer</i>
-             </button>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">
+                            check_box
+                        </i>
+                        Goals
+                    </a>
+                </li>
 
-                     <li class="nav-item">
-             <a class="nav-link" href="./course-home.html">
-                <i class="material-icons">
-                   chrome_reader_mode
-                </i>
-                Courses
-             </a>
-          </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">
+                            settings_applications
+                        </i>
+                        Settings
+                    </a>
+                </li>
 
-       </ul>
-    </nav>
- </footer>
+            </ul>
+        </nav>
+    </footer>
     <!-- SCRIPTS -->
     <!-- jQuery Scirpt - Needed for Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
