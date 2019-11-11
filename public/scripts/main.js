@@ -105,17 +105,3 @@ function changeStopwatchButtons() {
 
 /***courses page change */
 
-document.getElementById("add_course").addEventListener("click",
-	function (click) {
-		var ac = document.getElementById("courseForm");
-		ac.style.display = "contents";
-		var ch = document.getElementById("course_list");
-		ch.style.display = "none";
-	}, false);
-
-// document.getElementById("add_course").addEventListener("click",
-// 	function (event) {
-// 		var ac = document.getElementById("courseForm");
-// 		ac.style.display = "contents";
-// 		var ch = document.getElementById("courseForm");
-// 	}, false);

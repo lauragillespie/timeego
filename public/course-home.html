@@ -17,6 +17,7 @@
     <!-- Our custom Timeego CSS Stylesheets -->
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/timer.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </head>
 
@@ -27,7 +28,7 @@
                 <h3 class="banner__title">TIMEEGO</h3>
             </div>
             <div>
-                <span id="username">User</span>
+                <p>Hi, <span id="username">User</span></p>
             </div>
         </div>
     </header>
@@ -37,9 +38,9 @@
             <li class="nav-item">
                 <a class="nav-link active" href="#">Courses</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" id="add_course" href="#">Add Course</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="#">Archived</a>
             </li>
@@ -63,19 +64,20 @@
 
     <div id="course_list">
         <div class="btn-group-vertical" role="group" aria-label="Basic example">
-            <div class="btn_course">
-                <p class="course_name">Course 1</p>
-            </div>
-            <div class="btn_course">
-                <p class="course_name">Course 2</p>
-            </div>
-            <div class="btn_course">
-                <p class="course_name">Course 2</p>
-            </div>
+
+                <button type="button" class=btn_course>Course 1</button> 
+
+                <button type="button" class=btn_course>Course 2</button> 
+
+                <button type="button" class=btn_course>Course 3</button> 
+
         </div>
 
 
 
+    </div>
+    <div>
+        <button type="button" id=btn_add_course>Add Course</button> 
     </div>
     <!-- <div>
         <form>
