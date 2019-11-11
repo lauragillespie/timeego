@@ -86,5 +86,34 @@ addCourse();
 	});
  }
 
+ /** Displays Courses **/
+ displayCourses();
+
+ function displayCourses() {
+	firebase.auth().onAuthStateChanged(function (user) {
+
+	   var dbRef = db.collection("users").doc(user.uid).collection("courses");
+	   dbRef.onSnapshot(function (snap) {
+		  //console.log(snap);
+		  snap.forEach(function (doc) {
+			 var color = doc.data().course.color;
+			 var courseName = doc.data().course.name
+			 console.log(color);
+			 var courseContainer = document.createElement("div");
+		
+			 document.getElementById("course_list").appendChild(courseContainer);
+			 var courseData = document.createElement("div");
+			 courseContainer.appendChild(courseData);
+
+			 var node = document.createTextNode(courseName);
+			 courseData.appendChild(node);
+
+
+		  });
+	   });
+
+	});
+ }
+
 
 /*** Firestore Database ENDS ***/
