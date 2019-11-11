@@ -33,38 +33,30 @@
         </div>
     </header>
 
-    <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Courses</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" id="add_course" href="#">Add Course</a>
-            </li> -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">Archived</a>
-            </li>
-        </ul>
-
-    </div>
-
-    <div id="course_list">
-        <div class="btn-group-vertical" role="group" aria-label="Basic example">
-
-            <button type="button" class=btn_course>Course 1</button>
-
-            <button type="button" class=btn_course>Course 2</button>
-
-            <button type="button" class=btn_course>Course 3</button>
-
-        </div>
-
-
-
-    </div>
     <div>
-        <a class="nav-link" href="./course-add.html">
-            <button type="button" id=btn_add_course>Add Course</button>
+        <h2 class=add_course_h2>Add Course</h2>
+    </div>
+
+
+    <!-- Form for Adding Courses-->
+    <div class="card">
+        <form id="courseForm">
+            <fieldset>
+                <div>
+                    <label>Course Name:</label>
+                    <input type="text" id="courseName" name="courseName" placeholder="Course Name" value="" />
+                </div>
+                <div>
+                    <label>Set A Color:</label>
+                    <input type="color" id="courseColor" name="courseColor" value="" />
+                </div>
+                <div class="coure_form_buttons">
+                    <input type="reset" id="reset" name="reset" value="Reset" />
+                    <input type="submit" id="submit" />
+                </div>
+
+            </fieldset>
+        </form>
     </div>
     <!-- <div>
         <form>

@@ -40,14 +40,12 @@
 	--color-danger: #ff6a56;
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
-	--color-blue-gradient: linear-gradient(
-			353.28deg,
+	--color-blue-gradient: linear-gradient(353.28deg,
 			#1ea2db 7.78%,
-			rgba(255, 255, 255, 0) 100%
-		),
+			rgba(255, 255, 255, 0) 100%),
 		#3127ca;
-		--color-course-color-gradient: radial-gradient(white, white, #91e5a3);
-		
+	--color-course-color-gradient: radial-gradient(white, white, #91e5a3);
+
 
 	/*** Fonts ***/
 	--font-family: "Comfortaa";
@@ -59,6 +57,7 @@
 	/*** Border ***/
 	--border-radius: 16px;
 }
+
 /***************************/
 /***   3. CSS Resets     ***/
 /***************************/
@@ -72,6 +71,7 @@ html {
 *:after {
 	box-sizing: inherit;
 }
+
 /***************************/
 /*** 4. Global Styling   ***/
 /***************************/
@@ -121,11 +121,7 @@ img {
 /***    5. Components    ***/
 /***************************/
 
-.card {
-}
-
-.btn {
-}
+.btn {}
 
 .hidden {
 	display: none;
@@ -138,14 +134,15 @@ img {
 /***************************/
 /***     6.1 Header      ***/
 /***************************/
-.header {
-}
+.header {}
+
 .banner {
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	color: white;
 }
+
 .banner__title {
 	color: var(--color-primary);
 	margin: 15px 0;
@@ -223,6 +220,7 @@ a.nav_active {
 	font-size: 40px;
 	color: #ffffff;
 }
+
 /***************************/
 /***   Main Layout Ends  ***/
 /***************************/
@@ -273,6 +271,7 @@ a.nav_active {
 	margin: 5% 0;
 	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 }
+
 /** CARD ROW **/
 .card-row {
 	display: grid;
@@ -281,6 +280,7 @@ a.nav_active {
 	justify-content: space-between;
 	margin-top: 25px;
 }
+
 .card--half {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
@@ -332,7 +332,7 @@ a.nav_active {
 	margin-bottom: 5%;
 	color: var(--color-secondary);
 	text-decoration: underline;
-    text-decoration-color: var(--color-secondary);
+	text-decoration-color: var(--color-secondary);
 
 }
 
@@ -358,13 +358,11 @@ a.nav_active {
 	text-align: left;
 	padding-left: 10%;
 }
+
 .course_name {
 	padding-left: 10%;
 }
 
-#courseForm {
-	display: none;
-}
 #btn_add_course {
 	width: 80%;
 	margin-top: 5%;
@@ -376,7 +374,69 @@ a.nav_active {
 	color: var(--color-background-main);
 	font-size: 30pt;
 }
+
 .nav-link {
 	font-size: 24pt;
 	margin: 5%;
+}
+
+/* End Course home */
+
+/* Add Course page */
+.card {
+	width: 90%;
+	margin: 5%;
+
+}
+
+fieldset {
+	display: flex;
+	flex-direction: column;
+}
+
+#courseForm {
+	font-size: 24pt;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
+	width: 90%;
+}
+
+input {
+	margin-bottom: 5%;
+}
+
+label {
+	color: var(--color-primary);
+}
+
+.add_course_h2 {
+	border-top: 1px solid var(--color-secondary);
+	padding-left: 3%;
+	padding-top: 2%;
+}
+
+#courseColor {
+	padding: 0%;
+}
+
+.coure_form_buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 5%;
+}
+
+#submit {
+	background: var(--color-blue-gradient);
+	color: var(--color-background-main);
+	font-size: 30pt;
+	margin-top: 10%;
+}
+
+#reset {
+	background: var(--color-blue-gradient);
+	color: var(--color-background-main);
+	font-size: 30pt;
+	margin-top: 10%;
 }
