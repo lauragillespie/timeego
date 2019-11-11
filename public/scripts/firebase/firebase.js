@@ -96,15 +96,26 @@ addCourse();
 	   dbRef.onSnapshot(function (snap) {
 		  //console.log(snap);
 		  snap.forEach(function (doc) {
-			 var color = doc.data().course.color;
+
+			// retrieves color (hex) value from doc "course" 
+			 var colorPicked = doc.data().course.color;
+
+			// retrieves name value from doc "course"
 			 var courseName = doc.data().course.name
-			 console.log(color);
+
+			// creates a container that holds the course data
 			 var courseContainer = document.createElement("div");
-		
+			// assigns the container background with the color picked by user
+			 courseContainer.style.backgroundColor = colorPicked;
+			
+			// appends container to empty div
 			 document.getElementById("course_list").appendChild(courseContainer);
+			 
+			// this div will hold the course name + any other course info
 			 var courseData = document.createElement("div");
 			 courseContainer.appendChild(courseData);
 
+			// text node that displays the course name
 			 var node = document.createTextNode(courseName);
 			 courseData.appendChild(node);
 
