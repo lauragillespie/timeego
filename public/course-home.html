@@ -91,54 +91,48 @@
             </div>
         </form>
     </div> -->
-    <footer>
-        <nav class="container">
-            <ul class="nav nav-justified">
-                <li class="nav-item">
-                    <a class="nav-link nav_active" href="./dashboard.html">
-                        <i class="material-icons">
-                            home
-                        </i>
-                        Home
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="./course-home.html">
-                        <i class="material-icons">
-                            chrome_reader_mode
-                        </i>
-                        Courses
-                    </a>
-                </li>
 
-                <!-- Timer button -->
-                <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
-                        <i class="material-icons">timer</i>
-                    </button>
-                </li>
+ <!-- NAVIGATION BAR -->
+   <!-- 
+      Note: the following nav classes now come from Bootstrap -Anthony
+         -container
+         -nav
+         -nav-justified
+         -nav-item
+         -nav-link
+      https://getbootstrap.com/docs/4.3/components/navs/
+   -->
+   <footer>
+    <nav class="container">
+       <ul class="nav nav-justified">
+          <li class="nav-item">
+             <a class="nav-link nav_active" href="./dashboard.html">
+                <i class="material-icons">
+                   home
+                </i>
+                Home
+             </a>
+          </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">
-                            check_box
-                        </i>
-                        Goals
-                    </a>
-                </li>
+          <!-- Timer button -->
+          <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
+                <i class="material-icons">timer</i>
+             </button>
+          </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="material-icons">
-                            settings_applications
-                        </i>
-                        Settings
-                    </a>
-                </li>
+                     <li class="nav-item">
+             <a class="nav-link" href="./course-home.html">
+                <i class="material-icons">
+                   chrome_reader_mode
+                </i>
+                Courses
+             </a>
+          </li>
 
-            </ul>
-        </nav>
-    </footer>
+       </ul>
+    </nav>
+ </footer>
     <!-- SCRIPTS -->
     <!-- jQuery Scirpt - Needed for Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
