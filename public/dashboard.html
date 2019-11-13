@@ -101,9 +101,14 @@
             </li>
 
             <!-- Timer button -->
-            <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
-                  <i class="material-icons">timer</i>
+            <li class="nav-item">
+               <button class="nav__timer-button" id="timer-toggle-btn">
+                  <i class="material-icons" id="toggle-btn-nav--timer">timer</i>
+                  <i class="material-icons hidden" id="toggle-btn-nav--pause">
+                     pause
+                  </i>
                </button>
+
             </li>
 
             <li class="nav-item">
@@ -151,7 +156,7 @@
                            pause
                         </i>
                      </button>
-                     <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
+                     <button class="timer__control-btn" id="stopwatch_reset_btn">
                         <i class="material-icons">
                            replay
                         </i>

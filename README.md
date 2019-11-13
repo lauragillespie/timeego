@@ -9,14 +9,14 @@ A list of things left to accomplish.
 ### Stopwatch
 * [x] Timer "Coming Soon" note
 * [x] Rename CSS classes
-* [ ] Save running status to local storage
-* [ ] Pull running status from local storage and change icon
-* [ ] If running:
-    * [ ] Add animation to toggle button if running
-    * [ ] Start timer automatically if running
-    * [ ] load time from local storage
+* [x] Save running status to local storage
+* [x] Pull running status from local storage and change icon
+* [x] If running:
+    * [x] Add animation to toggle button if running
+    * [x] Start timer automatically if running
+    * [x] load time from local storage
 * [ ] Add "Add Course" button functionality
-* [ ] Store time in local storage
+* [x] Store time in local storage
 * [ ] Write time to db
 
 

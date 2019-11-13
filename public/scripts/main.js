@@ -64,36 +64,58 @@ timerToggle.addEventListener('click', e => {
 /*** Stopwatch Start/Pause Buttons Triggers ***/
 
 // imports stopwatch logic functions from stopwatch.js
-import { stopwatchActive, stopwatchStart, stopwatchStop } from './stopwatch.js';
+import { stopwatch } from './stopwatch.js';
 
 // Grabs HTML elements needed to start, pause, reset stopwatch
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
 const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
+// Grabs HTML Icons for Timer Toggle Nav BTN
+const navTimerToggleBtnTimerIcon = document.querySelector(
+	'#toggle-btn-nav--timer'
+);
+const navTimerToggleBtnPauseIcon = document.querySelector(
+	'#toggle-btn-nav--pause'
+);
 
 // Stopwatch start button Event listener
 // Starts stopwatch
 stopwatchPlayBtn.addEventListener('click', e => {
-	stopwatchStart(e);
+	stopwatch.start(e);
 	changeStopwatchButtons();
 });
 
 // Stopwatch pause button Event listener
 // Pauses stopwatch
 stopwatchPauseBtn.addEventListener('click', e => {
-	stopwatchStop(e);
+	stopwatch.stop(e);
+	changeStopwatchButtons();
+});
+
+// Stopwatch reset button Event listener
+// Resets stopwatch
+stopwatchResetBtn.addEventListener('click', e => {
+	stopwatch.reset(e);
 	changeStopwatchButtons();
 });
 
 // Checks if stopwatch is active
 // Controls which buttons are shown/hidden
 function changeStopwatchButtons() {
-	if (stopwatchActive) {
+	if (stopwatch.active) {
 		stopwatchPlayBtn.classList.add('hidden');
 		stopwatchPauseBtn.classList.remove('hidden');
+		stopwatchResetBtn.classList.add('hidden');
+		navTimerToggleBtnTimerIcon.classList.add('hidden');
+		navTimerToggleBtnPauseIcon.classList.remove('hidden');
+		toggleNavBtn.classList.add('timer-toggle-btn--timing');
 	} else {
 		stopwatchPlayBtn.classList.remove('hidden');
 		stopwatchPauseBtn.classList.add('hidden');
+		stopwatchResetBtn.classList.remove('hidden');
+		navTimerToggleBtnTimerIcon.classList.remove('hidden');
+		navTimerToggleBtnPauseIcon.classList.add('hidden');
+		toggleNavBtn.classList.remove('timer-toggle-btn--timing');
 	}
 }
 
@@ -101,14 +123,25 @@ function changeStopwatchButtons() {
 
 /*** On Page Load... ***/
 // Checks if stopwatch is active via local storage
+const timeLocalStorage = JSON.parse(window.localStorage.getItem('time'));
+if (timeLocalStorage) {
+	stopwatch.time = timeLocalStorage;
+}
+stopwatch.updateTimerText();
 const activeSwLocal =
 	JSON.parse(window.localStorage.getItem('stopwatchActive')) || false;
 if (activeSwLocal) {
-	console.log('working');
-
-	console.log();
-	// stopwatchStart(e);
-	// changeStopwatchButtons();
+	console.log('true');
+	stopwatch.active = true;
+	stopwatch.start();
+	changeStopwatchButtons();
+	navTimerToggleBtnTimerIcon.classList.add('hidden');
+	navTimerToggleBtnPauseIcon.classList.remove('hidden');
+	toggleNavBtn.classList.add('timer-toggle-btn--timing');
+} else {
+	navTimerToggleBtnTimerIcon.classList.remove('hidden');
+	navTimerToggleBtnPauseIcon.classList.add('hidden');
+	toggleNavBtn.classList.remove('timer-toggle-btn--timing');
 }
 
 /***courses page change */

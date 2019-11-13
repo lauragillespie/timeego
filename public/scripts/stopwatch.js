@@ -4,62 +4,72 @@
 
 const timerText = document.querySelector('.timer__text');
 
-export let stopwatchActive = false;
-export const stopwatchTime = {
-	hours   : 0,
-	minutes : 0,
-	seconds : 0
-};
-let interval;
-
-export function stopwatchStart(e) {
-	stopwatchActive = true;
-	interval = setInterval(() => {
-		increaseSecs();
-	}, 1000);
-	window.localStorage.setItem('stopwatchActive', 'true');
-}
-
-export function stopwatchStop(e) {
-	stopwatchActive = false;
-	clearInterval(interval);
-	window.localStorage.setItem('stopwatchActive', 'false');
-}
-
-function increaseSecs() {
-	if (stopwatchTime.seconds < 59) {
-		stopwatchTime.seconds++;
-	} else {
-		stopwatchTime.seconds = 0;
-		if (stopwatchTime.minutes < 59) {
-			stopwatchTime.minutes++;
+export const stopwatch = {
+	interval        : null,
+	active          : false,
+	time            : {
+		hours   : 0,
+		minutes : 0,
+		seconds : 0
+	},
+	start(e) {
+		this.active = true;
+		this.interval = setInterval(() => {
+			this.count();
+		}, 1000);
+		window.localStorage.setItem('stopwatchActive', 'true');
+	},
+	stop(e) {
+		this.active = false;
+		clearInterval(this.interval);
+		window.localStorage.setItem('stopwatchActive', 'false');
+	},
+	reset(e) {
+		this.time = {
+			hours   : 0,
+			minutes : 0,
+			seconds : 0
+		};
+		window.localStorage.setItem('time', JSON.stringify(this.time));
+		this.updateTimerText();
+	},
+	count() {
+		if (this.time.seconds < 59) {
+			this.time.seconds++;
 		} else {
-			stopwatchTime.minutes = 0;
-			stopwatchTime.hours++;
+			this.time.seconds = 0;
+			if (this.time.minutes < 59) {
+				this.time.minutes++;
+			} else {
+				this.time.minutes = 0;
+				this.time.hours++;
+			}
 		}
+		window.localStorage.setItem('time', JSON.stringify(this.time));
+		this.updateTimerText();
+	},
+	updateTimerText() {
+		timerText.innerText = this.updateHTML();
+	},
+	updateHTML() {
+		let hrs;
+		let mins;
+		let secs;
+		if (stopwatch.time.hours < 10) {
+			hrs = '0' + stopwatch.time.hours;
+		} else {
+			hrs = '' + stopwatch.time.hours;
+		}
+		if (stopwatch.time.minutes < 10) {
+			mins = '0' + stopwatch.time.minutes;
+		} else {
+			mins = '' + stopwatch.time.minutes;
+		}
+		if (stopwatch.time.seconds < 10) {
+			secs = '0' + stopwatch.time.seconds;
+		} else {
+			secs = '' + stopwatch.time.seconds;
+		}
+		return `${hrs}:${mins}:${secs}`;
 	}
-	window.localStorage.setItem('time', JSON.stringify(stopwatchTime));
-	timerText.innerText = updateHTML();
-}
-
-function updateHTML() {
-	let hrs;
-	let mins;
-	let secs;
-	if (stopwatchTime.hours < 10) {
-		hrs = '0' + stopwatchTime.hours;
-	} else {
-		hrs = '' + stopwatchTime.hours;
-	}
-	if (stopwatchTime.minutes < 10) {
-		mins = '0' + stopwatchTime.minutes;
-	} else {
-		mins = '' + stopwatchTime.minutes;
-	}
-	if (stopwatchTime.seconds < 10) {
-		secs = '0' + stopwatchTime.seconds;
-	} else {
-		secs = '' + stopwatchTime.seconds;
-	}
-	return `${hrs}:${mins}:${secs}`;
-}
+};

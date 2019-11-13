@@ -2,63 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Timeego - Courses</title>
-    <link rel="icon" type="image/png" href="./images/favicon.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Firebase CSS -->
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <!-- Material Icons CSS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Our custom Timeego CSS Stylesheets -->
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/timer.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Timeego - Courses</title>
+   <link rel="icon" type="image/png" href="./images/favicon.png">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <!-- Firebase CSS -->
+   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+   <!-- Material Icons CSS -->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- Our custom Timeego CSS Stylesheets -->
+   <link rel="stylesheet" href="./styles/main.css">
+   <link rel="stylesheet" href="./styles/timer.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </head>
 <header class="header">
-    <div>
-        <div class="banner">
-            <img class="banner__title" src="./images/logo/blue.png">
-            <!-- <h3 class="banner__title">TIMEEGO</h3> -->
-            <p>Hi, <span id="username"></span></p>
-            <a class="settings_link" href="#">
-                <i class="material-icons">
-                    mdi_settings
-                </i>
-            </a>
-        </div>
-    </div>
+   <div>
+      <div class="banner">
+         <img class="banner__title" src="./images/logo/blue.png">
+         <!-- <h3 class="banner__title">TIMEEGO</h3> -->
+         <p>Hi, <span id="username"></span></p>
+         <a class="settings_link" href="#">
+            <i class="material-icons">
+               mdi_settings
+            </i>
+         </a>
+      </div>
+   </div>
 </header>
 
 <div>
-    <h2 class=add_course_h2>Add Course</h2>
+   <h2 class=add_course_h2>Add Course</h2>
 </div>
 
 
 <!-- Form for Adding Courses-->
 <div class="card">
-    <form id="courseForm">
-        <fieldset>
-            <div>
-                <label>Course Name:</label>
-                <input type="text" id="courseName" name="courseName" placeholder="Course Name" value="" />
-            </div>
-            <div>
-                <label>Set A Color:</label>
-                <input type="color" id="courseColor" name="courseColor" value="" />
-            </div>
-            <div class="coure_form_buttons">
-                <input type="reset" id="reset" name="reset" value="Reset" />
-                <input type="submit" id="submit" />
-            </div>
+   <form id="courseForm">
+      <fieldset>
+         <div>
+            <label>Course Name:</label>
+            <input type="text" id="courseName" name="courseName" placeholder="Course Name" value="" />
+         </div>
+         <div>
+            <label>Set A Color:</label>
+            <input type="color" id="courseColor" name="courseColor" value="" />
+         </div>
+         <div class="coure_form_buttons">
+            <input type="reset" id="reset" name="reset" value="Reset" />
+            <input type="submit" id="submit" />
+         </div>
 
-        </fieldset>
-    </form>
+      </fieldset>
+   </form>
 </div>
 <!-- <div>
         <form>
@@ -72,127 +72,135 @@
             </div>
         </form>
     </div> -->
-    <footer>
-            <nav class="container">
-               <ul class="nav nav-justified">
-                  <li class="nav-item">
-                     <a class="nav-link nav_active" href="./dashboard.html">
-                        <i class="material-icons">
-                           home
-                        </i>
-                        Home
-                     </a>
-                  </li>
-      
-                  <!-- Timer button -->
-                  <li class="nav-item"><button class="nav__timer-button" id="timer-toggle-btn">
-                        <i class="material-icons">timer</i>
-                     </button>
-                  </li>
-      
-                  <li class="nav-item">
-                     <a class="nav-link" href="./course-home.html">
-                        <i class="material-icons">
-                           chrome_reader_mode
-                        </i>
-                        Courses
-                     </a>
-                  </li>
-      
-                  <!-- <li class="nav-item">
-                     <a class="nav-link" href="#">
-                        <i class="material-icons">
-                           settings_applications
-                        </i>
-                        Settings
-                     </a>
-                  </li> -->
-      
-               </ul>
-            </nav>
-         </footer>
-   <!-- TIMER Pop-up -->
-   <div class="timer__container">
-        <div class="timer__card">
-           <div class="timer__toggle">
-              <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
-              <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
-              <div class="timer__toggle-block"></div>
-           </div>
-           <div class="timer__timer cardd">
-              <div class="card__content">
-  
-                 <div class="card__front">
-                    <span class="timer__text">00:00:00</span>
-                    <div class="timer__control-btns">
-                       <button class="timer__control-btn" id="stopwatch_play_btn">
-                          <i class="material-icons">
-                             play_arrow
-                          </i>
-                       </button>
-                       <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
-                          <i class="material-icons">
-                             pause
-                          </i>
-                       </button>
-                       <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
-                          <i class="material-icons">
-                             replay
-                          </i>
-                       </button>
-  
-                    </div>
-                 </div>
-  
-                 <div class="card__back">
-                    <span class="timer__text">00:00:00</span>
-                    <div class="timer__control-btns">
-                       <button class="timer__control-btn" id="stopwatch_play_btn">
-                          <i class="material-icons">
-                             play_arrow
-                          </i>
-                       </button>
-                       <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
-                          <i class="material-icons">
-                             pause
-                          </i>
-                       </button>
-                       <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
-                          <i class="material-icons">
-                             replay
-                          </i>
-                       </button>
-  
-                    </div>
-                 </div>
-  
-              </div>
-           </div>
-           <button class="timer__set-class">
-              Select Class
-           </button>
-        </div>
-  
-        <button class="timer__close-btn">
-           <i class="material-icons">
-              close
-           </i>
-        </button>
-     </div>
-     <div class="timer__background"></div>
+<footer>
+   <nav class="container">
+      <ul class="nav nav-justified">
+         <li class="nav-item">
+            <a class="nav-link nav_active" href="./dashboard.html">
+               <i class="material-icons">
+                  home
+               </i>
+               Home
+            </a>
+         </li>
+
+         <!-- Timer button -->
+         <li class="nav-item">
+            <button class="nav__timer-button" id="timer-toggle-btn">
+               <i class="material-icons" id="toggle-btn-nav--timer">timer</i>
+               <i class="material-icons hidden" id="toggle-btn-nav--pause">
+                  pause
+               </i>
+            </button>
+
+         </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="./course-home.html">
+               <i class="material-icons">
+                  chrome_reader_mode
+               </i>
+               Courses
+            </a>
+         </li>
+
+         <!-- <li class="nav-item">
+                  <a class="nav-link" href="#">
+                     <i class="material-icons">
+                        settings_applications
+                     </i>
+                     Settings
+                  </a>
+               </li> -->
+
+      </ul>
+   </nav>
+</footer>
+
+<!-- TIMER Pop-up -->
+<div class="timer__container">
+   <div class="timer__popup">
+      <div class="timer__toggle">
+         <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
+         <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
+         <div class="timer__toggle-block"></div>
+      </div>
+      <div class="timer__time-section cardd">
+         <div class="time-section__flip">
+            <div class="flip__front">
+               <span class="timer__text">00:00:00</span>
+               <div class="timer__control-btns">
+                  <button class="timer__control-btn" id="stopwatch_play_btn">
+                     <i class="material-icons">
+                        play_arrow
+                     </i>
+                  </button>
+                  <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
+                     <i class="material-icons">
+                        pause
+                     </i>
+                  </button>
+                  <button class="timer__control-btn" id="stopwatch_reset_btn">
+                     <i class="material-icons">
+                        replay
+                     </i>
+                  </button>
+
+               </div>
+            </div>
+
+            <div class="flip__back">
+               <!-- <span class="timer__text">00:00:00</span>
+                     <div class="timer__control-btns">
+                        <button class="timer__control-btn" id="stopwatch_play_btn">
+                           <i class="material-icons">
+                              play_arrow
+                           </i>
+                        </button>
+                        <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
+                           <i class="material-icons">
+                              pause
+                           </i>
+                        </button>
+                        <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
+                           <i class="material-icons">
+                              replay
+                           </i>
+                        </button>
+   
+                     </div> -->
+
+               <span class="timer__text">Timer Coming Soon</span>
+            </div>
+
+         </div>
+      </div>
+      <button class="timer__set-class">
+         Select Class
+      </button>
+   </div>
+
+   <button class="timer__close-btn">
+      <i class="material-icons">
+         close
+      </i>
+   </button>
+</div>
+<div class="timer__background"></div>
+<!-- Timer Pop-up HTML Ends -->
 <!-- SCRIPTS -->
 <!-- jQuery Scirpt - Needed for Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
+   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+   </script>
 <!-- popper.js Scirpt - Needed for Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
+   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+   </script>
 <!-- Bootstrap Script -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
+   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+   </script>
 <!-- Firebase Script -->
 <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
 <!-- Firebase Auth Script -->
