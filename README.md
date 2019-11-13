@@ -6,9 +6,9 @@ Comp 1930 Project that tracks a student's study time.
 
 A list of things left to accomplish.
 
-### Timer
-* [x] Stopwatch "Coming Soon" note
-* [ ] Rename CSS classes
+### Stopwatch
+* [x] Timer "Coming Soon" note
+* [x] Rename CSS classes
 * [ ] Save running status to local storage
 * [ ] Pull running status from local storage and change icon
 * [ ] If running:

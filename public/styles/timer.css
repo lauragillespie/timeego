@@ -18,7 +18,7 @@
 	align-items: flex-start;
 }
 
-.timer__card {
+.timer__popup {
 	pointer-events: auto;
 	height: 80vh;
 	width: 100%;
@@ -36,7 +36,7 @@
 	justify-content: center;
 }
 
-.timer__card--active {
+.timer__popup--active {
 	transform: translate(0, -90vh);
 }
 
@@ -88,7 +88,7 @@
 	transform: translateX(100%);
 }
 
-.timer__timer {
+.timer__time-section {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -97,12 +97,47 @@
 	background: var(--color-background-main);
 }
 
+.timer__time-section--active .time-section__flip {
+	transform: rotateY(.5turn);
+}
+
+.time-section__flip {
+	position: relative;
+	transition: transform 600ms;
+	height: 100%;
+	transform-style: preserve-3d;
+}
+
+.flip__front,
+.flip__back {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 5em 3em;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-content: center;
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-box);
+}
+
+.flip__back {
+	transform: rotateY(.5turn);
+}
+
 .timer__text {
 	text-align: center;
 	display: block;
 	font-size: 55px;
 	color: var(--color-secondary);
 	letter-spacing: 2px;
+	transform: translateZ(100px);
 }
 
 .timer__control-btns {
@@ -118,6 +153,7 @@
 	border-radius: 50%;
 	background: var(--color-blue-gradient);
 	box-shadow: var(--shadow-box);
+	transform: translateZ(100px);
 }
 
 .timer__control-btn i {
@@ -136,60 +172,6 @@
 	display: block;
 	font-family: var(--font-family);
 	padding: 15px;
-}
-/* New Timer Styles */
-
-.card__content {
-	/* text-align: center; */
-	position: relative;
-	/* padding: 15em 5em; */
-	transition: transform 600ms;
-	height: 100%;
-	transform-style: preserve-3d;
-}
-
-.cardd-active .card__content {
-	transform: rotateY(.5turn);
-}
-
-.card__front,
-.card__back {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	padding: 5em 3em;
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-content: center;
-	background: var(--color-background-card);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-box);
-}
-
-.timer__text {
-	/* font-size: 3.5rem; */
-	transform: translateZ(100px);
-}
-.timer__control-btn {
-	border: none;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background: var(--color-blue-gradient);
-	box-shadow: var(--shadow-box);
-	transform: translateZ(100px);
-}
-.timer__control-btn i {
-	color: white;
-}
-
-.card__back {
-	transform: rotateY(.5turn);
 }
 
 /* Timer - Close BTN and Background */

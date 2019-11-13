@@ -3,7 +3,7 @@
 // Grabs HTML elements needed to toggle timer pop-up
 const toggleNavBtn = document.querySelector('#timer-toggle-btn');
 const timerBackground = document.querySelector('.timer__background');
-const timerCard = document.querySelector('.timer__card');
+const timerPopup = document.querySelector('.timer__popup');
 const timerCloseBtn = document.querySelector('.timer__close-btn');
 
 // Timer Nav Button Event listener
@@ -27,14 +27,14 @@ timerCloseBtn.addEventListener('click', e => {
 // Opens Timer pop-up
 function openTimerPopUp(e) {
 	timerBackground.classList.add('timer__background--active');
-	timerCard.classList.add('timer__card--active');
+	timerPopup.classList.add('timer__popup--active');
 	timerCloseBtn.classList.add('timer__close-btn--active');
 }
 
 // Closes Timer pop-up
 function closeTimerPopUp(e) {
 	timerBackground.classList.remove('timer__background--active');
-	timerCard.classList.remove('timer__card--active');
+	timerPopup.classList.remove('timer__popup--active');
 	timerCloseBtn.classList.remove('timer__close-btn--active');
 }
 
@@ -48,7 +48,7 @@ const timerToggleBlock = document.querySelector('.timer__toggle-block');
 const timerToggleLeft = document.querySelector('#timer__toggle--left');
 const timerToggleRight = document.querySelector('#timer__toggle--right');
 // Timer card Spin-effect
-const cardd = document.querySelector('.cardd');
+const timeSection = document.querySelector('.timer__time-section');
 
 // Timer/Stopwatch Toggle Event listener
 // Shifts block to other side, spins timer
@@ -56,7 +56,7 @@ timerToggle.addEventListener('click', e => {
 	timerToggleBlock.classList.toggle('timer__toggle-block--right');
 	timerToggleLeft.classList.toggle('timer__toggle-option--active');
 	timerToggleRight.classList.toggle('timer__toggle-option--active');
-	cardd.classList.toggle('cardd-active');
+	timeSection.classList.toggle('timer__time-section--active');
 });
 
 /*** Timer/Stopwatch Toggle ENDS ***/
@@ -64,11 +64,7 @@ timerToggle.addEventListener('click', e => {
 /*** Stopwatch Start/Pause Buttons Triggers ***/
 
 // imports stopwatch logic functions from stopwatch.js
-import {
-	stopwatchActive,
-	stopwatchStart,
-	stopwatchStop
-} from './stopwatch.js';
+import { stopwatchActive, stopwatchStart, stopwatchStop } from './stopwatch.js';
 
 // Grabs HTML elements needed to start, pause, reset stopwatch
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
@@ -103,5 +99,16 @@ function changeStopwatchButtons() {
 
 /*** Stopwatch Start/Pause Buttons Triggers ENDS ***/
 
-/***courses page change */
+/*** On Page Load... ***/
+// Checks if stopwatch is active via local storage
+const activeSwLocal =
+	JSON.parse(window.localStorage.getItem('stopwatchActive')) || false;
+if (activeSwLocal) {
+	console.log('working');
 
+	console.log();
+	// stopwatchStart(e);
+	// changeStopwatchButtons();
+}
+
+/***courses page change */

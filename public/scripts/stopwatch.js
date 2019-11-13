@@ -17,11 +17,13 @@ export function stopwatchStart(e) {
 	interval = setInterval(() => {
 		increaseSecs();
 	}, 1000);
+	window.localStorage.setItem('stopwatchActive', 'true');
 }
 
 export function stopwatchStop(e) {
 	stopwatchActive = false;
 	clearInterval(interval);
+	window.localStorage.setItem('stopwatchActive', 'false');
 }
 
 function increaseSecs() {
@@ -36,7 +38,7 @@ function increaseSecs() {
 			stopwatchTime.hours++;
 		}
 	}
-
+	window.localStorage.setItem('time', JSON.stringify(stopwatchTime));
 	timerText.innerText = updateHTML();
 }
 
