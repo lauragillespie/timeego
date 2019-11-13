@@ -8,11 +8,16 @@
 			"name": "String",
 			"color": "String",
 			"date": "Date",
+			"archived": "Boolean",
 			"session": {
 				"length": "Number",
-				"isActive": "Boolean",
 				"date": "Date"
 			}
+		},
+		"session": {
+			"length": "Number",
+			"course": "String",
+			"date": "Date"
 		}
 	}
 }
