@@ -88,35 +88,39 @@
          -nav-link
       https://getbootstrap.com/docs/4.3/components/navs/
    -->
-   <footer>
+   <footer class="footer">
       <nav class="container nav__container">
          <ul class="nav nav-justified">
-            <li class="nav-item">
-               <a class="nav-link nav_active" href="./dashboard.html">
-                  <i class="material-icons nav-link__icon">
-                     home
-                  </i>
-                  <span class="nav-link__span">Home</span>
+            <li class="nav-item nav__item">
+               <a class="nav-link nav__link nav__active" href="./dashboard.html">
+                  <div class="nav__link__container">
+                     <i class="material-icons nav-link__icon">
+                        home
+                     </i>
+                     <span class="nav-link__span">Home</span>
+                  </div>
                </a>
             </li>
 
             <!-- Timer button -->
-            <li class="nav-item--timer-toggle">
+            <li class="nav__item--timer-toggle">
                <button class="nav__timer-button" id="timer-toggle-btn">
-                  <i class="material-icons" id="toggle-btn-nav--timer">timer</i>
-                  <i class="material-icons" id="toggle-btn-nav--pause">
+                  <i class="material-icons nav__timer__icon" id="toggle-btn-nav--timer">timer</i>
+                  <i class="material-icons nav__timer__icon" id="toggle-btn-nav--pause">
                      pause
                   </i>
                </button>
 
             </li>
 
-            <li class="nav-item">
-               <a class="nav-link" href="./course-home.html">
-                  <i class="material-icons nav-link__icon">
-                     chrome_reader_mode
-                  </i>
-                  <span class="nav-link__span">Courses</span>
+            <li class="nav-item nav__item">
+               <a class="nav-link nav__link" href="./course-home.html">
+                  <div class="nav__link__container">
+                     <i class="material-icons nav-link__icon">
+                        chrome_reader_mode
+                     </i>
+                     <span class="nav-link__span">Courses</span>
+                  </div>
                </a>
             </li>
 

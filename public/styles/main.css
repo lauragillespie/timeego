@@ -180,13 +180,13 @@ img {
 /***************************/
 /***     6.3 Footer      ***/
 /***************************/
-footer {
+.footer {
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	width: 100%;
 	background: var(--color-background-card);
-	height: 70px;
+	height: 65px;
 	box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
@@ -201,41 +201,44 @@ footer {
 .nav {
 	height: 100%;
 }
-.nav-item {
+.nav__item {
 	line-height: 10px;
-	text-align: center;
 }
 
-.nav-item .nav-link {
+.nav__item .nav__link {
 	height: 100%;
 	padding: 0;
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+	justify-content: center;
+	align-items: flex-start;
 }
 
 /* This is needed to overwrite the default bootstrap hover state */
-.nav-link:hover .nav-link__icon,
-.nav-link:hover .nav-link__span {
+.nav__link:hover .nav-link__icon,
+.nav__link:hover .nav-link__span {
 	color: var(--color-primary);
 }
-
+.nav__link__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
 .nav-link__icon {
 	font-size: 24pt;
-	margin: 8px 0 5px;
+	margin: 8px 0 2px;
 }
 
 .nav-link__span {
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
-.nav_active .nav-link__icon,
-.nav_active .nav-link__span {
+.nav__active .nav-link__icon,
+.nav__active .nav-link__span {
 	color: var(--color-primary);
 }
 
-.nav-item--timer-toggle {
+.nav__item--timer-toggle {
 	position: relative;
 }
 
@@ -254,7 +257,7 @@ footer {
 	align-items: center;
 }
 
-.nav__timer-button i {
+.nav__timer-button .nav__timer__icon {
 	font-size: 42px;
 	color: #ffffff;
 	display: none;
