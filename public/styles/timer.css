@@ -24,7 +24,7 @@
 	width: 100%;
 	padding: 0 25px;
 	position: relative;
-	bottom: -100vh;
+	bottom: -200vh;
 	z-index: 5;
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
@@ -37,7 +37,7 @@
 }
 
 .timer__popup--active {
-	transform: translate(0, -90vh);
+	transform: translate(0, -190vh);
 }
 
 .timer__toggle {
@@ -148,16 +148,20 @@
 
 .timer__control-btn {
 	border: none;
-	width: 60px;
-	height: 60px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	background: var(--color-blue-gradient);
 	box-shadow: var(--shadow-box);
 	transform: translateZ(100px);
+	display: none;
+	align-content: center;
+	justify-content: center;
 }
 
 .timer__control-btn i {
 	color: white;
+	font-size: 40px;
 }
 
 .timer__set-class {

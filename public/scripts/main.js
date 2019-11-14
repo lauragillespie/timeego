@@ -103,18 +103,22 @@ stopwatchResetBtn.addEventListener('click', e => {
 // Controls which buttons are shown/hidden
 function changeStopwatchButtons() {
 	if (stopwatch.active) {
-		stopwatchPlayBtn.classList.add('hidden');
-		stopwatchPauseBtn.classList.remove('hidden');
-		stopwatchResetBtn.classList.add('hidden');
-		navTimerToggleBtnTimerIcon.classList.add('hidden');
-		navTimerToggleBtnPauseIcon.classList.remove('hidden');
+		stopwatchPlayBtn.style.display = 'none';
+		stopwatchPauseBtn.style.display = 'flex';
+		stopwatchResetBtn.style.display = 'none';
+		navTimerToggleBtnTimerIcon.style.display = 'none';
+		navTimerToggleBtnPauseIcon.style.display = 'block';
+		// navTimerToggleBtnTimerIcon.classList.add('hidden');
+		// navTimerToggleBtnPauseIcon.classList.remove('hidden');
 		toggleNavBtn.classList.add('timer-toggle-btn--timing');
 	} else {
-		stopwatchPlayBtn.classList.remove('hidden');
-		stopwatchPauseBtn.classList.add('hidden');
-		stopwatchResetBtn.classList.remove('hidden');
-		navTimerToggleBtnTimerIcon.classList.remove('hidden');
-		navTimerToggleBtnPauseIcon.classList.add('hidden');
+		stopwatchPlayBtn.style.display = 'flex';
+		stopwatchPauseBtn.style.display = 'none';
+		stopwatchResetBtn.style.display = 'flex';
+		navTimerToggleBtnTimerIcon.style.display = 'block';
+		navTimerToggleBtnPauseIcon.style.display = 'none';
+		// navTimerToggleBtnTimerIcon.classList.remove('hidden');
+		// navTimerToggleBtnPauseIcon.classList.add('hidden');
 		toggleNavBtn.classList.remove('timer-toggle-btn--timing');
 	}
 }
@@ -135,13 +139,8 @@ if (activeSwLocal) {
 	stopwatch.active = true;
 	stopwatch.start();
 	changeStopwatchButtons();
-	navTimerToggleBtnTimerIcon.classList.add('hidden');
-	navTimerToggleBtnPauseIcon.classList.remove('hidden');
-	toggleNavBtn.classList.add('timer-toggle-btn--timing');
 } else {
-	navTimerToggleBtnTimerIcon.classList.remove('hidden');
-	navTimerToggleBtnPauseIcon.classList.add('hidden');
-	toggleNavBtn.classList.remove('timer-toggle-btn--timing');
+	changeStopwatchButtons();
 }
 
 /***courses page change */

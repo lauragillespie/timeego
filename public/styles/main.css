@@ -195,16 +195,25 @@ footer {
 /***************************/
 /***       6.4 Nav       ***/
 /***************************/
-
+.nav__container {
+	height: 100%;
+}
+.nav {
+	height: 100%;
+}
 .nav-item {
 	line-height: 10px;
 	text-align: center;
 }
 
-.nav-item a {
-	font-size: 14pt;
-	display: block;
+.nav-item .nav-link {
 	height: 100%;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	/* border: 1px red solid; */
 }
 
 /* This is needed to overwrite the default bootstrap hover state */
@@ -212,13 +221,22 @@ footer {
 	color: var(--color-primary);
 }
 
-.nav-item i {
-	font-size: 25pt;
-	padding-bottom: 5px;
+.nav-link__icon {
+	font-size: 24pt;
+	margin: 5px;
 }
 
-a.nav_active {
+.nav-link__span {
+	font-size: 12pt;
+}
+
+.nav_active .nav-link__icon,
+.nav_active .nav-link__span {
 	color: var(--color-primary);
+}
+
+.nav-item--timer-toggle {
+	position: relative;
 }
 
 .nav__timer-button {
@@ -231,41 +249,30 @@ a.nav_active {
 	position: relative;
 	top: -15px;
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
 }
 
 .nav__timer-button i {
-	font-size: 40px;
+	font-size: 42px;
 	color: #ffffff;
+	display: none;
+	/* border: 1px green solid; */
 }
 
 /* Timer Toggle BTN Animation */
 
 .timer-toggle-btn--timing {
-	box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
-	-webkit-animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
-	-moz-animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
-	-ms-animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(232, 76, 61, 0.7);
+
 	animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
-@-webkit-keyframes pulse {
-	to {
-		box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);
-	}
-}
-@-moz-keyframes pulse {
-	to {
-		box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);
-	}
-}
-@-ms-keyframes pulse {
-	to {
-		box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);
-	}
-}
 @keyframes pulse {
 	to {
-		box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3),
+			0 0 0 15px rgba(232, 76, 61, 0);
 	}
 }
 
@@ -453,11 +460,6 @@ a.nav_active {
 	color: var(--color-background-main);
 	font-size: 30pt;
 	border-radius: var(--border-radius);
-}
-
-.nav-link {
-	font-size: 24pt;
-	margin: 5%;
 }
 
 /* End Course home */

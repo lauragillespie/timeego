@@ -89,22 +89,22 @@
       https://getbootstrap.com/docs/4.3/components/navs/
    -->
    <footer>
-      <nav class="container">
+      <nav class="container nav__container">
          <ul class="nav nav-justified">
             <li class="nav-item">
                <a class="nav-link nav_active" href="./dashboard.html">
-                  <i class="material-icons">
+                  <i class="material-icons nav-link__icon">
                      home
                   </i>
-                  Home
+                  <span class="nav-link__span">Home</span>
                </a>
             </li>
 
             <!-- Timer button -->
-            <li class="nav-item">
+            <li class="nav-item--timer-toggle">
                <button class="nav__timer-button" id="timer-toggle-btn">
                   <i class="material-icons" id="toggle-btn-nav--timer">timer</i>
-                  <i class="material-icons hidden" id="toggle-btn-nav--pause">
+                  <i class="material-icons" id="toggle-btn-nav--pause">
                      pause
                   </i>
                </button>
@@ -113,10 +113,10 @@
 
             <li class="nav-item">
                <a class="nav-link" href="./course-home.html">
-                  <i class="material-icons">
+                  <i class="material-icons nav-link__icon">
                      chrome_reader_mode
                   </i>
-                  Courses
+                  <span class="nav-link__span">Courses</span>
                </a>
             </li>
 
@@ -151,7 +151,7 @@
                            play_arrow
                         </i>
                      </button>
-                     <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
+                     <button class="timer__control-btn" id="stopwatch_pause_btn">
                         <i class="material-icons">
                            pause
                         </i>
