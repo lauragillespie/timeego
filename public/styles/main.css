@@ -213,17 +213,17 @@ footer {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	/* border: 1px red solid; */
 }
 
 /* This is needed to overwrite the default bootstrap hover state */
-.nav-link:hover {
+.nav-link:hover .nav-link__icon,
+.nav-link:hover .nav-link__span {
 	color: var(--color-primary);
 }
 
 .nav-link__icon {
 	font-size: 24pt;
-	margin: 5px;
+	margin: 8px 0 5px;
 }
 
 .nav-link__span {
@@ -249,16 +249,15 @@ footer {
 	position: relative;
 	top: -15px;
 	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-	/* display: flex;
+	display: flex;
 	justify-content: center;
-	align-items: center; */
+	align-items: center;
 }
 
 .nav__timer-button i {
 	font-size: 42px;
 	color: #ffffff;
 	display: none;
-	/* border: 1px green solid; */
 }
 
 /* Timer Toggle BTN Animation */

@@ -1,13 +1,21 @@
+// Grabs Nav Toggle Btn, Icons in Btn
+const navToggleBtn = document.querySelector('#timer-toggle-btn');
+const navToggleTimerIcon = document.querySelector('#toggle-btn-nav--timer');
+const navTogglePauseIcon = document.querySelector('#toggle-btn-nav--pause');
+// Grabs Text in Timer (00:00:00)
+const timerText = document.querySelector('.timer__text');
+// Grabs Timer Start, Pause and Reset Buttons
+const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
+const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
+const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
+
 // This file is logic to start and stop the stopwatch,
 // and update current time displayed in HTML when the
 // stopwatch is running
-
-const timerText = document.querySelector('.timer__text');
-
 export const stopwatch = {
-	interval        : null,
-	active          : false,
-	time            : {
+	interval           : null,
+	active             : false,
+	time               : {
 		hours   : 0,
 		minutes : 0,
 		seconds : 0
@@ -18,11 +26,13 @@ export const stopwatch = {
 			this.count();
 		}, 1000);
 		window.localStorage.setItem('stopwatchActive', 'true');
+		this.setButtonsActive();
 	},
 	stop(e) {
 		this.active = false;
 		clearInterval(this.interval);
 		window.localStorage.setItem('stopwatchActive', 'false');
+		this.setButtonsInactive();
 	},
 	reset(e) {
 		this.time = {
@@ -71,5 +81,21 @@ export const stopwatch = {
 			secs = '' + stopwatch.time.seconds;
 		}
 		return `${hrs}:${mins}:${secs}`;
+	},
+	setButtonsActive() {
+		stopwatchPlayBtn.style.display = 'none';
+		stopwatchPauseBtn.style.display = 'flex';
+		stopwatchResetBtn.style.display = 'none';
+		navToggleTimerIcon.style.display = 'none';
+		navTogglePauseIcon.style.display = 'block';
+		navToggleBtn.classList.add('timer-toggle-btn--timing');
+	},
+	setButtonsInactive() {
+		stopwatchPlayBtn.style.display = 'flex';
+		stopwatchPauseBtn.style.display = 'none';
+		stopwatchResetBtn.style.display = 'flex';
+		navToggleTimerIcon.style.display = 'block';
+		navTogglePauseIcon.style.display = 'none';
+		navToggleBtn.classList.remove('timer-toggle-btn--timing');
 	}
 };

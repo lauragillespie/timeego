@@ -70,77 +70,48 @@ import { stopwatch } from './stopwatch.js';
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
 const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
-// Grabs HTML Icons for Timer Toggle Nav BTN
-const navTimerToggleBtnTimerIcon = document.querySelector(
-	'#toggle-btn-nav--timer'
-);
-const navTimerToggleBtnPauseIcon = document.querySelector(
-	'#toggle-btn-nav--pause'
-);
 
 // Stopwatch start button Event listener
 // Starts stopwatch
 stopwatchPlayBtn.addEventListener('click', e => {
 	stopwatch.start(e);
-	changeStopwatchButtons();
 });
 
 // Stopwatch pause button Event listener
 // Pauses stopwatch
 stopwatchPauseBtn.addEventListener('click', e => {
 	stopwatch.stop(e);
-	changeStopwatchButtons();
 });
 
 // Stopwatch reset button Event listener
 // Resets stopwatch
 stopwatchResetBtn.addEventListener('click', e => {
 	stopwatch.reset(e);
-	changeStopwatchButtons();
 });
-
-// Checks if stopwatch is active
-// Controls which buttons are shown/hidden
-function changeStopwatchButtons() {
-	if (stopwatch.active) {
-		stopwatchPlayBtn.style.display = 'none';
-		stopwatchPauseBtn.style.display = 'flex';
-		stopwatchResetBtn.style.display = 'none';
-		navTimerToggleBtnTimerIcon.style.display = 'none';
-		navTimerToggleBtnPauseIcon.style.display = 'block';
-		// navTimerToggleBtnTimerIcon.classList.add('hidden');
-		// navTimerToggleBtnPauseIcon.classList.remove('hidden');
-		toggleNavBtn.classList.add('timer-toggle-btn--timing');
-	} else {
-		stopwatchPlayBtn.style.display = 'flex';
-		stopwatchPauseBtn.style.display = 'none';
-		stopwatchResetBtn.style.display = 'flex';
-		navTimerToggleBtnTimerIcon.style.display = 'block';
-		navTimerToggleBtnPauseIcon.style.display = 'none';
-		// navTimerToggleBtnTimerIcon.classList.remove('hidden');
-		// navTimerToggleBtnPauseIcon.classList.add('hidden');
-		toggleNavBtn.classList.remove('timer-toggle-btn--timing');
-	}
-}
 
 /*** Stopwatch Start/Pause Buttons Triggers ENDS ***/
 
 /*** On Page Load... ***/
-// Checks if stopwatch is active via local storage
+
+// Checks if saved time in local storage
 const timeLocalStorage = JSON.parse(window.localStorage.getItem('time'));
+// If saved time, sets timer to time from local storage
 if (timeLocalStorage) {
 	stopwatch.time = timeLocalStorage;
+	stopwatch.updateTimerText();
 }
-stopwatch.updateTimerText();
+
+// Checks if Timer is active from local storage
 const activeSwLocal =
 	JSON.parse(window.localStorage.getItem('stopwatchActive')) || false;
+// If timer is active, sets variables, buttons and starts timer
+// otherwise, just sets inactive buttons
 if (activeSwLocal) {
-	console.log('true');
 	stopwatch.active = true;
 	stopwatch.start();
-	changeStopwatchButtons();
+	stopwatch.setButtonsActive();
 } else {
-	changeStopwatchButtons();
+	stopwatch.setButtonsInactive();
 }
 
 /***courses page change */
