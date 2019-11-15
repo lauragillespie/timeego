@@ -13,7 +13,7 @@ A list of things left to accomplish.
         * [ ] Study Session
     * [ ] readDB
         * [ ] user info
-        * [ ] all courses
+        * [x] all courses
         * [ ] individual course
         * [ ] sessions collect
     * [ ] deleteDB

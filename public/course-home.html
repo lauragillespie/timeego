@@ -36,13 +36,16 @@
          </div>
       </div>
    </header>
+   <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#!">Courses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!">Archived</a>
+      </li>
 
-   <div class="timer__toggle">
-      <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Courses</div>
-      <div class="timer__toggle-option" id="timer__toggle--right">Archived</div>
-      <div class="timer__toggle-block"></div>
-   </div>
-
+    </ul>
+ 
    <!-- <div class="container-fluid">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -56,7 +59,8 @@
     </div> -->
 
    <div id="course_list">
-      <div class="btn-group-vertical" role="group" aria-label="Basic example">
+    
+      <!-- <div class="btn-group-vertical" role="group" aria-label="Basic example">
 
          <button type="button" class=btn_course>Course 1</button>
 
@@ -64,10 +68,7 @@
 
          <button type="button" class=btn_course>Course 3</button>
 
-      </div>
-
-
-
+      </div> -->
    </div>
 
    <div>
@@ -75,6 +76,8 @@
          <button type="button" id=btn_add_course>Add Course</button>
       </a>
    </div>
+
+   </main>
    <!-- <div>
         <form>
             <div class="Course">
@@ -236,7 +239,7 @@
    <!-- Firebase Firestore Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <!-- Our Custom Scripts -->
-   <script src="./scripts/firebase/firebase.js" type="module"></script>
+   <!-- <script src="./scripts/firebase/firebase.js" type="module"></script> -->
    <script src="./scripts/main.js" type="module"></script>
 
 </body>
