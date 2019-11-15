@@ -1,3 +1,18 @@
+
+const currentPath = window.location.pathname;
+
+// Writes to the database
+import {readDB, writeDB} from './firebase/firebase.js';
+	if (currentPath == "/course-home.html"){
+		readDB.displayCourses();
+	}
+	if (currentPath == "/course-add.html") {
+		writeDB.addCourse();
+	}
+
+
+
+
 /*** Timer Pop-Up ***/
 
 // Grabs HTML elements needed to toggle timer pop-up
