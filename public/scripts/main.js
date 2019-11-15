@@ -10,6 +10,7 @@ const timerCloseBtn = document.querySelector('.timer__close-btn');
 // Opens Timer pop-up
 toggleNavBtn.addEventListener('click', e => {
 	openTimerPopUp(e);
+	console.log(e);
 });
 
 // Dark Background Overlay Event listener

@@ -2,6 +2,8 @@
 const navToggleBtn = document.querySelector('#timer-toggle-btn');
 const navToggleTimerIcon = document.querySelector('#toggle-btn-nav--timer');
 const navTogglePauseIcon = document.querySelector('#toggle-btn-nav--pause');
+// Grabs Timer pop-up toggle block section
+const timerToggleSection = document.querySelector('.timer__toggle');
 // Grabs Text in Timer (00:00:00)
 const timerText = document.querySelector('.timer__text');
 // Grabs Timer Start, Pause and Reset Buttons
@@ -27,12 +29,14 @@ export const stopwatch = {
 		}, 1000);
 		window.localStorage.setItem('stopwatchActive', 'true');
 		this.setButtonsActive();
+		timerToggleSection.classList.add('timer__toggle--hidden');
 	},
 	stop(e) {
 		this.active = false;
 		clearInterval(this.interval);
 		window.localStorage.setItem('stopwatchActive', 'false');
 		this.setButtonsInactive();
+		timerToggleSection.classList.remove('timer__toggle--hidden');
 	},
 	reset(e) {
 		this.time = {
@@ -82,6 +86,7 @@ export const stopwatch = {
 		}
 		return `${hrs}:${mins}:${secs}`;
 	},
+	// Has Time? Show Reset Button, Hide Toggle Option
 	setButtonsActive() {
 		stopwatchPlayBtn.style.display = 'none';
 		stopwatchPauseBtn.style.display = 'flex';
@@ -90,6 +95,7 @@ export const stopwatch = {
 		navTogglePauseIcon.style.display = 'block';
 		navToggleBtn.classList.add('timer-toggle-btn--timing');
 	},
+	// Does not have time? Hide Reset Button, Show Toggle Option
 	setButtonsInactive() {
 		stopwatchPlayBtn.style.display = 'flex';
 		stopwatchPauseBtn.style.display = 'none';

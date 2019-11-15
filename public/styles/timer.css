@@ -48,11 +48,20 @@
 	position: relative;
 	cursor: pointer;
 	min-height: 50px;
-	margin: 25px auto;
+	margin-top: 25px;
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-box);
 	width: 100%;
+	transition: all 500ms ease-in-out;
+	transform-origin: 0 0;
+}
+
+.timer__toggle--hidden {
+	transform: scaleY(0);
+	display: none;
+	/* opacity: 0;
+	display: none; */
 }
 
 .timer__toggle-option {
@@ -95,6 +104,7 @@
 	justify-content: space-evenly;
 	box-shadow: none;
 	background: var(--color-background-main);
+	margin-top: 25px;
 }
 
 .timer__time-section--active .time-section__flip {
