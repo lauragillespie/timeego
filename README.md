@@ -14,8 +14,8 @@ A list of things left to accomplish.
     * [ ] readDB
         * [ ] user info
         * [x] all courses
-        * [ ] individual course
-        * [ ] sessions collect
+        * [ ] individual course - using ID
+        * [ ] sessions collection
     * [ ] deleteDB
         * [ ] Delete Course
         * [ ] Delete Session
@@ -26,18 +26,20 @@ A list of things left to accomplish.
 * [ ] Clean up "Add Courses" page
 
 * [ ] Make "Individual Course" page
-* [ ] Make "Archived Course" page
+* [ ] Make "Edit Course" page
+* [ ] Make "Archived Courses" page
 * [ ] Make "Session" Page
 
 * [ ] Add course option button
-    * [ ] Should have: Edit, Delete, Archive
+    * [ ] Should have: Edit, Archive, Delete
+* [ ] Add link to course list items, redirect to that courses page
 
 * [ ] Make "Settings" Page
 
 ### Graph
 
 ### Stopwatch
-* [ ] Add "Add Course" button functionality
+* [ ] Add "Select Course" button functionality
 * [ ] Write time to db
 * [x] Timer "Coming Soon" note
 * [x] Rename CSS classes
