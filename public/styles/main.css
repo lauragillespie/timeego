@@ -464,6 +464,40 @@ img {
 	border-radius: var(--border-radius);
 }
 
+.courseContainer{
+	padding: 0;
+	display: flex;
+	align-items: stretch;
+	justify-content: flex-end;
+	margin-top: 3%;
+	margin-left: 5%;
+	width: 90%;
+	border-radius: 16px 20px 20px 16px;
+	height:80px;
+	box-shadow: var(--shadow-card);
+ }
+
+ .courseCard {
+	background-color: #ffffff;
+	height:100%;
+	border-radius: 0 16px 16px 0;
+	/* text-align: center; */
+	width: 95%;
+	align-self: flex-end;
+ }
+
+ .courseCard i{
+	float: right;
+	color: var(--color-secondary);
+ }
+
+ .courseData{
+	 display:inline-block;
+	 padding-left: 5%;
+	 font-size: 20pt;	 
+ }
+
+
 /* End Course home */
 
 /* Add Course page */

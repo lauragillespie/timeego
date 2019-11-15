@@ -107,6 +107,7 @@ addCourse();
 			 var courseContainer = document.createElement("div");
 			// assigns the container background with the color picked by user
 			 courseContainer.style.backgroundColor = colorPicked;
+			 courseContainer.setAttribute("class","courseContainer");
 			
 			// appends container to empty div
 			 document.getElementById("course_list").appendChild(courseContainer);
@@ -114,10 +115,19 @@ addCourse();
 			// this div will hold the course name + any other course info
 			 var courseData = document.createElement("div");
 			 courseContainer.appendChild(courseData);
+			 courseData.setAttribute("class","courseCard");
 
 			// text node that displays the course name
-			 var node = document.createTextNode(courseName);
-			 courseData.appendChild(node);
+			 var nameContainer = document.createElement("div");
+			 nameContainer.setAttribute("class","courseData");
+			 var courseName = document.createTextNode(courseName);
+			 var moreOptions = document.createElement("div");
+			//  moreOptions.setAttribute("class","material-icons");
+			 moreOptions.innerHTML = "<i class='material-icons'>mdi_more_vert</i>";
+			 
+			 courseData.appendChild(nameContainer);
+			 nameContainer.appendChild(courseName);
+			 courseData.appendChild(moreOptions);
 
 
 		  });
