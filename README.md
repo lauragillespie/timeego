@@ -21,7 +21,7 @@ A list of things left to accomplish.
         * [ ] Delete Session
 
 ### HTML + CSS
-* [ ] Clean up Header
+* [x] Clean up Header
 * [ ] Clean up "courses home" page
 * [ ] Clean up "Add Courses" page
 
@@ -41,6 +41,9 @@ A list of things left to accomplish.
 ### Stopwatch
 * [ ] Add "Select Course" button functionality
 * [ ] Write time to db
+* [ ] Add state to track if there is currently a time
+    * [ ] Hide Timer/Stopwatch Toggle when time
+    * [ ] Hide Reset Button when there is no time
 * [x] Timer "Coming Soon" note
 * [x] Rename CSS classes
 * [x] Save running status to local storage

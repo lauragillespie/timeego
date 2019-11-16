@@ -141,28 +141,44 @@ img {
 /***     6.1 Header      ***/
 /***************************/
 .header {
+	height: 50px;
 }
 
-.banner {
+.header__container {
 	display: flex;
 	justify-content: space-between;
-	align-content: center;
-	color: white;
-	padding: 2%;
+	align-items: center;
+	height: 100%;
 }
 
-.banner__title {
-	color: var(--color-primary);
-	width: 130px;
-	height: auto;
-	/* margin: 15px 15px; */
+.header__logo {
+	height: 18px;
 }
 
-.settings_link {
-	/* position: absolute;
-	top:2%;
-	right:5%; */
+.header__flex-right {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#header__username {
+	color: var(--color-secondary);
+	font-size: 12px;
+}
+
+/* a needed for text-decoration to remove underline */
+a.header__settings {
+	padding: 0px 0 3px 20px;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+.header__settings .settings__icon {
+	color: var(--color-secondary);
 	text-shadow: 0px 4px 5px rgba(1, 0, 36, 0.15);
+}
+.header__settings:hover .settings__icon {
+	color: var(--color-primary);
 }
 
 /***************************/
@@ -464,7 +480,7 @@ img {
 	border-radius: var(--border-radius);
 }
 
-.courseContainer{
+.courseContainer {
 	padding: 0;
 	display: flex;
 	align-items: stretch;
@@ -473,30 +489,29 @@ img {
 	margin-left: 5%;
 	width: 90%;
 	border-radius: 16px 20px 20px 16px;
-	height:80px;
+	height: 80px;
 	box-shadow: var(--shadow-card);
- }
+}
 
- .courseCard {
+.courseCard {
 	background-color: #ffffff;
-	height:100%;
+	height: 100%;
 	border-radius: 0 16px 16px 0;
 	/* text-align: center; */
 	width: 95%;
 	align-self: flex-end;
- }
+}
 
- .courseCard i{
+.courseCard i {
 	float: right;
 	color: var(--color-secondary);
- }
+}
 
- .courseData{
-	 display:inline-block;
-	 padding-left: 5%;
-	 font-size: 20pt;	 
- }
-
+.courseData {
+	display: inline-block;
+	padding-left: 5%;
+	font-size: 20pt;
+}
 
 /* End Course home */
 

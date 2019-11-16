@@ -1,17 +1,37 @@
+import { firebaseAuth, readDB, writeDB } from './firebase/firebase.js';
 
+// Current Path
 const currentPath = window.location.pathname;
 
+// Page Paths
+const loginPath = '/';
+const dashboardPath = '/dashboard.html';
+const courseHomePath = '/course-home.html';
+const courseAddPath = '/course-add.html';
+
 // Writes to the database
-import {readDB, writeDB} from './firebase/firebase.js';
-	if (currentPath == "/course-home.html"){
-		readDB.displayCourses();
-	}
-	if (currentPath == "/course-add.html") {
-		writeDB.addCourse();
-	}
 
+// Global DB Functions - except Login Page (index.html)
+if (currentPath != loginPath || currentPath != `/public${loginPath}`) {
+	// Gets Current User Info
+	readDB.getCurrentUser();
+}
 
+// If on Login Page...
+if (currentPath == loginPath || currentPath == `/public${loginPath}`) {
+	// Imports Firebase Auth Login Widget
+	firebaseAuth.authUI();
+}
 
+if (
+	currentPath == courseHomePath ||
+	currentPath == `/public${courseHomePath}`
+) {
+	readDB.displayCourses();
+}
+if (currentPath == courseAddPath || currentPath == `/public${courseAddPath}`) {
+	writeDB.addCourse();
+}
 
 /*** Timer Pop-Up ***/
 

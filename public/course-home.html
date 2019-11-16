@@ -17,36 +17,38 @@
    <!-- Our custom Timeego CSS Stylesheets -->
    <link rel="stylesheet" href="./styles/main.css">
    <link rel="stylesheet" href="./styles/timer.css">
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </head>
 
 <body class="body">
+   <!-- Header -->
    <header class="header">
-      <div>
-         <div class="banner">
-            <img class="banner__title" src="./images/logo/blue.png">
-            <!-- <h3 class="banner__title">TIMEEGO</h3> -->
-            <p>Hi, <span id="username"></span></p>
-            <a class="settings_link" href="#">
-               <i class="material-icons">
-                  mdi_settings
-               </i>
-            </a>
+      <div class="container header__container">
+         <a href="./dashboard.html" class="header__logo-link">
+            <img class="header__logo" src="./images/logo/blue.png">
+         </a>
+         <div class="header__flex-right">
+            <span id="header__username"></span>
+            <a href="#" class="header__settings"><i class="material-icons settings__icon">settings</i></a>
          </div>
       </div>
    </header>
-   <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#!">Courses</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#!">Archived</a>
-      </li>
 
-    </ul>
- 
-   <!-- <div class="container-fluid">
+   <!-- INNER CONTAINER -->
+
+   <main class="main">
+      <div class="container">
+         <ul class="nav nav-tabs">
+            <li class="nav-item">
+               <a class="nav-link active" href="#!">Courses</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#!">Archived</a>
+            </li>
+
+         </ul>
+
+         <!-- <div class="container-fluid">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="#">Courses</a>
@@ -58,9 +60,9 @@
 
     </div> -->
 
-   <div id="course_list">
-    
-      <!-- <div class="btn-group-vertical" role="group" aria-label="Basic example">
+         <div id="course_list">
+
+            <!-- <div class="btn-group-vertical" role="group" aria-label="Basic example">
 
          <button type="button" class=btn_course>Course 1</button>
 
@@ -69,80 +71,62 @@
          <button type="button" class=btn_course>Course 3</button>
 
       </div> -->
-   </div>
+         </div>
 
-   <div>
-      <a class="nav-link nav_active" href="./course-add.html">
-         <button type="button" id=btn_add_course>Add Course</button>
-      </a>
-   </div>
+         <div>
+            <a class="nav-link nav_active" href="./course-add.html">
+               <button type="button" id=btn_add_course>Add Course</button>
+            </a>
+         </div>
 
+      </div>
    </main>
-   <!-- <div>
-        <form>
-            <div class="Course">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-            </div>
-            <div class="form-group">
-                <label for="formGroupExampleInput2">Another label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-            </div>
-        </form>
-    </div> -->
-
 
    <!-- NAVIGATION BAR -->
    <!-- 
-      Note: the following nav classes now come from Bootstrap -Anthony
-         -container
-         -nav
-         -nav-justified
-         -nav-item
-         -nav-link
-      https://getbootstrap.com/docs/4.3/components/navs/
-   -->
-   <footer>
+   Note: the following nav classes now come from Bootstrap -Anthony
+      -container
+      -nav
+      -nav-justified
+      -nav-item
+      -nav-link
+   https://getbootstrap.com/docs/4.3/components/navs/
+-->
+   <footer class="footer">
       <nav class="container nav__container">
          <ul class="nav nav-justified">
-            <li class="nav-item">
-               <a class="nav-link" href="./dashboard.html">
-                  <i class="material-icons nav-link__icon">
-                     home
-                  </i>
-                  <span>Home</span>
+            <li class="nav-item nav__item">
+               <a class="nav-link nav__link" href="./dashboard.html">
+                  <div class="nav__link__container">
+                     <i class="material-icons nav-link__icon">
+                        home
+                     </i>
+                     <span class="nav-link__span">Home</span>
+                  </div>
                </a>
             </li>
 
             <!-- Timer button -->
-            <li class="nav-item--timer-toggle">
+            <li class="nav__item--timer-toggle">
                <button class="nav__timer-button" id="timer-toggle-btn">
-                  <i class="material-icons" id="toggle-btn-nav--timer">timer</i>
-                  <i class="material-icons" id="toggle-btn-nav--pause">
+                  <i class="material-icons nav__timer__icon" id="toggle-btn-nav--timer">timer</i>
+                  <i class="material-icons nav__timer__icon" id="toggle-btn-nav--pause">
                      pause
                   </i>
                </button>
 
             </li>
 
-            <li class="nav-item">
-               <a class="nav-link nav_active" href="./course-home.html">
-                  <i class="material-icons nav-link__icon">
-                     chrome_reader_mode
-                  </i>
-                  <span>Courses</span>
+            <li class="nav-item nav__item">
+               <a class="nav-link nav__link nav__active" href="./course-home.html">
+                  <div class="nav__link__container">
+                     <i class="material-icons nav-link__icon">
+                        chrome_reader_mode
+                     </i>
+                     <span class="nav-link__span">Courses</span>
+                  </div>
                </a>
             </li>
-
-            <!-- <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <i class="material-icons">
-                     settings_applications
-                  </i>
-                  Settings
-               </a>
-            </li> -->
-
          </ul>
       </nav>
    </footer>
@@ -155,7 +139,7 @@
             <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
             <div class="timer__toggle-block"></div>
          </div>
-         <div class="timer__time-section cardd">
+         <div class="timer__time-section">
             <div class="time-section__flip">
                <div class="flip__front">
                   <span class="timer__text">00:00:00</span>
@@ -165,7 +149,7 @@
                            play_arrow
                         </i>
                      </button>
-                     <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
+                     <button class="timer__control-btn" id="stopwatch_pause_btn">
                         <i class="material-icons">
                            pause
                         </i>
@@ -181,24 +165,24 @@
 
                <div class="flip__back">
                   <!-- <span class="timer__text">00:00:00</span>
-                     <div class="timer__control-btns">
-                        <button class="timer__control-btn" id="stopwatch_play_btn">
-                           <i class="material-icons">
-                              play_arrow
-                           </i>
-                        </button>
-                        <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
-                           <i class="material-icons">
-                              pause
-                           </i>
-                        </button>
-                        <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
-                           <i class="material-icons">
-                              replay
-                           </i>
-                        </button>
-   
-                     </div> -->
+               <div class="timer__control-btns">
+                  <button class="timer__control-btn" id="stopwatch_play_btn">
+                     <i class="material-icons">
+                        play_arrow
+                     </i>
+                  </button>
+                  <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
+                     <i class="material-icons">
+                        pause
+                     </i>
+                  </button>
+                  <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
+                     <i class="material-icons">
+                        replay
+                     </i>
+                  </button>
+
+               </div> -->
 
                   <span class="timer__text">Timer Coming Soon</span>
                </div>

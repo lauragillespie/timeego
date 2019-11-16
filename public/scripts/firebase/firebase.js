@@ -17,7 +17,11 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 // The start method will wait until the DOM is loaded.
 // This is only needed on login page, needed for login
-ui.start('#firebaseui-auth-container', uiConfig);
+export const firebaseAuth = {
+	authUI : function() {
+		ui.start('#firebaseui-auth-container', uiConfig);
+	}
+};
 
 /*** Firebase Auth ENDS ***/
 
@@ -25,31 +29,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
 
 // Initialize Firestore database
 const db = firebase.firestore();
-
-/** Creates a User**/
-createUser();
-
-// Function that creates a new document in the users collection
-function createUser() {
-	// if the current user logged in user
-	// is authenticated, then grab "uid" "displayName" and "email"
-	// use "set()" with merge (if document did not exist it will be created)
-	firebase.auth().onAuthStateChanged(function(user) {
-		db.collection('users').doc(user.uid).set(
-			{
-				name  : user.displayName,
-				email : user.email
-			},
-			{ merge: true }
-		);
-
-		// Prints welcome message for active user
-		db.collection('users').doc(user.uid).onSnapshot(function(snap) {
-			console.log('Current data is...', snap.data());
-			document.getElementById('username').innerHTML = snap.data().name;
-		});
-	});
-}
 
 /** Adds a Course **/
 
@@ -142,6 +121,38 @@ export const readDB = {
 				});
 			});
 		});
+	},
+	// Function that creates a new document in the users collection
+	getCurrentUser : function() {
+		// if the current user logged in user
+		// is authenticated, then grab "uid" "displayName" and "email"
+		// use "set()" with merge (if document did not exist it will be created)
+		firebase.auth().onAuthStateChanged(function(user) {
+			db.collection('users').doc(user.uid).set(
+				{
+					name  : user.displayName,
+					email : user.email
+				},
+				{ merge: true }
+			);
+			// Prints welcome message for active user
+			db.collection('users').doc(user.uid).onSnapshot(function(snap) {
+				// Current User Data
+				const currentUser = snap.data();
+				// Current User Name
+				const name = currentUser.name;
+				// Current User Name with first letter in Upper Case
+				const upperCaseName = name[0].toUpperCase() + name.substring(1);
+				// Splits first name
+				const firstName = upperCaseName.split(' ')[0];
+				// Sets Users Name in Header
+				document.getElementById(
+					'header__username'
+				).innerText = `Hi, ${firstName}`;
+			});
+		});
+		// const user = firebase.auth().createUser;
+		// console.log(user);
 	}
 };
 
