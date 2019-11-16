@@ -114,8 +114,14 @@ export const readDB = {
 						// Links to go to course details and settings pages
 						var courseDetailsLink = document.createElement('a');
 						var courseSettingsLink = document.createElement('a');
-						courseDetailsLink.setAttribute('href', '#');
-						courseSettingsLink.setAttribute('href', '#');
+						courseDetailsLink.setAttribute(
+							'href',
+							'./course-details.html'
+						);
+						courseSettingsLink.setAttribute(
+							'href',
+							'./course-edit.html'
+						);
 						courseDetailsLink.classList.add('courseDetailsLink');
 						courseSettingsLink.classList.add('courseSettingsLink');
 						courseSettingsLink.innerHTML =

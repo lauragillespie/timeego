@@ -23,16 +23,20 @@ A list of things left to accomplish.
 ### HTML + CSS
 * [x] Clean up Header
 * [x] Clean up "courses home" page
-* [ ] Clean up "Add Courses" page
+* [x] Clean up "Add Courses" page
 
-* [ ] Make "Individual Course" page
-* [ ] Make "Edit Course" page
-* [ ] Make "Archived Courses" page
+* [x] Make "Individual Course" page
+* [x] Make "Edit Course" page
+    * [x] Should have: Edit, Archive, Delete
+* [x] Make "Archived Courses" page
+    * [ ] filter courses array, pass into correct page (active/archived)
 * [ ] Make "Session" Page
+* [ ] Give Course Details Page Content
 
-* [ ] Add course option button
-    * [ ] Should have: Edit, Archive, Delete
-* [ ] Add link to course list items, redirect to that courses page
+* [x] Add course option button 
+    
+* [x] Add link to course list items
+    * [ ] redirect to that courses details/edit
 
 * [ ] Make Main "Settings" Page
 

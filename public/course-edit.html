@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Timeego - Courses</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Firebase CSS -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- Material Icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Our custom Timeego CSS Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/timer.css">
+
+</head>
+
+<body class="body">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header__container">
+            <a href="./dashboard.html" class="header__logo-link">
+                <img class="header__logo" src="./images/logo/blue.png">
+            </a>
+            <div class="header__flex-right">
+                <span id="header__username"></span>
+                <a href="#" class="header__settings"><i class="material-icons settings__icon">settings</i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- INNER CONTAINER -->
+
+    <main class="main">
+        <div class="container">
+            <!-- Page Heading -->
+            <h1 class="page-heading">Course NAME</h1>
+
+            <!-- Current/Archived Courses Nav -->
+            <ul class="nav nav-tabs justify-content-end course__nav">
+                <li class="nav-item">
+                    <a class="nav-link course__nav-link" href="./course-details.html">Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link course__nav-link active  course__nav-link--active"
+                        href="./course-edit.html">Edit</a>
+                </li>
+
+            </ul>
+            <!-- Form for Adding Courses-->
+            <form class="course__form" id="courseForm">
+
+                <div class="form-group">
+                    <label for="courseName">Edit Course Name:</label>
+                    <input type="text" id="courseName" class="form-control form-control-lg" name="courseName"
+                        placeholder="Enter Course Name" value="" />
+                </div>
+                <div class="form-group">
+                    <label for="courseColor">Select Color:</label>
+                    <input type="color" id="courseColor" class="form-control form-control-lg" name="courseColor"
+                        value="#ff6a56" />
+                </div>
+                <!-- Archieve Option Below -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="archieveCourse">
+                    <label class="form-check-label" for="archieveCourse">
+                        Archieve This Course
+                    </label>
+                </div>
+                <div class="form__buttons-container">
+                    <button class="form__button form__button--submit" type="submit" id="submit">Submit</button>
+                    <a class="form__button form__button--cancel" href="./course-home.html">Cancel</a>
+                    <button class="form__button form__button--delete" type="submit" id="submit">Delete</button>
+                </div>
+            </form>
+
+
+
+        </div>
+    </main>
+
+    <!-- NAVIGATION BAR -->
+    <!-- 
+   Note: the following nav classes now come from Bootstrap -Anthony
+      -container
+      -nav
+      -nav-justified
+      -nav-item
+      -nav-link
+   https://getbootstrap.com/docs/4.3/components/navs/
+-->
+    <footer class="footer">
+        <nav class="container nav__container">
+            <ul class="nav nav-justified">
+                <li class="nav-item nav__item">
+                    <a class="nav-link nav__link" href="./dashboard.html">
+                        <div class="nav__link__container">
+                            <i class="material-icons nav-link__icon">
+                                home
+                            </i>
+                            <span class="nav-link__span">Home</span>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Timer button -->
+                <li class="nav__item--timer-toggle">
+                    <button class="nav__timer-button" id="timer-toggle-btn">
+                        <i class="material-icons nav__timer__icon" id="toggle-btn-nav--timer">timer</i>
+                        <i class="material-icons nav__timer__icon" id="toggle-btn-nav--pause">
+                            pause
+                        </i>
+                    </button>
+
+                </li>
+
+                <li class="nav-item nav__item">
+                    <a class="nav-link nav__link nav__active" href="./course-home.html">
+                        <div class="nav__link__container">
+                            <i class="material-icons nav-link__icon">
+                                chrome_reader_mode
+                            </i>
+                            <span class="nav-link__span">Courses</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+    <!-- TIMER Pop-up -->
+    <div class="timer__container">
+        <div class="timer__popup">
+            <div class="timer__toggle">
+                <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
+                <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
+                <div class="timer__toggle-block"></div>
+            </div>
+            <div class="timer__time-section">
+                <div class="time-section__flip">
+                    <div class="flip__front">
+                        <span class="timer__text">00:00:00</span>
+                        <div class="timer__control-btns">
+                            <button class="timer__control-btn" id="stopwatch_play_btn">
+                                <i class="material-icons">
+                                    play_arrow
+                                </i>
+                            </button>
+                            <button class="timer__control-btn" id="stopwatch_pause_btn">
+                                <i class="material-icons">
+                                    pause
+                                </i>
+                            </button>
+                            <button class="timer__control-btn" id="stopwatch_reset_btn">
+                                <i class="material-icons">
+                                    replay
+                                </i>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="flip__back">
+                        <!-- <span class="timer__text">00:00:00</span>
+               <div class="timer__control-btns">
+                  <button class="timer__control-btn" id="stopwatch_play_btn">
+                     <i class="material-icons">
+                        play_arrow
+                     </i>
+                  </button>
+                  <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
+                     <i class="material-icons">
+                        pause
+                     </i>
+                  </button>
+                  <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
+                     <i class="material-icons">
+                        replay
+                     </i>
+                  </button>
+
+               </div> -->
+
+                        <span class="timer__text">Timer Coming Soon</span>
+                    </div>
+
+                </div>
+            </div>
+            <button class="timer__set-class">
+                Select Class
+            </button>
+        </div>
+
+        <button class="timer__close-btn">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+    <div class="timer__background"></div>
+    <!-- Timer Pop-up HTML Ends -->
+    <!-- SCRIPTS -->
+    <!-- jQuery Scirpt - Needed for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <!-- popper.js Scirpt - Needed for Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+    <!-- Bootstrap Script -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+    <!-- Firebase Script -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <!-- Firebase Auth Script -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!-- Firebase Firestore Script -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <!-- Our Custom Scripts -->
+    <!-- <script src="./scripts/firebase/firebase.js" type="module"></script> -->
+    <script src="./scripts/main.js" type="module"></script>
+
+</body>
+
+</html>
