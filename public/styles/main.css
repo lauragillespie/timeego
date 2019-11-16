@@ -60,7 +60,7 @@
 	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);
 
 	/*** Border ***/
-	--border-radius: 16px;
+	--border-radius: 10px;
 }
 
 /***************************/
@@ -133,6 +133,11 @@ img {
 	display: none;
 }
 
+.bootstrap__spinner {
+	color: var(--color-primary);
+	margin: auto;
+}
+
 /***************************/
 /***  6. Main Layout     ***/
 /***************************/
@@ -191,6 +196,19 @@ a.header__settings {
 .main {
 	width: 100%;
 	padding-bottom: 100px;
+}
+
+/** Page Headings **/
+.page-heading__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.page-heading {
+	text-align: left;
+	font-size: 20pt;
+	font-weight: 700;
+	padding-top: 20px;
 }
 
 /***************************/
@@ -330,16 +348,10 @@ a.header__settings {
 /***************************/
 /*** 7.2 Dashboard Page  ***/
 /***************************/
-/** GREETING **/
-.greeting h1 {
-	text-align: left;
-	font-size: 20pt;
-	font-weight: 900;
-	padding: 20px 0;
-}
 
 /** CARD ROW **/
 .card-row {
+	padding-top: 20px;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 15px;
@@ -423,6 +435,46 @@ a.header__settings {
 /***************************/
 /***  7.3 Courses Page   ***/
 /***************************/
+.course__nav {
+	margin-top: -35px;
+}
+.course__nav .course__nav-link.course__nav-link--active {
+	background: var(--color-background-main);
+	border-bottom: var(--color-background-main) 1px solid;
+	color: var(--color-primary);
+}
+
+.course__list {
+	min-height: 50vh;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+.add-course-link {
+	border-radius: var(--border-radius);
+	margin-top: 10px;
+	padding: 15px;
+	background: var(--color-background-card);
+	box-shadow: var(--shadow-card);
+	width: 100%;
+}
+
+.arch__courses__link {
+	display: block;
+
+	width: 80px;
+	background: gold;
+}
+
+/* 
+.course__list--no-courses {
+	display: block;
+	text-align: center;
+	font-size: 28px;
+	margin: 0 25px;
+}
 
 .course_options {
 	display: flex;
@@ -465,9 +517,9 @@ a.header__settings {
 
 .course_name {
 	padding-left: 10%;
-}
+} */
 
-#btn_add_course {
+/* #btn_add_course {
 	width: 80%;
 	margin-top: 5%;
 	margin-right: 10%;
@@ -478,7 +530,7 @@ a.header__settings {
 	color: var(--color-background-main);
 	font-size: 30pt;
 	border-radius: var(--border-radius);
-}
+} */
 
 .courseContainer {
 	padding: 0;

@@ -22,7 +22,7 @@ A list of things left to accomplish.
 
 ### HTML + CSS
 * [x] Clean up Header
-* [ ] Clean up "courses home" page
+* [x] Clean up "courses home" page
 * [ ] Clean up "Add Courses" page
 
 * [ ] Make "Individual Course" page

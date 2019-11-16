@@ -47,8 +47,8 @@ export const writeDB = {
 		document
 			.getElementById('courseForm')
 			.addEventListener('submit', function(e) {
-				console.log(courseName.value);
-				window.location.href = 'course-home.html';
+				e.preventDefault();
+				console.log(e);
 				firebase.auth().onAuthStateChanged(function(user) {
 					db
 						.collection('users')
@@ -68,6 +68,7 @@ export const writeDB = {
 							}
 						);
 				});
+				window.location.href = './course-home.html';
 			});
 	}
 };
@@ -81,44 +82,58 @@ export const readDB = {
 				.doc(user.uid)
 				.collection('courses');
 			dbRef.get().then(function(querySnapshot) {
-				console.log('hi');
+				const courseList = document.getElementById('course__list');
+				const arrayLength = querySnapshot.docs.length;
+				// If course array is empty, makes and appends message
+				if (arrayLength <= 0) {
+					const span = document.createElement('span');
+					span.classList.add('course__list--no-courses');
+					span.innerText = 'No Courses Currently Active';
+					// Removes Spinner
+					courseList.innerHTML = '';
+					courseList.appendChild(span);
+				} else {
+					// Removes Spinner
+					courseList.innerHTML = '';
+					querySnapshot.forEach(function(doc) {
+						// retrieves color (hex) value from doc "course"
+						var colorPicked = doc.data().course.color;
 
-				querySnapshot.forEach(function(doc) {
-					// retrieves color (hex) value from doc "course"
-					var colorPicked = doc.data().course.color;
+						// retrieves name value from doc "course"
+						var courseName = doc.data().course.name;
 
-					// retrieves name value from doc "course"
-					var courseName = doc.data().course.name;
+						// creates a container that holds the course data
+						var courseContainer = document.createElement('div');
+						// assigns the container background with the color picked by user
+						courseContainer.style.backgroundColor = colorPicked;
+						courseContainer.setAttribute(
+							'class',
+							'courseContainer'
+						);
 
-					// creates a container that holds the course data
-					var courseContainer = document.createElement('div');
-					// assigns the container background with the color picked by user
-					courseContainer.style.backgroundColor = colorPicked;
-					courseContainer.setAttribute('class', 'courseContainer');
+						// appends container to empty div
 
-					// appends container to empty div
-					document
-						.getElementById('course_list')
-						.appendChild(courseContainer);
+						courseList.appendChild(courseContainer);
 
-					// this div will hold the course name + any other course info
-					var courseData = document.createElement('div');
-					courseContainer.appendChild(courseData);
-					courseData.setAttribute('class', 'courseCard');
+						// this div will hold the course name + any other course info
+						var courseData = document.createElement('div');
+						courseContainer.appendChild(courseData);
+						courseData.setAttribute('class', 'courseCard');
 
-					// text node that displays the course name
-					var nameContainer = document.createElement('div');
-					nameContainer.setAttribute('class', 'courseData');
-					var courseName = document.createTextNode(courseName);
-					var moreOptions = document.createElement('div');
-					//  moreOptions.setAttribute("class","material-icons");
-					moreOptions.innerHTML =
-						"<i class='material-icons'>mdi_more_vert</i>";
+						// text node that displays the course name
+						var nameContainer = document.createElement('div');
+						nameContainer.setAttribute('class', 'courseData');
+						var courseName = document.createTextNode(courseName);
+						var moreOptions = document.createElement('div');
+						//  moreOptions.setAttribute("class","material-icons");
+						moreOptions.innerHTML =
+							"<i class='material-icons'>mdi_more_vert</i>";
 
-					courseData.appendChild(nameContainer);
-					nameContainer.appendChild(courseName);
-					courseData.appendChild(moreOptions);
-				});
+						courseData.appendChild(nameContainer);
+						nameContainer.appendChild(courseName);
+						courseData.appendChild(moreOptions);
+					});
+				}
 			});
 		});
 	},
@@ -149,6 +164,10 @@ export const readDB = {
 				document.getElementById(
 					'header__username'
 				).innerText = `Hi, ${firstName}`;
+				// Sets Users Name in Dashboard Greeting
+				document.getElementById(
+					'page-heading__username'
+				).innerText = firstName;
 			});
 		});
 		// const user = firebase.auth().createUser;

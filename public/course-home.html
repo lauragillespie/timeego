@@ -38,46 +38,40 @@
 
    <main class="main">
       <div class="container">
-         <ul class="nav nav-tabs">
+         <!-- Page Heading -->
+         <h1 class="page-heading">Courses</h1>
+
+         <ul class="nav nav-tabs justify-content-end course__nav">
             <li class="nav-item">
-               <a class="nav-link active" href="#!">Courses</a>
+               <a class="nav-link active course__nav-link course__nav-link--active"
+                  href="./course-home.html">Current</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="#!">Archived</a>
+               <a class="nav-link course__nav-link" href="#">Archived</a>
             </li>
 
          </ul>
 
-         <!-- <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Courses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Archived</a>
-            </li>
-        </ul>
 
-    </div> -->
-
-         <div id="course_list">
+         <div class="course__list" id="course__list">
+            <!-- Bootstrap Loader -->
+            <div class="spinner-border bootstrap__spinner" role="status">
+               <span class="sr-only">Loading...</span>
+            </div>
 
             <!-- <div class="btn-group-vertical" role="group" aria-label="Basic example">
-
-         <button type="button" class=btn_course>Course 1</button>
-
-         <button type="button" class=btn_course>Course 2</button>
-
-         <button type="button" class=btn_course>Course 3</button>
-
-      </div> -->
+               <button type="button" class=btn_course>Course 1</button>
+               <button type="button" class=btn_course>Course 2</button>
+               <button type="button" class=btn_course>Course 3</button>
+            </div> -->
          </div>
 
-         <div>
-            <a class="nav-link nav_active" href="./course-add.html">
-               <button type="button" id=btn_add_course>Add Course</button>
-            </a>
-         </div>
+         <a href="./course-add.html" class="add-course-link btn" role="button">
+            Add Course</a>
+         <!-- <a class="nav-link nav_active" href="./course-add.html">
+            <button type="button" id="btn_add_course">Add Course</button>
+         </a> -->
+
 
       </div>
    </main>
