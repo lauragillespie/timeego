@@ -34,7 +34,7 @@ A list of things left to accomplish.
     * [ ] Should have: Edit, Archive, Delete
 * [ ] Add link to course list items, redirect to that courses page
 
-* [ ] Make "Settings" Page
+* [ ] Make Main "Settings" Page
 
 ### Graph
 

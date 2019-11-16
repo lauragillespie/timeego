@@ -184,7 +184,7 @@
 	width: 100%;
 	border: none;
 	display: block;
-	font-family: var(--font-family);
+	font-family: var(--font-family-heading);
 	padding: 15px;
 }
 

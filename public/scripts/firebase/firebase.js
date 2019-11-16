@@ -96,42 +96,58 @@ export const readDB = {
 					// Removes Spinner
 					courseList.innerHTML = '';
 					querySnapshot.forEach(function(doc) {
+						// Course Variables From DB
+						const courseId = doc.id;
 						// retrieves color (hex) value from doc "course"
-						var colorPicked = doc.data().course.color;
-
+						var courseColor = doc.data().course.color;
 						// retrieves name value from doc "course"
 						var courseName = doc.data().course.name;
+						var courseTime = '12:34:55'; // need to get from DB
 
-						// creates a container that holds the course data
+						// Creates main course container
 						var courseContainer = document.createElement('div');
-						// assigns the container background with the color picked by user
-						courseContainer.style.backgroundColor = colorPicked;
 						courseContainer.setAttribute(
 							'class',
 							'courseContainer'
 						);
 
-						// appends container to empty div
+						// Links to go to course details and settings pages
+						var courseDetailsLink = document.createElement('a');
+						var courseSettingsLink = document.createElement('a');
+						courseDetailsLink.setAttribute('href', '#');
+						courseSettingsLink.setAttribute('href', '#');
+						courseDetailsLink.classList.add('courseDetailsLink');
+						courseSettingsLink.classList.add('courseSettingsLink');
+						courseSettingsLink.innerHTML =
+							'<i class="material-icons">more_vert</i>';
+						courseContainer.appendChild(courseDetailsLink);
+						courseContainer.appendChild(courseSettingsLink);
 
-						courseList.appendChild(courseContainer);
+						// Div for course color
+						var courseColorDiv = document.createElement('div');
+						// assigns the course color
+						courseColorDiv.style.backgroundColor = courseColor;
+						courseColorDiv.setAttribute('class', 'courseColorDiv');
+						// appends color div to course details link
+						courseDetailsLink.appendChild(courseColorDiv);
 
 						// this div will hold the course name + any other course info
 						var courseData = document.createElement('div');
-						courseContainer.appendChild(courseData);
-						courseData.setAttribute('class', 'courseCard');
+						courseDetailsLink.appendChild(courseData);
+						courseData.setAttribute('class', 'courseDetails');
 
-						// text node that displays the course name
-						var nameContainer = document.createElement('div');
-						nameContainer.setAttribute('class', 'courseData');
-						var courseName = document.createTextNode(courseName);
-						var moreOptions = document.createElement('div');
-						//  moreOptions.setAttribute("class","material-icons");
-						moreOptions.innerHTML =
-							"<i class='material-icons'>mdi_more_vert</i>";
+						// Creates, Sets classes and text and appends name and time HTML elements
+						var nameElement = document.createElement('h3');
+						var timeElement = document.createElement('span');
+						nameElement.setAttribute('class', 'courseName');
+						timeElement.setAttribute('class', 'courseTime');
+						nameElement.innerText = courseName;
+						timeElement.innerText = courseTime;
+						courseData.appendChild(nameElement);
+						courseData.appendChild(timeElement);
 
-						courseData.appendChild(nameContainer);
-						nameContainer.appendChild(courseName);
-						courseData.appendChild(moreOptions);
+						// Attaches Finished Course Container to Parent Element
+						courseList.appendChild(courseContainer);
 					});
 				}
 			});

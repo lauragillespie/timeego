@@ -25,7 +25,7 @@
 /***************************/
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 /***************************/
 /***    2. Variables     ***/
@@ -34,6 +34,7 @@
 :root {
 	/*** Colors ***/
 	--color-primary: #3127ca;
+	--color-primary-hover: #180eb1;
 	--color-primary-gradient: #1ea2db;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
@@ -53,14 +54,17 @@
 	);
 
 	/*** Fonts ***/
-	--font-family: "Comfortaa";
-	--font-family-serif: "Roboto Slab";
+	--font-family-heading: "Comfortaa";
+	--font-family-body: 'Open Sans', sans-serif;
 
 	/*** Shadows ***/
 	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);
 
 	/*** Border ***/
 	--border-radius: 10px;
+
+	/*** Transition Effect ***/
+	--transition-hover: all 150ms ease-in-out;
 }
 
 /***************************/
@@ -82,7 +86,7 @@ html {
 /***************************/
 
 body {
-	font-family: var(--font-family);
+	font-family: var(--font-family-body);
 	font-size: 14px;
 }
 
@@ -93,6 +97,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	font-family: var(--font-family-heading);
 }
 
 h1,
@@ -105,7 +110,8 @@ p,
 a,
 button,
 span,
-div {
+div,
+li {
 	color: var(--color-secondary);
 }
 
@@ -125,9 +131,6 @@ img {
 /***************************/
 /***    5. Components    ***/
 /***************************/
-
-.btn {
-}
 
 .hidden {
 	display: none;
@@ -181,9 +184,10 @@ a.header__settings {
 .header__settings .settings__icon {
 	color: var(--color-secondary);
 	text-shadow: 0px 4px 5px rgba(1, 0, 36, 0.15);
+	transition: var(--transition-hover);
 }
 .header__settings:hover .settings__icon {
-	color: var(--color-primary);
+	color: var(--color-primary-hover);
 }
 
 /***************************/
@@ -250,7 +254,7 @@ a.header__settings {
 /* This is needed to overwrite the default bootstrap hover state */
 .nav__link:hover .nav-link__icon,
 .nav__link:hover .nav-link__span {
-	color: var(--color-primary);
+	color: var(--color-primary-hover);
 }
 .nav__link__container {
 	display: flex;
@@ -261,10 +265,12 @@ a.header__settings {
 .nav-link__icon {
 	font-size: 24pt;
 	margin: 8px 0 2px;
+	transition: var(--transition-hover);
 }
 
 .nav-link__span {
 	font-size: 10pt;
+	transition: var(--transition-hover);
 }
 
 .nav__active .nav-link__icon,
@@ -438,6 +444,13 @@ a.header__settings {
 .course__nav {
 	margin-top: -35px;
 }
+
+.course__nav-link {
+	transition: var(--transition-hover);
+}
+.course__nav-link:hover {
+	color: var(--color-primary-hover);
+}
 .course__nav .course__nav-link.course__nav-link--active {
 	background: var(--color-background-main);
 	border-bottom: var(--color-background-main) 1px solid;
@@ -454,18 +467,21 @@ a.header__settings {
 
 .add-course-link {
 	border-radius: var(--border-radius);
-	margin-top: 10px;
-	padding: 15px;
-	background: var(--color-background-card);
+	margin-top: 30px;
+	padding: 20px;
+	/* background: var(--color-background-card); */
+	background: var(--color-primary);
 	box-shadow: var(--shadow-card);
 	width: 100%;
+	font-size: 22px;
+	font-family: var(--font-family-body);
+	color: var(--color-background-card);
+	transition: var(--transition-hover);
 }
 
-.arch__courses__link {
-	display: block;
-
-	width: 80px;
-	background: gold;
+.add-course-link:hover {
+	background: var(--color-primary-hover);
+	color: var(--color-background-card);
 }
 
 /* 
@@ -533,36 +549,62 @@ a.header__settings {
 } */
 
 .courseContainer {
-	padding: 0;
+	/* padding: 0; */
 	display: flex;
-	align-items: stretch;
-	justify-content: flex-end;
-	margin-top: 3%;
-	margin-left: 5%;
-	width: 90%;
-	border-radius: 16px 20px 20px 16px;
+	margin-top: 15px;
+	width: 100%;
+	border-radius: var(--border-radius);
 	height: 80px;
 	box-shadow: var(--shadow-card);
+	background-color: var(--color-background-card);
+	overflow: hidden;
+}
+.courseDetailsLink {
+	display: flex;
+	width: 100%;
+	transition: var(--transition-hover);
+	cursor: default;
 }
 
-.courseCard {
-	background-color: #ffffff;
+.courseSettingsLink {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
 	height: 100%;
-	border-radius: 0 16px 16px 0;
-	/* text-align: center; */
-	width: 95%;
-	align-self: flex-end;
+	border-left: 1px solid rgba(0, 0, 0, 0.05);
+	transition: var(--transition-hover);
+	cursor: default;
 }
 
-.courseCard i {
-	float: right;
+.courseDetailsLink:hover,
+.courseSettingsLink:hover {
+	text-decoration: none;
 	color: var(--color-secondary);
+	background: #fbfbfb;
 }
 
-.courseData {
-	display: inline-block;
-	padding-left: 5%;
-	font-size: 20pt;
+.courseColorDiv {
+	width: 20px;
+	height: 100%;
+}
+
+.courseDetails {
+	width: 100%;
+	padding: 10px 20px;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	justify-content: space-between;
+}
+
+.courseDetails .courseName {
+	font-size: 24px;
+}
+
+.courseDetails .courseTime {
+	font-size: 18px;
+	color: #777;
 }
 
 /* End Course home */
