@@ -267,11 +267,13 @@ a.header__settings {
 	font-size: 24pt;
 	margin: 8px 0 2px;
 	transition: var(--transition-hover);
+	text-shadow: var(--shadow-card);
 }
 
 .nav-link__span {
 	font-size: 10pt;
 	transition: var(--transition-hover);
+	text-shadow: var(--shadow-card);
 }
 
 .nav__active .nav-link__icon,
@@ -445,9 +447,21 @@ a.header__settings {
 
 /***  7.3.1 Courses Home/Archived Pages   ***/
 
-/* Course Nav TABS */
-.course__nav {
+/* Course Nav TABS  - Also Used on Course Details/Edit Pages */
+.course__nav,
+.details__nav {
 	margin-top: -35px;
+}
+/* Media Queries To Make Nav Tabs move under heading when screen gets smaller */
+@media only screen and (max-width: 400px) {
+	.details__nav {
+		margin-top: 0;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.course__nav {
+		margin-top: 0;
+	}
 }
 
 .course__nav-link {

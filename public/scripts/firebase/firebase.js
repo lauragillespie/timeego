@@ -48,7 +48,6 @@ export const writeDB = {
 			.getElementById('courseForm')
 			.addEventListener('submit', function(e) {
 				e.preventDefault();
-				console.log(e);
 				firebase.auth().onAuthStateChanged(function(user) {
 					db
 						.collection('users')
@@ -194,6 +193,29 @@ export const readDB = {
 		});
 		// const user = firebase.auth().createUser;
 		// console.log(user);
+	},
+	getCourses     : function(view) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			var dbRef = db
+				.collection('users')
+				.doc(user.uid)
+				.collection('courses');
+			dbRef.get().then(function(querySnapshot) {
+				const arr = [];
+				querySnapshot.forEach(doc => {
+					const { color, date, name } = doc.data().course;
+					const id = doc.id;
+					const course = {
+						color : color,
+						date  : date,
+						name  : name,
+						id    : id
+					};
+					arr.push(course);
+				});
+				view(arr);
+			});
+		});
 	}
 };
 
