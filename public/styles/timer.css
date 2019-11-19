@@ -1,165 +1,117 @@
 /* This file contains only Timer popup styles */
 
 /***************************/
+/***************************/
 /***        Timer        ***/
 /***************************/
-/* Timer - Card */
+/***************************/
+
+/***************************/
+/***   Timer Container   ***/
+/***************************/
+
+/* Container to keep all timer elements centered */
 .timer__container {
 	width: 100%;
 	max-width: 500px;
 	height: 100vh;
-	position: fixed;
-	left: 50%;
-	top: 0;
-	pointer-events: none;
-	transform: translate(-50%, 0);
-	z-index: 4;
 	display: flex;
 	align-items: flex-start;
+
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 4;
+
+	pointer-events: none;
 }
 
+/***************************/
+/***     Timer Popup     ***/
+/***************************/
+
+/* Timer Box that pops up when timer btn in nav is pressed */
 .timer__popup {
-	pointer-events: auto;
-	height: 90vh;
 	width: 100%;
+	height: 90vh;
 	padding: 25px;
-	position: relative;
-	bottom: -200vh;
-	z-index: 5;
+	background: var(--color-background-main);
 	border-top-left-radius: var(--border-radius);
 	border-top-right-radius: var(--border-radius);
 	/* border-radius: var(--border-radius); */
-	transition: transform 250ms ease-in-out;
-	background: var(--color-background-main);
+
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+
+	/* Hides timer from view */
+	position: relative;
+	bottom: -200vh;
+	z-index: 5;
+
+	transition: transform 250ms ease-in-out;
+	pointer-events: auto;
 }
 
+/* Brings timer into view when active */
 .timer__popup--active {
 	transform: translate(0, -190vh);
 }
 
-/* Popup CSS */
-
-.popup__course-list {
-	margin-top: 25px;
+/***************************/
+/*** Popup Time Section  ***/
+/***************************/
+.popup__time-section {
+	/* Small height for when course list is expanded */
+	height: 35%;
+	width: 100%;
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-card);
-	height: 90px;
-	overflow: hidden;
-	transition: height 250ms ease-in-out;
-	padding: 0 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.popup__course-list--expanded {
-	height: 100%;
-}
-
-.course-list__btn--show {
-	height: 100%;
-	max-height: 90px;
-	background: var(--color-background-card);
-	/* background: var(--color-primary-gradient); */
-	border-radius: var(--border-radius);
-	width: 100%;
-	border: none;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-}
-
-.course-list__btn--show span {
-	/* color: var(--color-background-card); */
-	font-size: 14px;
-}
-
-.course-list__list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.course-list__add-link,
-.course-list__btn--close {
-	width: 100%;
-	padding: 10px 0;
-
-	color: white;
-
-	text-align: center;
-	border-radius: var(--border-radius);
-}
-
-.course-list__add-link {
-	display: block;
-	background-color: var(--color-success);
-	color: white;
-}
-
-.course-list__btn--close {
-	display: block;
-	margin: 10px 0;
-	background-color: var(--color-danger);
-	color: white;
-	border: none;
-}
-
-.popup__time-section {
-	height: 35%;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
-	background: var(--color-background-card);
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-card);
-	transition: height 250ms ease-in-out;
+	transition: var(--transition-height);
 	line-height: 1;
 }
 
+/* Height grows when this section is expanded */
 .popup__time-section--expanded {
 	height: 100%;
 }
 
+/* Timer Text that shows Time EX. 00:00:00 */
 .timer__text {
 	text-align: center;
-	display: block;
 	font-size: 50px;
-	color: var(--color-secondary);
 	letter-spacing: 2px;
 	margin-bottom: 20%;
-	transition: all 250ms ease-in-out;
+	transition: var(--transition-scale);
 }
 
+/* Used to scale text to smaller size when course list section is expanded */
 .timer__text--small {
 	transform: scale(0.7);
 	margin-bottom: 0%;
-	/* margin-top: 20%; */
 }
 
+/* Timer Control Buttons Container */
 .timer__control-btns {
-	width: 100%;
+	width: 65%;
+	margin: 0 auto;
 	display: flex;
 	justify-content: space-evenly;
-	/* opacity: 1; */
-	transition: all 250ms ease-in-out;
+	transition: var(--transition-scale);
 }
 
+/* Used to scale buttons to smaller size when course list section is expanded */
 .timer__control-btns--small {
 	transform: scale(0.6);
-	/* position: absolute; */
-
-	/* opacity: 0; */
-	/* display: none; */
 }
 
+/* Individual Timer Control Button */
 .timer__control-btn {
 	border: none;
 	width: 60px;
@@ -167,6 +119,7 @@
 	border-radius: 50%;
 	background: var(--color-blue-gradient);
 	box-shadow: var(--shadow-card);
+	/* Hidden by default, javascript will determine which are currently needed and display them using display flex (centers icons) */
 	display: none;
 	align-content: center;
 	justify-content: center;
@@ -177,7 +130,114 @@
 	font-size: 40px;
 }
 
-/* Timer - Close BTN and Background */
+/***************************/
+/***  Popup Course List  ***/
+/***************************/
+.popup__course-list {
+	/* Small height for when time section is expanded */
+	height: 90px;
+	margin-top: 25px;
+	padding: 0 25px;
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-card);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
+	transition: var(--transition-height);
+}
+
+/* Height grows when this section is expanded */
+.popup__course-list--expanded {
+	height: 100%;
+}
+
+/* Button that expands popup course list */
+.course-list__btn--show {
+	height: 100%;
+	max-height: 90px;
+	width: 100%;
+	background: var(--color-background-card);
+	border: none;
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+
+	transition: var(--transition-hover);
+}
+
+.course-list__btn--show:hover {
+	background-color: var(--color-background-card-hover);
+}
+
+.course-list__btn--show span {
+	font-size: 14px;
+}
+
+/* Course List - List */
+.course-list__list {
+	margin: 0;
+	padding: 25px 0;
+	list-style: none;
+	opacity: 0;
+}
+
+.course-list__heading {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 16px;
+}
+/* PUT LIST ITEM STYLES HERE */
+
+/* Course List Buttons - Add New Course and Cancel */
+.course-list__link-add,
+.course-list__btn--close {
+	width: 100%;
+	padding: 10px 0;
+	color: white;
+	text-align: center;
+	border-radius: var(--border-radius);
+	transition: var(--transition-hover);
+}
+
+.course-list__link-add {
+	display: block;
+	background-color: var(--color-primary);
+	color: white;
+}
+
+.course-list__link-add:hover {
+	color: white;
+	text-decoration: none;
+	background-color: var(--color-primary-hover);
+}
+
+.course-list__btn--close {
+	display: block;
+	margin: 10px 0 25px;
+	background-color: var(--color-danger);
+	color: white;
+	border: none;
+}
+.course-list__btn--close:hover {
+	background-color: var(--color-danger-hover);
+}
+
+/* Causes Course List and Course Buttons to fade in when course list section is expanded */
+.popup__course-list--expanded .course-list__list,
+.popup__course-list--expanded .course-list__buttons {
+	opacity: 1;
+	transition: opacity 600ms linear;
+}
+
+/***************************/
+/***   Timer Close Btn   ***/
+/***************************/
+
 .timer__close-btn {
 	border: none;
 	width: 32px;
@@ -193,9 +253,14 @@
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	transition: transform 250ms ease-in-out;
+	transition: transform 250ms ease-in-out, var(--transition-hover);
 	pointer-events: auto;
 	z-index: 6;
+	/* transition: var(--transition-hover); */
+}
+
+.timer__close-btn:hover {
+	background-color: var(--color-danger-hover);
 }
 
 .timer__close-btn i {
@@ -206,6 +271,10 @@
 .timer__close-btn--active {
 	transform: translate(0, 55px);
 }
+
+/****************************/
+/*** Full Page Background ***/
+/****************************/
 
 .timer__background {
 	position: fixed;

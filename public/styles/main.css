@@ -33,29 +33,32 @@
 
 :root {
 	/*** Colors ***/
+
 	--color-primary: #3127ca;
-	--color-primary-hover: #180eb1;
-	--color-primary-gradient: #1ea2db;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
 	--color-danger: #ff6a56;
+
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
+
+	--color-primary-hover: #180eb1;
+	--color-secondary-hover: #3c3c3c;
+	--color-success-hover: #54be43;
+	--color-danger-hover: #e6513d;
+	--color-background-card-hover: #fbfbfb;
+
 	--color-blue-gradient: linear-gradient(
 			353.28deg,
 			#1ea2db 7.78%,
 			rgba(255, 255, 255, 0) 100%
 		),
 		#3127ca;
-	--color-course-color-gradient: linear-gradient(
-		90deg,
-		rgba(9, 9, 121, 1) 6%,
-		rgba(240, 240, 240, 1) 8%
-	);
+	/* --color-primary-gradient: #1ea2db; */
 
 	/*** Fonts ***/
-	--font-family-heading: "Comfortaa";
-	--font-family-body: 'Open Sans', sans-serif;
+	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
+	--font-family-body: 'Open Sans', Arial, Helvetica, sans-serif;
 
 	/*** Shadows ***/
 	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);
@@ -64,7 +67,10 @@
 	--border-radius: 10px;
 
 	/*** Transition Effect ***/
-	--transition-hover: all 150ms ease-in-out;
+	--transition-hover: color 150ms ease-in-out,
+		background-color 150ms ease-in-out, background 150ms ease-in-out;
+	--transition-height: height 250ms linear;
+	--transition-scale: transform 250ms linear, margin 250ms linear;
 }
 
 /***************************/
@@ -298,6 +304,11 @@ a.header__settings {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: var(--transition-hover);
+}
+
+.nav__timer-button:hover {
+	background-color: var(--color-danger-hover);
 }
 
 .nav__timer-button .nav__timer__icon {
@@ -519,7 +530,7 @@ a.header__settings {
 .courseSettingsLink:hover {
 	text-decoration: none;
 	color: var(--color-secondary);
-	background: #fbfbfb;
+	background-color: var(--color-background-card-hover);
 }
 
 .courseColorDiv {
@@ -548,12 +559,11 @@ a.header__settings {
 /* Add Course BTN */
 .add-course-link {
 	border-radius: var(--border-radius);
-	margin-top: 30px;
-	padding: 20px;
+	padding: 18px;
 	background: var(--color-primary);
 	box-shadow: var(--shadow-card);
 	width: 100%;
-	font-size: 22px;
+	font-size: 16px;
 	font-family: var(--font-family-body);
 	color: var(--color-background-card);
 	transition: var(--transition-hover);
@@ -562,6 +572,11 @@ a.header__settings {
 .add-course-link:hover {
 	background: var(--color-primary-hover);
 	color: var(--color-background-card);
+}
+
+hr {
+	border-color: rgb(222, 226, 230);
+	margin: 20px 0 30px;
 }
 
 /*** End Course Home Page ***/
@@ -593,33 +608,42 @@ a.header__settings {
 	margin: 40px 0 10px;
 }
 .form__button {
-	font-size: 16pt;
+	font-size: 12pt;
 	border-radius: var(--border-radius);
 	border: none;
 	display: block;
 	width: 100%;
 	text-align: center;
-	margin-top: 20px;
-	padding: 10px;
+	margin-top: 10px;
+	padding: 12px;
 	box-shadow: var(--shadow-card);
+	transition: var(--transition-hover);
+}
+a.form__button:hover {
+	text-decoration: none;
+	color: var(--color-background-card);
 }
 
 .form__button--submit {
 	background-color: var(--color-primary);
 	color: var(--color-background-card);
 }
-
+.form__button--submit:hover {
+	background-color: var(--color-primary-hover);
+}
 .form__button--cancel {
 	background-color: var(--color-secondary);
 	color: var(--color-background-card);
+}
+.form__button--cancel:hover {
+	background-color: var(--color-secondary-hover);
 }
 .form__button--delete {
 	background-color: var(--color-danger);
 	color: var(--color-background-card);
 }
-a.form__button:hover {
-	text-decoration: none;
-	color: var(--color-background-card);
+.form__button--delete:hover {
+	background-color: var(--color-danger-hover);
 }
 
 /***  7.3.3 Courses Details Page   ***/

@@ -119,66 +119,43 @@
    <!-- TIMER Pop-up -->
    <div class="timer__container">
       <div class="timer__popup">
-         <div class="timer__toggle">
-            <div class="timer__toggle-option timer__toggle-option--active" id="timer__toggle--left">Stopwatch</div>
-            <div class="timer__toggle-option" id="timer__toggle--right">Timer</div>
-            <div class="timer__toggle-block"></div>
-         </div>
-         <div class="timer__time-section">
-            <div class="time-section__flip">
-               <div class="flip__front">
-                  <span class="timer__text">00:00:00</span>
-                  <div class="timer__control-btns">
-                     <button class="timer__control-btn" id="stopwatch_play_btn">
-                        <i class="material-icons">
-                           play_arrow
-                        </i>
-                     </button>
-                     <button class="timer__control-btn" id="stopwatch_pause_btn">
-                        <i class="material-icons">
-                           pause
-                        </i>
-                     </button>
-                     <button class="timer__control-btn" id="stopwatch_reset_btn">
-                        <i class="material-icons">
-                           replay
-                        </i>
-                     </button>
-
-                  </div>
-               </div>
-
-               <div class="flip__back">
-                  <!-- <span class="timer__text">00:00:00</span>
-               <div class="timer__control-btns">
-                  <button class="timer__control-btn" id="stopwatch_play_btn">
-                     <i class="material-icons">
-                        play_arrow
-                     </i>
-                  </button>
-                  <button class="timer__control-btn hidden" id="stopwatch_pause_btn">
-                     <i class="material-icons">
-                        pause
-                     </i>
-                  </button>
-                  <button class="timer__control-btn hidden" id="stopwatch_reset_btn">
-                     <i class="material-icons">
-                        replay
-                     </i>
-                  </button>
-
-               </div> -->
-
-                  <span class="timer__text">Timer Coming Soon</span>
-               </div>
-
+         <div class="popup__time-section popup__time-section--expanded">
+            <span class="timer__text">00:00:00</span>
+            <div class="timer__control-btns">
+               <button class="timer__control-btn" id="stopwatch_play_btn">
+                  <i class="material-icons">
+                     play_arrow
+                  </i>
+               </button>
+               <button class="timer__control-btn" id="stopwatch_pause_btn">
+                  <i class="material-icons">
+                     pause
+                  </i>
+               </button>
+               <button class="timer__control-btn" id="stopwatch_reset_btn">
+                  <i class="material-icons">
+                     replay
+                  </i>
+               </button>
             </div>
          </div>
-         <button class="timer__set-class">
-            Select Class
-         </button>
-      </div>
 
+         <div class="popup__course-list">
+            <button class="course-list__btn--show">
+               <span>Currently Tracking: None</span>
+               <span>Click to Select Course</span>
+            </button>
+            <ul class="course-list__list">
+               <h2 class="course-list__heading">Select a Course</h2>
+               <!-- Rendered List elements go here -->
+            </ul>
+            <div class="course-list__buttons">
+               <a href="./course-add.html" class="course-list__link-add">Add New Course</a>
+               <button class="course-list__btn--close">Cancel</button>
+            </div>
+
+         </div>
+      </div>
       <button class="timer__close-btn">
          <i class="material-icons">
             close
@@ -187,6 +164,7 @@
    </div>
    <div class="timer__background"></div>
    <!-- Timer Pop-up HTML Ends -->
+
    <!-- SCRIPTS -->
    <!-- jQuery Scirpt - Needed for Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
