@@ -34,7 +34,12 @@ const db = firebase.firestore();
  Then, this object calls the associated functions from views to render html elements needed for that page
 */
 
-import { timerViews, headerViews, dashboardViews } from '../views/views.js';
+import {
+	timerViews,
+	headerViews,
+	dashboardViews,
+	courseHomeViews
+} from '../views/views.js';
 
 export const global = {
 	readDB : function() {
@@ -67,15 +72,18 @@ export const global = {
 			dbRef.collection('courses').get().then(function(querySnapshot) {
 				const courses = [];
 				querySnapshot.forEach(doc => {
-					// Gets Course Data from each course
+					// archived should be moved into course data once all courses have it. for now, this will set the value to false if the value in the archived field doesn't exist for that course in the db
+					const archived = doc.data().course.archived || false;
+					// Uses destructuring to get data from each course
 					const { color, date, name } = doc.data().course;
 					const id = doc.id;
 					// Adds data to course object
 					const course = {
-						color : color,
-						date  : date,
-						name  : name,
-						id    : id
+						id       : id,
+						name     : name,
+						color    : color,
+						date     : date,
+						archived : archived
 					};
 					// adds course object to array
 					courses.push(course);
@@ -106,9 +114,47 @@ export const dashboard = {
 	}
 };
 
-export const courseHome = {};
-export const courseArchived = {};
-export const courseDetails = {};
+export const courseHome = {
+	readDB : function() {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: Course Data From DB
+			// Sets: Course List on Course Home page
+			dbRef.collection('courses').get().then(function(querySnapshot) {
+				const courses = [];
+				querySnapshot.forEach(doc => {
+					// archived should be moved into course data once all courses have it. for now, this will set the value to false if the value in the archived field doesn't exist for that course in the db
+					const archived = doc.data().course.archived || false;
+					// Uses destructuring to get data from each course
+					const { color, date, name } = doc.data().course;
+					const id = doc.id;
+					// Adds data to course object
+					const course = {
+						id       : id,
+						name     : name,
+						color    : color,
+						date     : date,
+						archived : archived
+					};
+					// adds course object to array
+					courses.push(course);
+				});
+				// Imported From Views, passes in array of courses
+				courseHomeViews.renderCourseList(courses);
+			});
+		});
+	}
+};
+export const courseArchived = {
+	// TODO: Get Course List, Filter into archived courses, Sort, Render Course List
+};
+export const courseDetails = {
+	// TODO: Parse ID from URL, then...
+	// TODO: Get details of that course, render view
+	// TODO: Put Course ID in <a> tags in nav tabs
+};
 
 export const courseAdd = {
 	// Params: Course object from course-add Controller
@@ -118,7 +164,7 @@ export const courseAdd = {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 			dbRef.collection('courses').doc().set(
-				// uses passed in course as value
+				// uses Course object param as value
 				{ course: course },
 				{
 					merge : true
@@ -128,97 +174,11 @@ export const courseAdd = {
 	}
 };
 
-export const courseEdit = {};
-
-/*** Older Code Below ***/
-
-/** Displays Courses **/
-
-export const readDB = {
-	displayCourses : function() {
-		firebase.auth().onAuthStateChanged(function(user) {
-			var dbRef = db
-				.collection('users')
-				.doc(user.uid)
-				.collection('courses');
-			dbRef.get().then(function(querySnapshot) {
-				const courseList = document.getElementById('course__list');
-				const arrayLength = querySnapshot.docs.length;
-				// If course array is empty, makes and appends message
-				if (arrayLength <= 0) {
-					const span = document.createElement('span');
-					span.classList.add('course__list--no-courses');
-					span.innerText = 'No Courses Currently Active';
-					// Removes Spinner
-					courseList.innerHTML = '';
-					courseList.appendChild(span);
-				} else {
-					// Removes Spinner
-					courseList.innerHTML = '';
-					querySnapshot.forEach(function(doc) {
-						// Course Variables From DB
-						const courseId = doc.id;
-						// retrieves color (hex) value from doc "course"
-						var courseColor = doc.data().course.color;
-						// retrieves name value from doc "course"
-						var courseName = doc.data().course.name;
-						var courseTime = '12:34:55'; // need to get from DB
-
-						// Creates main course container
-						var courseContainer = document.createElement('div');
-						courseContainer.setAttribute(
-							'class',
-							'courseContainer'
-						);
-
-						// Links to go to course details and settings pages
-						var courseDetailsLink = document.createElement('a');
-						var courseSettingsLink = document.createElement('a');
-						courseDetailsLink.setAttribute(
-							'href',
-							'./course-details.html'
-						);
-						courseSettingsLink.setAttribute(
-							'href',
-							'./course-edit.html'
-						);
-						courseDetailsLink.classList.add('courseDetailsLink');
-						courseSettingsLink.classList.add('courseSettingsLink');
-						courseSettingsLink.innerHTML =
-							'<i class="material-icons">more_vert</i>';
-						courseContainer.appendChild(courseDetailsLink);
-						courseContainer.appendChild(courseSettingsLink);
-
-						// Div for course color
-						var courseColorDiv = document.createElement('div');
-						// assigns the course color
-						courseColorDiv.style.backgroundColor = courseColor;
-						courseColorDiv.setAttribute('class', 'courseColorDiv');
-						// appends color div to course details link
-						courseDetailsLink.appendChild(courseColorDiv);
-
-						// this div will hold the course name + any other course info
-						var courseData = document.createElement('div');
-						courseDetailsLink.appendChild(courseData);
-						courseData.setAttribute('class', 'courseDetails');
-
-						// Creates, Sets classes and text and appends name and time HTML elements
-						var nameElement = document.createElement('h3');
-						var timeElement = document.createElement('span');
-						nameElement.setAttribute('class', 'courseName');
-						timeElement.setAttribute('class', 'courseTime');
-						nameElement.innerText = courseName;
-						timeElement.innerText = courseTime;
-						courseData.appendChild(nameElement);
-						courseData.appendChild(timeElement);
-
-						// Attaches Finished Course Container to Parent Element
-						courseList.appendChild(courseContainer);
-					});
-				}
-			});
-		});
-	}
+export const courseEdit = {
+	// TODO: Parse ID from URL, then...
+	// TODO: Fill the edit form with current data
+	// TODO: Put Course ID in <a> tags in nav tabs
+	// TODO: Add Delete Functions
 };
 
 /*** Firestore Database ENDS ***/

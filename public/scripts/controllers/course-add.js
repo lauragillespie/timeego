@@ -10,9 +10,10 @@ document.getElementById('courseForm').addEventListener('submit', e => {
 	e.preventDefault();
 	// Makes course object from form object
 	const course = {
-		name  : courseName.value,
-		color : courseColor.value,
-		date  : new Date()
+		name     : courseName.value,
+		color    : courseColor.value,
+		date     : new Date(),
+		archived : false
 	};
 	courseAdd.writeDB(course);
 

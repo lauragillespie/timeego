@@ -8,11 +8,11 @@ How the JavaScript is organized.
 
 ### Controllers
 
-Each HTML only imports controllers. Each page has it's own file. There is also a global.js controller that contains logic used across all pages (header, timer pop-up).
+Each HTML file only imports controllers. Each page has it's own file. There is also a global.js controller that contains logic used across all pages (header, timer pop-up).
 
 Controllers are the logic of the app. They are where we set up event-listeners (page specific or global), get data from forms, and make calls to our database files.
 
-### Firebase (Models) - Database.
+### Firebase (Models) - Database
 
 There is one firebase file. If this file gets too cluttered, we can split it into page specific files.
 
@@ -42,17 +42,28 @@ A list of things left to accomplish.
 
 ### Courses
 * [ ] Database export objects
-    * [ ] writeDB
-        * [x] Add Course
-        * [ ] Study Session
-    * [ ] readDB
-        * [ ] user info
-        * [x] all courses
-        * [ ] individual course - using ID
-        * [ ] sessions collection
-    * [ ] deleteDB
-        * [ ] Delete Course
-        * [ ] Delete Session
+    * [x] global
+        * [x] readDB - Add new user to user DB
+        * [x] readDB - Get current user's data From DB
+        * [x] readDB - Get users course data From DB
+    * [ ] dashboard
+        * [x] readDB - Get current user's data From DB
+        * [ ] readDB - Get Session/Course Data Needed for Graph
+        * [ ] readDB - Get Current Streak Data
+    * [x] courseHome
+        * [x] readDB - Get users course data From DB
+    * [ ] courseArchived
+        * [ ] readDB - Get users course data From DB
+    * [ ] courseDetails
+        * [ ] parse Course id from url
+        * [ ] readDB - Get parsed course details from DB
+    * [x] courseAdd
+        * [x] writeDB - Set new course to course collection of db
+    * [ ] courseEdit
+        * [ ] parse Course id from url
+        * [ ] readDB - Get parsed course details from DB
+        * [ ] deleteDB - delete course when button is pressed
+        
 
 ### HTML + CSS
 * [x] Clean up Header
