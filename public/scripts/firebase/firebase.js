@@ -1,11 +1,7 @@
-/*** Imports ***/
-
 // Importing firebase config object
 import { firebaseConfig } from './firebaseConfig.js';
 // Importing firebase auth config
 import { uiConfig } from './firebaseAuth.js';
-
-/*** Imports ENDS ***/
 
 // Initialize Firebase App
 firebase.initializeApp(firebaseConfig);
@@ -30,47 +26,112 @@ export const firebaseAuth = {
 // Initialize Firestore database
 const db = firebase.firestore();
 
-/** Adds a Course **/
+/******************** 
+ * Updated DB Calls *
+ ********************
+ One object below per page, imported by that pages controller
+ This object talks to the db and sorts the data
+ Then, this object calls the associated functions from views to render html elements needed for that page
+*/
 
-export const writeDB = {
-	// Retrieves the course name and color selected by the user
-	addCourse : function() {
-		// for an <input type='text'> with id = 'courseName'
-		var courseName = document.getElementById('courseName');
-		// for an <input type='color'> with id = 'courseColor'
-		var courseColor = document.getElementById('courseColor');
-		var courseDate = new Date();
+import { timerViews, headerViews, dashboardViews } from '../views/views.js';
 
-		// for a <form> with an id = 'courseForm'
-		// if no courses have been added yet, creates a course collection for the user
-		// submit: adds course documents with a name, color, and date to the course collection
-		document
-			.getElementById('courseForm')
-			.addEventListener('submit', function(e) {
-				e.preventDefault();
-				firebase.auth().onAuthStateChanged(function(user) {
-					db
-						.collection('users')
-						.doc(user.uid)
-						.collection('courses')
-						.doc()
-						.set(
-							{
-								course : {
-									name  : courseName.value,
-									color : courseColor.value,
-									date  : courseDate
-								}
-							},
-							{
-								merge : true
-							}
-						);
-				});
-				window.location.href = './course-home.html';
+export const global = {
+	readDB : function() {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// If the current user logged in, user is authenticated
+			// then grab "uid" "displayName" and "email"
+			// use "set()" with merge (if document did not exist it will be created)
+			dbRef.set(
+				{
+					name  : user.displayName,
+					email : user.email
+				},
+				{ merge: true }
+			);
+
+			// Gets: User Data From DB
+			// Sets: User's First name in Header
+			dbRef.onSnapshot(function(snap) {
+				// Current User Data
+				const currentUser = snap.data();
+				// Imported From Views, passes in current user data
+				headerViews.renderName(currentUser);
 			});
+
+			// Gets: Course Data From DB
+			// Sets: Course List in Timer Pop Up
+			dbRef.collection('courses').get().then(function(querySnapshot) {
+				const courses = [];
+				querySnapshot.forEach(doc => {
+					// Gets Course Data from each course
+					const { color, date, name } = doc.data().course;
+					const id = doc.id;
+					// Adds data to course object
+					const course = {
+						color : color,
+						date  : date,
+						name  : name,
+						id    : id
+					};
+					// adds course object to array
+					courses.push(course);
+				});
+				// Imported From Views, passes in array of courses
+				timerViews.renderCourseList(courses);
+			});
+		});
 	}
 };
+export const dashboard = {
+	readDB : function() {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: User Data From DB
+			// Sets: User's first name in Dashboard Heading
+			dbRef.onSnapshot(function(snap) {
+				// Current User Data
+				const currentUser = snap.data();
+				// Imported From Views, passes in current user data
+				dashboardViews.renderHeading(currentUser);
+			});
+			// TODO: Get Session/Course Data Needed for Graph
+			// TODO: Get Current Streak Data
+		});
+	}
+};
+
+export const courseHome = {};
+export const courseArchived = {};
+export const courseDetails = {};
+
+export const courseAdd = {
+	// Params: Course object from course-add Controller
+	// Writes: New course to course collection of database
+	writeDB : function(course) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+			dbRef.collection('courses').doc().set(
+				// uses passed in course as value
+				{ course: course },
+				{
+					merge : true
+				}
+			);
+		});
+	}
+};
+
+export const courseEdit = {};
+
+/*** Older Code Below ***/
+
 /** Displays Courses **/
 
 export const readDB = {
@@ -155,65 +216,6 @@ export const readDB = {
 						courseList.appendChild(courseContainer);
 					});
 				}
-			});
-		});
-	},
-	// Function that creates a new document in the users collection
-	getCurrentUser : function() {
-		// if the current user logged in user
-		// is authenticated, then grab "uid" "displayName" and "email"
-		// use "set()" with merge (if document did not exist it will be created)
-		firebase.auth().onAuthStateChanged(function(user) {
-			db.collection('users').doc(user.uid).set(
-				{
-					name  : user.displayName,
-					email : user.email
-				},
-				{ merge: true }
-			);
-			// Prints welcome message for active user
-			db.collection('users').doc(user.uid).onSnapshot(function(snap) {
-				// Current User Data
-				const currentUser = snap.data();
-				// Current User Name
-				const name = currentUser.name;
-				// Current User Name with first letter in Upper Case
-				const upperCaseName = name[0].toUpperCase() + name.substring(1);
-				// Splits first name
-				const firstName = upperCaseName.split(' ')[0];
-				// Sets Users Name in Header
-				document.getElementById(
-					'header__username'
-				).innerText = `Hi, ${firstName}`;
-				// Sets Users Name in Dashboard Greeting
-				document.getElementById(
-					'page-heading__username'
-				).innerText = firstName;
-			});
-		});
-		// const user = firebase.auth().createUser;
-		// console.log(user);
-	},
-	getCourses     : function(view) {
-		firebase.auth().onAuthStateChanged(function(user) {
-			var dbRef = db
-				.collection('users')
-				.doc(user.uid)
-				.collection('courses');
-			dbRef.get().then(function(querySnapshot) {
-				const arr = [];
-				querySnapshot.forEach(doc => {
-					const { color, date, name } = doc.data().course;
-					const id = doc.id;
-					const course = {
-						color : color,
-						date  : date,
-						name  : name,
-						id    : id
-					};
-					arr.push(course);
-				});
-				view(arr);
 			});
 		});
 	}

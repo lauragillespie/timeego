@@ -1,27 +1,14 @@
-import { readDB, writeDB } from './firebase/firebase.js';
-import { timerListeners } from './timer/timer-listeners.js';
-import { timerViews } from './views.js';
+// Goal is to get rid of this file
+
+import { readDB } from './firebase/firebase.js';
 
 // Current Path
 const currentPath = window.location.pathname;
 
 // Page Paths
-const loginPath = '/';
-const dashboardPath = '/dashboard.html';
 const courseHomePath = '/course-home.html';
-const courseAddPath = '/course-add.html';
 
 // Writes to the database
-
-// Global DB Functions - except Login Page (index.html)
-if (currentPath != loginPath || currentPath != `/public${loginPath}`) {
-	// Gets Current User Info
-	readDB.getCurrentUser();
-	readDB.getCourses(timerViews.renderCourseList);
-	// dashboardViews.test();
-
-	timerListeners();
-}
 
 if (
 	currentPath == courseHomePath ||
@@ -29,8 +16,3 @@ if (
 ) {
 	readDB.displayCourses();
 }
-if (currentPath == courseAddPath || currentPath == `/public${courseAddPath}`) {
-	writeDB.addCourse();
-}
-
-/***courses page change */

@@ -190,7 +190,8 @@
 	padding: 10px 0 25px;
 	list-style: none;
 	opacity: 0;
-	overflow: scroll;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 /* PUT LIST ITEM STYLES HERE */

@@ -139,9 +139,9 @@ img {
 /***    5. Components    ***/
 /***************************/
 
-.hidden {
+/* .hidden {
 	display: none;
-}
+} */
 
 .bootstrap__spinner {
 	color: var(--color-primary);
@@ -576,7 +576,7 @@ a.header__settings {
 
 hr {
 	border-color: rgb(222, 226, 230);
-	margin: 20px 0 30px;
+	margin: 20px 0 20px;
 }
 
 /*** End Course Home Page ***/
