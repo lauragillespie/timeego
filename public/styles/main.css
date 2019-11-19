@@ -69,8 +69,8 @@
 	/*** Transition Effect ***/
 	--transition-hover: color 150ms ease-in-out,
 		background-color 150ms ease-in-out, background 150ms ease-in-out;
-	--transition-height: height 250ms linear;
-	--transition-scale: transform 250ms linear, margin 250ms linear;
+	--transition-height: height 200ms linear;
+	--transition-scale: transform 200ms linear, margin 200ms linear;
 }
 
 /***************************/
