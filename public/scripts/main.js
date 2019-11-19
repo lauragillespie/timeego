@@ -1,4 +1,4 @@
-import { firebaseAuth, readDB, writeDB } from './firebase/firebase.js';
+import { readDB, writeDB } from './firebase/firebase.js';
 import { timerListeners } from './timer/timer-listeners.js';
 import { timerViews } from './views.js';
 
@@ -21,12 +21,6 @@ if (currentPath != loginPath || currentPath != `/public${loginPath}`) {
 	// dashboardViews.test();
 
 	timerListeners();
-}
-
-// If on Login Page...
-if (currentPath == loginPath || currentPath == `/public${loginPath}`) {
-	// Imports Firebase Auth Login Widget
-	firebaseAuth.authUI();
 }
 
 if (

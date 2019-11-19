@@ -16,14 +16,19 @@
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!-- Our custom Timeego CSS Stylesheets -->
    <link rel="stylesheet" href="./styles/main.css">
-   <link rel="stylesheet" href="./styles/timer.css">
 </head>
 
 <body class="login__body">
    <main>
-      <h2 class="login__h2"><span id="large_t">T</span>IMEEGO</h2>
-      <div id="firebaseui-auth-container"></div>
-      <div id="loader">Loading...</div>
+      <div class="container">
+         <img src="./images/logo/white.png" class="login__logo" alt="Timeego Logo">
+         <div id="firebaseui-auth-container"></div>
+         <div id="loader">
+            <div class="spinner-border bootstrap__spinner-white" role="status">
+               <span class="sr-only">Loading...</span>
+            </div>
+         </div>
+      </div>
    </main>
 
    <!-- SCRIPTS -->
@@ -47,8 +52,8 @@
    <!-- Firebase Firestore Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <!-- Our Custom Scripts -->
-   <script src="./scripts/firebase/firebase.js" type="module"></script>
-   <script src="./scripts/main.js" type="module"></script>
+   <!-- <script src="./scripts/firebase/firebase.js" type="module"></script> -->
+   <script src="./scripts/controllers/login.js" type="module"></script>
 </body>
 
 </html>

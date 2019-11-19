@@ -1,7 +1,7 @@
 // This file holds and exports our firebase auth config settings
 
 export const uiConfig = {
-	callbacks        : {
+	callbacks          : {
 		signInSuccessWithAuthResult : function(authResult, redirectUrl) {
 			// User successfully signed in.
 			// Return type determines whether we continue the redirect automatically
@@ -14,14 +14,15 @@ export const uiConfig = {
 			document.getElementById('loader').style.display = 'none';
 		}
 	},
+	credentialHelper : firebaseui.auth.CredentialHelper.NONE,
 	// Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-	signInFlow       : 'popup',
-	signInSuccessUrl : 'dashboard.html',
-	signInOptions    : [
+	signInFlow         : 'popup',
+	signInSuccessUrl   : 'dashboard.html',
+	signInOptions      : [
 		firebase.auth.EmailAuthProvider.PROVIDER_ID
 	],
 	// Terms of service url.
-	tosUrl           : 'dashboard.html',
+	tosUrl             : 'dashboard.html',
 	// Privacy policy url.
-	privacyPolicyUrl : 'dashboard.html'
+	privacyPolicyUrl   : 'dashboard.html'
 };

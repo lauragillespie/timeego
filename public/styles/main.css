@@ -148,6 +148,12 @@ img {
 	margin: auto;
 }
 
+.bootstrap__spinner-white {
+	color: white;
+	display: block;
+	margin: 45% auto;
+}
+
 /***************************/
 /***  6. Main Layout     ***/
 /***************************/
@@ -348,17 +354,11 @@ a.header__settings {
 	height: 100vh;
 }
 
-.login__h2 {
-	text-align: center;
-	font-size: 30pt;
-	color: var(--color-background-main);
-	margin: 50px 0;
-}
-
-#large_t {
-	font-size: 38pt;
-	font-weight: 300;
-	color: var(--color-background-main);
+.login__logo {
+	margin: 60px auto;
+	padding: 0 25px;
+	width: 350px;
+	display: block;
 }
 
 #firebaseui-auth-container {
