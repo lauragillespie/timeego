@@ -135,10 +135,11 @@
 	/* Small height for when time section is expanded */
 	height: 90px;
 	margin-top: 25px;
-	padding: 0 25px;
+	padding: 0 15px;
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-card);
+	position: relative;
 
 	display: flex;
 	flex-direction: column;
@@ -176,22 +177,40 @@
 	font-size: 14px;
 }
 
+/* Course List - heading */
+.course-list__heading {
+	font-size: 20px;
+	font-weight: 700;
+	margin: 15px 0 0px;
+}
+
 /* Course List - List */
 .course-list__list {
 	margin: 0;
-	padding: 25px 0;
+	padding: 10px 0 25px;
 	list-style: none;
 	opacity: 0;
+	overflow: scroll;
 }
 
-.course-list__heading {
-	font-size: 24px;
-	font-weight: 700;
-	margin-bottom: 16px;
-}
 /* PUT LIST ITEM STYLES HERE */
+.course-list__list li {
+	color: purple;
+	font-size: 24px;
+}
 
 /* Course List Buttons - Add New Course and Cancel */
+.course-list__buttons {
+	position: relative;
+	opacity: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-bottom: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+
 .course-list__link-add,
 .course-list__btn--close {
 	width: 100%;
@@ -206,6 +225,7 @@
 	display: block;
 	background-color: var(--color-primary);
 	color: white;
+	margin-right: 10px;
 }
 
 .course-list__link-add:hover {
@@ -216,7 +236,6 @@
 
 .course-list__btn--close {
 	display: block;
-	margin: 10px 0 25px;
 	background-color: var(--color-danger);
 	color: white;
 	border: none;
@@ -229,7 +248,7 @@
 .popup__course-list--expanded .course-list__list,
 .popup__course-list--expanded .course-list__buttons {
 	opacity: 1;
-	transition: opacity 600ms linear;
+	transition: opacity 300ms linear;
 }
 
 /***************************/
