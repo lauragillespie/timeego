@@ -63,27 +63,25 @@ A list of things left to accomplish.
         * [ ] parse Course id from url
         * [ ] readDB - Get parsed course details from DB
         * [ ] deleteDB - delete course when button is pressed
-        
+
 
 ### HTML + CSS
+* [ ] Make "Session" Page
+* [ ] Make Main "Settings" Page
+* [ ] Give Course Details Page Content
+
 * [x] Clean up Header
 * [x] Clean up "courses home" page
 * [x] Clean up "Add Courses" page
-
 * [x] Make "Individual Course" page
 * [x] Make "Edit Course" page
     * [x] Should have: Edit, Archive, Delete
 * [x] Make "Archived Courses" page
-    * [ ] filter courses array, pass into correct page (active/archived)
-* [ ] Make "Session" Page
-* [ ] Give Course Details Page Content
-
+    * [x] filter courses array, pass into correct page (active/archived)
 * [x] Add course option button 
-    
-* [x] Add link to course list items
-    * [ ] redirect to that courses details/edit
 
-* [ ] Make Main "Settings" Page
+* [x] Add link to course list items
+    * [x] redirect to that courses details/edit
 
 ### Graph
 
