@@ -1,3 +1,5 @@
+import Stopwatch from './Stopwatch.js';
+
 /*** Timer Pop-Up ***/
 
 // Grabs HTML elements needed to toggle timer pop-up
@@ -5,16 +7,6 @@ const toggleNavBtn = document.querySelector('#timer-toggle-btn');
 const timerBackground = document.querySelector('.timer__background');
 const timerPopup = document.querySelector('.timer__popup');
 const timerCloseBtn = document.querySelector('.timer__close-btn');
-
-// // Grabs HTML elements needed to toggle timer/stopwatch option
-// const timerToggle = document.querySelector('.timer__toggle');
-// const timerToggleBlock = document.querySelector('.timer__toggle-block');
-// const timerToggleLeft = document.querySelector('#timer__toggle--left');
-// const timerToggleRight = document.querySelector('#timer__toggle--right');
-// // Timer card Spin-effect
-
-// imports stopwatch logic functions from stopwatch.js
-import { stopwatch } from './stopwatch.js';
 
 // Grabs HTML elements needed to start, pause, reset stopwatch
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
@@ -31,28 +23,29 @@ const timerBtnContainer = document.querySelector('.timer__control-btns');
 const timerText = document.querySelector('.timer__text');
 
 export function timerListeners() {
-	/*** On Page Load... ***/
+	// const exampleTimerStateObject = {
+	// 	currentlyTiming : false,
+	// 	activeSession   : {
+	// 		courseName : 'Comp',
+	// 		time       : {
+	// 			seconds : 40,
+	// 			minutes : 2,
+	// 			hours   : 0
+	// 		},
+	// 		sessionId  : 'af8f3034fg4h543'
+	// 	}
+	// };
 
-	// Checks if saved time in local storage
-	const timeLocalStorage = JSON.parse(window.localStorage.getItem('time'));
-	// If saved time, sets timer to time from local storage
-	if (timeLocalStorage) {
-		stopwatch.time = timeLocalStorage;
-		stopwatch.updateTimerText();
-	}
+	// Gets Timer State from Local Storage
+	const timerStateFromLocalStorage = JSON.parse(
+		window.localStorage.getItem('timerState')
+	);
 
-	// Checks if Timer is active from local storage
-	const activeSwLocal =
-		JSON.parse(window.localStorage.getItem('stopwatchActive')) || false;
-	// If timer is active, sets variables, buttons and starts timer
-	// otherwise, just sets inactive buttons
-	if (activeSwLocal) {
-		stopwatch.active = true;
-		stopwatch.start();
-		stopwatch.setButtonsActive();
-	} else {
-		stopwatch.setButtonsInactive();
-	}
+	// Creates stopwatch object from Stopwatch class, passes in timer state as parameter
+	const stopwatchObject = new Stopwatch(timerStateFromLocalStorage);
+
+	// Calls onPageLoad on stopwatch to set correct buttons, display correct time, and have timer running if needed
+	stopwatchObject.onPageLoad();
 
 	// Course List Stuff
 	openCourseListBtn.addEventListener('click', e => {
@@ -75,20 +68,20 @@ export function timerListeners() {
 
 	// Timer Nav Button Event listener
 	// Opens Timer pop-up
-	toggleNavBtn.addEventListener('click', e => {
-		openTimerPopUp(e);
+	toggleNavBtn.addEventListener('click', () => {
+		openTimerPopUp();
 	});
 
 	// Dark Background Overlay Event listener
 	// Closes Timer pop-up
-	timerBackground.addEventListener('click', e => {
-		closeTimerPopUp(e);
+	timerBackground.addEventListener('click', () => {
+		closeTimerPopUp();
 	});
 
 	// Timer Close Button Event listener
 	// Closes Timer pop-up
-	timerCloseBtn.addEventListener('click', e => {
-		closeTimerPopUp(e);
+	timerCloseBtn.addEventListener('click', () => {
+		closeTimerPopUp();
 	});
 
 	// Opens Timer pop-up
@@ -107,37 +100,24 @@ export function timerListeners() {
 
 	/*** Timer Pop-Up ENDS ***/
 
-	// /*** Timer/Stopwatch Toggle ***/
-
-	// // Timer/Stopwatch Toggle Event listener
-	// // Shifts block to other side, spins timer
-	// timerToggle.addEventListener('click', e => {
-	// 	timerToggleBlock.classList.toggle('timer__toggle-block--right');
-	// 	timerToggleLeft.classList.toggle('timer__toggle-option--active');
-	// 	timerToggleRight.classList.toggle('timer__toggle-option--active');
-	// 	timeSection.classList.toggle('timer__time-section--active');
-	// });
-
-	// /*** Timer/Stopwatch Toggle ENDS ***/
-
 	/*** Stopwatch Start/Pause Buttons Triggers ***/
 
 	// Stopwatch start button Event listener
 	// Starts stopwatch
 	stopwatchPlayBtn.addEventListener('click', e => {
-		stopwatch.start(e);
+		stopwatchObject.start(e);
 	});
 
 	// Stopwatch pause button Event listener
 	// Pauses stopwatch
 	stopwatchPauseBtn.addEventListener('click', e => {
-		stopwatch.stop(e);
+		stopwatchObject.pause(e);
 	});
 
 	// Stopwatch reset button Event listener
 	// Resets stopwatch
 	stopwatchResetBtn.addEventListener('click', e => {
-		stopwatch.reset(e);
+		stopwatchObject.reset(e);
 	});
 
 	/*** Stopwatch Start/Pause Buttons Triggers ENDS ***/

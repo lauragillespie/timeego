@@ -1,103 +1,76 @@
-// Grabs Nav Toggle Btn, Icons in Btn
-const navToggleBtn = document.querySelector('#timer-toggle-btn');
-const navToggleTimerIcon = document.querySelector('#toggle-btn-nav--timer');
-const navTogglePauseIcon = document.querySelector('#toggle-btn-nav--pause');
+import Session from './Session.js';
+import updateTimerPopupElements from './updateTimerPopupElements.js';
+
 // Grabs Text in Timer (00:00:00)
 const timerText = document.querySelector('.timer__text');
-// Grabs Timer Start, Pause and Reset Buttons
-const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
-const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
-const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
 
-// This file is logic to start and stop the stopwatch,
-// and update current time displayed in HTML when the
-// stopwatch is running
-export const stopwatch = {
-	interval           : null,
-	active             : false,
-	time               : {
-		hours   : 0,
-		minutes : 0,
-		seconds : 0
-	},
-	start(e) {
-		this.active = true;
-		this.interval = setInterval(() => {
-			this.count();
-		}, 1000);
-		window.localStorage.setItem('stopwatchActive', 'true');
-		this.setButtonsActive();
-	},
-	stop(e) {
-		this.active = false;
-		clearInterval(this.interval);
-		window.localStorage.setItem('stopwatchActive', 'false');
-		this.setButtonsInactive();
-	},
-	reset(e) {
-		this.time = {
-			hours   : 0,
-			minutes : 0,
-			seconds : 0
-		};
-		window.localStorage.setItem('time', JSON.stringify(this.time));
-		this.updateTimerText();
-	},
-	count() {
-		if (this.time.seconds < 59) {
-			this.time.seconds++;
+class Stopwatch {
+	constructor(timerState) {
+		this.interval = null;
+
+		this.currentlyTiming;
+		this.activeSession;
+
+		if (!timerState) {
+			this.currentlyTiming = false;
+			this.activeSession = null;
 		} else {
-			this.time.seconds = 0;
-			if (this.time.minutes < 59) {
-				this.time.minutes++;
+			const { currentlyTiming, activeSession } = timerState;
+			this.currentlyTiming = currentlyTiming;
+			if (activeSession) {
+				const { courseName, time, sessionId } = activeSession;
+				this.activeSession = new Session(courseName, time, sessionId);
 			} else {
-				this.time.minutes = 0;
-				this.time.hours++;
+				this.activeSession = null;
 			}
 		}
-		window.localStorage.setItem('time', JSON.stringify(this.time));
-		this.updateTimerText();
-	},
-	updateTimerText() {
-		timerText.innerText = this.updateHTML();
-	},
-	updateHTML() {
-		let hrs;
-		let mins;
-		let secs;
-		if (stopwatch.time.hours < 10) {
-			hrs = '0' + stopwatch.time.hours;
-		} else {
-			hrs = '' + stopwatch.time.hours;
-		}
-		if (stopwatch.time.minutes < 10) {
-			mins = '0' + stopwatch.time.minutes;
-		} else {
-			mins = '' + stopwatch.time.minutes;
-		}
-		if (stopwatch.time.seconds < 10) {
-			secs = '0' + stopwatch.time.seconds;
-		} else {
-			secs = '' + stopwatch.time.seconds;
-		}
-		return `${hrs}:${mins}:${secs}`;
-	},
-	// Has Time? Show Reset Button, Hide Toggle Option
-	setButtonsActive() {
-		stopwatchPlayBtn.style.display = 'none';
-		stopwatchPauseBtn.style.display = 'flex';
-		stopwatchResetBtn.style.display = 'none';
-		navToggleTimerIcon.style.display = 'none';
-		navTogglePauseIcon.style.display = 'block';
-		navToggleBtn.classList.add('timer-toggle-btn--timing');
-	},
-	// Does not have time? Hide Reset Button, Show Toggle Option
-	setButtonsInactive() {
-		stopwatchPlayBtn.style.display = 'flex';
-		stopwatchPauseBtn.style.display = 'none';
-		stopwatchResetBtn.style.display = 'flex';
-		navToggleTimerIcon.style.display = 'block';
-		navTogglePauseIcon.style.display = 'none';
-		navToggleBtn.classList.remove('timer-toggle-btn--timing');
 	}
-};
+	start() {
+		if (this.activeSession === null) {
+			this.activeSession = new Session(null);
+		}
+		this.currentlyTiming = true;
+		this.saveToLocalStorage();
+
+		this.interval = setInterval(() => {
+			this.activeSession.increaseTime();
+			this.saveToLocalStorage();
+		}, 1000);
+
+		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+	}
+	pause() {
+		this.currentlyTiming = false;
+		clearInterval(this.interval);
+		this.saveToLocalStorage();
+		// When timer is paused, session is updated in DB
+		this.activeSession.updateInDB();
+		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+	}
+	reset() {
+		this.activeSession = null;
+		this.saveToLocalStorage();
+		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+		timerText.innerText = '00:00:00';
+	}
+
+	saveToLocalStorage() {
+		const timerState = {
+			currentlyTiming : this.currentlyTiming,
+			activeSession   : this.activeSession
+		};
+		window.localStorage.setItem('timerState', JSON.stringify(timerState));
+	}
+
+	onPageLoad() {
+		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+		if (this.currentlyTiming) {
+			this.start();
+		}
+		if (this.activeSession) {
+			this.activeSession.updateTimerText();
+		}
+	}
+}
+
+export default Stopwatch;
