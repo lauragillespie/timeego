@@ -93,7 +93,9 @@ stopwatchPauseBtn.addEventListener('click', e => {
 // Resets stopwatch
 stopwatchResetBtn.addEventListener('click', e => {
 	stopwatchObject.reset();
+	// Saved Pop-up message when done is clicked
 	document.querySelector(".done_saved").classList.add("done_saved_active");	
+	// Hides the saved pop-up after 3 seconds
 	setTimeout(()=>{
 		document.querySelector(".done_saved").classList.remove("done_saved_active");
 	}, 3000);
