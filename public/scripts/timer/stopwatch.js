@@ -1,3 +1,6 @@
+// TODO: Add Commenting to File
+
+import { global } from '../firebase/firebase.js';
 import Session from './Session.js';
 import updateTimerPopupElements from './updateTimerPopupElements.js';
 
@@ -7,19 +10,26 @@ const timerText = document.querySelector('.timer__text');
 class Stopwatch {
 	constructor(timerState) {
 		this.interval = null;
-
+		this.selectedCourse;
 		this.currentlyTiming;
 		this.activeSession;
+		this.sessionToDB;
 
 		if (!timerState) {
 			this.currentlyTiming = false;
 			this.activeSession = null;
+			this.selectedCourse = null;
 		} else {
-			const { currentlyTiming, activeSession } = timerState;
+			const {
+				currentlyTiming,
+				selectedCourse,
+				activeSession
+			} = timerState;
 			this.currentlyTiming = currentlyTiming;
+			this.selectedCourse = selectedCourse;
 			if (activeSession) {
-				const { courseName, time, sessionId } = activeSession;
-				this.activeSession = new Session(courseName, time, sessionId);
+				const { time } = activeSession;
+				this.activeSession = new Session(time);
 			} else {
 				this.activeSession = null;
 			}
@@ -37,39 +47,67 @@ class Stopwatch {
 			this.saveToLocalStorage();
 		}, 1000);
 
-		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+		updateTimerPopupElements(
+			this.currentlyTiming,
+			this.activeSession,
+			this.selectedCourse
+		);
 	}
 	pause() {
 		this.currentlyTiming = false;
 		clearInterval(this.interval);
 		this.saveToLocalStorage();
-		// When timer is paused, session is updated in DB
-		this.activeSession.updateInDB();
-		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+		updateTimerPopupElements(
+			this.currentlyTiming,
+			this.activeSession,
+			this.selectedCourse
+		);
 	}
 	reset() {
+		this.saveToDB();
 		this.activeSession = null;
+		this.selectedCourse = null;
 		this.saveToLocalStorage();
-		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+		updateTimerPopupElements(
+			this.currentlyTiming,
+			this.activeSession,
+			this.selectedCourse
+		);
 		timerText.innerText = '00:00:00';
 	}
 
-	saveToLocalStorage() {
-		const timerState = {
-			currentlyTiming : this.currentlyTiming,
-			activeSession   : this.activeSession
-		};
-		window.localStorage.setItem('timerState', JSON.stringify(timerState));
-	}
-
 	onPageLoad() {
-		updateTimerPopupElements(this.currentlyTiming, this.activeSession);
+		updateTimerPopupElements(
+			this.currentlyTiming,
+			this.activeSession,
+			this.selectedCourse
+		);
 		if (this.currentlyTiming) {
 			this.start();
 		}
 		if (this.activeSession) {
 			this.activeSession.updateTimerText();
 		}
+	}
+	saveToLocalStorage() {
+		const timerState = {
+			currentlyTiming : this.currentlyTiming,
+			selectedCourse  : this.selectedCourse,
+			activeSession   : this.activeSession
+		};
+		window.localStorage.setItem('timerState', JSON.stringify(timerState));
+	}
+	saveToDB() {
+		this.sessionToDB = {
+			course : this.selectedCourse,
+			time   : this.activeSession.time,
+			date   : new Date()
+		};
+		global.writeDB.createSession(this.sessionToDB);
+	}
+	updateSelectedCourse(selectedCourse) {
+		this.selectedCourse = selectedCourse;
+		this.saveToLocalStorage();
 	}
 }
 

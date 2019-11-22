@@ -36,40 +36,70 @@ The helper functions are functions that are used multiple times in the views fil
 
 Ignore this mess for now :P
 
-## Todos
+## Need Todo
 
 A list of things left to accomplish.
 
-### Courses
-* [ ] Database export objects
-    * [x] global
-        * [x] readDB - Add new user to user DB
-        * [x] readDB - Get current user's data From DB
-        * [x] readDB - Get users course data From DB
-    * [ ] dashboard
-        * [x] readDB - Get current user's data From DB
-        * [ ] readDB - Get Session/Course Data Needed for Graph
-        * [ ] readDB - Get Current Streak Data
-    * [x] courseHome
-        * [x] readDB - Get users course data From DB
-    * [ ] courseArchived
-        * [ ] readDB - Get users course data From DB
-    * [ ] courseDetails
-        * [ ] parse Course id from url
-        * [ ] readDB - Get parsed course details from DB
-    * [x] courseAdd
-        * [x] writeDB - Set new course to course collection of db
-    * [ ] courseEdit
-        * [ ] parse Course id from url
-        * [ ] readDB - Get parsed course details from DB
-        * [ ] deleteDB - delete course when button is pressed
+### Database
+* [x] global
+    * [x] readDB - Add new user to user DB
+    * [x] readDB - Get current user's data From DB
+    * [x] readDB - Get users course data From DB
+    * [x] writeDB - Saves Session from Timer to Sessions Collection in DB
+    * [ ] writeDB - Saves Session from Timer to Correct Course Collection in DB
+* [ ] dashboard
+    * [x] readDB - Get current user's data From DB
+    * [ ] readDB - Get Session/Course Data Needed for Graph
+    * [ ] readDB - Get Current Streak Data
+* [x] courseHome
+    * [x] readDB - Get users course data From DB
+* [ ] courseArchived
+    * [ ] readDB - Get users course data From DB
+* [ ] courseDetails
+    * [ ] parse Course id from url
+    * [ ] readDB - Get parsed course details from DB
+    * [ ] readDB - Get parsed course Sessions from DB
+* [x] courseAdd
+    * [x] writeDB - Set new course to course collection of db
+* [ ] courseEdit
+    * [ ] parse Course id from url
+    * [ ] readDB - Get parsed course details from DB
+    * [ ] deleteDB - delete course when button is pressed
 
 
-### HTML + CSS
-* [ ] Make "Session" Page
-* [ ] Make Main "Settings" Page
-* [ ] Give Course Details Page Content
+### Static HTML + CSS
+* [ ] Make "Add Session" Page
+    * [ ] Form to add new session to DB
+* [ ] Make "Settings" Page
+    * [ ] Filler, non-functional settings like dark mode, change password
+    * [ ] Working logout button
+* [ ] Dashboard 
+    * [ ] Graph Container
 
+### Views - Dynamic HTML from DB
+* [ ] Dashboard
+    * [ ] Graph
+    * [ ] Current Streak
+* [ ] Course Archive page
+    * [ ] Render Archived Courses
+* [ ] Course Details page
+    * [ ] Name from DB
+    * [ ] Display list of course Sessions
+* [ ] Course Edit page
+    * [ ] Add course info from DB to form values
+    * [ ] Edit button saves updated info to DB
+    * [ ] Delete button Deletes course (pop-up confirmation first?)
+
+### Timer
+* [ ] Comment Stopwatch class
+* [ ] Comment Session class
+* [ ] Comment updateTimerElements.js
+
+
+
+## Done
+
+### HTML/CSS
 * [x] Clean up Header
 * [x] Clean up "courses home" page
 * [x] Clean up "Add Courses" page
@@ -83,14 +113,12 @@ A list of things left to accomplish.
 * [x] Add link to course list items
     * [x] redirect to that courses details/edit
 
-### Graph
-
 ### Stopwatch
 * [x] Add "Select Course" button functionality
-    * [ ] Make Course li's look nice 
-* [ ] Write time to db
-* [ ] Add state to track if there is currently a time
-    * [ ] Hide Reset Button when there is no time
+    * [x] Make Course li's look nice 
+* [x] Write time to db
+* [x] Add state to track if there is currently a time
+    * [x] Hide Reset Button when there is no time
 * [x] Timer "Coming Soon" note
 * [x] Rename CSS classes
 * [x] Save running status to local storage

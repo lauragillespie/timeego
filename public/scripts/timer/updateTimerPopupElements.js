@@ -1,3 +1,5 @@
+// TODO: Add Commenting to File
+
 // Grabs Timer Start, Pause and Reset Buttons
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
@@ -6,10 +8,30 @@ const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
 const navToggleBtn = document.querySelector('#timer-toggle-btn');
 const navToggleTimerIcon = document.querySelector('#toggle-btn-nav--timer');
 const navTogglePauseIcon = document.querySelector('#toggle-btn-nav--pause');
+// Currently Tracked Course in Timer Popup
+const currentlyTrackingCourse = document.querySelector(
+	'.currently-tracking-course'
+);
 
-// Checks state of Stopwatch and Session, sets HTML elements accordingly
-// Still need to add logic to display course in session
-function updateTimerPopupElements(currentlyTiming, activeSession) {
+// Checks state of Stopwatch, Session and selected course. Sets HTML elements accordingly
+function updateTimerPopupElements(
+	currentlyTiming,
+	activeSession,
+	selectedCourse
+) {
+	if (selectedCourse) {
+		currentlyTrackingCourse.innerText = selectedCourse.name;
+	} else {
+		currentlyTrackingCourse.innerText = 'None';
+		const selectedCourseList = document.querySelector(
+			'.course-list__list-item--active'
+		);
+		if (selectedCourseList) {
+			selectedCourseList.classList.remove(
+				'course-list__list-item--active'
+			);
+		}
+	}
 	if (currentlyTiming) {
 		setElementsActive();
 	} else {

@@ -6,12 +6,16 @@ export const timerViews = {
 		const courseList = document.querySelector('.course-list__list');
 		// Sorts courses by name using helper function
 		const sortedCourses = helpers.sortCoursesByName(arr);
-
+		// Makes empty string
+		let listItems = '';
+		// Loops through array of courses, makes a string with info for each course, then appends new string to listItems string
 		sortedCourses.forEach(item => {
-			const listItem = document.createElement('li');
-			listItem.innerText = item.name;
-			courseList.appendChild(listItem);
+			listItems += `<li class="course-list__list-item list-group-item list-group-item-action" id="${item.id}">
+				${item.name}
+			</li>`;
 		});
+		// After the forEach loop has finished, listItems contains html for each course. listItems is then added to html
+		courseList.innerHTML = listItems;
 	}
 };
 
@@ -170,7 +174,7 @@ const helpers = {
 		return filtered;
 	},
 	// Params: Courses Array
-	// Returns: Only Archived Courses Array (filters out currrent courses)
+	// Returns: Only Archived Courses Array (filters out current courses)
 	filterArchivedCourses : function(coursesArr) {
 		// Array of only current courses by filtering course array
 		const filtered = coursesArr.filter(course => {

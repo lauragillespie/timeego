@@ -11,7 +11,7 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <!-- Firebase CSS -->
-   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+   <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
    <!-- Material Icons CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!-- Our custom Timeego CSS Stylesheets -->
@@ -155,11 +155,11 @@
 
          <div class="popup__course-list">
             <button class="course-list__btn--show">
-               <span>Currently Tracking: None</span>
+               <span>Currently Tracking: <span class="currently-tracking-course">None</span></span>
                <span>Click to Select Course</span>
             </button>
             <h2 class="course-list__heading">Select a Course</h2>
-            <ul class="course-list__list">
+            <ul class="course-list__list list-group">
                <!-- Rendered List elements go here -->
             </ul>
             <div class="course-list__buttons">

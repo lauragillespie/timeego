@@ -42,7 +42,7 @@ import {
 } from '../views/views.js';
 
 export const global = {
-	readDB : function() {
+	readDB  : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
@@ -92,6 +92,30 @@ export const global = {
 				timerViews.renderCourseList(courses);
 			});
 		});
+	},
+	writeDB : {
+		createSession : function(session) {
+			firebase.auth().onAuthStateChanged(function(user) {
+				// DB Reference to logged in user's collection
+				const dbRef = db.collection('users').doc(user.uid);
+				// Params: Session object from Stopwatch Class
+				// Writes: New session to session collection of database
+				dbRef
+					.collection('sessions')
+					.add(
+						// uses session object param as value
+						{ session: session }
+					)
+					.then(docRef => {
+						console.log('Session write successful');
+					})
+					.catch(error => {
+						console.error('Error adding document: ', error);
+					});
+				// TODO: Need to write session to correct course collection
+				// TODO: Call Views to display "Write Successful Alert"
+			});
+		}
 	}
 };
 export const dashboard = {
@@ -157,12 +181,12 @@ export const courseDetails = {
 };
 
 export const courseAdd = {
-	// Params: Course object from course-add Controller
-	// Writes: New course to course collection of database
 	writeDB : function(course) {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
+			// Params: Course object from course-add Controller
+			// Writes: New course to course collection of database
 			dbRef.collection('courses').doc().set(
 				// uses Course object param as value
 				{ course: course },

@@ -1,3 +1,4 @@
+// Dashboard DB
 import { dashboard } from '../firebase/firebase.js';
 
 // Sets user's first name in dashboard heading

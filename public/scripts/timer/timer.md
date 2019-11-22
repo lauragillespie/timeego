@@ -7,23 +7,23 @@ on load
         -timer paused = nav to timer icon, buttons to play + reset
         -timer active = nav to pause icon, button to pause 
 
-local storage object
-```js
+example of local storage object for "timerState"
 
-    timerState : {
-        currentlyTiming: true,
-        activeSession: {
-            time: {
-                seconds: 00,
-                minutes: 00,
-                hours: 00,
-            },
-            courseName: "String",
-            sessionId: use db id
-        }
+```json
+{	
+    "currentlyTiming": true,
+	"selectedCourse": { "name": "Anthony", "id": "shWySDVywooCM3tgLU4U" },
+	"activeSession": {
+		"time": { 
+			"seconds": 3, 
+			"minutes": 0, 
+			"hours": 0 
+		}
     }
+}
 
 ```
+
 ## On page load...
 
 ### nav

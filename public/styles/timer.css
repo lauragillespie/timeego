@@ -194,10 +194,32 @@
 	overflow-x: hidden;
 }
 
-/* PUT LIST ITEM STYLES HERE */
-.course-list__list li {
-	color: purple;
-	font-size: 24px;
+/* Course List - List Items */
+.course-list__list-item {
+	font-size: 16px;
+	padding: 20px;
+	/* display: flex;
+	justify-content: space-between; */
+	position: relative;
+}
+
+.course-list__list-item:hover {
+	background-color: var(--color-background-card-hover);
+}
+
+.course-list__list-item--active {
+	background-color: var(--color-background-card-hover);
+}
+
+/* Block on selected session */
+.course-list__list-item--active::before {
+	content: '';
+	position: absolute;
+	background-color: var(--color-primary);
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	width: 6px;
 }
 
 /* Course List Buttons - Add New Course and Cancel */
