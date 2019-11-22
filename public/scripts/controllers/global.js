@@ -93,8 +93,11 @@ stopwatchPauseBtn.addEventListener('click', e => {
 // Resets stopwatch
 stopwatchResetBtn.addEventListener('click', e => {
 	stopwatchObject.reset();
+	document.querySelector(".done_saved").classList.add("done_saved_active");	
+	setTimeout(()=>{
+		document.querySelector(".done_saved").classList.remove("done_saved_active");
+	}, 3000);
 });
-
 // Timer Pop-up Course List Expand Btn/Close Btn
 openCourseListBtn.addEventListener('click', expandCourseList);
 closeCourseListBtn.addEventListener('click', shrinkCourseList);

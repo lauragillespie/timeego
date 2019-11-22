@@ -73,6 +73,7 @@
 	align-content: center;
 	transition: var(--transition-height);
 	line-height: 1;
+	position: relative;
 }
 
 /* Height grows when this section is expanded */
@@ -127,6 +128,18 @@
 	color: white;
 	font-size: 40px;
 }
+.done_saved {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin-bottom: 0;
+	transition: opacity 200ms linear;
+	opacity: 0;
+}
+
+.done_saved_active {
+	opacity: 1;
+}
 
 /***************************/
 /***  Popup Course List  ***/
@@ -145,7 +158,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	overflow: hidden;
-	transition: var(--transition-height);
+	transition: var(--transition-hover);
 }
 
 /* Height grows when this section is expanded */
