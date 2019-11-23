@@ -112,8 +112,22 @@ export const global = {
 					.catch(error => {
 						console.error('Error adding document: ', error);
 					});
-				// TODO: Need to write session to correct course collection
-				// TODO: Call Views to display "Write Successful Alert"
+				// Gets course id from session param
+				const courseId = session.course.id;
+				// If a courseId exists, ie if a course was selected...
+				if (courseId) {
+					// Params: Session object from Stopwatch Class
+					// Writes: New session to correct course collection
+					dbRef
+						.collection('courses')
+						.doc(courseId)
+						.collection('sessions')
+						.add({
+							time : session.time,
+							date : session.date
+						})
+						.catch(e => console.log(e));
+				}
 			});
 		}
 	}

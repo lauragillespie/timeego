@@ -46,7 +46,7 @@ A list of things left to accomplish.
     * [x] readDB - Get current user's data From DB
     * [x] readDB - Get users course data From DB
     * [x] writeDB - Saves Session from Timer to Sessions Collection in DB
-    * [ ] writeDB - Saves Session from Timer to Correct Course Collection in DB
+    * [x] writeDB - Saves Session from Timer to Correct Course Collection in DB
 * [ ] dashboard
     * [x] readDB - Get current user's data From DB
     * [ ] readDB - Get Session/Course Data Needed for Graph

@@ -6,6 +6,17 @@ import updateTimerPopupElements from './updateTimerPopupElements.js';
 
 // Grabs Text in Timer (00:00:00)
 const timerText = document.querySelector('.timer__text');
+/**************************************************************
+* Stopwatch Class
+* Holds State of the the apps stopwatch so it can be consistent
+* across all pages of the app.
+*
+* interval - used for timing
+* selectedCourse - currently selected course
+* currentlyTiming - is timer currently running?
+* activeSession - is time session in progress?
+* sessionToDB - holds session as it is written to the database
+**************************************************************/
 
 class Stopwatch {
 	constructor(timerState) {
