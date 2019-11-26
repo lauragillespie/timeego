@@ -14,6 +14,8 @@
    <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
    <!-- Material Icons CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- chart.js CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
    <!-- Our custom Timeego CSS Stylesheets -->
    <link rel="stylesheet" href="./styles/main.css">
    <link rel="stylesheet" href="./styles/timer.css">
@@ -61,15 +63,66 @@
             <div class="highlights">
                <h2>Recent Progress</h2>
             </div>
-            <div class="content">
+            <!-- <div class="content">
                <div>
                   <img class="graph" src="./images/graph_placeholder.png">
                </div>
+            </div> -->
+            <div class="course-details__card" style="padding: 30px 20px 10px 0">
+               <div id="chart"></div>
+               <!-- <canvas id="myChart" width="200" height="200"></canvas>
+               <script>
+                  var ctx = document.getElementById('myChart').getContext('2d');
+                  var myChart = new Chart(ctx, {
+                     type: 'bar',
+                     data: {
+                        labels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                        datasets: [{
+                           label: '',
+                           data: [11, 9, 3, 5, 2, 3, 10],
+                           backgroundColor: [
+                              'rgba(255, 99, 132, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 159, 64, 1)'
+                           ]
+                        }]
+                     },
+                     options: {
+                        gridLines: {
+                           display: false
+                        },
+                        scales: {
+                           yAxes: [{
+                              ticks: {
+                                 beginAtZero: true
+                              },
+                              gridLines: {
+                                 display: false
+                              },
+                           }],
+                           xAxes: [{
+                              ticks: {
+                                 beginAtZero: true
+                              },
+                              gridLines: {
+                                 display: false
+                              },
+                           }]
+                        }
+                     }
+                  });
+               </script> -->
+
             </div>
          </div>
 
       </div>
    </main>
+
 
    <!-- NAVIGATION BAR -->
    <!-- 
@@ -174,18 +227,67 @@
    <!-- Timer Pop-up HTML Ends -->
 
    <!-- SCRIPTS -->
+   <!-- ApexCharts Script -->
+   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+   <script>
+      var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'];
+
+      var options = {
+         chart: {
+            type: 'bar',
+            toolbar: {
+               show: false
+            }
+         },
+         colors: colors,
+         plotOptions: {
+            bar: {
+               columnWidth: '40%',
+               distributed: true,
+               // endingShape: 'rounded',
+               // borderRadius: 10
+            }
+         },
+         dataLabels: {
+            enabled: false,
+         },
+         series: [{
+            name: 'Minutes',
+            data: [30, 40, 70, 35, 50, 49, 90]
+         }],
+
+         xaxis: {
+            categories: ["S", "M", "T", "W", "T", "F", "S"],
+            labels: {
+               style: {
+                  fontSize: '14px'
+               }
+            }
+         },
+         yaxis: {
+            title: {
+               text: 'Miuntes Studied',
+            },
+
+         },
+
+      }
+
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+      chart.render();</script>
    <!-- jQuery Scirpt - Needed for Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-   </script>
+      </script>
    <!-- popper.js Scirpt - Needed for Bootstrap -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-   </script>
+      </script>
    <!-- Bootstrap Script -->
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-   </script>
+      </script>
    <!-- Firebase Script -->
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
    <!-- Firebase Auth Script -->
