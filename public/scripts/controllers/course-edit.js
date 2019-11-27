@@ -10,6 +10,7 @@ const courseColor = document.getElementById('courseColor');
 const deleteButton = document.getElementById('delete');
 
 const alert = document.getElementById('alertbox'); 
+const saved = document.querySelector('.edit_success');
 const alertBackground = document.querySelector('.timer__background'); 
 const alertSuccess = document.querySelector('.delete_success');
 const noButton = document.getElementById('no_button');
@@ -24,15 +25,18 @@ const courseID = url.searchParams.get("courseid");
 
 // for a <form> with an id = 'courseForm'
 courseEditForm.addEventListener('submit', (e) => {
-	e.preventDefault();
-	// Makes course object from form object
-	// const course = {
-	// 	name     : courseName.value,
-	// 	color    : courseColor.value,
-	// 	date     : new Date(),
-	// 	archived : false
-	// };
-	courseEdit.editCourse(courseID);
+    
+    e.preventDefault();
+
+    courseEdit.editCourse(courseID);
+
+    saved.classList.add('edit_success_active');
+
+    setTimeout( function() {
+        saved.classList.remove('edit_success_active')
+        // window.location.href = './course-home.html';
+    },1000);
+
 
 	// window.location.href = './course-home.html';
 });
