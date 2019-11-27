@@ -10,8 +10,6 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <!-- Firebase CSS -->
-   <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
    <!-- Material Icons CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!-- Our custom Timeego CSS Stylesheets -->
@@ -40,18 +38,20 @@
          <h1 class="page-heading">Add New Course</h1>
 
          <!-- Form for Adding Courses-->
-         <form class="course__form" id="courseForm">
-
+         <form class="course__form" id="courseAddForm">
+            <!-- Course Name -->
             <div class="form-group">
                <label for="courseName">Course Name:</label>
                <input type="text" id="courseName" class="form-control form-control-lg" name="courseName"
-                  placeholder="Enter Course Name" value="" required />
+                  placeholder="Enter Course Name" value="" />
             </div>
+            <!-- Course Color -->
             <div class="form-group">
                <label for="courseColor">Select Color:</label>
                <input type="color" id="courseColor" class="course-color-selector form-control form-control-lg"
                   name="courseColor" value="#ff6a56" />
             </div>
+            <!-- Form Buttons -->
             <div class="form__buttons-container">
                <button class="form__button form__button--submit" type="submit" id="submit">Submit</button>
                <a class="form__button form__button--cancel" href="./course-home.html">Cancel</a>
@@ -61,15 +61,6 @@
    </main>
 
    <!-- NAVIGATION BAR -->
-   <!-- 
-   Note: the following nav classes now come from Bootstrap -Anthony
-      -container
-      -nav
-      -nav-justified
-      -nav-item
-      -nav-link
-   https://getbootstrap.com/docs/4.3/components/navs/
--->
    <footer class="footer">
       <nav class="container nav__container">
          <ul class="nav nav-justified">
