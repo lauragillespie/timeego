@@ -238,11 +238,12 @@ a.form__button:hover {
 	width: 70vh;
 	height: 50vh;
 	position: absolute;
+	display:none;
 	z-index: 10;
 }
 
 .alertbox_active {
-
+	display: block;
 }
 
 /*** Loading Spinner ***/
