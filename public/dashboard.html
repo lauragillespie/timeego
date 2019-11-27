@@ -10,8 +10,6 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <!-- Firebase CSS -->
-   <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
    <!-- Material Icons CSS -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!-- Our custom Timeego CSS Stylesheets -->
@@ -175,53 +173,6 @@
    <!-- SCRIPTS -->
    <!-- ApexCharts Script -->
    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-   <script>
-      var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'];
-
-      var options = {
-         chart: {
-            type: 'bar',
-            toolbar: {
-               show: false
-            }
-         },
-         colors: colors,
-         plotOptions: {
-            bar: {
-               columnWidth: '40%',
-               distributed: true,
-               // endingShape: 'rounded',
-               // borderRadius: 10
-            }
-         },
-         dataLabels: {
-            enabled: false,
-         },
-         series: [{
-            name: 'Minutes',
-            data: [30, 40, 70, 35, 50, 49, 90]
-         }],
-
-         xaxis: {
-            categories: ["S", "M", "T", "W", "T", "F", "S"],
-            labels: {
-               style: {
-                  fontSize: '14px'
-               }
-            }
-         },
-         yaxis: {
-            title: {
-               text: 'Miuntes Studied',
-            },
-
-         },
-
-      }
-
-      var chart = new ApexCharts(document.querySelector("#chart"), options);
-
-      chart.render();</script>
    <!-- jQuery Scirpt - Needed for Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

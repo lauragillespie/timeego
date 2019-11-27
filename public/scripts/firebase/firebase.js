@@ -146,9 +146,10 @@ export const dashboard = {
 				// Imported From Views, passes in current user data
 				dashboardViews.renderHeading(currentUser);
 			});
-			// TODO: Get Session/Course Data Needed for Graph
 			// TODO: Get Current Streak Data
 		});
+		// TODO: Get Session/Course Data Needed for Graph, pass in to views
+		dashboardViews.renderGraph();
 	}
 };
 
