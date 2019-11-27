@@ -45,7 +45,7 @@ var colorPicker = (function() {
 		darkModifier       : 0,
 		transitionDuration : 200,
 		transitionDelay    : 25,
-		variationTotal     : 10
+		variationTotal     : 6
 	};
 
 	var state = {
