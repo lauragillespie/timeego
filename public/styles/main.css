@@ -50,12 +50,7 @@
 	--color-background-card-hover: #fbfbfb;
 
 	/*** Colors - Gradient ***/
-	--color-blue-gradient: linear-gradient(
-			353.28deg,
-			#1ea2db 7.78%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		#3127ca;
+	--color-blue-gradient: linear-gradient(353.28deg, #1ea2db 7.78%, rgba(255, 255, 255, 0) 100%), #3127ca;
 
 	/*** Fonts ***/
 	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
@@ -68,8 +63,7 @@
 	--border-radius: 10px;
 
 	/*** Transition Effect ***/
-	--transition-hover: color 150ms ease-in-out,
-		background-color 150ms ease-in-out, background 150ms ease-in-out;
+	--transition-hover: color 150ms ease-in-out, background-color 150ms ease-in-out, background 150ms ease-in-out;
 	--transition-height: height 200ms linear;
 	--transition-scale: transform 200ms linear, margin 200ms linear;
 }
@@ -186,8 +180,7 @@ img {
 /* Sets Focus Color */
 .form-control:focus {
 	border-color: rgba(49, 39, 202, 0.5);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-		0 0 8px rgba(49, 39, 202, 0.3);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(49, 39, 202, 0.3);
 }
 
 .course-color-selector {
@@ -428,8 +421,7 @@ a.header__settings {
 
 @keyframes pulse {
 	to {
-		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3),
-			0 0 0 15px rgba(232, 76, 61, 0);
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(232, 76, 61, 0);
 	}
 }
 
@@ -656,4 +648,62 @@ hr {
 	box-shadow: var(--shadow-card);
 	background-color: var(--color-background-card);
 	overflow: hidden;
+}
+
+/*****************************************/
+/***      7.4 Color selector	       ***/
+/*****************************************/
+
+.color_div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	/* height: 100vh; */
+	transition: all 1s;
+	font-family: sans-serif;
+}
+
+.color-picker {
+	width: 100%;
+	background-color: white;
+	padding: 40px 0;
+}
+
+.base-colors,
+.varied-colors {
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.color,
+.color-var {
+	float: left;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.color {
+	transition: all .2s;
+	width: 40px;
+	height: 40px;
+	margin: 10px;
+}
+.color.active {
+	transform: scale(1.3, 1.3);
+}
+.color-var {
+	transform: scale(0, 0);
+	width: 40px;
+	height: 40px;
+	margin: 8px;
+}
+.color-var.visible {
+	transform: scale(1, 1);
+}
+.color-var.active {
+	transform: scale(1.3, 1.3);
 }
