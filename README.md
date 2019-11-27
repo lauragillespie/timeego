@@ -2,6 +2,8 @@
 
 Comp 1930 Project that tracks a student's study time.
 
+## Hosted on https://timeego-d54c4.firebaseapp.com
+
 ## JavaScript Model
 
 How the JavaScript is organized.
