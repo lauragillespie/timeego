@@ -1,6 +1,6 @@
 // Imports
 import { global } from '../models/firebase.js';
-import Session from './Session.js';
+import Session from './session.js';
 import updateTimerPopupElements from './updateTimerPopupElements.js';
 
 // Grabs Text in Timer (00:00:00)

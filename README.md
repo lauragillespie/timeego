@@ -2,9 +2,9 @@
 
 Comp 1930 Project that tracks a student's study time.
 
-## hosted on firebase
+## Hosted on firebase
 
-hosted on https://timeego-d54c4.firebaseapp.com
+Hosted on https://timeego-d54c4.firebaseapp.com
 
 ## JavaScript File Organization
 
