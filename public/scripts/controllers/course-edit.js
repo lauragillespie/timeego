@@ -3,7 +3,7 @@ import { courseEdit } from '../models/firebase.js';
 const deleteButton = document.getElementById('delete');
 
 const alert = document.getElementById('alertbox'); 
-const timerBackground = document.querySelector('.timer__background'); 
+const alertBackground = document.querySelector('.timer__background'); 
 const noButton = document.getElementById('no_button');
 const yesButton = document.getElementById('yes_button');
 
