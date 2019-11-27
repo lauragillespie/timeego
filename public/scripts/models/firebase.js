@@ -217,17 +217,42 @@ export const courseEdit = {
 	// TODO: Parse ID from URL, then...
 	// TODO: Fill the edit form with current data
 	// TODO: Put Course ID in <a> tags in nav tabs
+
+		editCourse:  function(courseID) {
+			
+			firebase.auth().onAuthStateChanged(function(user) {
+				// DB Reference to logged in user's collection
+					const dbRef = db.collection('users').doc(user.uid);
+					
+					// Reference to a specific course given the id
+					dbRef.collection('courses').doc(courseID).update(
+						
+						// Accesses the course object with parameters to update
+						 {course: 
+							{ name: courseName.value,
+						  	color: courseColor.value,
+						  	date: new Date(),
+							}
+						}
+					
+					);
+				});	
+
+				
+			console.log("new name: " + courseName.value);
+			console.log("new color: " + courseColor.value);
+			
+		},
+
 	// TODO: Add Delete Functions
 
-		deleteCourse: function(courseID) {
+		deleteCourse: {function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {
-
-
 
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 
-			// Reference to course collection of database
+			// Reference to a specific course given the id
 			dbRef.collection('courses').doc(courseID).delete().then(function() {
 
 				// success
@@ -240,6 +265,7 @@ export const courseEdit = {
 	
 
 		});
+	}
 	}
 
 };
