@@ -4,6 +4,7 @@ const deleteButton = document.getElementById('delete');
 
 const alert = document.getElementById('alertbox'); 
 const alertBackground = document.querySelector('.timer__background'); 
+const alertSuccess = document.querySelector('.delete_success');
 const noButton = document.getElementById('no_button');
 const yesButton = document.getElementById('yes_button');
 
@@ -30,8 +31,15 @@ deleteButton.addEventListener( 'click', (e) => {
     yesButton.addEventListener('click', e=>{
         e.preventDefault();
         courseEdit.deleteCourse(courseID);
-        alertbox.classList.remove('alertbox_active');
-        window.location.href = './course-home.html';
+        alertSuccess.classList.add('delete_success_active');
+        
+        // redirect on delay
+        setTimeout( function() {
+            alertbox.classList.remove('alertbox_active')
+            alertBackground.classList.remove('timer__background--active');
+            window.location.href = './course-home.html';
+        },800);
+       
     })
 
 });

@@ -248,6 +248,22 @@ a.form__button:hover {
 	display: block;
 }
 
+.delete_success{
+	display: inline-block;
+	margin-top: 50px;
+	border-radius: var(--border-radius);
+	opacity: 0;
+	position: absolute;
+	bottom: 20%;
+	left:0;
+	width: 100%;
+	margin-bottom: 0;
+	transition: opacity 200ms linear;
+}
+
+.delete_success_active{
+	opacity: 1;
+}
 /*** Loading Spinner ***/
 .bootstrap__spinner {
 	color: var(--color-primary);
