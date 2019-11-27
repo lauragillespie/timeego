@@ -21,6 +21,20 @@ const url = new URL(urlString);
 const courseID = url.searchParams.get("courseid");
 
 
+const idString = "courseid="+courseID;
+const detailsLink = document.getElementById('details_link');
+const editLink = document.getElementById('edit_link');
+
+detailsLink.addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = "./course-details.html?"+idString;
+})
+
+editLink.addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = "./course-edit.html?"+idString;
+})
+
 // EDITS COURSES
 
 // for a <form> with an id = 'courseForm'
