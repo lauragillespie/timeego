@@ -230,6 +230,21 @@ a.form__button:hover {
 	background-color: var(--color-danger-hover);
 }
 
+.alertbox {
+	background: var(--color-background-card);
+	border-radius: var(--border-radius);
+	padding: 30px;
+	top: 0;
+	width: 70vh;
+	height: 50vh;
+	position: absolute;
+	z-index: 10;
+}
+
+.alertbox_active {
+
+}
+
 /*** Loading Spinner ***/
 .bootstrap__spinner {
 	color: var(--color-primary);
