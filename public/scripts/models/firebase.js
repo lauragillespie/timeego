@@ -218,6 +218,30 @@ export const courseEdit = {
 	// TODO: Fill the edit form with current data
 	// TODO: Put Course ID in <a> tags in nav tabs
 	// TODO: Add Delete Functions
+
+		deleteCourse: function(courseID) {
+		firebase.auth().onAuthStateChanged(function(user) {
+
+
+
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Reference to course collection of database
+			dbRef.collection('courses').doc(courseID).delete().then(function() {
+
+				// success
+				console.log("Document successfully deleted!");
+			}).catch(function(error) {
+
+				// error
+				console.error("Error removing document: ", error);
+			});
+	
+
+		});
+	}
+
 };
 
 /*** Firestore Database ENDS ***/
