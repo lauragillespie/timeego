@@ -246,7 +246,7 @@ export const courseEdit = {
 
 	// TODO: Add Delete Functions
 
-		deleteCourse: {function(courseID) {
+		deleteCourse: function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {
 
 			// DB Reference to logged in user's collection
@@ -266,7 +266,7 @@ export const courseEdit = {
 
 		});
 	}
-	}
+	
 
 };
 

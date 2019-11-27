@@ -235,10 +235,10 @@ a.form__button:hover {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	padding: 30px;
-	top: 20%;
-	left: 25%;
-	width: 70vh;
-	height: 50vh;
+	top: 100px;
+	left: 15%;
+	width: 70%;
+	height: 400px;
 	text-align:center;
 	position: absolute;
 	display:none;
@@ -255,7 +255,7 @@ a.form__button:hover {
 	border-radius: var(--border-radius);
 	opacity: 0;
 	position: absolute;
-	bottom: 20%;
+	bottom: 0;
 	left:0;
 	width: 100%;
 	margin-bottom: 0;
