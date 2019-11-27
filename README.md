@@ -12,9 +12,9 @@ Each HTML file only imports controllers. Each page has it's own file. There is a
 
 Controllers are the logic of the app. They are where we set up event-listeners (page specific or global), get data from forms, and make calls to our database files.
 
-### Firebase (Models) - Database
+### Models - Database
 
-There is one firebase file. If this file gets too cluttered, we can split it into page specific files.
+There is one file (firebase.js). If this file gets too cluttered, we can split it into page specific files.
 
 There is an object for each page. There is also an object for global features (timer, header).
 
@@ -35,6 +35,10 @@ The helper functions are functions that are used multiple times in the views fil
 ### Timer
 
 Ignore this mess for now :P
+
+### Config
+
+Holds Settings (firebase, graph).
 
 ## Need Todo
 
@@ -74,11 +78,14 @@ A list of things left to accomplish.
     * [ ] Filler, non-functional settings like dark mode, change password
     * [ ] Working logout button
 * [ ] Dashboard 
-    * [ ] Graph Container
+    * [x] Graph Container
+    * [ ] Clean up upper dashboard cards
 
 ### Views - Dynamic HTML from DB
 * [ ] Dashboard
     * [ ] Graph
+        * [x] Days of week render dynamically
+        * [ ] Render time studied (in mins)
     * [ ] Current Streak
 * [ ] Course Archive page
     * [ ] Render Archived Courses

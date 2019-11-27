@@ -1,4 +1,4 @@
-import { courseAdd } from '../firebase/firebase.js';
+import { courseAdd } from '../models/firebase.js';
 
 // Course Add Form
 const courseAddForm = document.getElementById('courseAddForm');

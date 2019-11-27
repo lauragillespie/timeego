@@ -1,6 +1,6 @@
 // TODO: Add Commenting to File
 
-import { global } from '../firebase/firebase.js';
+import { global } from '../models/firebase.js';
 import Session from './Session.js';
 import updateTimerPopupElements from './updateTimerPopupElements.js';
 

@@ -1,7 +1,7 @@
 // Stopwatch Class
 import Stopwatch from '../timer/Stopwatch.js';
 // Global DB
-import { global } from '../firebase/firebase.js';
+import { global } from '../models/firebase.js';
 
 /*******************************************************
  *    Initialize Stopwatch Object from Local storage   *
@@ -94,10 +94,12 @@ stopwatchPauseBtn.addEventListener('click', e => {
 stopwatchResetBtn.addEventListener('click', e => {
 	stopwatchObject.reset();
 	// Saved Pop-up message when done is clicked
-	document.querySelector(".done_saved").classList.add("done_saved_active");	
+	document.querySelector('.done_saved').classList.add('done_saved_active');
 	// Hides the saved pop-up after 3 seconds
-	setTimeout(()=>{
-		document.querySelector(".done_saved").classList.remove("done_saved_active");
+	setTimeout(() => {
+		document
+			.querySelector('.done_saved')
+			.classList.remove('done_saved_active');
 	}, 3000);
 });
 // Timer Pop-up Course List Expand Btn/Close Btn

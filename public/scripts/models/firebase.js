@@ -1,7 +1,7 @@
 // Importing firebase config object
-import { firebaseConfig } from './firebaseConfig.js';
+import { firebaseConfig, uiConfig } from '../config/firebaseConfig.js';
 // Importing firebase auth config
-import { uiConfig } from './firebaseAuth.js';
+// import { uiConfig } from './firebaseAuth.js';
 
 // Initialize Firebase App
 firebase.initializeApp(firebaseConfig);
