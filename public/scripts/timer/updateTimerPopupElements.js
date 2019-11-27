@@ -1,24 +1,45 @@
-// TODO: Add Commenting to File
+/**************************************************************
+* Helper File
+* Used to update HTML elements related to Stopwatch. This includes:
+* - Nav Stopwatch Button 
+* - Stopwatch Play, pause and reset buttons
+* - The currently selected course
+*
+**************************************************************/
 
 // Grabs Timer Start, Pause and Reset Buttons
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
 const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
+
 // Grabs Nav Toggle Btn, Icons in Btn
 const navToggleBtn = document.querySelector('#timer-toggle-btn');
 const navToggleTimerIcon = document.querySelector('#toggle-btn-nav--timer');
 const navTogglePauseIcon = document.querySelector('#toggle-btn-nav--pause');
+
 // Currently Tracked Course in Timer Popup
 const currentlyTrackingCourse = document.querySelector(
 	'.currently-tracking-course'
 );
 
+/**************************************************************
+* Gets state from Stopwatch. Sets HTML elements accordingly
+*
+* Params:
+*  - currentlyTiming - is timer currently running?
+*  - activeSession - is time session in progress?
+*  - selectedCourse - currently selected course
+*
+**************************************************************/
 // Checks state of Stopwatch, Session and selected course. Sets HTML elements accordingly
 function updateTimerPopupElements(
 	currentlyTiming,
 	activeSession,
 	selectedCourse
 ) {
+	// Currently Selected Course
+	// If there is a currently selected course - sets name of course "Currently Tracking: ..." button
+	// No currently selected course - Sets btn text to "None", removes Active class from previously selected course
 	if (selectedCourse) {
 		currentlyTrackingCourse.innerText = selectedCourse.name;
 	} else {
@@ -32,9 +53,12 @@ function updateTimerPopupElements(
 			);
 		}
 	}
+
 	if (currentlyTiming) {
+		// If currently time, sets HTML elements to be active
 		setElementsActive();
 	} else {
+		/// If not currently time, sets HTML elements to be inactive
 		setElementsInactive(activeSession);
 	}
 }

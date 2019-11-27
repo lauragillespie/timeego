@@ -93,8 +93,7 @@ const graphOptions = {
 	states      : {
 		hover : {
 			filter : {
-				type  : 'none',
-				value : 0.15
+				type : 'none'
 			}
 		}
 	}

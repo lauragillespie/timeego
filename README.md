@@ -2,7 +2,7 @@
 
 Comp 1930 Project that tracks a student's study time.
 
-## JavaScript Model
+## JavaScript File Organization
 
 How the JavaScript is organized.
 
@@ -10,7 +10,7 @@ How the JavaScript is organized.
 
 Each HTML file only imports controllers. Each page has it's own file. There is also a global.js controller that contains logic used across all pages (header, timer pop-up).
 
-Controllers are the logic of the app. They are where we set up event-listeners (page specific or global), get data from forms, and make calls to our database files.
+Controllers are the logic of the app. They are where we set up event-listeners (page specific or global), get data from forms, and make calls to our database files (models).
 
 ### Models - Database
 
@@ -44,7 +44,18 @@ Holds Settings (firebase, graph).
 
 A list of things left to accomplish.
 
-### Database
+### Controllers
+* [ ] courseDetails
+    * [ ] parse Course id from url
+        * [ ] Pass into models to get course data
+        * [ ] Use to update nav tabs with course url
+* [ ] courseEdit
+    * [ ] parse Course id from url
+        * [ ] Pass into models to get course data, populate form
+        * [ ] Use to update nav tabs with course url
+
+
+### Models - Database
 * [x] global
     * [x] readDB - Add new user to user DB
     * [x] readDB - Get current user's data From DB
@@ -60,13 +71,11 @@ A list of things left to accomplish.
 * [ ] courseArchived
     * [ ] readDB - Get users course data From DB
 * [ ] courseDetails
-    * [ ] parse Course id from url
     * [ ] readDB - Get parsed course details from DB
     * [ ] readDB - Get parsed course Sessions from DB
 * [x] courseAdd
     * [x] writeDB - Set new course to course collection of db
 * [ ] courseEdit
-    * [ ] parse Course id from url
     * [ ] readDB - Get parsed course details from DB
     * [ ] deleteDB - delete course when button is pressed
 
@@ -98,10 +107,7 @@ A list of things left to accomplish.
     * [ ] Delete button Deletes course (pop-up confirmation first?)
 
 ### Timer
-* [ ] Comment Stopwatch class
-* [ ] Comment Session class
-* [ ] Comment updateTimerElements.js
-
+* [ ] Figure out stopwatch buttons/icons
 
 
 ## Done
@@ -135,6 +141,9 @@ A list of things left to accomplish.
     * [x] Start timer automatically if running
     * [x] load time from local storage
 * [x] Store time in local storage
+* [x] Comment Stopwatch class
+* [x] Comment Session class
+* [x] Comment updateTimerElements.js
 
 
 
