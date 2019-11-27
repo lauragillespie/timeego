@@ -1,3 +1,5 @@
+import graphOptions from '../config/graphConfig.js';
+
 // Renders HTML Elements for Timer Pop-up
 export const timerViews = {
 	// Params: Array of Courses
@@ -42,6 +44,27 @@ export const dashboardViews = {
 		const firstName = helpers.getFirstName(currentUser);
 		// Sets Users Name in Header
 		document.getElementById('page-heading__username').innerText = firstName;
+	},
+	// Params: ......
+	// Renders: Graph on Dashboard
+	renderGraph   : function() {
+		// Place holder data. This should set the time spend studying for last 7 days getting the data from the db
+		graphOptions.series[0].data = [
+			10,
+			20,
+			30,
+			60,
+			50,
+			90,
+			60
+		];
+
+		var chart = new ApexCharts(
+			document.querySelector('#chart'),
+			graphOptions
+		);
+
+		chart.render();
 	}
 };
 

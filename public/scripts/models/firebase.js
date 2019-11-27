@@ -1,7 +1,7 @@
 // Importing firebase config object
-import { firebaseConfig } from './firebaseConfig.js';
+import { firebaseConfig, uiConfig } from '../config/firebaseConfig.js';
 // Importing firebase auth config
-import { uiConfig } from './firebaseAuth.js';
+// import { uiConfig } from './firebaseAuth.js';
 
 // Initialize Firebase App
 firebase.initializeApp(firebaseConfig);
@@ -112,8 +112,22 @@ export const global = {
 					.catch(error => {
 						console.error('Error adding document: ', error);
 					});
-				// TODO: Need to write session to correct course collection
-				// TODO: Call Views to display "Write Successful Alert"
+				// Gets course id from session param
+				const courseId = session.course.id;
+				// If a courseId exists, ie if a course was selected...
+				if (courseId) {
+					// Params: Session object from Stopwatch Class
+					// Writes: New session to correct course collection
+					dbRef
+						.collection('courses')
+						.doc(courseId)
+						.collection('sessions')
+						.add({
+							time : session.time,
+							date : session.date
+						})
+						.catch(e => console.log(e));
+				}
 			});
 		}
 	}
@@ -132,9 +146,10 @@ export const dashboard = {
 				// Imported From Views, passes in current user data
 				dashboardViews.renderHeading(currentUser);
 			});
-			// TODO: Get Session/Course Data Needed for Graph
 			// TODO: Get Current Streak Data
 		});
+		// TODO: Get Session/Course Data Needed for Graph, pass in to views
+		dashboardViews.renderGraph();
 	}
 };
 

@@ -158,7 +158,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	overflow: hidden;
-	transition: var(--transition-hover);
+	transition: var(--transition-height);
 }
 
 /* Height grows when this section is expanded */

@@ -1,7 +1,7 @@
 // Dashboard DB
-import { dashboard } from '../firebase/firebase.js';
+import { dashboard } from '../models/firebase.js';
 
-// Sets user's first name in dashboard heading
+// Sets user's first name in dashboard heading, renders dashboard graph
 dashboard.readDB();
 
 // TODO: Future - Get Sessions/Course info for graph

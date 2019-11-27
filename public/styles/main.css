@@ -16,7 +16,8 @@
 	7. Pages - These are styles for sections of one specific page
 		7.1 Login Page
 		7.2 Dashboard Page
-		7.3 Courses Page
+		7.3 Course Home/Archived Pages
+		7.4 Course Details Pages
 		
 ***/
 
@@ -32,8 +33,7 @@
 /***************************/
 
 :root {
-	/*** Colors ***/
-
+	/*** Colors - Regular ***/
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
@@ -42,19 +42,20 @@
 	--color-background-main: #f4f4f4;
 	--color-background-card: #ffffff;
 
+	/*** Colors - Hover ***/
 	--color-primary-hover: #180eb1;
 	--color-secondary-hover: #3c3c3c;
 	--color-success-hover: #54be43;
 	--color-danger-hover: #e6513d;
 	--color-background-card-hover: #fbfbfb;
 
+	/*** Colors - Gradient ***/
 	--color-blue-gradient: linear-gradient(
 			353.28deg,
 			#1ea2db 7.78%,
 			rgba(255, 255, 255, 0) 100%
 		),
 		#3127ca;
-	/* --color-primary-gradient: #1ea2db; */
 
 	/*** Fonts ***/
 	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
@@ -63,7 +64,7 @@
 	/*** Shadows ***/
 	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);
 
-	/*** Border ***/
+	/*** Borders ***/
 	--border-radius: 10px;
 
 	/*** Transition Effect ***/
@@ -139,10 +140,104 @@ img {
 /***    5. Components    ***/
 /***************************/
 
-/* .hidden {
-	display: none;
-} */
+/*** Nav Tabs ***/
+/*** on Course Home/Archived pages + Course Details/Edit pages ***/
 
+/* Course Nav TABS */
+.course__nav,
+.details__nav {
+	margin-top: -35px;
+}
+/* Media Queries To Make Nav Tabs move under heading when screen gets smaller */
+@media only screen and (max-width: 400px) {
+	.details__nav {
+		margin-top: 0;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.course__nav {
+		margin-top: 0;
+	}
+}
+
+.course__nav-link {
+	transition: var(--transition-hover);
+}
+.course__nav-link:hover {
+	color: var(--color-primary-hover);
+}
+.course__nav .course__nav-link.course__nav-link--active {
+	background: var(--color-background-main);
+	border-bottom: var(--color-background-main) 1px solid;
+	color: var(--color-primary);
+}
+
+/*** Form ***/
+.course__form {
+	width: 100%;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-card);
+	background-color: var(--color-background-card);
+	padding: 30px;
+	margin: 30px 0;
+	font-size: 18px;
+}
+
+/* Sets Focus Color */
+.form-control:focus {
+	border-color: rgba(49, 39, 202, 0.5);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+		0 0 8px rgba(49, 39, 202, 0.3);
+}
+
+.course-color-selector {
+	padding: 0;
+}
+
+/* Form Buttons */
+.form__buttons-container {
+	margin: 40px 0 10px;
+}
+.form__button {
+	font-size: 12pt;
+	border-radius: var(--border-radius);
+	border: none;
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	padding: 12px;
+	box-shadow: var(--shadow-card);
+	transition: var(--transition-hover);
+}
+a.form__button:hover {
+	text-decoration: none;
+	color: var(--color-background-card);
+}
+
+.form__button--submit {
+	background-color: var(--color-primary);
+	color: var(--color-background-card);
+}
+.form__button--submit:hover {
+	background-color: var(--color-primary-hover);
+}
+.form__button--cancel {
+	background-color: var(--color-secondary);
+	color: var(--color-background-card);
+}
+.form__button--cancel:hover {
+	background-color: var(--color-secondary-hover);
+}
+.form__button--delete {
+	background-color: var(--color-danger);
+	color: var(--color-background-card);
+}
+.form__button--delete:hover {
+	background-color: var(--color-danger-hover);
+}
+
+/*** Loading Spinner ***/
 .bootstrap__spinner {
 	color: var(--color-primary);
 	margin: auto;
@@ -343,7 +438,7 @@ a.header__settings {
 /***************************/
 
 /***************************/
-/*** 	   7. Pages      ***/
+/***     7. Pages        ***/
 /***************************/
 
 /***************************/
@@ -442,50 +537,20 @@ a.header__settings {
 	margin-top: 5%;
 }
 
-/* * GRAPH BOX **/
-.graphs {
-	flex: 1 2 300px;
-	text-align: center;
-}
-
-.graph {
+/*** Dashboard Graph ***/
+.graph__card {
+	margin-top: 15px;
 	width: 100%;
+	border-radius: var(--border-radius);
+	padding: 30px;
+	box-shadow: var(--shadow-card);
+	background-color: var(--color-background-card);
+	overflow: hidden;
 }
 
-/***************************/
-/***  7.3 Courses Page   ***/
-/***************************/
-
-/***  7.3.1 Courses Home/Archived Pages   ***/
-
-/* Course Nav TABS  - Also Used on Course Details/Edit Pages */
-.course__nav,
-.details__nav {
-	margin-top: -35px;
-}
-/* Media Queries To Make Nav Tabs move under heading when screen gets smaller */
-@media only screen and (max-width: 400px) {
-	.details__nav {
-		margin-top: 0;
-	}
-}
-@media only screen and (max-width: 320px) {
-	.course__nav {
-		margin-top: 0;
-	}
-}
-
-.course__nav-link {
-	transition: var(--transition-hover);
-}
-.course__nav-link:hover {
-	color: var(--color-primary-hover);
-}
-.course__nav .course__nav-link.course__nav-link--active {
-	background: var(--color-background-main);
-	border-bottom: var(--color-background-main) 1px solid;
-	color: var(--color-primary);
-}
+/*****************************************/
+/***  7.3 Course Home/Archived Pages   ***/
+/*****************************************/
 
 /* Course List Parent Element */
 .course__list {
@@ -497,7 +562,6 @@ a.header__settings {
 }
 
 /* Individual Course Cards */
-
 .courseContainer {
 	display: flex;
 	margin-top: 15px;
@@ -543,7 +607,6 @@ a.header__settings {
 	padding: 10px 20px;
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
 	justify-content: space-between;
 }
 
@@ -581,72 +644,9 @@ hr {
 
 /*** End Course Home Page ***/
 
-/***  7.3.2 Courses Add/Edit Pages   ***/
-.course__form {
-	width: 100%;
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow-card);
-	background-color: var(--color-background-card);
-	padding: 30px;
-	margin: 30px 0;
-	font-size: 18px;
-}
-
-/* Sets Focus Color */
-.form-control:focus {
-	border-color: rgba(49, 39, 202, 0.5);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-		0 0 8px rgba(49, 39, 202, 0.3);
-}
-
-#courseColor {
-	padding: 0;
-}
-
-/* Form Buttons */
-.form__buttons-container {
-	margin: 40px 0 10px;
-}
-.form__button {
-	font-size: 12pt;
-	border-radius: var(--border-radius);
-	border: none;
-	display: block;
-	width: 100%;
-	text-align: center;
-	margin-top: 10px;
-	padding: 12px;
-	box-shadow: var(--shadow-card);
-	transition: var(--transition-hover);
-}
-a.form__button:hover {
-	text-decoration: none;
-	color: var(--color-background-card);
-}
-
-.form__button--submit {
-	background-color: var(--color-primary);
-	color: var(--color-background-card);
-}
-.form__button--submit:hover {
-	background-color: var(--color-primary-hover);
-}
-.form__button--cancel {
-	background-color: var(--color-secondary);
-	color: var(--color-background-card);
-}
-.form__button--cancel:hover {
-	background-color: var(--color-secondary-hover);
-}
-.form__button--delete {
-	background-color: var(--color-danger);
-	color: var(--color-background-card);
-}
-.form__button--delete:hover {
-	background-color: var(--color-danger-hover);
-}
-
-/***  7.3.3 Courses Details Page   ***/
+/*****************************************/
+/***      7.4 Course Details Pages     ***/
+/*****************************************/
 
 .course-details__card {
 	margin-top: 15px;
