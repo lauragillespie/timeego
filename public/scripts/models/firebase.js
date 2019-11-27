@@ -223,15 +223,23 @@ export const courseEdit = {
 			firebase.auth().onAuthStateChanged(function(user) {
 				// DB Reference to logged in user's collection
 					const dbRef = db.collection('users').doc(user.uid);
-					
+					var archived = archiveCourse.value;
+
+					if (archiveCourse.value==""){
+						archived = false;
+					} else {
+						archived = true;
+					}
+
 					// Reference to a specific course given the id
 					dbRef.collection('courses').doc(courseID).update(
 						
 						// Accesses the course object with parameters to update
 						 {course: 
 							{ name: courseName.value,
-						  	color: courseColor.value,
-						  	date: new Date(),
+						  	  color: courseColor.value,
+							  date: new Date(),
+							  archived: archived
 							}
 						}
 					
