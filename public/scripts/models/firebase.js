@@ -117,14 +117,17 @@ export const global = {
 				// If a courseId exists, ie if a course was selected...
 				if (courseId) {
 					// Params: Session object from Stopwatch Class
-					// Writes: New session to correct course collection
+					// Writes: New session to session array of correct course collection
 					dbRef
 						.collection('courses')
 						.doc(courseId)
-						.collection('sessions')
-						.add({
-							time : session.time,
-							date : session.date
+						.update({
+							sessions : firebase.firestore.FieldValue.arrayUnion(
+								{
+									time : session.time,
+									date : session.date
+								}
+							)
 						})
 						.catch(e => console.log(e));
 				}
@@ -168,6 +171,8 @@ export const courseHome = {
 					const archived = doc.data().course.archived || false;
 					// Uses destructuring to get data from each course
 					const { color, date, name } = doc.data().course;
+					// Gets Course's Sessions
+					const sessions = doc.data().sessions;
 					const id = doc.id;
 					// Adds data to course object
 					const course = {
@@ -175,7 +180,8 @@ export const courseHome = {
 						name     : name,
 						color    : color,
 						date     : date,
-						archived : archived
+						archived : archived,
+						sessions : sessions
 					};
 					// adds course object to array
 					courses.push(course);
@@ -218,64 +224,58 @@ export const courseEdit = {
 	// TODO: Fill the edit form with current data
 	// TODO: Put Course ID in <a> tags in nav tabs
 
-		editCourse:  function(courseID) {
-			
-			firebase.auth().onAuthStateChanged(function(user) {
-				// DB Reference to logged in user's collection
-					const dbRef = db.collection('users').doc(user.uid);
-					var archived = archiveCourse.value;
+	editCourse   : function(courseID) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+			var archived = archiveCourse.value;
 
-					if (archiveCourse.value==""){
-						archived = false;
-					} else {
-						archived = true;
+			if (archiveCourse.value == '') {
+				archived = false;
+			} else {
+				archived = true;
+			}
+
+			// Reference to a specific course given the id
+			dbRef.collection('courses').doc(courseID).update(
+				// Accesses the course object with parameters to update
+				{
+					course : {
+						name     : courseName.value,
+						color    : courseColor.value,
+						date     : new Date(),
+						archived : archived
 					}
+				}
+			);
+		});
 
-					// Reference to a specific course given the id
-					dbRef.collection('courses').doc(courseID).update(
-						
-						// Accesses the course object with parameters to update
-						 {course: 
-							{ name: courseName.value,
-						  	  color: courseColor.value,
-							  date: new Date(),
-							  archived: archived
-							}
-						}
-					
-					);
-				});	
-
-				
-			console.log("new name: " + courseName.value);
-			console.log("new color: " + courseColor.value);
-			
-		},
+		console.log('new name: ' + courseName.value);
+		console.log('new color: ' + courseColor.value);
+	},
 
 	// TODO: Add Delete Functions
 
-		deleteCourse: function(courseID) {
+	deleteCourse : function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {
-
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 
 			// Reference to a specific course given the id
-			dbRef.collection('courses').doc(courseID).delete().then(function() {
-
-				// success
-				console.log("Document successfully deleted!");
-			}).catch(function(error) {
-
-				// error
-				console.error("Error removing document: ", error);
-			});
-	
-
+			dbRef
+				.collection('courses')
+				.doc(courseID)
+				.delete()
+				.then(function() {
+					// success
+					console.log('Document successfully deleted!');
+				})
+				.catch(function(error) {
+					// error
+					console.error('Error removing document: ', error);
+				});
 		});
 	}
-	
-
 };
 
 /*** Firestore Database ENDS ***/
