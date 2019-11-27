@@ -230,11 +230,13 @@ a.form__button:hover {
 	background-color: var(--color-danger-hover);
 }
 
+/* Course Edit Alerts */
 .alertbox {
 	background: var(--color-background-card);
 	border-radius: var(--border-radius);
 	padding: 30px;
-	top: 0;
+	top: 20%;
+	left: 25%;
 	width: 70vh;
 	height: 50vh;
 	position: absolute;
