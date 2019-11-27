@@ -5,19 +5,30 @@ export const timerViews = {
 	// Params: Array of Courses
 	// Renders: Course list in timer pop up
 	renderCourseList : function(arr) {
+		// Gets Course list in timer
 		const courseList = document.querySelector('.course-list__list');
-		// Sorts courses by name using helper function
-		const sortedCourses = helpers.sortCoursesByName(arr);
-		// Makes empty string
-		let listItems = '';
-		// Loops through array of courses, makes a string with info for each course, then appends new string to listItems string
-		sortedCourses.forEach(item => {
-			listItems += `<li class="course-list__list-item list-group-item list-group-item-action" id="${item.id}">
-				${item.name}
-			</li>`;
-		});
-		// After the forEach loop has finished, listItems contains html for each course. listItems is then added to html
-		courseList.innerHTML = listItems;
+
+		const filteredCourses = helpers.filterCurrentCourses(arr);
+		const arrayLength = filteredCourses;
+
+		// If course array is empty, makes and appends message to course list
+		if (arrayLength <= 0) {
+			courseList.innerHTML = `<li class="list-group-item" style="border: none;">
+			No Courses Currently Active
+		</li>`;
+		} else {
+			// sorts course array alphabetically
+			const sortedCourses = helpers.sortCoursesByName(filteredCourses);
+			let listItems = '';
+			// Loops through array of courses, makes a string with info for each course, then appends new string to listItems string
+			sortedCourses.forEach(item => {
+				listItems += `<li class="course-list__list-item list-group-item list-group-item-action" id="${item.id}">
+					${item.name}
+				</li>`;
+			});
+			// After the forEach loop has finished, listItems contains html for each course. listItems is then added to html
+			courseList.innerHTML = listItems;
+		}
 	}
 };
 
@@ -98,8 +109,17 @@ export const courseHomeViews = {
 				const courseId = course.id;
 				const courseColor = course.color;
 				const courseName = course.name;
-				// Placeholder - need to get from DB
-				const courseTime = '12:34:55';
+
+				let totalCourseTime = null;
+				// If current course has sessions, gets total course time
+				if (course.sessions) {
+					totalCourseTime = helpers.totalCourseTime(course.sessions);
+				}
+				// If current course has sessions, gets string of total time to display
+				// in course list. Otherwise, display message.
+				const courseTime = totalCourseTime
+					? helpers.timeToString(totalCourseTime)
+					: 'No Logged Sessions';
 
 				// Creates main course container
 				const courseContainer = document.createElement('div');
@@ -207,5 +227,60 @@ const helpers = {
 			return archived;
 		});
 		return filtered;
+	},
+	// Params: Array of sessions
+	// Returns: Total time of all sessions in seconds, minutes and hours
+	totalCourseTime       : function(sessArr) {
+		let totalSeconds = 0;
+		let totalMinutes = 0;
+		let totalHours = 0;
+		// Loops through each session ands time to total time
+		sessArr.forEach(session => {
+			const { seconds, minutes, hours } = session.time;
+			totalSeconds += seconds;
+			totalMinutes += minutes;
+			totalHours += hours;
+		});
+
+		// Balances seconds and minutes to max of 59
+		while (totalSeconds >= 60) {
+			totalMinutes++;
+			totalSeconds -= 60;
+		}
+		while (totalMinutes >= 60) {
+			totalHours++;
+			totalMinutes -= 60;
+		}
+		// Returns total time
+		return {
+			seconds : totalSeconds,
+			minutes : totalMinutes,
+			hours   : totalHours
+		};
+	},
+	// Converts time (numbers) into strings with leading 0's and :'s as needed
+	// Params: Takes Time Object (with seconds, minutes and hours)
+	// Returns: time as formatted string
+	timeToString          : function(time) {
+		const { seconds, minutes, hours } = time;
+		let hrs;
+		let mins;
+		let secs;
+		if (hours < 10) {
+			hrs = '0' + hours;
+		} else {
+			hrs = hours;
+		}
+		if (minutes < 10) {
+			mins = '0' + minutes;
+		} else {
+			mins = minutes;
+		}
+		if (seconds < 10) {
+			secs = '0' + seconds;
+		} else {
+			secs = seconds;
+		}
+		return `${hrs}:${mins}:${secs}`;
 	}
 };
