@@ -263,7 +263,7 @@ export const courseEdit = {
 			const dbRef = db.collection('users').doc(user.uid);
 			var archived = archiveCourse.value;
 
-			if (archiveCourse.value == '') {
+			if (archiveCourse.check == false) {
 				archived = false;
 			} else {
 				archived = true;
