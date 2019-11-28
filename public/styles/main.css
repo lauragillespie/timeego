@@ -50,7 +50,12 @@
 	--color-background-card-hover: #fbfbfb;
 
 	/*** Colors - Gradient ***/
-	--color-blue-gradient: linear-gradient(353.28deg, #1ea2db 7.78%, rgba(255, 255, 255, 0) 100%), #3127ca;
+	--color-blue-gradient: linear-gradient(
+			353.28deg,
+			#1ea2db 7.78%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		#3127ca;
 
 	/*** Fonts ***/
 	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
@@ -63,7 +68,8 @@
 	--border-radius: 10px;
 
 	/*** Transition Effect ***/
-	--transition-hover: color 150ms ease-in-out, background-color 150ms ease-in-out, background 150ms ease-in-out;
+	--transition-hover: color 150ms ease-in-out,
+		background-color 150ms ease-in-out, background 150ms ease-in-out;
 	--transition-height: height 200ms linear;
 	--transition-scale: transform 200ms linear, margin 200ms linear;
 }
@@ -180,11 +186,47 @@ img {
 /* Sets Focus Color */
 .form-control:focus {
 	border-color: rgba(49, 39, 202, 0.5);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(49, 39, 202, 0.3);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+		0 0 8px rgba(49, 39, 202, 0.3);
 }
 
 .course-color-selector {
 	padding: 0;
+}
+
+/* Form Color Picker	*/
+
+.color-picker {
+	height: 60px;
+	align-content: center;
+	text-align: center;
+}
+.color-list {
+	list-style: none;
+	padding: 0;
+}
+.color-list li {
+	display: inline-block;
+	margin: 3px;
+}
+.color-list input {
+	display: none;
+}
+.color {
+	height: 40px;
+	width: 40px;
+	border-radius: 100px;
+	background-color: attr(data-color);
+	transition: transform 0.3s;
+}
+.color:not(.active):hover {
+	cursor: pointer;
+	transform: scale(1.2);
+}
+.color.active {
+	border: 5px solid #ddd;
+	width: 52px;
+	height: 52px;
 }
 
 /* Form Buttons */
@@ -472,7 +514,8 @@ a.header__settings {
 
 @keyframes pulse {
 	to {
-		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(232, 76, 61, 0);
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3),
+			0 0 0 15px rgba(232, 76, 61, 0);
 	}
 }
 
