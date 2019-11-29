@@ -8,6 +8,18 @@ const courseName = document.getElementById('courseName');
 const courseColor = document.getElementsByClassName('color');
 
 // for a <form> with an id = 'courseForm'
+
+$(document).ready(function() {
+	var selector = '.color-list .color';
+	$('.color').css('background', function() {
+		return $(this).data('color');
+	});
+
+	$(selector).on('click', function() {
+		$(selector).removeClass('active');
+		$(this).addClass('active');
+	});
+});
 courseAddForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	// Makes course object from form object
@@ -21,19 +33,3 @@ courseAddForm.addEventListener('submit', (e) => {
 
 	window.location.href = './course-home.html';
 });
-$(document).ready(function() {
-	var selector = '.color-list .color';
-	$('.color').css('background', function() {
-		return $(this).data('color');
-	});
-
-	$(selector).on('click', function() {
-		$(selector).removeClass('active');
-		$(this).addClass('active');
-	});
-});
-
-// document.querySelector('.btn-sub').addEventListener('click', (e) => {
-// 	e.preventDefault();
-// 	alert($('input[name=color-radio]:checked').val());
-// });
