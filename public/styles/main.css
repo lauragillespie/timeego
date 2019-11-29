@@ -570,31 +570,32 @@ a.header__settings {
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-card);
 	color: var(--color-background-card);
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	font-size: 20pt;
-	font-weight: 900;
-	padding: 10% 15%;
+	padding: 10%;
 	height: 200px;
 	width: 100%;
+}
+
+.card--half span {
+	color: white;
+	font-weight: 900;
+}
+
+.card--half i {
+	font-size: 40pt;
+	margin-top: 25px;
 }
 
 .card_primary {
 	background: var(--color-primary);
 }
 
-.card_primary i {
-	font-size: 40pt;
-	display: block;
-}
-
 .card_success {
 	background: var(--color-success);
-}
-
-.card_success span {
-	color: var(--color-background-card);
-	display: block;
-	margin-top: 20%;
 }
 
 /** RECENT HIGHLIGHTS **/
