@@ -60,7 +60,12 @@
                <h2>Recent Progress</h2>
             </div>
             <div class="graph__card" style="padding: 30px 20px 10px 0">
-               <div id="chart"></div>
+               <div id="chart">
+                  <!-- Bootstrap Loader -->
+                  <div class="spinner-border bootstrap__spinner graph-spinner" role="status">
+                     <span class="sr-only">Loading...</span>
+                  </div>
+               </div>
             </div>
          </div>
 
@@ -69,15 +74,6 @@
 
 
    <!-- NAVIGATION BAR -->
-   <!-- 
-      Note: the following nav classes now come from Bootstrap -Anthony
-         -container
-         -nav
-         -nav-justified
-         -nav-item
-         -nav-link
-      https://getbootstrap.com/docs/4.3/components/navs/
-   -->
    <footer class="footer">
       <nav class="container nav__container">
          <ul class="nav nav-justified">
@@ -120,6 +116,7 @@
    <!-- TIMER Pop-up -->
    <div class="timer__container">
       <div class="timer__popup">
+         <!-- Time section -->
          <div class="popup__time-section popup__time-section--expanded">
             <span class="timer__text">00:00:00</span>
             <div class="timer__control-btns">
@@ -144,10 +141,11 @@
             </div>
 
          </div>
-
+         <!-- Course section -->
          <div class="popup__course-list">
             <button class="course-list__btn--show">
-               <span>Currently Tracking: <span class="currently-tracking-course">None</span></span>
+               <span class="currently-tracking">Currently Tracking: <span
+                     class="currently-tracking-course">None</span></span>
                <span>Click to Select Course</span>
             </button>
             <h2 class="course-list__heading">Select a Course</h2>

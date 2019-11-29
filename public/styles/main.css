@@ -337,6 +337,11 @@ a.form__button:hover {
 	margin: 45% auto;
 }
 
+.graph-spinner {
+	display: block;
+	margin: 100px auto 120px;
+}
+
 /***************************/
 /***  6. Main Layout     ***/
 /***************************/

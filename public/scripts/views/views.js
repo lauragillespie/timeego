@@ -74,7 +74,8 @@ export const dashboardViews = {
 			document.querySelector('#chart'),
 			graphOptions
 		);
-
+		// Hides Graph Loading Spinner
+		document.querySelector('#chart').innerHTML = '';
 		chart.render();
 	},
 	// Params: Array of Sessions

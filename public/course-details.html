@@ -73,15 +73,6 @@
     </main>
 
     <!-- NAVIGATION BAR -->
-    <!-- 
-   Note: the following nav classes now come from Bootstrap -Anthony
-      -container
-      -nav
-      -nav-justified
-      -nav-item
-      -nav-link
-   https://getbootstrap.com/docs/4.3/components/navs/
--->
     <footer class="footer">
         <nav class="container nav__container">
             <ul class="nav nav-justified">
@@ -124,6 +115,7 @@
     <!-- TIMER Pop-up -->
     <div class="timer__container">
         <div class="timer__popup">
+            <!-- Time section -->
             <div class="popup__time-section popup__time-section--expanded">
                 <span class="timer__text">00:00:00</span>
                 <div class="timer__control-btns">
@@ -146,11 +138,13 @@
                 <div class="alert alert-success done_saved" role="alert">
                     <strong>Done!</strong> Session saved successfully!
                 </div>
-            </div>
 
+            </div>
+            <!-- Course section -->
             <div class="popup__course-list">
                 <button class="course-list__btn--show">
-                    <span>Currently Tracking: <span class="currently-tracking-course">None</span></span>
+                    <span class="currently-tracking">Currently Tracking: <span
+                            class="currently-tracking-course">None</span></span>
                     <span>Click to Select Course</span>
                 </button>
                 <h2 class="course-list__heading">Select a Course</h2>
