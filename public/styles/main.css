@@ -37,6 +37,7 @@
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
+	/* --color-success: #27ca31; */
 	--color-danger: #ff6a56;
 
 	--color-background-main: #f4f4f4;
@@ -569,25 +570,47 @@ a.header__settings {
 .card--half {
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-card);
-	color: var(--color-background-card);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 20pt;
-	padding: 10%;
+	font-size: 14pt;
+	padding: 20px 10px 40px;
 	height: 200px;
 	width: 100%;
+	text-align: center;
 }
 
 .card--half span {
-	color: white;
-	font-weight: 900;
+	color: var(--color-background-card);
+	font-weight: 700;
 }
 
 .card--half i {
 	font-size: 40pt;
-	margin-top: 25px;
+	color: var(--color-background-card);
+}
+
+/* Media Queries for half card text */
+@media only screen and (min-width: 380px) {
+	.card--half {
+		font-size: 16pt;
+	}
+}
+@media only screen and (min-width: 500px) {
+	.card--half {
+		font-size: 18pt;
+		padding: 20px 20px 40px;
+	}
+}
+@media only screen and (min-width: 768px) {
+	.card--half {
+		font-size: 20pt;
+	}
+}
+
+#study_streak {
+	padding-bottom: 15px;
 }
 
 .card_primary {
@@ -596,6 +619,12 @@ a.header__settings {
 
 .card_success {
 	background: var(--color-success);
+	/* background: #b0228c; */
+	/* background: #272838; */
+	/* background: #3b0086; */
+	/* background: #960200; */
+	/* background: #678d58; */
+	/* background: #ce2d4f; */
 }
 
 /** RECENT HIGHLIGHTS **/
@@ -750,41 +779,4 @@ hr {
 	box-shadow: var(--shadow-card);
 	background-color: var(--color-background-card);
 	overflow: hidden;
-}
-
-/*****************************************/
-/***      7.4 Color selector	       ***/
-/*****************************************/
-
-.color-picker {
-	padding: 5px 20px 5px 15px;
-	align-content: center;
-	text-align: center;
-}
-.color-list {
-	list-style: none;
-	padding: 0;
-}
-.color-list li {
-	display: inline-block;
-	margin: 3px;
-}
-.color-list input {
-	display: none;
-}
-.color {
-	height: 40px;
-	width: 40px;
-	border-radius: 100px;
-	background-color: attr(data-color);
-	transition: transform 0.3s;
-}
-.color:not(.active):hover {
-	cursor: pointer;
-	transform: scale(1.2);
-}
-.color.active {
-	border: 5px solid #ddd;
-	width: 52px;
-	height: 52px;
 }
