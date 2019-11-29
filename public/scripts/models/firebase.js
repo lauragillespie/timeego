@@ -149,10 +149,35 @@ export const dashboard = {
 				// Imported From Views, passes in current user data
 				dashboardViews.renderHeading(currentUser);
 			});
-			// TODO: Get Current Streak Data
+
+			// Gets: Session Data from DB
+			// Sets: Dashboard Graph and Dashboard Current Streak
+			dbRef.collection('sessions').get().then(function(querySnapshot) {
+				const sessions = [];
+				querySnapshot.forEach(doc => {
+					// Uses destructuring to get data from each session
+					const { course, date, time } = doc.data().session;
+					const id = doc.id;
+					// Adds data to session object
+					const session = {
+						id     : id,
+						course : course,
+						date   : date,
+						time   : time
+					};
+					// adds session object to array
+					sessions.push(session);
+					// console.log(session);
+				});
+				// Imported From Views, passes in array of sessions to:
+				// -Render Dashboard Graph
+				// TODO: Get Session/Course Data Needed for Graph, pass in to views
+				dashboardViews.renderGraph();
+				// -Render Current Streak
+				// TODO: Get Current Streak Data
+				dashboardViews.currentStreak(sessions);
+			});
 		});
-		// TODO: Get Session/Course Data Needed for Graph, pass in to views
-		dashboardViews.renderGraph();
 	}
 };
 

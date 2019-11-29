@@ -76,6 +76,22 @@ export const dashboardViews = {
 		);
 
 		chart.render();
+	},
+	// Params: Array of Sessions
+	// Renders: Current Streak on Dashboard
+	currentStreak : function(sessionsArr) {
+		// console.log(sessionsArr);
+		// Convert to just date
+		const dateArray = sessionsArr.map(session => {
+			return session;
+			// return session.date;
+		});
+		console.log(dateArray);
+		var day = new Date();
+		console.log(day.getTime() * 1000);
+		// console.log(new Date());
+		// Convert to set
+		// Figure out streak
 	}
 };
 

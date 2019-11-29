@@ -44,7 +44,7 @@ Ignore this mess for now :P
 
 Holds Settings (firebase, graph).
 
-## Need Todo
+## Need To Do
 
 A list of things left to accomplish.
 
@@ -57,7 +57,8 @@ A list of things left to accomplish.
     * [ ] parse Course id from url
         * [ ] Pass into models to get course data, populate form
         * [ ] Use to update nav tabs with course url
-
+* [ ] courseAdd/edit
+    * [ ] Stretch - add char limit to course name?
 
 ### Models - Database
 * [x] global
@@ -112,6 +113,8 @@ A list of things left to accomplish.
 
 ### Timer
 * [ ] Figure out stopwatch buttons/icons
+* [ ] Stretch - Fix CSS for landscape mode phones
+* [ ] Stretch - Fix Course button on firefox
 
 
 ## Done
