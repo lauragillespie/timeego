@@ -195,6 +195,42 @@ img {
 	padding: 0;
 }
 
+/* Form Color Picker	*/
+
+.color-picker {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.color-list {
+	list-style: none;
+	padding: 0;
+}
+.color-list li {
+	display: inline-block;
+	margin: 3px;
+}
+.color-list input {
+	display: none;
+}
+.color {
+	height: 40px;
+	width: 40px;
+	border-radius: 100px;
+	background-color: attr(data-color);
+	transition: transform 0.3s;
+}
+.color:not(.active):hover {
+	cursor: pointer;
+	transform: scale(1.2);
+}
+.color.active {
+	border: 5px solid #ddd;
+	width: 52px;
+	height: 52px;
+}
+
 /* Form Buttons */
 .form__buttons-container {
 	margin: 40px 0 10px;
@@ -714,56 +750,35 @@ hr {
 /***      7.4 Color selector	       ***/
 /*****************************************/
 
-.color_div {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	/* height: 100vh; */
-	transition: all 1s;
-	font-family: sans-serif;
-}
-
 .color-picker {
-	width: 100%;
-	background-color: white;
-	padding: 40px 0;
+	padding: 5px 20px 5px 15px;
+	align-content: center;
+	text-align: center;
 }
-
-.base-colors,
-.varied-colors {
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
+.color-list {
+	list-style: none;
+	padding: 0;
 }
-
-.color,
-.color-var {
-	float: left;
-	border-radius: 50%;
-	cursor: pointer;
+.color-list li {
+	display: inline-block;
+	margin: 3px;
 }
-
+.color-list input {
+	display: none;
+}
 .color {
-	transition: all .2s;
-	width: 40px;
 	height: 40px;
-	margin: 10px;
+	width: 40px;
+	border-radius: 100px;
+	background-color: attr(data-color);
+	transition: transform 0.3s;
+}
+.color:not(.active):hover {
+	cursor: pointer;
+	transform: scale(1.2);
 }
 .color.active {
-	transform: scale(1.3, 1.3);
-}
-.color-var {
-	transform: scale(0, 0);
-	width: 40px;
-	height: 40px;
-	margin: 8px;
-}
-.color-var.visible {
-	transform: scale(1, 1);
-}
-.color-var.active {
-	transform: scale(1.3, 1.3);
+	border: 5px solid #ddd;
+	width: 52px;
+	height: 52px;
 }
