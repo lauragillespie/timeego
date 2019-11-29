@@ -158,12 +158,14 @@ export const dashboard = {
 				querySnapshot.forEach(doc => {
 					// Uses destructuring to get data from each session
 					const { course, date, time } = doc.data().session;
+					// Converts db date into javascript date object
+					var dateObj = new Date(date.seconds * 1000);
 					const id = doc.id;
 					// Adds data to session object
 					const session = {
 						id     : id,
 						course : course,
-						date   : date,
+						date   : dateObj,
 						time   : time
 					};
 					// adds session object to array

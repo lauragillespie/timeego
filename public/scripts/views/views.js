@@ -84,14 +84,29 @@ export const dashboardViews = {
 		// console.log(sessionsArr);
 		// Convert to just date
 		const dateArray = sessionsArr.map(session => {
-			return session;
+			return session.date.getDate();
 			// return session.date;
 		});
-		console.log(dateArray);
-		var day = new Date();
-		console.log(day.getTime() * 1000);
-		// console.log(new Date());
 		// Convert to set
+		const dateSet = new Set(dateArray.sort());
+		console.log(dateSet);
+
+		const today = new Date().getDate();
+
+		let streak = dateSet.has(today) ? 1 : 0;
+
+		for (let day = today - 1; dateSet.has(day); day--) {
+			streak++;
+		}
+
+		if (streak === 1) {
+			document.getElementById('study_streak').innerText = `${streak} Day`;
+		} else {
+			document.getElementById(
+				'study_streak'
+			).innerText = `${streak} Days`;
+		}
+
 		// Figure out streak
 	}
 };
