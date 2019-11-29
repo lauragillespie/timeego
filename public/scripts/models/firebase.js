@@ -38,7 +38,8 @@ import {
 	timerViews,
 	headerViews,
 	dashboardViews,
-	courseHomeViews
+	courseHomeViews,
+	courseArchivedViews
 } from '../views/views.js';
 
 export const global = {
@@ -193,7 +194,39 @@ export const courseHome = {
 	}
 };
 export const courseArchived = {
-	// TODO: Get Course List, Filter into archived courses, Sort, Render Course List
+	readDB : function() {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: Course Data From DB
+			// Sets: Course List on Course Home page
+			dbRef.collection('courses').get().then(function(querySnapshot) {
+				const courses = [];
+				querySnapshot.forEach(doc => {
+					const archived = doc.data().course.archived || false;
+					// Uses destructuring to get data from each course
+					const { color, date, name } = doc.data().course;
+					// Gets Course's Sessions
+					const sessions = doc.data().sessions;
+					const id = doc.id;
+					// Adds data to course object
+					const course = {
+						id       : id,
+						name     : name,
+						color    : color,
+						date     : date,
+						archived : archived,
+						sessions : sessions
+					};
+					// adds course object to array
+					courses.push(course);
+				});
+				// Imported From Views, passes in array of courses
+				courseArchivedViews.renderCourseList(courses);
+			});
+		});
+	}
 };
 export const courseDetails = {
 	// TODO: Parse ID from URL, then...
@@ -230,7 +263,7 @@ export const courseEdit = {
 			const dbRef = db.collection('users').doc(user.uid);
 			var archived = archiveCourse.value;
 
-			if (archiveCourse.value == '') {
+			if (archiveCourse.check == false) {
 				archived = false;
 			} else {
 				archived = true;
