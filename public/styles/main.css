@@ -34,13 +34,22 @@
 
 :root {
 	/*** Colors - Regular ***/
+	/* --color-primary: #3127ca;
+	--color-secondary: #555555;
+	--color-success: #6dd75c;
+	--color-success: #27ca31;
+	--color-danger: #ff6a56; 
+
+	--color-background-main: #f4f4f4;
+	--color-background-card: #ffffff;*/
+
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
 	/* --color-success: #27ca31; */
 	--color-danger: #ff6a56;
 
-	--color-background-main: #f4f4f4;
+	--color-background-main: #fafafa;
 	--color-background-card: #ffffff;
 
 	/*** Colors - Hover ***/

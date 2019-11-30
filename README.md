@@ -67,14 +67,14 @@ A list of things left to accomplish.
     * [x] readDB - Get users course data From DB
     * [x] writeDB - Saves Session from Timer to Sessions Collection in DB
     * [x] writeDB - Saves Session from Timer to Correct Course Collection in DB
-* [ ] dashboard
+* [x] dashboard
     * [x] readDB - Get current user's data From DB
-    * [ ] readDB - Get Session/Course Data Needed for Graph
-    * [ ] readDB - Get Current Streak Data
+    * [x] readDB - Get Session/Course Data Needed for Graph
+    * [x] readDB - Get Current Streak Data
 * [x] courseHome
     * [x] readDB - Get users course data From DB
-* [ ] courseArchived
-    * [ ] readDB - Get users course data From DB
+* [x] courseArchived
+    * [x] readDB - Get users course data From DB
 * [ ] courseDetails
     * [ ] readDB - Get parsed course details from DB
     * [ ] readDB - Get parsed course Sessions from DB
@@ -91,25 +91,25 @@ A list of things left to accomplish.
 * [ ] Make "Settings" Page
     * [ ] Filler, non-functional settings like dark mode, change password
     * [ ] Working logout button
-* [ ] Dashboard 
+* [x] Dashboard 
     * [x] Graph Container
-    * [ ] Clean up upper dashboard cards
+    * [x] Clean up upper dashboard cards
 
 ### Views - Dynamic HTML from DB
-* [ ] Dashboard
-    * [ ] Graph
+* [x] Dashboard
+    * [x] Graph
         * [x] Days of week render dynamically
-        * [ ] Render time studied (in mins)
-    * [ ] Current Streak
-* [ ] Course Archive page
-    * [ ] Render Archived Courses
+        * [x] Render time studied (in mins)
+    * [x] Current Streak
+* [x] Course Archive page
+    * [x] Render Archived Courses
 * [ ] Course Details page
     * [ ] Name from DB
     * [ ] Display list of course Sessions
 * [ ] Course Edit page
     * [ ] Add course info from DB to form values
     * [ ] Edit button saves updated info to DB
-    * [ ] Delete button Deletes course (pop-up confirmation first?)
+    * [x] Delete button Deletes course (pop-up confirmation first?)
 
 ### Timer
 * [ ] Figure out stopwatch buttons/icons

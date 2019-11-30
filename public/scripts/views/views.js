@@ -58,17 +58,40 @@ export const dashboardViews = {
 	},
 	// Params: ......
 	// Renders: Graph on Dashboard
-	renderGraph   : function() {
-		// Place holder data. This should set the time spend studying for last 7 days getting the data from the db
-		graphOptions.series[0].data = [
-			10,
-			20,
-			30,
-			60,
-			50,
-			90,
-			60
+	renderGraph   : function(sessionsArr) {
+		// get current date in unix
+		const today = helpers.convertUnixDay(new Date().getTime());
+		// set minimum date
+		const minDate = today - 6;
+
+		const sessionTimes = [
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
 		];
+
+		sessionsArr.forEach(session => {
+			const unixDate = helpers.convertUnixDay(session.date.getTime());
+
+			if (unixDate >= minDate && unixDate <= today) {
+				const { seconds, minutes, hours } = session.time;
+				sessionTimes[unixDate - minDate] +=
+					seconds + minutes * 60 + hours * 3600;
+			}
+		});
+		const times = sessionTimes.map(session => {
+			return Math.ceil(session / 60);
+		});
+		// console.log(times);
+
+		// Take in session array
+		// Filter array to only have current day and last 6 days
+		// Place holder data. This should set the time spend studying for last 7 days getting the data from the db
+		graphOptions.series[0].data = times;
 
 		var chart = new ApexCharts(
 			document.querySelector('#chart'),
@@ -81,17 +104,15 @@ export const dashboardViews = {
 	// Params: Array of Sessions
 	// Renders: Current Streak on Dashboard
 	currentStreak : function(sessionsArr) {
-		// console.log(sessionsArr);
 		// Convert to just date
 		const dateArray = sessionsArr.map(session => {
-			return session.date.getDate();
-			// return session.date;
+			const unixDate = helpers.convertUnixDay(session.date.getTime());
+			return unixDate;
 		});
 		// Convert to set
 		const dateSet = new Set(dateArray.sort());
-		console.log(dateSet);
 
-		const today = new Date().getDate();
+		const today = helpers.convertUnixDay(new Date().getTime());
 
 		let streak = dateSet.has(today) ? 1 : 0;
 
@@ -106,8 +127,6 @@ export const dashboardViews = {
 				'study_streak'
 			).innerText = `${streak} Days`;
 		}
-
-		// Figure out streak
 	}
 };
 
@@ -408,5 +427,15 @@ const helpers = {
 			secs = seconds;
 		}
 		return `${hrs}:${mins}:${secs}`;
+	},
+	// Params: Date as UNIX ms
+	convertUnixDay        : function(dateInMs) {
+		// MS in one day
+		const msPerDay = 86400000;
+		// Converts time from UTC to PST
+		const timeZoneDiff = 8 / 24;
+		// Gets Unix Date in PST
+		const day = Math.floor(dateInMs / msPerDay - timeZoneDiff);
+		return day;
 	}
 };

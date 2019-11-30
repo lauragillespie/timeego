@@ -175,9 +175,8 @@ export const dashboard = {
 				// Imported From Views, passes in array of sessions to:
 				// -Render Dashboard Graph
 				// TODO: Get Session/Course Data Needed for Graph, pass in to views
-				dashboardViews.renderGraph();
+				dashboardViews.renderGraph(sessions);
 				// -Render Current Streak
-				// TODO: Get Current Streak Data
 				dashboardViews.currentStreak(sessions);
 			});
 		});
