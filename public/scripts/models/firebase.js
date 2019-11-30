@@ -37,10 +37,11 @@ const db = firebase.firestore();
 import {
 	timerViews,
 	headerViews,
-	dashboardViews,
 	courseHomeViews,
 	courseArchivedViews
 } from '../views/views.js';
+
+import dashboardViews from '../views/dashboardViews.js';
 
 export const global = {
 	readDB  : function() {
