@@ -1,7 +1,17 @@
-// Functions used by multiple views
+//*****************************************************************************
+// Helper Views
+// This file contains helper functions for other views files.
+// These functions are used by multiple other files. Having them here and
+// exporting them helps reduce clutter and code in other files.
+//*****************************************************************************
+
 const helpers = {
+	//*****************************************************************************
+	// Take user data, pulls out and formats first name.
+	//
 	// Params: User data
 	// Returns: User's capitalized first name
+	//*****************************************************************************
 	getFirstName          : function(currentUser) {
 		// Current User's full name
 		const name = currentUser.name;
@@ -107,6 +117,72 @@ const helpers = {
 			secs = seconds;
 		}
 		return `${hrs}:${mins}:${secs}`;
+	},
+
+	buildCourseListItem   : function(course) {
+		// Course Variables from course param in forEach loop
+		const courseId = course.id;
+		const courseColor = course.color;
+		const courseName = course.name;
+
+		let totalCourseTime = null;
+		// If current course has sessions, gets total course time
+		if (course.sessions) {
+			totalCourseTime = helpers.totalCourseTime(course.sessions);
+		}
+		// If current course has sessions, gets string of total time to display
+		// in course list. Otherwise, display message.
+		const courseTime = totalCourseTime
+			? helpers.timeToString(totalCourseTime)
+			: 'No Logged Sessions';
+
+		// Creates main course container
+		const courseContainer = document.createElement('div');
+		courseContainer.classList.add('courseContainer');
+
+		// Links to go to course details and settings pages
+		const courseDetailsLink = document.createElement('a');
+		const courseSettingsLink = document.createElement('a');
+		courseDetailsLink.setAttribute(
+			'href',
+			`./course-details.html?courseid=${courseId}`
+		);
+		courseSettingsLink.setAttribute(
+			'href',
+			`./course-edit.html?courseid=${courseId}`
+		);
+		courseDetailsLink.classList.add('courseDetailsLink');
+		courseSettingsLink.classList.add('courseSettingsLink');
+		courseSettingsLink.innerHTML =
+			'<i class="material-icons">more_vert</i>';
+		courseContainer.appendChild(courseDetailsLink);
+		courseContainer.appendChild(courseSettingsLink);
+
+		// Div for course color
+		var courseColorDiv = document.createElement('div');
+		// assigns the course color
+		courseColorDiv.style.backgroundColor = courseColor;
+		courseColorDiv.classList.add('courseColorDiv');
+		// appends color div to course details link
+		courseDetailsLink.appendChild(courseColorDiv);
+
+		// this div will hold the course name + any other course info
+		var courseData = document.createElement('div');
+		courseDetailsLink.appendChild(courseData);
+		courseData.classList.add('courseDetails');
+
+		// Creates, Sets classes and text and appends name and time HTML elements
+		var nameElement = document.createElement('h3');
+		var timeElement = document.createElement('span');
+		nameElement.classList.add('courseName');
+		timeElement.classList.add('courseTime');
+		nameElement.innerText = courseName;
+		timeElement.innerText = courseTime;
+		courseData.appendChild(nameElement);
+		courseData.appendChild(timeElement);
+
+		// Returns Finished Course List Item
+		return courseContainer;
 	}
 };
 
