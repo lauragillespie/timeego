@@ -34,22 +34,13 @@
 
 :root {
 	/*** Colors - Regular ***/
-	/* --color-primary: #3127ca;
-	--color-secondary: #555555;
-	--color-success: #6dd75c;
-	--color-success: #27ca31;
-	--color-danger: #ff6a56; 
-
-	--color-background-main: #f4f4f4;
-	--color-background-card: #ffffff;*/
-
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
-	/* --color-success: #27ca31; */
+	--color-success: #27ca31;
 	--color-danger: #ff6a56;
 
-	--color-background-main: #fafafa;
+	--color-background-main: #fbfbfb;
 	--color-background-card: #ffffff;
 
 	/*** Colors - Hover ***/
@@ -72,10 +63,10 @@
 	--font-family-body: 'Open Sans', Arial, Helvetica, sans-serif;
 
 	/*** Shadows ***/
-	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	--shadow-card: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
 	/*** Borders ***/
-	--border-radius: 10px;
+	--border-radius: 5px;
 
 	/*** Transition Effect ***/
 	--transition-hover: color 150ms ease-in-out,
@@ -612,11 +603,6 @@ a.header__settings {
 		padding: 20px 20px 40px;
 	}
 }
-@media only screen and (min-width: 768px) {
-	.card--half {
-		font-size: 20pt;
-	}
-}
 
 #study_streak {
 	padding-bottom: 15px;
@@ -636,48 +622,25 @@ a.header__settings {
 	/* background: #ce2d4f; */
 }
 
-/** RECENT HIGHLIGHTS **/
-.highlights h2 {
-	font-size: 16pt;
-	display: inline;
-	margin: 5% 0;
-	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-}
+/** Dashboard Graph Card **/
 
-/** CONTENT **/
-
-.content_container {
-	margin-top: 30px;
-}
-
-.content {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	justify-content: center;
-	align-content: stretch;
-}
-
-.content div {
-	font-size: 11pt;
-	color: rgba(0, 0, 0, 0.5);
-	background-color: var(--color-background-card);
-	padding: 5%;
-	border: var(--border-card);
-	border-radius: 12px;
-	box-shadow: var(--shadow-card);
-	margin-top: 5%;
-}
-
-/*** Dashboard Graph ***/
 .graph__card {
-	margin-top: 15px;
+	margin-top: 30px;
 	width: 100%;
 	border-radius: var(--border-radius);
-	padding: 30px;
+	padding: 30px 20px 10px 0;
 	box-shadow: var(--shadow-card);
 	background-color: var(--color-background-card);
 	overflow: hidden;
+}
+
+/** Graph Headings **/
+.graph__heading {
+	text-align: center;
+	font-size: 20pt;
+	font-weight: 700;
+	padding-top: 12px;
+	margin-bottom: 30px;
 }
 
 /*****************************************/

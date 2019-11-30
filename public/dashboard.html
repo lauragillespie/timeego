@@ -35,43 +35,35 @@
 
    <main class="main">
       <div class="container">
-
          <!-- Page Heading -->
-
          <h1 class="page-heading">Welcome <span id="page-heading__username">...</span></h1>
 
          <!-- Top Cards -->
-         <div class="card-row">
-            <div class="card--half card_primary" onclick="location.href='course-home.html';">
-               <span>Log a Study Session</span>
+         <section class="card-row">
+            <a class="card--half card_primary" href="#">
+               <span>Log a Previous Session</span>
                <i class="material-icons">
                   add_circle
                </i>
-            </div>
+            </a>
             <div class="card--half card_success">
                <span>Current Study Streak:</span>
                <span id="study_streak">.. Days</span>
             </div>
-         </div>
+         </section>
 
          <!-- Graph Area -->
-         <div class="content_container">
-            <div class="highlights">
-               <h2>Recent Progress</h2>
-            </div>
-            <div class="graph__card" style="padding: 30px 20px 10px 0">
-               <div id="chart">
-                  <!-- Bootstrap Loader -->
-                  <div class="spinner-border bootstrap__spinner graph-spinner" role="status">
-                     <span class="sr-only">Loading...</span>
-                  </div>
+         <section class="graph__card">
+            <h2 class="graph__heading">Recent Studying</h2>
+            <div id="chart">
+               <!-- Bootstrap Loader -->
+               <div class="spinner-border bootstrap__spinner graph-spinner" role="status">
+                  <span class="sr-only">Loading...</span>
                </div>
             </div>
-         </div>
-
+         </section>
       </div>
    </main>
-
 
    <!-- NAVIGATION BAR -->
    <footer class="footer">
