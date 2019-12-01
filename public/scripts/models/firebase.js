@@ -34,14 +34,7 @@ const db = firebase.firestore();
  Then, this object calls the associated functions from views to render html elements needed for that page
 */
 
-import {
-	timerViews,
-	headerViews,
-	courseHomeViews,
-	courseArchivedViews
-} from '../views/views.js';
-
-import dashboardViews from '../views/dashboardViews.js';
+import { timerViews, headerViews } from '../views/globalViews.js';
 
 export const global = {
 	readDB  : function() {
@@ -137,6 +130,9 @@ export const global = {
 		}
 	}
 };
+
+import dashboardViews from '../views/dashboardViews.js';
+
 export const dashboard = {
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
@@ -184,6 +180,8 @@ export const dashboard = {
 	}
 };
 
+import courseHomeViews from '../views/courseHomeViews.js';
+
 export const courseHome = {
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
@@ -220,6 +218,9 @@ export const courseHome = {
 		});
 	}
 };
+
+import courseArchivedViews from '../views/courseArchivedViews.js';
+
 export const courseArchived = {
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {

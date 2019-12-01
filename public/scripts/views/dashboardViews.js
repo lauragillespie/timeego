@@ -1,8 +1,11 @@
 //*****************************************************************************
 // Dashboard Views
+//*****************************************************************************
+//
 // This file renders HTML elements for the Dashboard page.
 // This functions are exported and called by the Dashboard controller or
 // the Dashboard model.
+//
 //*****************************************************************************
 
 import graphOptions from '../config/graphConfig.js';
@@ -14,7 +17,6 @@ const dashboardViews = {
 	// Renders The users first name in the dashboard page heading.
 	//
 	// Params: Logged in user data
-	// Returns: array of total study time in each of the last 7 days
 	//*****************************************************************************
 	renderHeading : function(currentUser) {
 		// Gets first name from helper function

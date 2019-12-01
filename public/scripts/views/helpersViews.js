@@ -1,8 +1,11 @@
 //*****************************************************************************
 // Helper Views
+//*****************************************************************************
+//
 // This file contains helper functions for other views files.
 // These functions are used by multiple other files. Having them here and
 // exporting them helps reduce clutter and code in other files.
+//
 //*****************************************************************************
 
 const helpers = {
@@ -21,8 +24,13 @@ const helpers = {
 		const firstName = upperCaseName.split(' ')[0];
 		return firstName;
 	},
+
+	//*****************************************************************************
+	// Takes a course array and sorts it alphabetically by name.
+	//
 	// Params: Courses Array
 	// Returns: Course Array sorted by name
+	//*****************************************************************************
 	sortCoursesByName     : function(coursesArr) {
 		// sorts courses by name
 		coursesArr.sort((a, b) => {
@@ -39,8 +47,13 @@ const helpers = {
 		});
 		return coursesArr;
 	},
+
+	//*****************************************************************************
+	// Takes a course array filters out archived courses.
+	//
 	// Params: Courses Array
-	// Returns: Only Current Courses Array (filters out archived courses)
+	// Returns: Courses Array of only active courses
+	//*****************************************************************************
 	filterCurrentCourses  : function(coursesArr) {
 		// Array of only current courses by filtering course array
 		const filtered = coursesArr.filter(course => {
@@ -51,8 +64,13 @@ const helpers = {
 		});
 		return filtered;
 	},
+
+	//*****************************************************************************
+	// Takes a course array filters out currently active courses.
+	//
 	// Params: Courses Array
-	// Returns: Only Archived Courses Array (filters out current courses)
+	// Returns: Courses Array of only archived courses
+	//*****************************************************************************
 	filterArchivedCourses : function(coursesArr) {
 		// Array of only current courses by filtering course array
 		const filtered = coursesArr.filter(course => {
@@ -63,8 +81,14 @@ const helpers = {
 		});
 		return filtered;
 	},
-	// Params: Array of sessions
-	// Returns: Total time of all sessions in seconds, minutes and hours
+
+	//*****************************************************************************
+	// Takes an array of sessions and sums the total time in all sessions.
+	//
+	// Params: Session Array
+	// Returns: Object of total seconds, minutes and hours of all sessions
+	//			in passed in arry
+	//*****************************************************************************
 	totalCourseTime       : function(sessArr) {
 		let totalSeconds = 0;
 		let totalMinutes = 0;
@@ -93,14 +117,19 @@ const helpers = {
 			hours   : totalHours
 		};
 	},
-	// Converts time (numbers) into strings with leading 0's and :'s as needed
+
+	//*****************************************************************************
+	// Converts time (numbers) into strings with leading 0's and :'s as needed.
+	//
 	// Params: Takes Time Object (with seconds, minutes and hours)
-	// Returns: time as formatted string
+	// Returns: Time as a formatted string
+	//*****************************************************************************
 	timeToString          : function(time) {
 		const { seconds, minutes, hours } = time;
 		let hrs;
 		let mins;
 		let secs;
+		// Adds leading 0's where needed
 		if (hours < 10) {
 			hrs = '0' + hours;
 		} else {
@@ -116,11 +145,18 @@ const helpers = {
 		} else {
 			secs = seconds;
 		}
+		// adds :'s and returns
 		return `${hrs}:${mins}:${secs}`;
 	},
 
+	//*****************************************************************************
+	// Builds HTML list item to display a course
+	//
+	// Params: Course object
+	// Returns: HTML list item for the course
+	//*****************************************************************************
 	buildCourseListItem   : function(course) {
-		// Course Variables from course param in forEach loop
+		// Course Variables from course param
 		const courseId = course.id;
 		const courseColor = course.color;
 		const courseName = course.name;
@@ -138,7 +174,7 @@ const helpers = {
 
 		// Creates main course container
 		const courseContainer = document.createElement('div');
-		courseContainer.classList.add('courseContainer');
+		courseContainer.classList.add('course__container');
 
 		// Links to go to course details and settings pages
 		const courseDetailsLink = document.createElement('a');
@@ -151,8 +187,8 @@ const helpers = {
 			'href',
 			`./course-edit.html?courseid=${courseId}`
 		);
-		courseDetailsLink.classList.add('courseDetailsLink');
-		courseSettingsLink.classList.add('courseSettingsLink');
+		courseDetailsLink.classList.add('course-details__link');
+		courseSettingsLink.classList.add('course-settings__link');
 		courseSettingsLink.innerHTML =
 			'<i class="material-icons">more_vert</i>';
 		courseContainer.appendChild(courseDetailsLink);
@@ -162,20 +198,20 @@ const helpers = {
 		var courseColorDiv = document.createElement('div');
 		// assigns the course color
 		courseColorDiv.style.backgroundColor = courseColor;
-		courseColorDiv.classList.add('courseColorDiv');
+		courseColorDiv.classList.add('course__color-div');
 		// appends color div to course details link
 		courseDetailsLink.appendChild(courseColorDiv);
 
 		// this div will hold the course name + any other course info
 		var courseData = document.createElement('div');
 		courseDetailsLink.appendChild(courseData);
-		courseData.classList.add('courseDetails');
+		courseData.classList.add('course-details');
 
 		// Creates, Sets classes and text and appends name and time HTML elements
 		var nameElement = document.createElement('h3');
 		var timeElement = document.createElement('span');
-		nameElement.classList.add('courseName');
-		timeElement.classList.add('courseTime');
+		nameElement.classList.add('course__name');
+		timeElement.classList.add('course__time');
 		nameElement.innerText = courseName;
 		timeElement.innerText = courseTime;
 		courseData.appendChild(nameElement);

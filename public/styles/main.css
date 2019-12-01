@@ -658,7 +658,7 @@ a.header__settings {
 }
 
 /* Individual Course Cards */
-.courseContainer {
+.course__container {
 	display: flex;
 	margin-top: 15px;
 	width: 100%;
@@ -668,14 +668,14 @@ a.header__settings {
 	background-color: var(--color-background-card);
 	overflow: hidden;
 }
-.courseDetailsLink {
+.course-details__link {
 	display: flex;
 	width: 100%;
 	transition: var(--transition-hover);
 	cursor: default;
 }
 
-.courseSettingsLink {
+.course-settings__link {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -686,19 +686,19 @@ a.header__settings {
 	cursor: default;
 }
 
-.courseDetailsLink:hover,
-.courseSettingsLink:hover {
+.course-details__link:hover,
+.course-settings__link:hover {
 	text-decoration: none;
 	color: var(--color-secondary);
 	background-color: var(--color-background-card-hover);
 }
 
-.courseColorDiv {
+.course__color-div {
 	width: 20px;
 	height: 100%;
 }
 
-.courseDetails {
+.course-details {
 	width: 100%;
 	padding: 10px 20px;
 	display: flex;
@@ -706,11 +706,11 @@ a.header__settings {
 	justify-content: space-between;
 }
 
-.courseDetails .courseName {
+.course-details .course__name {
 	font-size: 24px;
 }
 
-.courseDetails .courseTime {
+.course-details .course__time {
 	font-size: 18px;
 	color: #777;
 }
