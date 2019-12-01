@@ -305,6 +305,7 @@ a.form__button:hover {
 	transition: opacity 300ms ease-in;
 	z-index: 10;
 	opacity: 0;
+	pointer-events: none;
 }
 
 .edit_success_active {
