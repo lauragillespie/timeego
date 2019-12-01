@@ -7,7 +7,7 @@
 //
 //*****************************************************************************
 
-import helpers from './helpersViews.js';
+import helpers from './helpers-views.js';
 
 // Renders HTML Elements For Course Home
 const courseHomeViews = {

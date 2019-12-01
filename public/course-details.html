@@ -37,7 +37,7 @@
     <main class="main">
         <div class="container">
             <!-- Page Heading -->
-            <h1 class="page-heading">Course NAME</h1>
+            <h1 class="page-heading" id="heading__course-name">...</h1>
 
             <!-- Current/Archived Courses Nav -->
             <ul class="nav nav-tabs justify-content-end course__nav details__nav">
@@ -51,19 +51,14 @@
             </ul>
             <!-- Form for Adding Courses-->
             <div class="course-details__card">
-                <p>Details Here</p>
-                <p>Graphs?</p>
-                <ul>
-                    <li>List</li>
-                    <li>Of</li>
-                    <li>Previous</li>
-                    <li>Sessions</li>
-                </ul>
-                <p>Details Here</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus id vero doloribus voluptatem,
-                    numquam at. Eligendi velit tenetur assumenda eaque soluta natus itaque iusto quod, nobis nihil
-                    aliquam et corporis enim ab eum minima maxime iure maiores eos? Provident aperiam nobis quas
-                    reiciendis repudiandae quibusdam totam eveniet consequatur aut deleniti.</p>
+                <div class="course-details__color"></div>
+                <div class="sessions">
+                    <!-- Bootstrap Loader -->
+                    <div class="spinner-border bootstrap__spinner spinner--centered" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+
                 <a class="form__button form__button--cancel" href="./course-home.html">Back</a>
             </div>
 
@@ -189,7 +184,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <!-- Our Custom Scripts -->
     <script src="./scripts/controllers/global.js" type="module"></script>
-    <script src="./scripts/controllers/course-edit.js" type="module"></script>
+    <script src="./scripts/controllers/course-details.js" type="module"></script>
 
 </body>
 

@@ -34,7 +34,7 @@ const db = firebase.firestore();
  Then, this object calls the associated functions from views to render html elements needed for that page
 */
 
-import { timerViews, headerViews } from '../views/globalViews.js';
+import { timerViews, headerViews } from '../views/global-views.js';
 
 export const global = {
 	readDB  : function() {
@@ -131,7 +131,7 @@ export const global = {
 	}
 };
 
-import dashboardViews from '../views/dashboardViews.js';
+import dashboardViews from '../views/dashboard-views.js';
 
 export const dashboard = {
 	readDB : function() {
@@ -156,7 +156,7 @@ export const dashboard = {
 					// Uses destructuring to get data from each session
 					const { course, date, time } = doc.data().session;
 					// Converts db date into javascript date object
-					var dateObj = new Date(date.seconds * 1000);
+					const dateObj = new Date(date.seconds * 1000);
 					const id = doc.id;
 					// Adds data to session object
 					const session = {
@@ -180,7 +180,7 @@ export const dashboard = {
 	}
 };
 
-import courseHomeViews from '../views/courseHomeViews.js';
+import courseHomeViews from '../views/course-home-views.js';
 
 export const courseHome = {
 	readDB : function() {
@@ -219,7 +219,7 @@ export const courseHome = {
 	}
 };
 
-import courseArchivedViews from '../views/courseArchivedViews.js';
+import courseArchivedViews from '../views/course-archived-views.js';
 
 export const courseArchived = {
 	readDB : function() {
@@ -256,10 +256,28 @@ export const courseArchived = {
 		});
 	}
 };
+
+import courseDetailsViews from '../views/course-details-views.js';
+
 export const courseDetails = {
-	// TODO: Parse ID from URL, then...
 	// TODO: Get details of that course, render view
-	// TODO: Put Course ID in <a> tags in nav tabs
+	readDB : function(courseID) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: Course Data From DB
+			// Sets: Course List on Course Home page
+			dbRef
+				.collection('courses')
+				.doc(courseID)
+				.get()
+				.then(querySnapshot => {
+					const { course, sessions } = querySnapshot.data();
+					courseDetailsViews.renderDetails(course, sessions);
+				});
+		});
+	}
 };
 
 export const courseAdd = {
@@ -281,9 +299,7 @@ export const courseAdd = {
 };
 
 export const courseEdit = {
-	// TODO: Parse ID from URL, then...
 	// TODO: Fill the edit form with current data
-	// TODO: Put Course ID in <a> tags in nav tabs
 
 	editCourse   : function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {

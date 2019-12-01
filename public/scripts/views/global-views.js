@@ -9,7 +9,7 @@
 //
 //*****************************************************************************
 
-import helpers from './helpersViews.js';
+import helpers from './helpers-views.js';
 
 // Renders HTML Elements for Timer Pop-up
 export const timerViews = {

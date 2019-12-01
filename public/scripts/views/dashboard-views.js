@@ -9,7 +9,7 @@
 //*****************************************************************************
 
 import graphOptions from '../config/graphConfig.js';
-import helpers from './helpersViews.js';
+import helpers from './helpers-views.js';
 
 // Renders HTML Elements For Dashboard
 const dashboardViews = {
