@@ -1,3 +1,13 @@
+//*****************************************************************************
+// Course Edit Controller
+//*****************************************************************************
+//
+// This file imports functions from the main firebase file, allowing the user
+// to edit an entry in the database when they submit a form.
+// Clicking the 'delete' button allows the user to delete a course from the
+// database.
+//
+//*****************************************************************************
 import { courseEdit } from '../models/firebase.js';
 
 // Course Edit Form
@@ -9,9 +19,10 @@ const courseColor = document.getElementById('courseColor');
 
 const deleteButton = document.getElementById('delete');
 
+// Retrieves HTML elements for an alert when a course is edited/deleted
 const alert = document.getElementById('alertbox');
 const saved = document.querySelector('.edit_success');
-const alertBackground = document.querySelector('.timer__background');
+const alertBackground = document.querySelector('.alert_background');
 const alertSuccess = document.querySelector('.delete_success');
 const noButton = document.getElementById('no_button');
 const yesButton = document.getElementById('yes_button');
@@ -26,7 +37,7 @@ const idString = 'courseid=' + courseID;
 const detailsLink = document.getElementById('details_link');
 const editLink = document.getElementById('edit_link');
 
-// Adds Course ID to url when nav tabs are clicked
+// Adds Course ID to URL when nav tabs are clicked
 detailsLink.addEventListener('click', function(e) {
 	e.preventDefault();
 	window.location.href = './course-details.html?' + idString;
@@ -36,7 +47,7 @@ editLink.addEventListener('click', function(e) {
 	window.location.href = './course-edit.html?' + idString;
 });
 
-// EDITS COURSES
+// ******************** EDITS COURSES *********************** //
 
 // for a <form> with an id = 'courseForm'
 courseEditForm.addEventListener('submit', e => {
@@ -54,32 +65,32 @@ courseEditForm.addEventListener('submit', e => {
 	// window.location.href = './course-home.html';
 });
 
-// DELETES COURSES
+// ******************** DELETES COURSES *********************** //
 deleteButton.addEventListener('click', e => {
 	e.preventDefault();
 
 	// Prompts an alert confirming the course deletion
 	alertbox.classList.add('alertbox_active');
-	alertBackground.classList.add('timer__background--active');
+	alertBackground.classList.add('alert_background--active');
 
-	// Closes alert
+	// 'NO' Button: Closes the alert
 	noButton.addEventListener('click', e => {
 		e.preventDefault();
 
 		alertbox.classList.remove('alertbox_active');
-		alertBackground.classList.remove('timer__background--active');
+		alertBackground.classList.remove('alert_background--active');
 	});
 
-	// Deletes Course and closes alert, and redirects to course home
+	// 'YES' Button: deletes Course, closes alert, redirects to course home
 	yesButton.addEventListener('click', e => {
 		e.preventDefault();
 		courseEdit.deleteCourse(courseID);
 		alertSuccess.classList.add('delete_success_active');
 
-		// redirect on delay
+		// Redirect to 'course-home', on delay
 		setTimeout(function() {
 			alertbox.classList.remove('alertbox_active');
-			alertBackground.classList.remove('timer__background--active');
+			alertBackground.classList.remove('alert_background--active');
 			window.location.href = './course-home.html';
 		}, 800);
 	});
