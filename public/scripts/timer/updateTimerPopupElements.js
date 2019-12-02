@@ -18,9 +18,7 @@ const navToggleTimerIcon = document.querySelector('#toggle-btn-nav--timer');
 const navTogglePauseIcon = document.querySelector('#toggle-btn-nav--pause');
 
 // Currently Tracked Course in Timer Popup
-const currentlyTrackingCourse = document.querySelector(
-	'.currently-tracking-course'
-);
+const currentlyTrackingCourse = document.querySelector('.currently-tracking-course');
 
 /**************************************************************
 * Gets state from Stopwatch. Sets HTML elements accordingly
@@ -32,11 +30,7 @@ const currentlyTrackingCourse = document.querySelector(
 *
 **************************************************************/
 // Checks state of Stopwatch, Session and selected course. Sets HTML elements accordingly
-function updateTimerPopupElements(
-	currentlyTiming,
-	activeSession,
-	selectedCourse
-) {
+function updateTimerPopupElements(currentlyTiming, activeSession, selectedCourse) {
 	// Currently Selected Course
 	// If there is a currently selected course - sets name of course "Currently Tracking: ..." button
 	// No currently selected course - Sets btn text to "None", removes Active class from previously selected course
@@ -44,13 +38,9 @@ function updateTimerPopupElements(
 		currentlyTrackingCourse.innerText = selectedCourse.name;
 	} else {
 		currentlyTrackingCourse.innerText = 'None';
-		const selectedCourseList = document.querySelector(
-			'.course-list__list-item--active'
-		);
+		const selectedCourseList = document.querySelector('.course-list__list-item--active');
 		if (selectedCourseList) {
-			selectedCourseList.classList.remove(
-				'course-list__list-item--active'
-			);
+			selectedCourseList.classList.remove('course-list__list-item--active');
 		}
 	}
 
