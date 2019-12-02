@@ -36,8 +36,9 @@
 	/*** Colors - Regular ***/
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
-	--color-success: #6dd75c;
-	--color-success: #27ca31;
+	/* --color-success: #6dd75c;
+	--color-success: #27ca31; */
+	--color-success: #1ea2db;
 	--color-danger: #ff6a56;
 
 	--color-background-main: #fbfbfb;
@@ -610,7 +611,9 @@ a.header__settings {
 }
 
 .card_primary {
-	background: var(--color-primary);
+	/* background: var(--color-primary); */
+	background: #46237a;
+	/* background: #022f40; */
 }
 
 .card_success {
