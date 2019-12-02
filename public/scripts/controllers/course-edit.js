@@ -11,7 +11,7 @@ const deleteButton = document.getElementById('delete');
 
 const alert = document.getElementById('alertbox');
 const saved = document.querySelector('.edit_success');
-const alertBackground = document.querySelector('.timer__background');
+const alertBackground = document.querySelector('.alert_background');
 const alertSuccess = document.querySelector('.delete_success');
 const noButton = document.getElementById('no_button');
 const yesButton = document.getElementById('yes_button');
@@ -60,14 +60,14 @@ deleteButton.addEventListener('click', e => {
 
 	// Prompts an alert confirming the course deletion
 	alertbox.classList.add('alertbox_active');
-	alertBackground.classList.add('timer__background--active');
+	alertBackground.classList.add('alert_background--active');
 
 	// Closes alert
 	noButton.addEventListener('click', e => {
 		e.preventDefault();
 
 		alertbox.classList.remove('alertbox_active');
-		alertBackground.classList.remove('timer__background--active');
+		alertBackground.classList.remove('alert_background--active');
 	});
 
 	// Deletes Course and closes alert, and redirects to course home
@@ -79,7 +79,7 @@ deleteButton.addEventListener('click', e => {
 		// redirect on delay
 		setTimeout(function() {
 			alertbox.classList.remove('alertbox_active');
-			alertBackground.classList.remove('timer__background--active');
+			alertBackground.classList.remove('alert_background--active');
 			window.location.href = './course-home.html';
 		}, 800);
 	});
