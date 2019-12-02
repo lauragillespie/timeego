@@ -302,17 +302,13 @@ export const courseEdit = {
 	// TODO: Fill the edit form with current data
 
 	editCourse   : function(courseID) {
+		console.log("hi");
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
-			var archived = archiveCourse.value;
-
-			if (archiveCourse.check == false) {
-				archived = false;
-			} else {
-				archived = true;
-			}
-
+			var archiveCourse = document.getElementById("archiveCourse");
+			var archived = archiveCourse.checked;
+			
 			// Reference to a specific course given the id
 			dbRef.collection('courses').doc(courseID).update(
 				// Accesses the course object with parameters to update
