@@ -34,13 +34,7 @@ const db = firebase.firestore();
  Then, this object calls the associated functions from views to render html elements needed for that page
 */
 
-import {
-	timerViews,
-	headerViews,
-	dashboardViews,
-	courseHomeViews,
-	courseArchivedViews
-} from '../views/views.js';
+import { timerViews, headerViews } from '../views/global-views.js';
 
 export const global = {
 	readDB  : function() {
@@ -136,6 +130,9 @@ export const global = {
 		}
 	}
 };
+
+import dashboardViews from '../views/dashboard-views.js';
+
 export const dashboard = {
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
@@ -150,12 +147,40 @@ export const dashboard = {
 				// Imported From Views, passes in current user data
 				dashboardViews.renderHeading(currentUser);
 			});
-			// TODO: Get Current Streak Data
+
+			// Gets: Session Data from DB
+			// Sets: Dashboard Graph and Dashboard Current Streak
+			dbRef.collection('sessions').get().then(function(querySnapshot) {
+				const sessions = [];
+				querySnapshot.forEach(doc => {
+					// Uses destructuring to get data from each session
+					const { course, date, time } = doc.data().session;
+					// Converts db date into javascript date object
+					const dateObj = new Date(date.seconds * 1000);
+					const id = doc.id;
+					// Adds data to session object
+					const session = {
+						id     : id,
+						course : course,
+						date   : dateObj,
+						time   : time
+					};
+					// adds session object to array
+					sessions.push(session);
+					// console.log(session);
+				});
+				// Imported From Views, passes in array of sessions to:
+				// -Render Dashboard Graph
+				// TODO: Get Session/Course Data Needed for Graph, pass in to views
+				dashboardViews.renderGraph(sessions);
+				// -Render Current Streak
+				dashboardViews.currentStreak(sessions);
+			});
 		});
-		// TODO: Get Session/Course Data Needed for Graph, pass in to views
-		dashboardViews.renderGraph();
 	}
 };
+
+import courseHomeViews from '../views/course-home-views.js';
 
 export const courseHome = {
 	readDB : function() {
@@ -193,6 +218,9 @@ export const courseHome = {
 		});
 	}
 };
+
+import courseArchivedViews from '../views/course-archived-views.js';
+
 export const courseArchived = {
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
@@ -228,10 +256,28 @@ export const courseArchived = {
 		});
 	}
 };
+
+import courseDetailsViews from '../views/course-details-views.js';
+
 export const courseDetails = {
-	// TODO: Parse ID from URL, then...
 	// TODO: Get details of that course, render view
-	// TODO: Put Course ID in <a> tags in nav tabs
+	readDB : function(courseID) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: Course Data From DB
+			// Sets: Course List on Course Home page
+			dbRef
+				.collection('courses')
+				.doc(courseID)
+				.get()
+				.then(querySnapshot => {
+					const { course, sessions } = querySnapshot.data();
+					courseDetailsViews.renderDetails(course, sessions);
+				});
+		});
+	}
 };
 
 export const courseAdd = {
@@ -253,9 +299,7 @@ export const courseAdd = {
 };
 
 export const courseEdit = {
-	// TODO: Parse ID from URL, then...
 	// TODO: Fill the edit form with current data
-	// TODO: Put Course ID in <a> tags in nav tabs
 
 	editCourse   : function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {

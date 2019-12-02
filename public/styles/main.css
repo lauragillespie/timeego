@@ -37,9 +37,10 @@
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
 	--color-success: #6dd75c;
+	--color-success: #27ca31;
 	--color-danger: #ff6a56;
 
-	--color-background-main: #f4f4f4;
+	--color-background-main: #fbfbfb;
 	--color-background-card: #ffffff;
 
 	/*** Colors - Hover ***/
@@ -50,20 +51,26 @@
 	--color-background-card-hover: #fbfbfb;
 
 	/*** Colors - Gradient ***/
-	--color-blue-gradient: linear-gradient(353.28deg, #1ea2db 7.78%, rgba(255, 255, 255, 0) 100%), #3127ca;
+	--color-blue-gradient: linear-gradient(
+			353.28deg,
+			#1ea2db 7.78%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		#3127ca;
 
 	/*** Fonts ***/
 	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
 	--font-family-body: 'Open Sans', Arial, Helvetica, sans-serif;
 
 	/*** Shadows ***/
-	--shadow-card: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	--shadow-card: 2px 2px 6px rgba(0, 0, 0, 0.1);
 
 	/*** Borders ***/
-	--border-radius: 10px;
+	--border-radius: 5px;
 
 	/*** Transition Effect ***/
-	--transition-hover: color 150ms ease-in-out, background-color 150ms ease-in-out, background 150ms ease-in-out;
+	--transition-hover: color 150ms ease-in-out,
+		background-color 150ms ease-in-out, background 150ms ease-in-out;
 	--transition-height: height 200ms linear;
 	--transition-scale: transform 200ms linear, margin 200ms linear;
 }
@@ -121,7 +128,8 @@ p {
 	line-height: 1.4;
 }
 
-a {
+a,
+a:hover {
 	text-decoration: none;
 }
 
@@ -142,7 +150,7 @@ img {
 .details__nav {
 	margin-top: -35px;
 }
-/* Media Queries To Make Nav Tabs move under heading when screen gets smaller */
+/* Media Queries To Make Nav Tabs move under page heading when screen gets smaller */
 @media only screen and (max-width: 400px) {
 	.details__nav {
 		margin-top: 0;
@@ -180,7 +188,8 @@ img {
 /* Sets Focus Color */
 .form-control:focus {
 	border-color: rgba(49, 39, 202, 0.5);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(49, 39, 202, 0.3);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+		0 0 8px rgba(49, 39, 202, 0.3);
 }
 
 .course-color-selector {
@@ -296,6 +305,7 @@ a.form__button:hover {
 	transition: opacity 300ms ease-in;
 	z-index: 10;
 	opacity: 0;
+	pointer-events: none;
 }
 
 .edit_success_active {
@@ -327,6 +337,11 @@ a.form__button:hover {
 	color: white;
 	display: block;
 	margin: 45% auto;
+}
+
+.spinner--centered {
+	display: block;
+	margin: 100px auto 120px;
 }
 
 /***************************/
@@ -362,7 +377,7 @@ a.form__button:hover {
 	font-size: 12px;
 }
 
-/* a needed for text-decoration to remove underline */
+/* Needed for text-decoration to remove underline */
 a.header__settings {
 	padding: 0px 0 3px 20px;
 	display: flex;
@@ -508,7 +523,8 @@ a.header__settings {
 
 @keyframes pulse {
 	to {
-		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(232, 76, 61, 0);
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3),
+			0 0 0 15px rgba(232, 76, 61, 0);
 	}
 }
 
@@ -555,76 +571,77 @@ a.header__settings {
 .card--half {
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow-card);
-	color: var(--color-background-card);
-	text-align: center;
-	font-size: 20pt;
-	font-weight: 900;
-	padding: 10% 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 14pt;
+	padding: 20px 10px 40px;
 	height: 200px;
 	width: 100%;
+	text-align: center;
+}
+
+.card--half span {
+	color: var(--color-background-card);
+	font-weight: 700;
+}
+
+.card--half i {
+	font-size: 40pt;
+	color: var(--color-background-card);
+}
+
+/* Media Queries for half card text */
+@media only screen and (min-width: 380px) {
+	.card--half {
+		font-size: 16pt;
+	}
+}
+@media only screen and (min-width: 500px) {
+	.card--half {
+		font-size: 18pt;
+		padding: 20px 20px 40px;
+	}
+}
+
+#study_streak {
+	padding-bottom: 15px;
 }
 
 .card_primary {
 	background: var(--color-primary);
 }
 
-.card_primary i {
-	font-size: 40pt;
-	display: block;
-}
-
 .card_success {
 	background: var(--color-success);
+	/* background: #b0228c; */
+	/* background: #272838; */
+	/* background: #3b0086; */
+	/* background: #960200; */
+	/* background: #678d58; */
+	/* background: #ce2d4f; */
 }
 
-.card_success span {
-	color: var(--color-background-card);
-	display: block;
-	margin-top: 20%;
-}
+/** Dashboard Graph Card **/
 
-/** RECENT HIGHLIGHTS **/
-.highlights h2 {
-	font-size: 16pt;
-	display: inline;
-	margin: 5% 0;
-	border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-}
-
-/** CONTENT **/
-
-.content_container {
-	margin-top: 30px;
-}
-
-.content {
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
-	justify-content: center;
-	align-content: stretch;
-}
-
-.content div {
-	font-size: 11pt;
-	color: rgba(0, 0, 0, 0.5);
-	background-color: var(--color-background-card);
-	padding: 5%;
-	border: var(--border-card);
-	border-radius: 12px;
-	box-shadow: var(--shadow-card);
-	margin-top: 5%;
-}
-
-/*** Dashboard Graph ***/
 .graph__card {
-	margin-top: 15px;
+	margin-top: 30px;
 	width: 100%;
 	border-radius: var(--border-radius);
-	padding: 30px;
+	padding: 30px 20px 10px 0;
 	box-shadow: var(--shadow-card);
 	background-color: var(--color-background-card);
 	overflow: hidden;
+}
+
+/** Graph Headings **/
+.graph__heading {
+	text-align: center;
+	font-size: 20pt;
+	font-weight: 700;
+	padding-top: 12px;
+	margin-bottom: 30px;
 }
 
 /*****************************************/
@@ -641,7 +658,7 @@ a.header__settings {
 }
 
 /* Individual Course Cards */
-.courseContainer {
+.course__container {
 	display: flex;
 	margin-top: 15px;
 	width: 100%;
@@ -651,14 +668,14 @@ a.header__settings {
 	background-color: var(--color-background-card);
 	overflow: hidden;
 }
-.courseDetailsLink {
+.course-details__link {
 	display: flex;
 	width: 100%;
 	transition: var(--transition-hover);
 	cursor: default;
 }
 
-.courseSettingsLink {
+.course-settings__link {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -669,19 +686,19 @@ a.header__settings {
 	cursor: default;
 }
 
-.courseDetailsLink:hover,
-.courseSettingsLink:hover {
+.course-details__link:hover,
+.course-settings__link:hover {
 	text-decoration: none;
 	color: var(--color-secondary);
 	background-color: var(--color-background-card-hover);
 }
 
-.courseColorDiv {
+.course__color-div {
 	width: 20px;
 	height: 100%;
 }
 
-.courseDetails {
+.course-details {
 	width: 100%;
 	padding: 10px 20px;
 	display: flex;
@@ -689,11 +706,11 @@ a.header__settings {
 	justify-content: space-between;
 }
 
-.courseDetails .courseName {
+.course-details .course__name {
 	font-size: 24px;
 }
 
-.courseDetails .courseTime {
+.course-details .course__time {
 	font-size: 18px;
 	color: #777;
 }
@@ -728,48 +745,42 @@ hr {
 /*****************************************/
 
 .course-details__card {
-	margin-top: 15px;
+	margin-top: 30px;
 	width: 100%;
 	border-radius: var(--border-radius);
 	padding: 30px;
 	box-shadow: var(--shadow-card);
 	background-color: var(--color-background-card);
 	overflow: hidden;
+	position: relative;
 }
 
-/*****************************************/
-/***      7.4 Color selector	       ***/
-/*****************************************/
+.course-details__color {
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 12px;
+	position: absolute;
+}
 
-.color-picker {
-	padding: 5px 20px 5px 15px;
-	align-content: center;
-	text-align: center;
+.course-details__session-heading {
+	font-size: 20px;
+	margin-bottom: 20px;
 }
-.color-list {
-	list-style: none;
-	padding: 0;
+
+.course-details__session-list {
+	margin-bottom: 40px;
 }
-.color-list li {
-	display: inline-block;
-	margin: 3px;
+
+.course-details__session-list li {
+	display: flex;
+	flex-direction: column;
 }
-.color-list input {
-	display: none;
+.session-list__time {
+	font-size: 16px;
+	padding-bottom: 10px;
 }
-.color {
-	height: 40px;
-	width: 40px;
-	border-radius: 100px;
-	background-color: attr(data-color);
-	transition: transform 0.3s;
-}
-.color:not(.active):hover {
-	cursor: pointer;
-	transform: scale(1.2);
-}
-.color.active {
-	border: 5px solid #ddd;
-	width: 52px;
-	height: 52px;
+.session-list__date {
+	font-size: 12px;
+	color: #777;
 }

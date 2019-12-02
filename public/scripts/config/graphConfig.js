@@ -21,7 +21,7 @@ const getDaysOrder = () => {
 	// Gets Current Day
 	const today = new Date().getDay();
 
-	for (let count = 0; count < 7; count++) {
+	for (let count = 1; count <= 7; count++) {
 		const day = today + count;
 		if (day < 8) {
 			daysArray.push(daysOfWeek[day]);

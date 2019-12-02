@@ -186,8 +186,15 @@
 	background-color: var(--color-background-card-hover);
 }
 
-.course-list__btn--show span {
-	font-size: 14px;
+.course-list__btn--show .currently-tracking,
+.course-list__btn--show .currently-tracking-course {
+	font-size: 18px;
+	color: var(--color-primary);
+	font-family: var(--font-family-heading);
+}
+
+.course-list__btn--show .currently-tracking-course {
+	font-weight: 700;
 }
 
 /* Course List - heading */

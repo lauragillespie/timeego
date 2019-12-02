@@ -35,49 +35,37 @@
 
    <main class="main">
       <div class="container">
-
          <!-- Page Heading -->
-
          <h1 class="page-heading">Welcome <span id="page-heading__username">...</span></h1>
 
-
-         <div class="card-row">
-
-            <div class="card--half card_primary" onclick="location.href='course-home.html';">
-               Log a Study Session
+         <!-- Top Cards -->
+         <section class="card-row">
+            <a class="card--half card_primary" href="#">
+               <span>Log a Previous Session</span>
                <i class="material-icons">
                   add_circle
                </i>
+            </a>
+            <div class="card--half card_success">
+               <span>Current Study Streak:</span>
+               <span id="study_streak">.. Days</span>
             </div>
+         </section>
 
-            <div class="card--half card_success">Current Streak
-               <span id="study_streak">8 Days</span></div>
-         </div>
-
-         <!-- CONTENT BOXES -->
-         <div class="content_container">
-            <div class="highlights">
-               <h2>Recent Progress</h2>
+         <!-- Graph Area -->
+         <section class="graph__card">
+            <h2 class="graph__heading">Recent Studying</h2>
+            <div id="chart">
+               <!-- Bootstrap Loader -->
+               <div class="spinner-border bootstrap__spinner spinner--centered" role="status">
+                  <span class="sr-only">Loading...</span>
+               </div>
             </div>
-            <div class="graph__card" style="padding: 30px 20px 10px 0">
-               <div id="chart"></div>
-            </div>
-         </div>
-
+         </section>
       </div>
    </main>
 
-
    <!-- NAVIGATION BAR -->
-   <!-- 
-      Note: the following nav classes now come from Bootstrap -Anthony
-         -container
-         -nav
-         -nav-justified
-         -nav-item
-         -nav-link
-      https://getbootstrap.com/docs/4.3/components/navs/
-   -->
    <footer class="footer">
       <nav class="container nav__container">
          <ul class="nav nav-justified">
@@ -120,6 +108,7 @@
    <!-- TIMER Pop-up -->
    <div class="timer__container">
       <div class="timer__popup">
+         <!-- Time section -->
          <div class="popup__time-section popup__time-section--expanded">
             <span class="timer__text">00:00:00</span>
             <div class="timer__control-btns">
@@ -144,10 +133,11 @@
             </div>
 
          </div>
-
+         <!-- Course section -->
          <div class="popup__course-list">
             <button class="course-list__btn--show">
-               <span>Currently Tracking: <span class="currently-tracking-course">None</span></span>
+               <span class="currently-tracking">Currently Tracking: <span
+                     class="currently-tracking-course">None</span></span>
                <span>Click to Select Course</span>
             </button>
             <h2 class="course-list__heading">Select a Course</h2>
