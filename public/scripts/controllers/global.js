@@ -1,5 +1,5 @@
 // Stopwatch Class
-import Stopwatch from '../timer/stopwatch.js';
+import Stopwatch from '../models/stopwatch.js';
 // Global DB
 import { global } from '../models/firebase.js';
 
