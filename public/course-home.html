@@ -57,19 +57,6 @@
             <div class="spinner-border bootstrap__spinner" role="status">
                <span class="sr-only">Loading...</span>
             </div>
-
-            <!-- <div class="courseContainer">
-               <a href="#" class="courseDetailsLink">
-                  <div class="courseColorDiv" style="background: rebeccapurple"></div>
-                  <div class="courseDetails">
-                     <h3 class="courseName">Comp 1930</h3>
-                     <span class="courseTime">01:22:33</span>
-                  </div>
-               </a>
-               <a href="#" class="courseSettingsLink"><i class="material-icons">
-                     more_vert
-                  </i></a>
-            </div> -->
          </div>
          <hr />
          <a href="./course-add.html" class="add-course-link btn" role="button">Add New Course</a>
@@ -126,18 +113,23 @@
             <span class="timer__text">00:00:00</span>
             <div class="timer__control-btns">
                <button class="timer__control-btn" id="stopwatch_play_btn">
-                  <i class="material-icons">
+                  <div>Start </div><i class="material-icons">
                      play_arrow
                   </i>
                </button>
                <button class="timer__control-btn" id="stopwatch_pause_btn">
-                  <i class="material-icons">
+                  <div>Pause </div><i class="material-icons">
                      pause
                   </i>
                </button>
                <button class="timer__control-btn" id="stopwatch_reset_btn">
-                  <i class="material-icons">
+                  <div>Clear </div><i class="material-icons">
                      replay
+                  </i>
+               </button>
+               <button class="timer__control-btn" id="stopwatch_save_btn">
+                  <div>Save </div><i class="material-icons">
+                     save_alt
                   </i>
                </button>
             </div>

@@ -138,18 +138,23 @@
             <span class="timer__text">00:00:00</span>
             <div class="timer__control-btns">
                <button class="timer__control-btn" id="stopwatch_play_btn">
-                  <i class="material-icons">
+                  <div>Start </div><i class="material-icons">
                      play_arrow
                   </i>
                </button>
                <button class="timer__control-btn" id="stopwatch_pause_btn">
-                  <i class="material-icons">
+                  <div>Pause </div><i class="material-icons">
                      pause
                   </i>
                </button>
                <button class="timer__control-btn" id="stopwatch_reset_btn">
-                  <i class="material-icons">
+                  <div>Clear </div><i class="material-icons">
                      replay
+                  </i>
+               </button>
+               <button class="timer__control-btn" id="stopwatch_save_btn">
+                  <div>Save </div><i class="material-icons">
+                     save_alt
                   </i>
                </button>
             </div>
@@ -184,7 +189,6 @@
    </div>
    <div class="timer__background"></div>
    <!-- Timer Pop-up HTML Ends -->
-
    <!-- SCRIPTS -->
    <!-- jQuery Scirpt - Needed for Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
