@@ -1,7 +1,7 @@
 // Imports
-import { global } from '../models/firebase.js';
+import { global } from './firebase.js';
 import Session from './session.js';
-import updateTimerPopupElements from './updateTimerPopupElements.js';
+import { timerViews } from '../views/global-views.js';
 
 // Grabs Text in Timer (00:00:00)
 const timerText = document.querySelector('.timer__text');
@@ -68,7 +68,7 @@ class Stopwatch {
 		}, 1000);
 
 		// Updates all HTML elements to show stopwatch is currently timing
-		updateTimerPopupElements(
+		timerViews.toggleTimerElements(
 			this.currentlyTiming,
 			this.activeSession,
 			this.selectedCourse
@@ -87,7 +87,7 @@ class Stopwatch {
 		this.saveToLocalStorage();
 
 		// Updates all HTML elements to show stopwatch is currently paused
-		updateTimerPopupElements(
+		timerViews.toggleTimerElements(
 			this.currentlyTiming,
 			this.activeSession,
 			this.selectedCourse
@@ -107,7 +107,7 @@ class Stopwatch {
 		this.saveToLocalStorage();
 
 		// Updates all HTML elements to show stopwatch has no session
-		updateTimerPopupElements(
+		timerViews.toggleTimerElements(
 			this.currentlyTiming,
 			this.activeSession,
 			this.selectedCourse
@@ -119,7 +119,7 @@ class Stopwatch {
 	// Runs on every page load to update stopwatch from state
 	onPageLoad() {
 		// Updates all HTML elements to show stopwatch has no session
-		updateTimerPopupElements(
+		timerViews.toggleTimerElements(
 			this.currentlyTiming,
 			this.activeSession,
 			this.selectedCourse

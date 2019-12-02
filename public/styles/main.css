@@ -36,8 +36,9 @@
 	/*** Colors - Regular ***/
 	--color-primary: #3127ca;
 	--color-secondary: #555555;
-	--color-success: #6dd75c;
-	--color-success: #27ca31;
+	/* --color-success: #6dd75c; */
+	/* --color-success: #27ca31; */
+	/* --color-success: #1ea2db; */
 	--color-danger: #ff6a56;
 
 	--color-background-main: #fbfbfb;
@@ -46,12 +47,13 @@
 	/*** Colors - Hover ***/
 	--color-primary-hover: #180eb1;
 	--color-secondary-hover: #3c3c3c;
-	--color-success-hover: #54be43;
+	/* --color-success-hover: #54be43; */
 	--color-danger-hover: #e6513d;
 	--color-background-card-hover: #fbfbfb;
 
 	/*** Colors - Gradient ***/
 	--color-blue-gradient: linear-gradient(353.28deg, #1ea2db 7.78%, rgba(255, 255, 255, 0) 100%), #3127ca;
+	--color-green-gradient: linear-gradient(353.28deg, #6dd75c 7.78%, rgba(255, 255, 255, 0) 100%), #2fa15a;
 
 	/*** Fonts ***/
 	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
@@ -299,6 +301,24 @@ a.form__button:hover {
 
 .alertbox_active {
 	display: block;
+}
+
+.alert_background {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 200ms ease-in-out;
+}
+
+.alert_background--active {
+	pointer-events: auto;
+	opacity: 1;
 }
 
 .edit_success {
@@ -616,17 +636,11 @@ a.header__settings {
 }
 
 .card_primary {
-	background: var(--color-primary);
+	background: var(--color-green-gradient);
 }
 
 .card_success {
-	background: var(--color-success);
-	/* background: #b0228c; */
-	/* background: #272838; */
-	/* background: #3b0086; */
-	/* background: #960200; */
-	/* background: #678d58; */
-	/* background: #ce2d4f; */
+	background: var(--color-blue-gradient);
 }
 
 /** Dashboard Graph Card **/
@@ -635,7 +649,7 @@ a.header__settings {
 	margin-top: 30px;
 	width: 100%;
 	border-radius: var(--border-radius);
-	padding: 30px 20px 10px 0;
+	padding: 30px 0 10px;
 	box-shadow: var(--shadow-card);
 	background-color: var(--color-background-card);
 	overflow: hidden;
@@ -648,6 +662,11 @@ a.header__settings {
 	font-weight: 700;
 	padding-top: 12px;
 	margin-bottom: 30px;
+}
+
+/** Graph - Centers in card**/
+.graph__card div {
+	padding-right: 30px;
 }
 
 /*****************************************/
