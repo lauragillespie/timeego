@@ -96,9 +96,6 @@ class Stopwatch {
 
 	// Resets Stopwatch
 	reset() {
-		// saveToDB method saves session to to DB
-		this.saveToDB();
-
 		// Updates state to have no current session/time
 		this.activeSession = null;
 		this.selectedCourse = null;
@@ -114,6 +111,13 @@ class Stopwatch {
 		);
 		// Resets Time HTML
 		timerText.innerText = '00:00:00';
+	}
+
+	save() {
+		// saveToDB method saves session to to DB
+		this.saveToDB();
+		// Resets Timer
+		this.reset();
 	}
 
 	// Runs on every page load to update stopwatch from state

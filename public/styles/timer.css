@@ -98,10 +98,10 @@
 
 /* Timer Control Buttons Container */
 .timer__control-btns {
-	width: 65%;
+	width: 90%;
 	margin: 0 auto;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	transition: var(--transition-scale);
 }
 
@@ -113,21 +113,60 @@
 /* Individual Timer Control Button */
 .timer__control-btn {
 	border: none;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
+	width: 80px;
+	height: 50px;
+	border-radius: 25px;
 	background: var(--color-blue-gradient);
 	box-shadow: var(--shadow-card);
 	/* Hidden by default, javascript will determine which are currently needed and display them using display flex (centers icons) */
 	display: none;
-	align-content: center;
-	justify-content: center;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 10px;
+}
+
+.timer__control-btn div {
+	color: white;
+	font-size: 12px;
+	line-height: 24px;
 }
 
 .timer__control-btn i {
 	color: white;
-	font-size: 40px;
+	font-size: 24px;
 }
+
+/* Media Queries for timer control btns */
+@media only screen and (min-width: 400px) {
+	.timer__control-btns {
+		width: 80%;
+	}
+
+	.timer__control-btn {
+		width: 90px;
+	}
+}
+
+@media only screen and (min-width: 500px) {
+	.timer__control-btns {
+		width: 75%;
+	}
+
+	.timer__control-btn {
+		width: 100px;
+	}
+
+	.timer__control-btn div {
+		font-size: 15px;
+		line-height: 30px;
+	}
+
+	.timer__control-btn i {
+		font-size: 30px;
+	}
+}
+
+/* Saved Session Time Alert */
 .done_saved {
 	position: absolute;
 	bottom: 0;

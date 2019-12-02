@@ -74,9 +74,7 @@ A list of things left to accomplish.
 * [ ] Make "Settings" Page
     * [ ] Filler, non-functional settings like dark mode, change password
     * [ ] Working logout button
-* [x] Dashboard 
-    * [x] Graph Container
-    * [x] Clean up upper dashboard cards
+
 
 ### Views - Dynamic HTML from DB
 * [ ] Dashboard
@@ -90,7 +88,6 @@ A list of things left to accomplish.
     * [ ] Add course info from DB to form values
 
 ### Timer
-* [ ] Figure out stopwatch buttons/icons
 * [ ] Stretch - Fix CSS for landscape mode phones
 * [ ] Stretch - Fix Course button on firefox
 

@@ -1,18 +1,27 @@
-const graphColors = [
-	'#3127ca'
-];
+// const graphColors = [
+// 	'#3127ca'
+// ];
 // Default Colors
-// ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'];
+const graphColors = [
+	'#008FFB',
+	'#00E396',
+	'#FEB019',
+	'#FF4560',
+	'#775DD0',
+	'#546E7A',
+	'#26a69a',
+	'#D10CE8'
+];
 
 // Days of Week as Strings
 const daysOfWeek = {
-	1 : 'Mon',
-	2 : 'Tue',
-	3 : 'Wed',
-	4 : 'Thu',
-	5 : 'Fri',
-	6 : 'Sat',
-	7 : 'Sun'
+	1 : 'M',
+	2 : 'T',
+	3 : 'W',
+	4 : 'T',
+	5 : 'F',
+	6 : 'S',
+	7 : 'S'
 };
 
 // Returns an Array of Strings with last 7 days of week

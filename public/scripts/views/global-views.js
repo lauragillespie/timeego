@@ -15,6 +15,7 @@ import helpers from './helpers-views.js';
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
 const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
+const stopwatchSaveBtn = document.querySelector('#stopwatch_save_btn');
 
 // Grabs Nav Toggle Btn, Icons in Btn
 const navToggleBtn = document.querySelector('#timer-toggle-btn');
@@ -138,6 +139,7 @@ function setElementsActive() {
 	stopwatchPlayBtn.style.display = 'none';
 	stopwatchPauseBtn.style.display = 'flex';
 	stopwatchResetBtn.style.display = 'none';
+	stopwatchSaveBtn.style.display = 'none';
 }
 // When Stopwatch is NOT currently timing...
 function setElementsInactive(activeSession) {
@@ -153,8 +155,10 @@ function setElementsInactive(activeSession) {
 	if (activeSession) {
 		// If session is active, also show stopwatch "Reset" button
 		stopwatchResetBtn.style.display = 'flex';
+		stopwatchSaveBtn.style.display = 'flex';
 	} else {
 		// If no session active, don't show stopwatch "Reset" button
 		stopwatchResetBtn.style.display = 'none';
+		stopwatchSaveBtn.style.display = 'none';
 	}
 }

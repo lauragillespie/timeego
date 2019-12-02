@@ -8,7 +8,9 @@ import { global } from '../models/firebase.js';
  ******************************************************/
 
 // Gets Timer State from Local Storage
-const timerStateFromLocalStorage = JSON.parse(window.localStorage.getItem('timerState'));
+const timerStateFromLocalStorage = JSON.parse(
+	window.localStorage.getItem('timerState')
+);
 // Creates stopwatch object from Stopwatch class, and passes in timerState from local storage as parameter. See timed.md for object structure.
 // Object will either be the correct format, or null
 const stopwatchObject = new Stopwatch(timerStateFromLocalStorage);
@@ -46,10 +48,13 @@ const timerBtnContainer = document.querySelector('.timer__control-btns');
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
 const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
+const stopwatchSaveBtn = document.querySelector('#stopwatch_save_btn');
 
 // Grabs course List List and "currently tracking" course span
 const courseList = document.querySelector('.course-list__list');
-const currentlyTrackingCourse = document.querySelector('.currently-tracking-course');
+const currentlyTrackingCourse = document.querySelector(
+	'.currently-tracking-course'
+);
 
 // Grabs Course List Toggle Buttons
 const closeCourseListBtn = document.querySelector('.course-list__btn--close');
@@ -75,7 +80,7 @@ timerCloseBtn.addEventListener('click', closeTimerPopUp);
 
 // Stopwatch Play, Pause and Reset button Event listeners
 // Start Stopwatch
-stopwatchPlayBtn.addEventListener('click', (e) => {
+stopwatchPlayBtn.addEventListener('click', e => {
 	stopwatchObject.start();
 	// If stopwatchObject has no currently selectedCourse, select course select automatically expands
 	if (stopwatchObject.selectedCourse === null) {
@@ -83,17 +88,23 @@ stopwatchPlayBtn.addEventListener('click', (e) => {
 	}
 });
 // Pauses stopwatch
-stopwatchPauseBtn.addEventListener('click', (e) => {
+stopwatchPauseBtn.addEventListener('click', e => {
 	stopwatchObject.pause();
 });
 // Resets stopwatch
-stopwatchResetBtn.addEventListener('click', (e) => {
+stopwatchResetBtn.addEventListener('click', e => {
 	stopwatchObject.reset();
+});
+
+stopwatchSaveBtn.addEventListener('click', e => {
+	stopwatchObject.save();
 	// Saved Pop-up message when done is clicked
 	document.querySelector('.done_saved').classList.add('done_saved_active');
 	// Hides the saved pop-up after 3 seconds
 	setTimeout(() => {
-		document.querySelector('.done_saved').classList.remove('done_saved_active');
+		document
+			.querySelector('.done_saved')
+			.classList.remove('done_saved_active');
 	}, 3000);
 });
 // Timer Pop-up Course List Expand Btn/Close Btn
@@ -101,7 +112,7 @@ openCourseListBtn.addEventListener('click', expandCourseList);
 closeCourseListBtn.addEventListener('click', shrinkCourseList);
 
 // User clicks on course list in timer pop-up
-courseList.addEventListener('click', (e) => {
+courseList.addEventListener('click', e => {
 	// Makes clicked course active, updates stopwatchObject's state with new selected course, shrinks courseList section
 	courseListClicked(e);
 });
@@ -128,7 +139,7 @@ function closeTimerPopUp(e) {
 
 // Expands Timer Pop-up Course List
 function expandCourseList() {
-	// Sets classes + styles needed to expand course list and skrink time section of timer popup
+	// Sets classes + styles needed to expand course list and shrink time section of timer popup
 	popupTimeSection.classList.remove('popup__time-section--expanded');
 	popupCourseSection.classList.add('popup__course-list--expanded');
 	timerBtnContainer.classList.add('timer__control-btns--small');
@@ -138,7 +149,9 @@ function expandCourseList() {
 	// Fires if stopwatch object has a selected course. Will sets the list item of that course to active, adding style
 	if (stopwatchObject.selectedCourse) {
 		const selectedCourseId = stopwatchObject.selectedCourse.id;
-		document.getElementById(selectedCourseId).classList.add('course-list__list-item--active');
+		document
+			.getElementById(selectedCourseId)
+			.classList.add('course-list__list-item--active');
 	}
 }
 // Shrinks Timer Pop-up Course List
@@ -165,7 +178,9 @@ function courseListClicked(e) {
 	}
 
 	// grabs list item that is currently active
-	let previouslyActive = document.querySelector('.course-list__list-item--active');
+	let previouslyActive = document.querySelector(
+		'.course-list__list-item--active'
+	);
 	// if previously active exists (ie not null), then it removes active class
 	if (previouslyActive) {
 		previouslyActive.classList.remove('course-list__list-item--active');
