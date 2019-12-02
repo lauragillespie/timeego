@@ -61,23 +61,6 @@ A list of things left to accomplish.
     * [ ] Stretch - add char limit to course name?
 
 ### Models - Database
-* [x] global
-    * [x] readDB - Add new user to user DB
-    * [x] readDB - Get current user's data From DB
-    * [x] readDB - Get users course data From DB
-    * [x] writeDB - Saves Session from Timer to Sessions Collection in DB
-    * [x] writeDB - Saves Session from Timer to Correct Course Collection in DB
-* [x] dashboard
-    * [x] readDB - Get current user's data From DB
-    * [x] readDB - Get Session/Course Data Needed for Graph
-    * [x] readDB - Get Current Streak Data
-* [x] courseHome
-    * [x] readDB - Get users course data From DB
-* [x] courseArchived
-    * [x] readDB - Get users course data From DB
-* [ ] courseDetails
-    * [ ] readDB - Get parsed course details from DB
-    * [ ] readDB - Get parsed course Sessions from DB
 * [x] courseAdd
     * [x] writeDB - Set new course to course collection of db
 * [ ] courseEdit
@@ -96,61 +79,21 @@ A list of things left to accomplish.
     * [x] Clean up upper dashboard cards
 
 ### Views - Dynamic HTML from DB
-* [x] Dashboard
-    * [x] Graph
-        * [x] Days of week render dynamically
-        * [x] Render time studied (in mins)
-    * [x] Current Streak
-* [x] Course Archive page
-    * [x] Render Archived Courses
+* [ ] Dashboard
+    * [ ] Graph
+        * [ ] Write instructions for when graph isn't there
+
 * [ ] Course Details page
-    * [ ] Name from DB
-    * [ ] Display list of course Sessions
+    * [ ] Fix message when no sessions.
+
 * [ ] Course Edit page
     * [ ] Add course info from DB to form values
-    * [ ] Edit button saves updated info to DB
-    * [x] Delete button Deletes course (pop-up confirmation first?)
 
 ### Timer
 * [ ] Figure out stopwatch buttons/icons
 * [ ] Stretch - Fix CSS for landscape mode phones
 * [ ] Stretch - Fix Course button on firefox
 
-
-## Done
-
-### HTML/CSS
-* [x] Clean up Header
-* [x] Clean up "courses home" page
-* [x] Clean up "Add Courses" page
-* [x] Make "Individual Course" page
-* [x] Make "Edit Course" page
-    * [x] Should have: Edit, Archive, Delete
-* [x] Make "Archived Courses" page
-    * [x] filter courses array, pass into correct page (active/archived)
-* [x] Add course option button 
-
-* [x] Add link to course list items
-    * [x] redirect to that courses details/edit
-
-### Stopwatch
-* [x] Add "Select Course" button functionality
-    * [x] Make Course li's look nice 
-* [x] Write time to db
-* [x] Add state to track if there is currently a time
-    * [x] Hide Reset Button when there is no time
-* [x] Timer "Coming Soon" note
-* [x] Rename CSS classes
-* [x] Save running status to local storage
-* [x] Pull running status from local storage and change icon
-* [x] If running:
-    * [x] Add animation to toggle button if running
-    * [x] Start timer automatically if running
-    * [x] load time from local storage
-* [x] Store time in local storage
-* [x] Comment Stopwatch class
-* [x] Comment Session class
-* [x] Comment updateTimerElements.js
 
 
 
