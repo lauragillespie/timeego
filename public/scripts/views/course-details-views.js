@@ -15,8 +15,7 @@ const courseDetailsViews = {
 	//
 	// Params: course details, sessions array
 	//*****************************************************************************
-	renderDetails : function(course, sessions) {
-		const { name, color } = course;
+	renderDetails : function(sessions, name, color) {
 		// Updates Course Name in Heading
 		document.querySelector('#heading__course-name').innerText = name;
 		// Updates color element to match course

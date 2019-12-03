@@ -44,6 +44,8 @@ const dashboardViews = {
 
 		// If there has been no study sessions in the last 7 minutes, displays a welcome message for the user. Otherwise graph is rendered.
 		if (totalMinutes === 0) {
+			// Hides Graph Loading Spinner
+			document.querySelector('#graph--spinner').style.display = 'none';
 			chartHeading.innerText = 'Welcome to Timeego!';
 			chartElement.innerHTML = `<p>Yo! This is a dope study app.</p><p>Click that timer button at the bottom of your screen to get going.</p>`;
 		} else {

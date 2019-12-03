@@ -68,28 +68,31 @@ export const global = {
 
 			// Gets: Course Data From DB
 			// Sets: Course List in Timer Pop Up
-			dbRef.collection('courses').get().then(function(querySnapshot) {
-				const courses = [];
-				querySnapshot.forEach(doc => {
-					// archived should be moved into course data once all courses have it. for now, this will set the value to false if the value in the archived field doesn't exist for that course in the db
-					const archived = doc.data().course.archived || false;
-					// Uses destructuring to get data from each course
-					const { color, date, name } = doc.data().course;
-					const id = doc.id;
-					// Adds data to course object
-					const course = {
-						id       : id,
-						name     : name,
-						color    : color,
-						date     : date,
-						archived : archived
-					};
-					// adds course object to array
-					courses.push(course);
+			dbRef
+				.collection('courses')
+				.where('archived', '==', false)
+				.get()
+				.then(function(querySnapshot) {
+					const courses = [];
+					querySnapshot.forEach(doc => {
+						// Uses destructuring to get data from each course
+						const { color, date, name, archived } = doc.data();
+						const id = doc.id;
+						// Adds data to course object
+						const course = {
+							id       : id,
+							name     : name,
+							color    : color,
+							date     : date,
+							archived : archived
+						};
+						// adds course object to array
+						courses.push(course);
+						console.log(course);
+					});
+					// Imported From Views, passes in array of courses
+					timerViews.renderCourseList(courses);
 				});
-				// Imported From Views, passes in array of courses
-				timerViews.renderCourseList(courses);
-			});
 		});
 	},
 	writeDB : {
@@ -103,13 +106,17 @@ export const global = {
 					.collection('sessions')
 					.add(
 						// uses session object param as value
-						{ session: session }
+						{
+							course : session.course,
+							date   : session.date,
+							time   : session.time
+						}
 					)
 					.then(docRef => {
-						console.log('Session write successful');
+						console.log('Session DB write successful');
 					})
 					.catch(error => {
-						console.error('Error adding document: ', error);
+						console.error('Error adding session: ', error);
 					});
 				// Gets course id from session param
 				const courseId = session.course.id;
@@ -169,7 +176,7 @@ export const dashboard = {
 				const sessions = [];
 				querySnapshot.forEach(doc => {
 					// Uses destructuring to get data from each session
-					const { course, date, time } = doc.data().session;
+					const { course, date, time } = doc.data();
 					// Converts db date into javascript date object
 					const dateObj = new Date(date.seconds * 1000);
 					const id = doc.id;
@@ -205,31 +212,33 @@ export const courseHome = {
 
 			// Gets: Course Data From DB
 			// Sets: Course List on Course Home page
-			dbRef.collection('courses').get().then(function(querySnapshot) {
-				const courses = [];
-				querySnapshot.forEach(doc => {
-					// archived should be moved into course data once all courses have it. for now, this will set the value to false if the value in the archived field doesn't exist for that course in the db
-					const archived = doc.data().course.archived || false;
-					// Uses destructuring to get data from each course
-					const { color, date, name } = doc.data().course;
-					// Gets Course's Sessions
-					const sessions = doc.data().sessions;
-					const id = doc.id;
-					// Adds data to course object
-					const course = {
-						id       : id,
-						name     : name,
-						color    : color,
-						date     : date,
-						archived : archived,
-						sessions : sessions
-					};
-					// adds course object to array
-					courses.push(course);
+			dbRef
+				.collection('courses')
+				.where('archived', '==', false)
+				.get()
+				.then(function(querySnapshot) {
+					const courses = [];
+					querySnapshot.forEach(doc => {
+						// Uses destructuring to get data from each course
+						const { color, date, name, archived } = doc.data();
+						// Gets Course's Sessions
+						const sessions = doc.data().sessions;
+						const id = doc.id;
+						// Adds data to course object
+						const course = {
+							id       : id,
+							name     : name,
+							color    : color,
+							date     : date,
+							archived : archived,
+							sessions : sessions
+						};
+						// adds course object to array
+						courses.push(course);
+					});
+					// Imported From Views, passes in array of courses
+					courseHomeViews.renderCourseList(courses);
 				});
-				// Imported From Views, passes in array of courses
-				courseHomeViews.renderCourseList(courses);
-			});
 		});
 	}
 };
@@ -244,30 +253,33 @@ export const courseArchived = {
 
 			// Gets: Course Data From DB
 			// Sets: Course List on Course Home page
-			dbRef.collection('courses').get().then(function(querySnapshot) {
-				const courses = [];
-				querySnapshot.forEach(doc => {
-					const archived = doc.data().course.archived || false;
-					// Uses destructuring to get data from each course
-					const { color, date, name } = doc.data().course;
-					// Gets Course's Sessions
-					const sessions = doc.data().sessions;
-					const id = doc.id;
-					// Adds data to course object
-					const course = {
-						id       : id,
-						name     : name,
-						color    : color,
-						date     : date,
-						archived : archived,
-						sessions : sessions
-					};
-					// adds course object to array
-					courses.push(course);
+			dbRef
+				.collection('courses')
+				.where('archived', '==', true)
+				.get()
+				.then(function(querySnapshot) {
+					const courses = [];
+					querySnapshot.forEach(doc => {
+						// Uses destructuring to get data from each course
+						const { color, date, name, archived } = doc.data();
+						// Gets Course's Sessions
+						const sessions = doc.data().sessions;
+						const id = doc.id;
+						// Adds data to course object
+						const course = {
+							id       : id,
+							name     : name,
+							color    : color,
+							date     : date,
+							archived : archived,
+							sessions : sessions
+						};
+						// adds course object to array
+						courses.push(course);
+					});
+					// Imported From Views, passes in array of courses
+					courseArchivedViews.renderCourseList(courses);
 				});
-				// Imported From Views, passes in array of courses
-				courseArchivedViews.renderCourseList(courses);
-			});
 		});
 	}
 };
@@ -288,8 +300,8 @@ export const courseDetails = {
 				.doc(courseID)
 				.get()
 				.then(querySnapshot => {
-					const { course, sessions } = querySnapshot.data();
-					courseDetailsViews.renderDetails(course, sessions);
+					const { sessions, name, color } = querySnapshot.data();
+					courseDetailsViews.renderDetails(sessions, name, color);
 				});
 		});
 	}
@@ -302,13 +314,24 @@ export const courseAdd = {
 			const dbRef = db.collection('users').doc(user.uid);
 			// Params: Course object from course-add Controller
 			// Writes: New course to course collection of database
-			dbRef.collection('courses').doc().set(
-				// uses Course object param as value
-				{ course: course },
-				{
-					merge : true
-				}
-			);
+			dbRef
+				.collection('courses')
+				.doc()
+				.set(
+					// uses Course object param as value
+					{
+						name     : course.name,
+						color    : course.color,
+						date     : course.date,
+						archived : course.archived
+					},
+					{
+						merge : true
+					}
+				)
+				.then(() => {
+					window.location.href = '/public/course-home.html';
+				});
 		});
 	}
 };
@@ -328,12 +351,10 @@ export const courseEdit = {
 			dbRef.collection('courses').doc(courseID).update(
 				// Accesses the course object with parameters to update
 				{
-					course : {
-						name     : courseName.value,
-						color    : courseColor.value,
-						date     : new Date(),
-						archived : archived
-					}
+					name     : courseName.value,
+					color    : courseColor.value,
+					date     : new Date(),
+					archived : archived
 				}
 			);
 		});
@@ -376,27 +397,30 @@ export const sessionAdd = {
 
 			// Gets: Course Data From DB
 			// Sets: Course Select Options on Session Add page
-			dbRef.collection('courses').get().then(function(querySnapshot) {
-				const courses = [];
-				querySnapshot.forEach(doc => {
-					const archived = doc.data().course.archived || false;
-					// Uses destructuring to get data from each course
-					const { color, name } = doc.data().course;
-					// Gets Course's Sessions
-					const id = doc.id;
-					// Adds data to course object
-					const course = {
-						id       : id,
-						name     : name,
-						color    : color,
-						archived : archived
-					};
-					// adds course object to array
-					courses.push(course);
+			dbRef
+				.collection('courses')
+				.where('archived', '==', false)
+				.get()
+				.then(function(querySnapshot) {
+					const courses = [];
+					querySnapshot.forEach(doc => {
+						// Uses destructuring to get data from each course
+						const { color, name, archived } = doc.data();
+						// Gets Course's Sessions
+						const id = doc.id;
+						// Adds data to course object
+						const course = {
+							id       : id,
+							name     : name,
+							color    : color,
+							archived : archived
+						};
+						// adds course object to array
+						courses.push(course);
+					});
+					// Imported From Views, passes in array of courses
+					sessionAddViews.renderCourseSelect(courses);
 				});
-				// Imported From Views, passes in array of courses
-				sessionAddViews.renderCourseSelect(courses);
-			});
 		});
 	}
 };
