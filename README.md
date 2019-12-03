@@ -1,36 +1,50 @@
 # Timeego
 
-Comp 1930 Project that tracks a student's study time.
+Timeego is a web application designed to help students with track their time spent studying. It allows users to add courses, log their time studying, and view their total study time in each course.
+
+## Project Information
+
+This app was build as a Project for the BCIT CST Comp 1930 course.
+
+## Installation
+
+Simply clone the repository from GitHub, and open public/index.html to begin.
+
+## Hosting
+
+Timeego is hosted publicly at https://timeego-d54c4.firebaseapp.com.
 
 ## Format
 
-* [ ] Project Overview
-        * [ ] What is it?
-        * [ ] What does it do?
-        * [ ] Why did we build it?
-        * [ ] Installation
-        * [ ] Hosted Link
 * [ ] Code Organization explanation
 * [ ] Design
         * [ ] Task Flow/Wireframes
         * [ ] Colours/Fonts
 * [ ] Things We Used
 
-## Hosted on firebase
+## Design Process
 
-Hosted on https://timeego-d54c4.firebaseapp.com
+### Persona
 
-## JavaScript File Organization
+### Wireframes & Mock-Ups
 
-How the JavaScript is organized.
+### Fonts
 
-### Controllers
+### Colors
+
+## File Structure
+
+### JavaScript
+
+This section explains the JavaScript organization.
+
+#### Controllers
 
 Each HTML file only imports controllers. Each page has it's own file. There is also a global.js controller that contains logic used across all pages (header, timer pop-up).
 
 Controllers are the logic of the app. They are where we set up event-listeners (page specific or global), get data from forms, and make calls to our database files (models).
 
-### Models - Database
+#### Models - Database
 
 There is one file (firebase.js). If this file gets too cluttered, we can split it into page specific files.
 
@@ -40,7 +54,7 @@ The methods in the firebase objects are called by the controller files when they
 
 When HTML elements need to be rendered, the firebase methods do this by calling the appropriate view (from the views.js file) and passing in the data from the database as a parameter.
 
-### Views
+#### Views
 
 There is one views file. If this file gets too cluttered, we can split it into page specific files.
 
@@ -50,15 +64,27 @@ Views are called by the methods in the firebase file. They take data from the da
 
 The helper functions are functions that are used multiple times in the views file. This helps reduce the code clutter.
 
-### Timer
-
-Ignore this mess for now :P
-
-### Config
+#### Config
 
 Holds Settings (firebase, graph).
 
-## Need To Do
+### CSS
+
+### HTML
+
+## 3rd Party Tools Used
+
+This is a list of 3rd party resources used in this project:
+
+* [Google Firebase & Firestore](https://firebase.google.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [jQuery](https://jquery.com/)
+* [Material Icons](https://material.io/resources/icons/?style=baseline)
+* [ApexChart.js](https://apexcharts.com/)
+* [Color Picker by G Naga Subrahmanyam](https://codepen.io/GNSubrahmanyam/pen/OpmMjN)
+
+
+## To Do List
 
 A list of things left to accomplish.
 
@@ -71,39 +97,32 @@ A list of things left to accomplish.
     * [ ] parse Course id from url
         * [ ] Pass into models to get course data, populate form
         * [ ] Use to update nav tabs with course url
-* [ ] courseAdd/edit
-    * [ ] Stretch - add char limit to course name?
-
+   
 ### Models - Database
-* [x] courseAdd
-    * [x] writeDB - Set new course to course collection of db
 * [ ] courseEdit
     * [ ] readDB - Get parsed course details from DB
     * [ ] deleteDB - delete course when button is pressed
 
-
 ### Static HTML + CSS
-* [ ] Make "Add Session" Page
-    * [ ] Form to add new session to DB
 * [ ] Make "Settings" Page
     * [ ] Filler, non-functional settings like dark mode, change password
     * [ ] Working logout button
-
 
 ### Views - Dynamic HTML from DB
 * [ ] Dashboard
     * [ ] Graph
         * [ ] Write instructions for when graph isn't there
-
 * [ ] Course Details page
     * [ ] Fix message when no sessions.
-
 * [ ] Course Edit page
     * [ ] Add course info from DB to form values
 
-### Timer
-* [ ] Stretch - Fix CSS for landscape mode phones
-* [ ] Stretch - Fix Course button on firefox
+### Stretch/Future Goals
+* [ ] Stretch - Timer Pop-up - Fix CSS for landscape mode phones.
+* [ ] Stretch - Timer Pop-up - Fix Course button on firefox.
+* [ ] Stretch - Course Add/Edit - add char limit to course name.
+* [ ] Stretch - Add Session Page - add functionality.
+* [ ] Stretch - Add Goal tracking to app.
 
 
 

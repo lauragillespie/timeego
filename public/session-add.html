@@ -23,6 +23,10 @@
          <a href="./dashboard.html" class="header__logo-link">
             <img class="header__logo" src="./images/logo/blue.png">
          </a>
+         <div class="header__flex-right">
+            <span id="header__username"></span>
+            <a href="#" class="header__settings"><i class="material-icons settings__icon">settings</i></a>
+         </div>
       </div>
    </header>
 
@@ -33,47 +37,45 @@
          <!-- Page Heading -->
          <h1 class="page-heading">Log Previous Session</h1>
 
-         <!-- Form for Adding Courses-->
+         <!-- Form for Adding Session-->
          <form class="course__form" id="session-add-form">
             <!-- Course Name -->
             <div class="form-group">
-               <label for="session--course">Select Course:</label>
+               <label for="session--course">Select Course</label>
                <select class="form-control form-control-lg" name="session--course" id="session--course" required>
-                  <option selected disabled>Pick Course</option>
-                  <option>Large select</option>
-                  <option>Large select</option>
-                  <option>Large select</option>
-                  <option>Large select</option>
                </select>
             </div>
-            <!-- Session Length -->
 
+            <!-- Session Length -->
+            <div class="mb-3">Session Length</div>
             <div class="form-row">
-               <div class="form-group col-sm-4 ">
+               <div class="form-group col-4 ">
                   <label for="session--hours">Hours</label>
                   <input type="number" class="form-control form-control-lg" name="session--hours" id="session--hours"
                      min="0">
                </div>
-               <div class="form-group col-sm-4 ">
+               <div class="form-group col-4 ">
                   <label for="session--mins">Minutes</label>
                   <input type="number" class="form-control form-control-lg" name="session--mins" id="session--mins"
                      min="0" max="59">
                </div>
-               <div class="form-group col-sm-4 ">
+               <div class="form-group col-4 ">
                   <label for="session--secs">Seconds</label>
                   <input type="number" class="form-control form-control-lg" name="session--secs" id="session--secs"
                      min="0" max="59">
                </div>
             </div>
 
-
-
-
+            <!-- Session Date -->
+            <div class="form-group">
+               <label for="session--date">Session Date</label>
+               <input type="date" class="form-control form-control-lg" name="session--date" id="session--date">
+            </div>
 
             <!-- Form Buttons -->
             <div class="form__buttons-container">
                <button class="form__button form__button--submit" type="submit" id="submit">Submit</button>
-               <a class="form__button form__button--cancel" href="./course-home.html">Cancel</a>
+               <a class="form__button form__button--cancel" href="./dashboard.html">Cancel</a>
             </div>
          </form>
       </div>
@@ -200,7 +202,7 @@
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <!-- Our Custom Scripts -->
    <script src="./scripts/controllers/global.js" type="module"></script>
-   <!-- <script src="./scripts/controllers/course-add.js" type="module"></script> -->
+   <script src="./scripts/controllers/session-add.js" type="module"></script>
 
 </body>
 

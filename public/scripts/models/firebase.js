@@ -302,13 +302,13 @@ export const courseEdit = {
 	// TODO: Fill the edit form with current data
 
 	editCourse   : function(courseID) {
-		console.log("hi");
+		console.log('hi');
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
-			var archiveCourse = document.getElementById("archiveCourse");
+			var archiveCourse = document.getElementById('archiveCourse');
 			var archived = archiveCourse.checked;
-			
+
 			// Reference to a specific course given the id
 			dbRef.collection('courses').doc(courseID).update(
 				// Accesses the course object with parameters to update
@@ -347,6 +347,41 @@ export const courseEdit = {
 					// error
 					console.error('Error removing document: ', error);
 				});
+		});
+	}
+};
+
+import sessionAddViews from '../views/session-add-views.js';
+
+export const sessionAdd = {
+	readDB : function() {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: Course Data From DB
+			// Sets: Course Select Options on Session Add page
+			dbRef.collection('courses').get().then(function(querySnapshot) {
+				const courses = [];
+				querySnapshot.forEach(doc => {
+					const archived = doc.data().course.archived || false;
+					// Uses destructuring to get data from each course
+					const { color, name } = doc.data().course;
+					// Gets Course's Sessions
+					const id = doc.id;
+					// Adds data to course object
+					const course = {
+						id       : id,
+						name     : name,
+						color    : color,
+						archived : archived
+					};
+					// adds course object to array
+					courses.push(course);
+				});
+				// Imported From Views, passes in array of courses
+				sessionAddViews.renderCourseSelect(courses);
+			});
 		});
 	}
 };
