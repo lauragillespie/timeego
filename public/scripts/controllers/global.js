@@ -24,6 +24,13 @@ stopwatchObject.onPageLoad();
 // -Course List in Timer Pop-up
 global.readDB();
 
+// Log out function
+const logOutBtn = document.querySelector('#logout-btn');
+
+logOutBtn.addEventListener('click', () => {
+	global.logOut();
+});
+
 // TODO: Other Global DB Calls Goes here
 
 /************************************************
