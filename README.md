@@ -14,14 +14,6 @@ Simply clone the repository from GitHub, and open public/index.html to begin.
 
 Timeego is hosted publicly at https://timeego-d54c4.firebaseapp.com.
 
-## Format
-
-* [ ] Code Organization explanation
-* [ ] Design
-        * [ ] Task Flow/Wireframes
-        * [ ] Colours/Fonts
-* [ ] Things We Used
-
 ## Design Process
 
 ### Persona
