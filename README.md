@@ -2,6 +2,20 @@
 
 Comp 1930 Project that tracks a student's study time.
 
+## Format
+
+* [ ] Project Overview
+        * [ ] What is it?
+        * [ ] What does it do?
+        * [ ] Why did we build it?
+        * [ ] Installation
+        * [ ] Hosted Link
+* [ ] Code Organization explanation
+* [ ] Design
+        * [ ] Task Flow/Wireframes
+        * [ ] Colours/Fonts
+* [ ] Things We Used
+
 ## Hosted on firebase
 
 Hosted on https://timeego-d54c4.firebaseapp.com

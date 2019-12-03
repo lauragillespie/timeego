@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Timeego - Dashboard</title>
+   <title>Timeego - Log Session</title>
    <link rel="icon" type="image/png" href="./images/favicon.ico">
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -15,7 +15,6 @@
    <!-- Our custom Timeego CSS Stylesheets -->
    <link rel="stylesheet" href="./styles/main.css">
    <link rel="stylesheet" href="./styles/timer.css">
-</head>
 
 <body class="body">
    <!-- Header -->
@@ -24,10 +23,6 @@
          <a href="./dashboard.html" class="header__logo-link">
             <img class="header__logo" src="./images/logo/blue.png">
          </a>
-         <div class="header__flex-right">
-            <span id="header__username"></span>
-            <a href="#" class="header__settings"><i class="material-icons settings__icon">settings</i></a>
-         </div>
       </div>
    </header>
 
@@ -36,32 +31,51 @@
    <main class="main">
       <div class="container">
          <!-- Page Heading -->
-         <h1 class="page-heading">Welcome <span id="page-heading__username">...</span></h1>
+         <h1 class="page-heading">Log Previous Session</h1>
 
-         <!-- Top Cards -->
-         <section class="card-row">
-            <a class="card--half card_primary" href="./session-add.html">
-               <span>Log a Previous Session</span>
-               <i class="material-icons">
-                  add_circle
-               </i>
-            </a>
-            <div class="card--half card_success">
-               <span>Current Study Streak:</span>
-               <span id="study_streak">.. Days</span>
+         <!-- Form for Adding Courses-->
+         <form class="course__form" id="session-add-form">
+            <!-- Course Name -->
+            <div class="form-group">
+               <label for="session--course">Select Course:</label>
+               <select class="form-control form-control-lg" name="session--course" id="session--course" required>
+                  <option selected disabled>Pick Course</option>
+                  <option>Large select</option>
+                  <option>Large select</option>
+                  <option>Large select</option>
+                  <option>Large select</option>
+               </select>
             </div>
-         </section>
+            <!-- Session Length -->
 
-         <!-- Graph Area -->
-         <section class="graph__card">
-            <h2 class="graph__heading">Recent Studying</h2>
-            <div id="chart">
-               <!-- Bootstrap Loader -->
-               <div class="spinner-border bootstrap__spinner spinner--centered" role="status">
-                  <span class="sr-only">Loading...</span>
+            <div class="form-row">
+               <div class="form-group col-sm-4 ">
+                  <label for="session--hours">Hours</label>
+                  <input type="number" class="form-control form-control-lg" name="session--hours" id="session--hours"
+                     min="0">
+               </div>
+               <div class="form-group col-sm-4 ">
+                  <label for="session--mins">Minutes</label>
+                  <input type="number" class="form-control form-control-lg" name="session--mins" id="session--mins"
+                     min="0" max="59">
+               </div>
+               <div class="form-group col-sm-4 ">
+                  <label for="session--secs">Seconds</label>
+                  <input type="number" class="form-control form-control-lg" name="session--secs" id="session--secs"
+                     min="0" max="59">
                </div>
             </div>
-         </section>
+
+
+
+
+
+            <!-- Form Buttons -->
+            <div class="form__buttons-container">
+               <button class="form__button form__button--submit" type="submit" id="submit">Submit</button>
+               <a class="form__button form__button--cancel" href="./course-home.html">Cancel</a>
+            </div>
+         </form>
       </div>
    </main>
 
@@ -70,7 +84,7 @@
       <nav class="container nav__container">
          <ul class="nav nav-justified">
             <li class="nav-item nav__item">
-               <a class="nav-link nav__link nav__active" href="./dashboard.html">
+               <a class="nav-link nav__link" href="./dashboard.html">
                   <div class="nav__link__container">
                      <i class="material-icons nav-link__icon">
                         home
@@ -164,10 +178,7 @@
    </div>
    <div class="timer__background"></div>
    <!-- Timer Pop-up HTML Ends -->
-
    <!-- SCRIPTS -->
-   <!-- ApexCharts Script -->
-   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
    <!-- jQuery Scirpt - Needed for Bootstrap -->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -189,7 +200,7 @@
    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
    <!-- Our Custom Scripts -->
    <script src="./scripts/controllers/global.js" type="module"></script>
-   <script src="./scripts/controllers/dashboard.js" type="module"></script>
+   <!-- <script src="./scripts/controllers/course-add.js" type="module"></script> -->
 
 </body>
 
