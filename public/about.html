@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Timeego - Courses</title>
+    <title>Timeego - Course Details</title>
     <link rel="icon" type="image/png" href="./images/favicon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -46,41 +46,24 @@
 
     <main class="main">
         <div class="container">
-            <!-- Page Heading -->
-            <h1 class="page-heading">Courses</h1>
-
-            <!-- Current/Archived Courses Nav -->
-            <ul class="nav nav-tabs justify-content-end course__nav">
-                <li class="nav-item">
-                    <a class="nav-link course__nav-link" href="./course-home.html">Current</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link course__nav-link active  course__nav-link--active"
-                        href="./course-archived.html">Archived</a>
-                </li>
-
-            </ul>
-
-
-            <div class="course__list" id="course__list">
-                <!-- Bootstrap Loader -->
-                <div class="spinner-border bootstrap__spinner" role="status">
-                    <span class="sr-only">Loading...</span>
+            <div class="course-details__card">
+                <h2 class="about__heading">Welcome to</h2>
+                <img class="about__logo" src="./images/logo/blue.png" alt="Timeego Logo">
+                <div class="about__content">
+                    <p>Descirption of App</p>
+                    <p>Features include:</p>
+                    <ul>
+                        <li>Adding Courses</li>
+                        <li>Tracking Studying Times</li>
+                        <li></li>
+                    </ul>
+                    <p>To add a course, click the button below. </p>
+                    <p>Press the timer button at the bottom of the page to start
+                        timing a study session now!</p>
                 </div>
-
-                <!-- <div class="courseContainer">
-               <a href="#" class="courseDetailsLink">
-                  <div class="courseColorDiv" style="background: rebeccapurple"></div>
-                  <div class="courseDetails">
-                     <h3 class="courseName">Comp 1930</h3>
-                     <span class="courseTime">01:22:33</span>
-                  </div>
-               </a>
-               <a href="#" class="courseSettingsLink"><i class="material-icons">
-                     more_vert
-                  </i></a>
-            </div> -->
+                <a href="./course-add.html" class="add-course-link btn" role="button">Add New Course</a>
             </div>
+
 
         </div>
     </main>
@@ -112,7 +95,7 @@
                 </li>
 
                 <li class="nav-item nav__item">
-                    <a class="nav-link nav__link nav__active" href="./course-home.html">
+                    <a class="nav-link nav__link" href="./course-home.html">
                         <div class="nav__link__container">
                             <i class="material-icons nav-link__icon">
                                 chrome_reader_mode
@@ -207,7 +190,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <!-- Our Custom Scripts -->
     <script src="./scripts/controllers/global.js" type="module"></script>
-    <script src="./scripts/controllers/course-archived.js" type="module"></script>
 
 </body>
 

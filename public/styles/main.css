@@ -417,11 +417,13 @@ a.form__button:hover {
 }
 
 /* Needed for text-decoration to remove underline */
-a.header__settings {
-	padding: 0px 0 3px 20px;
+button.header__settings {
+	padding: 2px 0 3px 20px;
 	display: flex;
 	align-items: center;
 	text-decoration: none;
+	border: none;
+	background: none;
 }
 .header__settings .settings__icon {
 	color: var(--color-secondary);
@@ -678,7 +680,7 @@ a.header__settings {
 }
 
 /** Graph - Centers in card**/
-.graph__card div {
+.graph__card #chart {
 	padding-right: 30px;
 }
 
@@ -821,4 +823,24 @@ hr {
 .session-list__date {
 	font-size: 12px;
 	color: #777;
+}
+
+/*****************************************/
+/***          7.5 About Page           ***/
+/*****************************************/
+
+.about__heading {
+	text-align: center;
+	font-size: 30px;
+}
+
+.about__logo {
+	width: 80%;
+	max-width: 350px;
+	margin: 20px auto 40px;
+	display: block;
+}
+
+.about__content {
+	margin-bottom: 50px;
 }

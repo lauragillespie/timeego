@@ -4,7 +4,9 @@ Timeego is a web application designed to help students with track their time spe
 
 ## Project Information
 
-This app was build as a Project for the BCIT CST Comp 1930 course.
+Timeego was built as a group project for [COMP 1930](https://www.bcit.ca/study/outlines/20193045320), a first-term course in the [Computer Systems Technology](https://www.bcit.ca/study/programs/5500dipma#courses) program at [BCIT](https://www.bcit.ca).
+
+Our team consisted of three students.
 
 ## Installation
 
@@ -23,6 +25,8 @@ Timeego is hosted publicly at https://timeego-d54c4.firebaseapp.com.
 ### Fonts
 
 ### Colors
+
+### Icons
 
 ## File Structure
 

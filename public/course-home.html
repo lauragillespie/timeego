@@ -27,7 +27,17 @@
          </a>
          <div class="header__flex-right">
             <span id="header__username"></span>
-            <a href="#" class="header__settings"><i class="material-icons settings__icon">settings</i></a>
+            <div class="btn-group">
+               <button type="button" class="header__settings" data-toggle="dropdown" data-display="static"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons settings__icon">settings</i>
+               </button>
+               <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="./about.html">About</a>
+                  <a class="dropdown-item" href="#">Design</a>
+                  <button class="dropdown-item" id="logout-btn" type="button">Logout</button>
+               </div>
+            </div>
          </div>
       </div>
    </header>

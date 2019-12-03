@@ -52,7 +52,7 @@ const dashboardViews = {
 			// Makes a new chart object
 			const chart = new ApexCharts(chartElement, graphOptions);
 			// Hides Graph Loading Spinner
-			chartElement.innerHTML = '';
+			document.querySelector('#graph--spinner').style.display = 'none';
 			// calls render method of chart object, displays chart
 			chart.render();
 		}
