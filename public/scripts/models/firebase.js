@@ -389,7 +389,7 @@ export const courseAdd = {
 				)
 				// Redirects user after course is added
 				.then(() => {
-					window.location.href = '/public/course-home.html';
+					window.location.href = '/course-home.html';
 				});
 		});
 	}
