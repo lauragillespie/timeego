@@ -101,7 +101,7 @@ stopwatchPauseBtn.addEventListener('click', e => {
 // Resets stopwatch
 stopwatchResetBtn.addEventListener('click', e => {
 	let response = confirm(
-		'Are you sure you want to reset the Stopwatch without save?'
+		'Are you sure you want to reset the stopwatch without saving?'
 	);
 	if (response) {
 		stopwatchObject.reset();

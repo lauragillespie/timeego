@@ -113,57 +113,59 @@
 /* Individual Timer Control Button */
 .timer__control-btn {
 	border: none;
-	width: 80px;
-	height: 50px;
-	border-radius: 25px;
+	width: 62px;
+	height: 62px;
+	border-radius: 50%;
 	background: var(--color-blue-gradient);
 	box-shadow: var(--shadow-card);
 	/* Hidden by default, javascript will determine which are currently needed and display them using display flex (centers icons) */
 	display: none;
 	align-items: center;
 	justify-content: space-evenly;
-	margin: 0 10px;
-}
-
-.timer__control-btn div {
-	color: white;
-	font-size: 12px;
-	line-height: 24px;
 }
 
 .timer__control-btn i {
 	color: white;
-	font-size: 24px;
+	font-size: 38px;
 }
 
-/* Media Queries for timer control btns */
-@media only screen and (min-width: 400px) {
-	.timer__control-btns {
-		width: 80%;
-	}
-
-	.timer__control-btn {
-		width: 90px;
-	}
+/* Reset/Save Button Group */
+.timer__clear-btns {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+	height: 60px;
+	background: none;
 }
 
-@media only screen and (min-width: 500px) {
-	.timer__control-btns {
-		width: 75%;
-	}
+/* Reset/Save Button */
+.timer__clear-btn {
+	width: 100%;
+	margin: 0;
+	background: none;
+	height: 100%;
+	border: none;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition-opacity);
+	opacity: 0;
+	pointer-events: none;
+}
 
-	.timer__control-btn {
-		width: 100px;
-	}
+/* Makes Stopwatch Clear and Save buttons visable and able to be clicked only when time section is expanded */
+.popup__time-section--expanded .timer__clear-btn {
+	opacity: 1;
+	pointer-events: all;
+}
 
-	.timer__control-btn div {
-		font-size: 15px;
-		line-height: 30px;
-	}
-
-	.timer__control-btn i {
-		font-size: 30px;
-	}
+.timer__clear-btns .timer__clear-btn div,
+.timer__clear-btns .timer__clear-btn i {
+	color: var(--color-secondary);
+	margin: 0 3px;
 }
 
 /* Saved Session Time Alert */
@@ -174,6 +176,7 @@
 	margin-bottom: 0;
 	transition: opacity 200ms linear;
 	opacity: 0;
+	pointer-events: none;
 }
 
 .done_saved_active {
@@ -391,4 +394,29 @@
 .timer__background--active {
 	pointer-events: auto;
 	opacity: 1;
+}
+
+/****************************/
+/***    Media Queries     ***/
+/****************************/
+@media only screen and (max-width: 345px) {
+	/* Timer Text that shows Time EX. 00:00:00 */
+	.timer__text {
+		font-size: 40px;
+	}
+
+	/* Individual Timer Control Button */
+	.timer__control-btn {
+		width: 56px;
+		height: 56px;
+	}
+
+	.timer__control-btn i {
+		font-size: 34px;
+	}
+	/* Button that expands popup course list Text */
+	.course-list__btn--show .currently-tracking,
+	.course-list__btn--show .currently-tracking-course {
+		font-size: 16px;
+	}
 }

@@ -122,28 +122,33 @@
             <!-- Time section -->
             <div class="popup__time-section popup__time-section--expanded">
                 <span class="timer__text">00:00:00</span>
+                <!-- Timer Play/Pause BTNS -->
                 <div class="timer__control-btns">
                     <button class="timer__control-btn" id="stopwatch_play_btn">
-                        <div>Start </div><i class="material-icons">
+                        <i class="material-icons">
                             play_arrow
                         </i>
                     </button>
                     <button class="timer__control-btn" id="stopwatch_pause_btn">
-                        <div>Pause </div><i class="material-icons">
+                        <i class="material-icons">
                             pause
                         </i>
                     </button>
-                    <button class="timer__control-btn" id="stopwatch_reset_btn">
-                        <div>Clear </div><i class="material-icons">
+                </div>
+                <!-- Timer Reset/Save BTNS -->
+                <div class="timer__control-btns timer__clear-btns">
+                    <button class="timer__clear-btn" id="stopwatch_reset_btn">
+                        <div>Reset </div><i class="material-icons">
                             replay
                         </i>
                     </button>
-                    <button class="timer__control-btn" id="stopwatch_save_btn">
+                    <button class="timer__clear-btn" id="stopwatch_save_btn">
                         <div>Save </div><i class="material-icons">
                             save_alt
                         </i>
                     </button>
                 </div>
+                <!-- Timer Alert -->
                 <div class="alert alert-success done_saved" role="alert">
                     <strong>Done!</strong> Session saved successfully!
                 </div>
