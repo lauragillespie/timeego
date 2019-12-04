@@ -32,8 +32,9 @@ const dashboardViews = {
 	//*****************************************************************************
 	renderGraph   : function(sessionsArr) {
 		// Gets required HTML elements
-		const chartElement = document.querySelector('#chart');
-		const chartHeading = document.querySelector('.graph__heading');
+		const graphElement = document.querySelector('#chart');
+		const graphCard = document.querySelector('.graph__card');
+		const graphSpinner = document.querySelector('#graph--spinner');
 
 		// Converts session into an array of the total study time
 		// for each of the last 7 days
@@ -44,17 +45,26 @@ const dashboardViews = {
 
 		// If there has been no study sessions in the last 7 minutes, displays a welcome message for the user. Otherwise graph is rendered.
 		if (totalMinutes === 0) {
-			// Hides Graph Loading Spinner
-			document.querySelector('#graph--spinner').style.display = 'none';
-			chartHeading.innerText = 'Welcome to Timeego!';
-			chartElement.innerHTML = `<p>Yo! This is a dope study app.</p><p>Click that timer button at the bottom of your screen to get going.</p>`;
+			// Adds Welcome message for new users
+			graphCard.innerHTML = `<div class="graph__card--welcome">
+			<h2 class="about__heading">Welcome to</h2>
+			<img class="about__logo" src="./images/logo/blue.png" alt="Timeego Logo">
+			<div class="about__content">
+				<p>Timeego is a web application designed with the goal of helping students keep track of their time
+					spent studying.</p>
+				<p>To add a course, click the button below. </p>
+				<p>Or, press the timer button at the bottom of the page to start
+					timing a study session now!</p>
+			</div>
+			<a href="./course-add.html" class="add-course-link btn" role="button">Add New Course</a>
+		</div>`;
 		} else {
 			// Sets graph data to be sorted session array
 			graphOptions.series[0].data = times;
 			// Makes a new chart object
-			const chart = new ApexCharts(chartElement, graphOptions);
+			const chart = new ApexCharts(graphElement, graphOptions);
 			// Hides Graph Loading Spinner
-			document.querySelector('#graph--spinner').style.display = 'none';
+			graphSpinner.style.display = 'none';
 			// calls render method of chart object, displays chart
 			chart.render();
 		}

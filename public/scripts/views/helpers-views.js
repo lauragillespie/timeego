@@ -15,7 +15,7 @@ const helpers = {
 	// Params: User data
 	// Returns: User's capitalized first name
 	//*****************************************************************************
-	getFirstName          : function(currentUser) {
+	getFirstName        : function(currentUser) {
 		// Current User's full name
 		const name = currentUser.name;
 		// First letter to upper case
@@ -31,7 +31,7 @@ const helpers = {
 	// Params: Courses Array
 	// Returns: Course Array sorted by name
 	//*****************************************************************************
-	sortCoursesByName     : function(coursesArr) {
+	sortCoursesByName   : function(coursesArr) {
 		// sorts courses by name
 		coursesArr.sort((a, b) => {
 			var nameA = a.name.toUpperCase(); // ignore upper and lowercase
@@ -49,47 +49,13 @@ const helpers = {
 	},
 
 	//*****************************************************************************
-	// Takes a course array filters out archived courses.
-	//
-	// Params: Courses Array
-	// Returns: Courses Array of only active courses
-	//*****************************************************************************
-	filterCurrentCourses  : function(coursesArr) {
-		// Array of only current courses by filtering course array
-		const filtered = coursesArr.filter(course => {
-			// Checks if course is archived (Boolean)
-			const archived = course.archived;
-			// returns True if not archived, false if archived
-			return !archived;
-		});
-		return filtered;
-	},
-
-	//*****************************************************************************
-	// Takes a course array filters out currently active courses.
-	//
-	// Params: Courses Array
-	// Returns: Courses Array of only archived courses
-	//*****************************************************************************
-	filterArchivedCourses : function(coursesArr) {
-		// Array of only current courses by filtering course array
-		const filtered = coursesArr.filter(course => {
-			// Checks if course is archived (Boolean)
-			const archived = course.archived;
-			// returns true if archived, false if not archived
-			return archived;
-		});
-		return filtered;
-	},
-
-	//*****************************************************************************
 	// Takes an array of sessions and sums the total time in all sessions.
 	//
 	// Params: Session Array
 	// Returns: Object of total seconds, minutes and hours of all sessions
 	//			in passed in arry
 	//*****************************************************************************
-	totalCourseTime       : function(sessArr) {
+	totalCourseTime     : function(sessArr) {
 		let totalSeconds = 0;
 		let totalMinutes = 0;
 		let totalHours = 0;
@@ -124,7 +90,7 @@ const helpers = {
 	// Params: Takes Time Object (with seconds, minutes and hours)
 	// Returns: Time as a formatted string
 	//*****************************************************************************
-	timeToString          : function(time) {
+	timeToString        : function(time) {
 		const { seconds, minutes, hours } = time;
 		let hrs;
 		let mins;
@@ -155,7 +121,7 @@ const helpers = {
 	// Params: Course object
 	// Returns: HTML list item for the course
 	//*****************************************************************************
-	buildCourseListItem   : function(course) {
+	buildCourseListItem : function(course) {
 		// Course Variables from course param
 		const courseId = course.id;
 		const courseColor = course.color;

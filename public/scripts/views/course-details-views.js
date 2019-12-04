@@ -26,7 +26,8 @@ const courseDetailsViews = {
 		const sessionsDiv = document.querySelector('.sessions');
 		// Sets message if there are no sessions for the course
 		if (!sessions) {
-			sessionsDiv.innerHTML = '<p>No Sessions Yo</p>';
+			sessionsDiv.innerHTML =
+				'<p style="text-align: center; margin: 70px 0;">No Sessions For This Course</p>';
 		} else {
 			// Sets session heading and list
 			sessionsDiv.innerHTML = `<h3 class="course-details__session-heading">Recent Sessions</h3>

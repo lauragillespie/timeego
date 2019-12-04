@@ -18,10 +18,8 @@ const courseArchivedViews = {
 	//*****************************************************************************
 	renderCourseList : function(arr) {
 		const courseList = document.getElementById('course__list');
-		// Filters out Active courses
-		const filteredCourses = helpers.filterArchivedCourses(arr);
 
-		const arrayLength = filteredCourses.length;
+		const arrayLength = arr.length;
 
 		// If course array is empty, makes and appends message
 		if (arrayLength <= 0) {
@@ -33,7 +31,7 @@ const courseArchivedViews = {
 			courseList.appendChild(span);
 		} else {
 			// sorts course array alphabetically
-			const sortedCourses = helpers.sortCoursesByName(filteredCourses);
+			const sortedCourses = helpers.sortCoursesByName(arr);
 			// Removes Spinner
 			courseList.innerHTML = '';
 			// Loops through course array, builds HTML element and appends to course list

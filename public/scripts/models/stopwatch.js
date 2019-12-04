@@ -159,7 +159,7 @@ class Stopwatch {
 			date   : new Date()
 		};
 		// Writes to DB
-		global.writeDB.createSession(this.sessionToDB);
+		global.createSession(this.sessionToDB);
 	}
 
 	// Updates Course that is currently selected

@@ -85,10 +85,6 @@ This is a list of 3rd party resources used in this project:
 A list of things left to accomplish.
 
 ### Controllers
-* [ ] courseDetails
-    * [ ] parse Course id from url
-        * [ ] Pass into models to get course data
-        * [ ] Use to update nav tabs with course url
 * [ ] courseEdit
     * [ ] parse Course id from url
         * [ ] Pass into models to get course data, populate form
@@ -99,19 +95,10 @@ A list of things left to accomplish.
     * [ ] readDB - Get parsed course details from DB
     * [ ] deleteDB - delete course when button is pressed
 
-### Static HTML + CSS
-* [ ] Make "Settings" Page
-    * [ ] Filler, non-functional settings like dark mode, change password
-    * [ ] Working logout button
-
 ### Views - Dynamic HTML from DB
-* [ ] Dashboard
-    * [ ] Graph
-        * [ ] Write instructions for when graph isn't there
-* [ ] Course Details page
-    * [ ] Fix message when no sessions.
 * [ ] Course Edit page
     * [ ] Add course info from DB to form values
+    * [ ] Update Course Title/Color (Like course details page, can just steal and reuse this code).
 
 ### Stretch/Future Goals
 * [ ] Stretch - Timer Pop-up - Fix CSS for landscape mode phones.

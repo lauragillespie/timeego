@@ -17,17 +17,15 @@ const sessionAddViews = {
 	//*****************************************************************************
 	renderCourseSelect : function(arr) {
 		const sessionCourses = document.querySelector('#session--course');
-		// Filters out Active courses
-		const filteredCourses = helpers.filterCurrentCourses(arr);
 
-		const arrayLength = filteredCourses.length;
+		const arrayLength = arr.length;
 		// If course array is empty, makes and appends option with message
 		if (arrayLength <= 0) {
 			sessionCourses.innerHTML =
 				'<option selected disabled>No Active Courses</option>';
 		} else {
 			// sorts course array alphabetically
-			const sortedCourses = helpers.sortCoursesByName(filteredCourses);
+			const sortedCourses = helpers.sortCoursesByName(arr);
 			let optionStr = '<option selected disabled>Select Course</option>';
 			// Loops through course array, builds Course option and appends to course select
 			sortedCourses.forEach(course => {

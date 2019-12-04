@@ -39,8 +39,7 @@ export const timerViews = {
 		const courseList = document.querySelector('.course-list__list');
 
 		// Filter our archived courses
-		const filteredCourses = helpers.filterCurrentCourses(arr);
-		const arrayLength = filteredCourses.length;
+		const arrayLength = arr.length;
 
 		// If course array is empty, makes and appends message to course list
 		if (arrayLength <= 0) {
@@ -49,7 +48,7 @@ export const timerViews = {
 		</li>`;
 		} else {
 			// sorts course array alphabetically
-			const sortedCourses = helpers.sortCoursesByName(filteredCourses);
+			const sortedCourses = helpers.sortCoursesByName(arr);
 			let listItems = '';
 			// Loops through array of courses, makes a string with info for each course, then appends new string to listItems string
 			sortedCourses.forEach(item => {

@@ -1,14 +1,31 @@
-// Importing firebase config object
-import { firebaseConfig, uiConfig } from '../config/firebaseConfig.js';
-// Importing firebase auth config
-// import { uiConfig } from './firebaseAuth.js';
+//*****************************************************************************
+// Firebase
+//*****************************************************************************
+//
+// This file hold all the firebase/firestore logic.
+//
+// It initializes the firebase app, sets up auth, and starts firestore.
+//
+// Each page in the app has it's own exported object in this file. The
+// objects are imported into that pages controller, which calls
+// the methods to trigger calls to the database.
+//
+// Once the database calls complete, views may be called to render dynamic
+// HTML elements on page.
+//
+//*****************************************************************************
 
+// Importing firebase config object from config file
+import { firebaseConfig, uiConfig } from '../config/firebaseConfig.js';
+
+//*****************************************************************************
 // Initialize Firebase App
+//*****************************************************************************
 firebase.initializeApp(firebaseConfig);
 
-/*** Firebase Auth ***/
-
+//*****************************************************************************
 // Firebase Auth
+//*****************************************************************************
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 // The start method will wait until the DOM is loaded.
@@ -19,27 +36,44 @@ export const firebaseAuth = {
 	}
 };
 
-/*** Firebase Auth ENDS ***/
-
-/*** Firestore Database ***/
+//*****************************************************************************
+// Firestore
+//*****************************************************************************
+// There is one object per page below. That object is
+// imported by that pages controller.
+//
+// This object talks to the db and sorts the data.
+//
+// Then, this object calls the associated functions from views to
+// render any dynamic HTML elements needed for that page.
+//*****************************************************************************
 
 // Initialize Firestore database
 const db = firebase.firestore();
 
-/******************** 
- * Updated DB Calls *
- ********************
- One object below per page, imported by that pages controller
- This object talks to the db and sorts the data
- Then, this object calls the associated functions from views to render html elements needed for that page
-*/
-
+//*****************************************************************************
+// Importing Views Files
+//*****************************************************************************
 import { timerViews, headerViews } from '../views/global-views.js';
+import dashboardViews from '../views/dashboard-views.js';
+import courseHomeViews from '../views/course-home-views.js';
+import courseArchivedViews from '../views/course-archived-views.js';
+import courseDetailsViews from '../views/course-details-views.js';
+import sessionAddViews from '../views/session-add-views.js';
 
+//*****************************************************************************
+// Global Firestore Object - Called on every page
+//*****************************************************************************
 export const global = {
-	readDB  : function() {
+	//*****************************************************************************
+	// Reads From Database
+	// 	- Redirects user to homepage if not logged in.
+	// 	- Sets users first name in header
+	// 	- Sets Course list in timer pop-up
+	//*****************************************************************************
+	readDB        : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
-			// If no user is logged in, redirects to sign in page
+			// If no user is currently logged in, redirects to sign in page
 			if (!user) {
 				window.location.href = '/public/index.html';
 			}
@@ -47,8 +81,6 @@ export const global = {
 			const dbRef = db.collection('users').doc(user.uid);
 
 			// If the current user logged in, user is authenticated
-			// then grab "uid" "displayName" and "email"
-			// use "set()" with merge (if document did not exist it will be created)
 			dbRef.set(
 				{
 					name  : user.displayName,
@@ -66,7 +98,7 @@ export const global = {
 				headerViews.renderName(currentUser);
 			});
 
-			// Gets: Course Data From DB
+			// Gets: Course Data From DB, filters out archived courses.
 			// Sets: Course List in Timer Pop Up
 			dbRef
 				.collection('courses')
@@ -76,71 +108,76 @@ export const global = {
 					const courses = [];
 					querySnapshot.forEach(doc => {
 						// Uses destructuring to get data from each course
-						const { color, date, name, archived } = doc.data();
+						const { color, date, name } = doc.data();
 						const id = doc.id;
 						// Adds data to course object
 						const course = {
-							id       : id,
-							name     : name,
-							color    : color,
-							date     : date,
-							archived : archived
+							id    : id,
+							name  : name,
+							color : color,
+							date  : date
 						};
-						// adds course object to array
+						// Adds course object to array
 						courses.push(course);
-						console.log(course);
 					});
-					// Imported From Views, passes in array of courses
+					// Passes completed Array of courses into views method
 					timerViews.renderCourseList(courses);
 				});
 		});
 	},
-	writeDB : {
-		createSession : function(session) {
-			firebase.auth().onAuthStateChanged(function(user) {
-				// DB Reference to logged in user's collection
-				const dbRef = db.collection('users').doc(user.uid);
+	//*****************************************************************************
+	// Saves completed session from timer pop up to Database. Method is called
+	// by /models/stopwatch.js.
+	//
+	// Params: Session from timer pop-up
+	//*****************************************************************************
+	createSession : function(session) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+			// Params: Session object from Stopwatch Class
+			// Writes: New session to session collection of database
+			dbRef
+				.collection('sessions')
+				.add(
+					// Adds session data to sessions collection.
+					{
+						course : session.course,
+						date   : session.date,
+						time   : session.time
+					}
+				)
+				.then(docRef => {
+					console.log('Session DB write successful');
+				})
+				.catch(error => {
+					console.error('Error adding session: ', error);
+				});
+			// Gets course id from session param
+			const courseId = session.course.id;
+			// If a courseId exists, ie if a course was selected...
+			if (courseId) {
 				// Params: Session object from Stopwatch Class
-				// Writes: New session to session collection of database
+				// Writes: New session to session array of correct course collection
 				dbRef
-					.collection('sessions')
-					.add(
-						// uses session object param as value
-						{
-							course : session.course,
-							date   : session.date,
-							time   : session.time
-						}
-					)
-					.then(docRef => {
-						console.log('Session DB write successful');
-					})
-					.catch(error => {
-						console.error('Error adding session: ', error);
-					});
-				// Gets course id from session param
-				const courseId = session.course.id;
-				// If a courseId exists, ie if a course was selected...
-				if (courseId) {
-					// Params: Session object from Stopwatch Class
-					// Writes: New session to session array of correct course collection
-					dbRef
-						.collection('courses')
-						.doc(courseId)
-						.update({
-							sessions : firebase.firestore.FieldValue.arrayUnion(
-								{
-									time : session.time,
-									date : session.date
-								}
-							)
+					.collection('courses')
+					.doc(courseId)
+					.update({
+						sessions : firebase.firestore.FieldValue.arrayUnion({
+							time : session.time,
+							date : session.date
 						})
-						.catch(e => console.log(e));
-				}
-			});
-		}
+					})
+					.catch(e => console.log(e));
+			}
+		});
 	},
-	logOut  : function() {
+	//*****************************************************************************
+	// Logs current user out of app. Redirects to login page. Called by
+	// /controllers/global.js.
+	//
+	//*****************************************************************************
+	logOut        : function() {
 		firebase
 			.auth()
 			.signOut()
@@ -153,9 +190,16 @@ export const global = {
 	}
 };
 
-import dashboardViews from '../views/dashboard-views.js';
-
+//*****************************************************************************
+// Dashboard Firestore Object
+//*****************************************************************************
 export const dashboard = {
+	//*****************************************************************************
+	// Reads From Database
+	// 	- Set user's first name in dashboard heading
+	// 	- Sets Dashboard graph/welcome message
+	// 	- Sets current Streak on Dashboard
+	//*****************************************************************************
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
@@ -189,11 +233,9 @@ export const dashboard = {
 					};
 					// adds session object to array
 					sessions.push(session);
-					// console.log(session);
 				});
 				// Imported From Views, passes in array of sessions to:
 				// -Render Dashboard Graph
-				// TODO: Get Session/Course Data Needed for Graph, pass in to views
 				dashboardViews.renderGraph(sessions);
 				// -Render Current Streak
 				dashboardViews.currentStreak(sessions);
@@ -202,15 +244,20 @@ export const dashboard = {
 	}
 };
 
-import courseHomeViews from '../views/course-home-views.js';
-
+//*****************************************************************************
+// Course Home Firestore Object
+//*****************************************************************************
 export const courseHome = {
+	//*****************************************************************************
+	// Reads From Database
+	//	- Sets List of active courses on course home page
+	//*****************************************************************************
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 
-			// Gets: Course Data From DB
+			// Gets: Course Data From DB, filters out archived courses.
 			// Sets: Course List on Course Home page
 			dbRef
 				.collection('courses')
@@ -220,9 +267,7 @@ export const courseHome = {
 					const courses = [];
 					querySnapshot.forEach(doc => {
 						// Uses destructuring to get data from each course
-						const { color, date, name, archived } = doc.data();
-						// Gets Course's Sessions
-						const sessions = doc.data().sessions;
+						const { color, date, name, sessions } = doc.data();
 						const id = doc.id;
 						// Adds data to course object
 						const course = {
@@ -230,7 +275,6 @@ export const courseHome = {
 							name     : name,
 							color    : color,
 							date     : date,
-							archived : archived,
 							sessions : sessions
 						};
 						// adds course object to array
@@ -243,15 +287,20 @@ export const courseHome = {
 	}
 };
 
-import courseArchivedViews from '../views/course-archived-views.js';
-
+//*****************************************************************************
+// Course Archived Firestore Object
+//*****************************************************************************
 export const courseArchived = {
+	//*****************************************************************************
+	// Reads From Database
+	//	- Sets List of archived courses on course archived page
+	//*****************************************************************************
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 
-			// Gets: Course Data From DB
+			// Gets: Course Data From DB, filters out active courses
 			// Sets: Course List on Course Home page
 			dbRef
 				.collection('courses')
@@ -261,9 +310,7 @@ export const courseArchived = {
 					const courses = [];
 					querySnapshot.forEach(doc => {
 						// Uses destructuring to get data from each course
-						const { color, date, name, archived } = doc.data();
-						// Gets Course's Sessions
-						const sessions = doc.data().sessions;
+						const { color, date, name, sessions } = doc.data();
 						const id = doc.id;
 						// Adds data to course object
 						const course = {
@@ -271,7 +318,6 @@ export const courseArchived = {
 							name     : name,
 							color    : color,
 							date     : date,
-							archived : archived,
 							sessions : sessions
 						};
 						// adds course object to array
@@ -284,17 +330,21 @@ export const courseArchived = {
 	}
 };
 
-import courseDetailsViews from '../views/course-details-views.js';
-
+//*****************************************************************************
+// Course Details Firestore Object
+//*****************************************************************************
 export const courseDetails = {
-	// TODO: Get details of that course, render view
+	//*****************************************************************************
+	// Reads From Database
+	// 	- Sets Info on course details page
+	//*****************************************************************************
 	readDB : function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 
-			// Gets: Course Data From DB
-			// Sets: Course List on Course Home page
+			// Gets: Course Data about specific course From DB
+			// Sets: Sets header, color and Session List on Course Details page
 			dbRef
 				.collection('courses')
 				.doc(courseID)
@@ -307,7 +357,15 @@ export const courseDetails = {
 	}
 };
 
+//*****************************************************************************
+// Course Add Firestore Object
+//*****************************************************************************
 export const courseAdd = {
+	//*****************************************************************************
+	// Saves new course to Database. Method is called by /controllers/course-add.js.
+	//
+	// Params: Object holding course info
+	//*****************************************************************************
 	writeDB : function(course) {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
@@ -329,6 +387,7 @@ export const courseAdd = {
 						merge : true
 					}
 				)
+				// Redirects user after course is added
 				.then(() => {
 					window.location.href = '/public/course-home.html';
 				});
@@ -336,9 +395,18 @@ export const courseAdd = {
 	}
 };
 
+//*****************************************************************************
+// Course Edit Firestore Object
+//*****************************************************************************
 export const courseEdit = {
 	// TODO: Fill the edit form with current data
-
+	// TODO: Debug this method
+	//*****************************************************************************
+	// DESCRIPTION HERE
+	// Method is called by /controllers/course-edit.js.
+	//
+	// Params: Object holding course info
+	//*****************************************************************************
 	editCourse   : function(courseID) {
 		console.log('hi');
 		firebase.auth().onAuthStateChanged(function(user) {
@@ -363,8 +431,13 @@ export const courseEdit = {
 		console.log('new color: ' + courseColor.value);
 	},
 
-	// TODO: Add Delete Functions
-
+	// TODO: Debug Delete Functions
+	//*****************************************************************************
+	// DESCRIPTION HERE
+	// Method is called by /controllers/course-edit.js.
+	//
+	// Params: Course ID
+	//*****************************************************************************
 	deleteCourse : function(courseID) {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
@@ -387,15 +460,20 @@ export const courseEdit = {
 	}
 };
 
-import sessionAddViews from '../views/session-add-views.js';
-
+//*****************************************************************************
+// Session Add Firestore Object
+//*****************************************************************************
 export const sessionAdd = {
+	//*****************************************************************************
+	// Reads From Database
+	// 	- Sets Course Select Options on Add Session Form
+	//*****************************************************************************
 	readDB : function() {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
 
-			// Gets: Course Data From DB
+			// Gets: Course Data From DB, filters out archived courses
 			// Sets: Course Select Options on Session Add page
 			dbRef
 				.collection('courses')
@@ -405,15 +483,14 @@ export const sessionAdd = {
 					const courses = [];
 					querySnapshot.forEach(doc => {
 						// Uses destructuring to get data from each course
-						const { color, name, archived } = doc.data();
+						const { color, name } = doc.data();
 						// Gets Course's Sessions
 						const id = doc.id;
 						// Adds data to course object
 						const course = {
-							id       : id,
-							name     : name,
-							color    : color,
-							archived : archived
+							id    : id,
+							name  : name,
+							color : color
 						};
 						// adds course object to array
 						courses.push(course);
@@ -424,5 +501,3 @@ export const sessionAdd = {
 		});
 	}
 };
-
-/*** Firestore Database ENDS ***/
