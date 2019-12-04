@@ -75,7 +75,7 @@ export const global = {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// If no user is currently logged in, redirects to sign in page
 			if (!user) {
-				window.location.href = '/public/index.html';
+				window.location.href = '/index.html';
 			}
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
@@ -182,7 +182,7 @@ export const global = {
 			.auth()
 			.signOut()
 			.then(function() {
-				window.location.href = '/public/index.html';
+				window.location.href = '/index.html';
 			})
 			.catch(function(error) {
 				console.log(error);
