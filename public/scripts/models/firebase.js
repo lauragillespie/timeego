@@ -379,7 +379,7 @@ export const courseAdd = {
 				.set(
 					// uses Course object param as value
 					{
-						name     : course.name,
+						name     : course.name.trim().substring(0, 16),
 						color    : course.color,
 						date     : course.date,
 						archived : course.archived
@@ -440,7 +440,7 @@ export const courseEdit = {
 				.update(
 					// Updates the course using passed in object parameter
 					{
-						name     : course.name,
+						name     : course.name.trim().substring(0, 16),
 						color    : course.color,
 						archived : course.archived
 					}

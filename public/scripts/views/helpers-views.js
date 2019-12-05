@@ -179,7 +179,7 @@ const helpers = {
 		var timeElement = document.createElement('span');
 		nameElement.classList.add('course__name');
 		timeElement.classList.add('course__time');
-		nameElement.innerText = courseName;
+		nameElement.innerText = courseName.trim().substring(0, 16);
 		timeElement.innerText = courseTime;
 		courseData.appendChild(nameElement);
 		courseData.appendChild(timeElement);

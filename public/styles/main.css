@@ -584,7 +584,8 @@ button.header__settings {
 
 .login__main {
 	background: var(--color-blue-gradient);
-	height: 100vh;
+	height: 100%;
+	min-height: 100vh;
 	width: 100%;
 }
 
@@ -607,6 +608,10 @@ button.header__settings {
 	color: white;
 	text-align: center;
 	margin-bottom: 50px;
+}
+
+.firebaseui-title {
+	font-family: var(--font-family-body);
 }
 
 /*****************************************/
@@ -730,7 +735,7 @@ button.header__settings {
 	display: flex;
 	width: 100%;
 	transition: var(--transition-hover);
-	cursor: default;
+	overflow: hidden;
 }
 
 .course-settings__link {
@@ -741,7 +746,7 @@ button.header__settings {
 	height: 100%;
 	border-left: 1px solid rgba(0, 0, 0, 0.05);
 	transition: var(--transition-hover);
-	cursor: default;
+	cursor: pointer;
 }
 
 .course-details__link:hover,
@@ -762,6 +767,7 @@ button.header__settings {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	overflow: hidden;
 }
 
 .course-details .course__name {

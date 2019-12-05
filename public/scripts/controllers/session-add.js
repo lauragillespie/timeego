@@ -17,5 +17,5 @@ submitButton.addEventListener('click', e => {
 	alert(
 		"This feature isn't ready just yet, but we plan on finishing it soon! 😊"
 	);
-	window.location.href = '/public/dashboard.html';
+	window.location.href = './dashboard.html';
 });

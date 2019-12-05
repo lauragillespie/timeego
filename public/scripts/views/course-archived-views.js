@@ -25,7 +25,8 @@ const courseArchivedViews = {
 		if (arrayLength <= 0) {
 			const span = document.createElement('span');
 			span.classList.add('course__list--no-courses');
-			span.innerText = 'No Courses Currently Active';
+			span.innerHTML =
+				'<p>No Courses Currently Archived</p><p>Archiving courses keeps your sessions saved, but hides the course on other parts of Timeego.</p>';
 			// Removes Spinner
 			courseList.innerHTML = '';
 			courseList.appendChild(span);
