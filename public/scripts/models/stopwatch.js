@@ -120,6 +120,7 @@ class Stopwatch {
 		// Updates state to have no current session/time
 		this.activeSession = null;
 		this.selectedCourse = null;
+		this.currentlyTiming = false;
 
 		// Saves State to localStorage
 		this.saveToLocalStorage();
