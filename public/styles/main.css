@@ -52,18 +52,8 @@
 	--color-background-card-hover: #fbfbfb;
 
 	/*** Colors - Gradient ***/
-	--color-blue-gradient: linear-gradient(
-			353.28deg,
-			#1ea2db 7.78%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		#3127ca;
-	--color-green-gradient: linear-gradient(
-			353.28deg,
-			#6dd75c 7.78%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		#2fa15a;
+	--color-blue-gradient: linear-gradient(353.28deg, #1ea2db 7.78%, rgba(255, 255, 255, 0) 100%), #3127ca;
+	--color-green-gradient: linear-gradient(353.28deg, #6dd75c 7.78%, rgba(255, 255, 255, 0) 100%), #2fa15a;
 
 	/*** Fonts ***/
 	--font-family-heading: "Comfortaa", Cambria, Cochin, Georgia, Times, serif;
@@ -76,8 +66,7 @@
 	--border-radius: 5px;
 
 	/*** Transition Effect ***/
-	--transition-hover: color 150ms ease-in-out,
-		background-color 150ms ease-in-out, background 150ms ease-in-out;
+	--transition-hover: color 150ms ease-in-out, background-color 150ms ease-in-out, background 150ms ease-in-out;
 	--transition-height: height 200ms linear;
 	--transition-scale: transform 200ms linear, margin 200ms linear;
 	--transition-opacity: opacity 200ms linear;
@@ -217,8 +206,7 @@ img {
 /* Sets Focus Color */
 .form-control:focus {
 	border-color: rgba(49, 39, 202, 0.5);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-		0 0 8px rgba(49, 39, 202, 0.3);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(49, 39, 202, 0.3);
 }
 
 .course-color-selector {
@@ -259,6 +247,12 @@ img {
 	border: 5px solid #ddd;
 	width: 52px;
 	height: 52px;
+}
+@media only screen and (min-width: 700px) {
+	.color-row {
+		flex-wrap: nowrap;
+		display: inline;
+	}
 }
 
 /* Form Buttons */
@@ -565,8 +559,7 @@ button.header__settings {
 
 @keyframes pulse {
 	to {
-		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3),
-			0 0 0 15px rgba(232, 76, 61, 0);
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(232, 76, 61, 0);
 	}
 }
 
