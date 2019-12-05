@@ -75,7 +75,6 @@ A list of things left to accomplish.
 
 ### Stretch/Future Goals
 * [ ] Stretch - Timer Pop-up - Fix CSS for landscape mode phones.
-* [ ] Stretch - Course Add/Edit - add char limit to course name.
 * [ ] Stretch - Add Session Page - add functionality.
 * [ ] Stretch - Add Goal tracking to app.
 
