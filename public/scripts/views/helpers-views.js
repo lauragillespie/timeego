@@ -3,6 +3,7 @@
 //*****************************************************************************
 //
 // This file contains helper functions for other views files.
+//
 // These functions are used by multiple other files. Having them here and
 // exporting them helps reduce clutter and code in other files.
 //

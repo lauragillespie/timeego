@@ -1,3 +1,14 @@
+//*****************************************************************************
+// Stopwatch Model File
+//*****************************************************************************
+//
+// Holds State of the stopwatch so it can be consistent across
+// all pages of the app.
+//
+// Stopwatch is called by the global controller in /controllers/global.js
+//
+//*****************************************************************************
+
 // Imports
 import { global } from './firebase.js';
 import Session from './session.js';
@@ -6,20 +17,23 @@ import { timerViews } from '../views/global-views.js';
 // Grabs Text in Timer (00:00:00)
 const timerText = document.querySelector('.timer__text');
 
-/**************************************************************
-* Stopwatch Class
-* Holds State of the apps stopwatch so it can be consistent
-* across all pages of the app.
-*
-* interval - used for timing
-* selectedCourse - currently selected course
-* currentlyTiming - is timer currently running?
-* activeSession - is time session in progress?
-* sessionToDB - holds session as it is written to the database
-**************************************************************/
-
+//*****************************************************************************
+// Stopwatch Class
+//*****************************************************************************
+//
+// State:
+// 	- interval - used for timing
+// 	- selectedCourse - currently selected course
+// 	- currentlyTiming - is timer currently running?
+// 	- activeSession - is time session in progress?
+// 	- sessionToDB - holds session as it is written to the database
+//*****************************************************************************
 class Stopwatch {
-	// Gets Object from localStorage or null if no object in localStorage. Sets Stopwatch state accordingly
+	//*****************************************************************************
+	// Constructor
+	// Gets Object from localStorage or null if no object in localStorage.
+	// Sets Stopwatch state accordingly
+	//*****************************************************************************
 	constructor(timerState) {
 		this.interval = null;
 		this.selectedCourse;
@@ -48,7 +62,10 @@ class Stopwatch {
 			}
 		}
 	}
+
+	//*****************************************************************************
 	// Starts Stopwatch
+	//*****************************************************************************
 	start() {
 		// Creates a new session object using the Session class if there is currently no active session
 		if (this.activeSession === null) {
@@ -75,7 +92,9 @@ class Stopwatch {
 		);
 	}
 
+	//*****************************************************************************
 	// Pauses Stopwatch
+	//*****************************************************************************
 	pause() {
 		// Sets currentlyTiming state
 		this.currentlyTiming = false;
@@ -94,7 +113,9 @@ class Stopwatch {
 		);
 	}
 
+	//*****************************************************************************
 	// Resets Stopwatch
+	//*****************************************************************************
 	reset() {
 		// Updates state to have no current session/time
 		this.activeSession = null;
@@ -113,6 +134,9 @@ class Stopwatch {
 		timerText.innerText = '00:00:00';
 	}
 
+	//*****************************************************************************
+	// Saves Stopwatch to database
+	//*****************************************************************************
 	save() {
 		// saveToDB method saves session to to DB
 		this.saveToDB();
@@ -120,7 +144,9 @@ class Stopwatch {
 		this.reset();
 	}
 
+	//*****************************************************************************
 	// Runs on every page load to update stopwatch from state
+	//*****************************************************************************
 	onPageLoad() {
 		// Updates all HTML elements to show stopwatch has no session
 		timerViews.toggleTimerElements(
@@ -138,7 +164,10 @@ class Stopwatch {
 		}
 	}
 
-	// Converts javascript object into JSON object, then saves to local storage to maintain state across different pages
+	//*****************************************************************************
+	// Converts javascript object into JSON object, then saves to local storage
+	// to maintain state across different pages
+	//*****************************************************************************
 	saveToLocalStorage() {
 		// Creates object
 		const timerState = {
@@ -150,7 +179,9 @@ class Stopwatch {
 		window.localStorage.setItem('timerState', JSON.stringify(timerState));
 	}
 
+	//*****************************************************************************
 	// Saves session to DB
+	//*****************************************************************************
 	saveToDB() {
 		// Saves Session info to state
 		this.sessionToDB = {
@@ -162,7 +193,9 @@ class Stopwatch {
 		global.createSession(this.sessionToDB);
 	}
 
+	//*****************************************************************************
 	// Updates Course that is currently selected
+	//*****************************************************************************
 	updateSelectedCourse(selectedCourse) {
 		this.selectedCourse = selectedCourse;
 		this.saveToLocalStorage();

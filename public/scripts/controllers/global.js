@@ -1,11 +1,20 @@
-// Stopwatch Class
+//*****************************************************************************
+// Global Controller
+//*****************************************************************************
+//
+// This file triggers all global functions. This means timer pop and header
+// functions.
+//
+//*****************************************************************************
+
+// Imports
 import Stopwatch from '../models/stopwatch.js';
-// Global DB
 import { global } from '../models/firebase.js';
 
-/*******************************************************
- *    Initialize Stopwatch Object from Local storage   *
- ******************************************************/
+//*****************************************************************************
+// Initialize Stopwatch Object from Local storage
+// 	- Uses Stopwatch Model Class
+//*****************************************************************************
 
 // Gets Timer State from Local Storage
 const timerStateFromLocalStorage = JSON.parse(
@@ -17,25 +26,25 @@ const stopwatchObject = new Stopwatch(timerStateFromLocalStorage);
 // Calls onPageLoad on stopwatch to set correct buttons, display correct time, update "currently tracking" course, and have timer running if needed. All this is determined by the stopwatch state which was set by passing in local storage info
 stopwatchObject.onPageLoad();
 
-/*** Done Initialing Stopwatch Object ***/
-
-// Sets:
-// -User's first name in Header
-// -Course List in Timer Pop-up
+//*****************************************************************************
+// Calls Reads From Database
+// 	- Sets User's first name in Header
+// 	- Course List in Timer Pop-up
+//*****************************************************************************
 global.readDB();
 
-// Log out function
+//*****************************************************************************
+// Log Out Function
+//*****************************************************************************
 const logOutBtn = document.querySelector('#logout-btn');
 
 logOutBtn.addEventListener('click', () => {
 	global.logOut();
 });
 
-// TODO: Other Global DB Calls Goes here
-
-/************************************************
- *            Grabbing HTML Elements            *
- ***********************************************/
+//*****************************************************************************
+// Grabbing HTML Elements
+//*****************************************************************************
 
 // Grabs HTML elements needed to toggle timer pop-up
 const toggleNavBtn = document.querySelector('#timer-toggle-btn');
@@ -51,7 +60,7 @@ const popupCourseSection = document.querySelector('.popup__course-list');
 const timerText = document.querySelector('.timer__text');
 const timerBtnContainer = document.querySelector('.timer__control-btns');
 
-// Grabs HTML elements needed to start, pause, reset stopwatch
+// Grabs HTML elements needed to start, pause, clear and save stopwatch
 const stopwatchPlayBtn = document.querySelector('#stopwatch_play_btn');
 const stopwatchPauseBtn = document.querySelector('#stopwatch_pause_btn');
 const stopwatchResetBtn = document.querySelector('#stopwatch_reset_btn');
@@ -67,11 +76,9 @@ const currentlyTrackingCourse = document.querySelector(
 const closeCourseListBtn = document.querySelector('.course-list__btn--close');
 const openCourseListBtn = document.querySelector('.course-list__btn--show');
 
-/*** HTML Elements - DONE ***/
-
-/************************************************
- *            Setting Event Listeners           *
- ***********************************************/
+//*****************************************************************************
+// Setting Event Listeners
+//*****************************************************************************
 
 // Timer Nav Button Event listener
 // Opens Timer pop-up
@@ -85,7 +92,7 @@ timerBackground.addEventListener('click', closeTimerPopUp);
 // Closes Timer pop-up
 timerCloseBtn.addEventListener('click', closeTimerPopUp);
 
-// Stopwatch Play, Pause and Reset button Event listeners
+// Stopwatch Play, Pause, Clear and Save button Event listeners
 // Start Stopwatch
 stopwatchPlayBtn.addEventListener('click', e => {
 	stopwatchObject.start();
@@ -98,7 +105,7 @@ stopwatchPlayBtn.addEventListener('click', e => {
 stopwatchPauseBtn.addEventListener('click', e => {
 	stopwatchObject.pause();
 });
-// Resets stopwatch
+// Resets stopwatch - Prompts for confirmation first
 stopwatchResetBtn.addEventListener('click', e => {
 	let response = confirm(
 		'Are you sure you want to reset the stopwatch without saving?'
@@ -107,7 +114,7 @@ stopwatchResetBtn.addEventListener('click', e => {
 		stopwatchObject.reset();
 	}
 });
-
+// Saves Stopwatch
 stopwatchSaveBtn.addEventListener('click', e => {
 	stopwatchObject.save();
 	// Saved Pop-up message when done is clicked
@@ -129,11 +136,9 @@ courseList.addEventListener('click', e => {
 	courseListClicked(e);
 });
 
-/*** Event Listeners DONE ***/
-
-/************************************************
- *            Setting Event Functions           *
- ***********************************************/
+//*****************************************************************************
+// Setting Event Functions
+//*****************************************************************************
 
 // Opens Timer pop-up
 function openTimerPopUp(e) {

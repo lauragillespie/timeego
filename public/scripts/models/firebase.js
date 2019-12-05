@@ -59,6 +59,7 @@ import dashboardViews from '../views/dashboard-views.js';
 import courseHomeViews from '../views/course-home-views.js';
 import courseArchivedViews from '../views/course-archived-views.js';
 import courseDetailsViews from '../views/course-details-views.js';
+import courseEditViews from '../views/course-edit-views.js';
 import sessionAddViews from '../views/session-add-views.js';
 
 //*****************************************************************************
@@ -75,7 +76,7 @@ export const global = {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// If no user is currently logged in, redirects to sign in page
 			if (!user) {
-				window.location.href = '/index.html';
+				window.location.href = './index.html';
 			}
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
@@ -389,7 +390,7 @@ export const courseAdd = {
 				)
 				// Redirects user after course is added
 				.then(() => {
-					window.location.href = '/course-home.html';
+					window.location.href = './course-home.html';
 				});
 		});
 	}
@@ -399,41 +400,69 @@ export const courseAdd = {
 // Course Edit Firestore Object
 //*****************************************************************************
 export const courseEdit = {
-	// TODO: Fill the edit form with current data
-	// TODO: Debug this method
 	//*****************************************************************************
-	// DESCRIPTION HERE
+	// Reads From Database
+	// 	- Sets Info on course Edit page
+	//*****************************************************************************
+	readDB       : function(courseID) {
+		firebase.auth().onAuthStateChanged(function(user) {
+			// DB Reference to logged in user's collection
+			const dbRef = db.collection('users').doc(user.uid);
+
+			// Gets: Course Data about specific course From DB
+			// Sets: Sets header, color and Session List on Course Edit page
+			dbRef
+				.collection('courses')
+				.doc(courseID)
+				.get()
+				.then(querySnapshot => {
+					const { name, color, archived } = querySnapshot.data();
+					courseEditViews.renderDetails(name, color);
+					courseEditViews.fillForm(name, color, archived);
+				});
+		});
+	},
+	//*****************************************************************************
+	// Updates specific course info in database, then redirects to course list.
 	// Method is called by /controllers/course-edit.js.
 	//
 	// Params: Object holding course info
 	//*****************************************************************************
-	editCourse   : function(courseID) {
-		console.log('hi');
+	editCourse   : function(course) {
 		firebase.auth().onAuthStateChanged(function(user) {
 			// DB Reference to logged in user's collection
 			const dbRef = db.collection('users').doc(user.uid);
-			var archiveCourse = document.getElementById('archiveCourse');
-			var archived = archiveCourse.checked;
 
-			// Reference to a specific course given the id
-			dbRef.collection('courses').doc(courseID).update(
-				// Accesses the course object with parameters to update
-				{
-					name     : courseName.value,
-					color    : courseColor.value,
-					date     : new Date(),
-					archived : archived
-				}
-			);
+			// Finds specific course
+			dbRef
+				.collection('courses')
+				.doc(course.id)
+				.update(
+					// Updates the course using passed in object parameter
+					{
+						name     : course.name,
+						color    : course.color,
+						archived : course.archived
+					}
+				)
+				.then(() => {
+					// Displays Save confirmation alert, redirects after 1 sec
+					const saved = document.querySelector('.edit_success');
+					saved.classList.add('edit_success_active');
+
+					setTimeout(function() {
+						saved.classList.remove('edit_success_active');
+						window.location.href = './course-home.html';
+					}, 1000);
+				})
+				.catch(e => {
+					console.log(e);
+				});
 		});
-
-		console.log('new name: ' + courseName.value);
-		console.log('new color: ' + courseColor.value);
 	},
 
-	// TODO: Debug Delete Functions
 	//*****************************************************************************
-	// DESCRIPTION HERE
+	// Deletes selected course.
 	// Method is called by /controllers/course-edit.js.
 	//
 	// Params: Course ID
@@ -448,10 +477,6 @@ export const courseEdit = {
 				.collection('courses')
 				.doc(courseID)
 				.delete()
-				.then(function() {
-					// success
-					console.log('Document successfully deleted!');
-				})
 				.catch(function(error) {
 					// error
 					console.error('Error removing document: ', error);

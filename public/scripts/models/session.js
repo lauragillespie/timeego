@@ -1,16 +1,29 @@
+//*****************************************************************************
+// Session Model File
+//*****************************************************************************
+//
+// Holds State of the current session time so it can be consistent across
+// all pages of the app.
+//
+// New sessions are made by the Stopwatch class in /models/stopwatch.js
+//
+//*****************************************************************************
+
 // Grabs Text in Timer (00:00:00)
 const timerText = document.querySelector('.timer__text');
 
-/**********************************************************************
-* Session Class
-* Holds State of the current session time so it can be consistent
-* across all pages of the app.
-*
-* time - holds current time
-**********************************************************************/
-
+//*****************************************************************************
+// Session Class
+//*****************************************************************************
+//
+// State:
+// 	- time - holds current time of the session
+//*****************************************************************************
 class Session {
+	//*****************************************************************************
+	// Constructor
 	// Sets time from localStorage, or to 00:00:00 if new session
+	//*****************************************************************************
 	constructor(time) {
 		if (!time) {
 			this.time = {
@@ -23,7 +36,9 @@ class Session {
 		}
 	}
 
-	// Increases time by one second. Loops to minutes and hours as needed.
+	//*****************************************************************************
+	// Increases session time by one second. Loops minutes and hours as needed.
+	//*****************************************************************************
 	increaseTime() {
 		if (this.time.seconds < 59) {
 			this.time.seconds++;
@@ -40,15 +55,20 @@ class Session {
 		this.updateTimerText();
 	}
 
+	//*****************************************************************************
 	// Updates time HTML to display correct time
+	//*****************************************************************************
 	updateTimerText() {
 		timerText.innerText = formatTime(this.time);
 	}
 }
 
+//*****************************************************************************
 // Converts time (numbers) into strings with leading 0's and :'s as needed
-// Params: current Time (numbers)
+//
+// Params: current Time (in number type)
 // Returns: time as formatted string
+//*****************************************************************************
 function formatTime(time) {
 	const { seconds, minutes, hours } = time;
 	let hrs;

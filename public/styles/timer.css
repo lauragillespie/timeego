@@ -211,6 +211,8 @@
 /* Button that expands popup course list */
 .course-list__btn--show {
 	height: 100%;
+	/* Fixes Firefox Bug */
+	min-height: 100%;
 	max-height: 90px;
 	width: 100%;
 	background: var(--color-background-card);
@@ -220,7 +222,6 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-
 	transition: var(--transition-hover);
 }
 
