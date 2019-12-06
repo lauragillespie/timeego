@@ -2,26 +2,26 @@
 /***          Table of Contents        ***/
 /*****************************************/
 /*
-	1. Imports
-	2. Variables
-	3. CSS Resets
-	4. Global Styling
-	5. Components - Styles for entire components shared across the app
-		5.1 Nav Tabs
-		5.2 Form
-		5.3 Alert Boxes
-		5.4 Spinners
-	6. Main Layout - These are section styles shared across all pages of the app
-		6.1 Header
-		6.2 Main
-		6.3 Footer
-		6.4 Nav
-	7. Pages - These are styles for sections of one specific page
-		7.1 Login Page
-		7.2 Dashboard Page
-		7.3 Course Home/Archived Pages
-		7.4 Course Details Pages
-		7.5 About Page
+	1. Imports (28-37)
+	2. Variables (35-73)
+	3. CSS Resets (75-88)
+	4. Global Styling (90-151)
+	5. Components - Styles for entire components shared across the app (153-379)
+		5.1 Nav Tabs (157-189)
+		5.2 Form (191-299)
+		5.3 Alert Boxes (301-361)
+		5.4 Spinners (363-379)
+	6. Main Layout - These are section styles shared across all pages of the app (381-564)
+		6.1 Header (385-430)
+		6.2 Main (432-455)
+		6.3 Footer (457-470)
+		6.4 Nav (472-564)
+	7. Pages - These are styles for sections of one specific page (566-868)
+		7.1 Login Page (574-608)
+		7.2 Dashboard Page (610-701)
+		7.3 Course Home/Archived Pages (703-798)
+		7.4 Course Details Pages (800-843)
+		7.5 About Page (845-868)
 		
 */
 

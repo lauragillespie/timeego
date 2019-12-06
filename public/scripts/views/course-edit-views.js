@@ -17,9 +17,7 @@ const courseEditViews = {
 		// Updates Course Name in Heading
 		document.querySelector('#heading__course-name').innerText = name;
 		// Updates color element to match course
-		document.querySelector(
-			'.course-details__color'
-		).style.background = color;
+		document.querySelector('.course-details__color').style.background = color;
 	},
 
 	//*****************************************************************************
@@ -31,9 +29,7 @@ const courseEditViews = {
 		// Gets form elements, course name, color and archived checkbox
 		const courseName = document.getElementById('course_name');
 		const courseColorInput = document.getElementById(`color-${color}`);
-		const courseColorListItem = document.querySelector(
-			`[data-color='${color}']`
-		);
+		const courseColorListItem = document.querySelector(`[data-color='${color}']`);
 		const archiveCourse = document.getElementById('archive_course');
 
 		// Sets form elements with existing data from database
