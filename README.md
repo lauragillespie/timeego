@@ -15,7 +15,7 @@ Timeego is a web application designed to help students with track their time spe
 
 Timeego was built as a group project for [COMP 1930](https://www.bcit.ca/study/outlines/20193045320), a first-term course in the [Computer Systems Technology](https://www.bcit.ca/study/programs/5500dipma#courses) program at [BCIT](https://www.bcit.ca).
 
-Our team consisted of (Cyra Canonizado)[https://github.com/ccanoz], (Anthony Caron)[https://github.com/antcar112] and (Laura Gillespie)[https://github.com/legillespie5]; three BCIT students. Together, we conceived, designed and developed a web application. We used an Agile design methodology to build this app. The final project was judged on good UX/UI, complete documentation, and overall functionality.
+Our team consisted of [Cyra Canonizado](https://github.com/ccanoz), [Anthony Caron](https://github.com/antcar112) and [Laura Gillespie](https://github.com/legillespie5); three BCIT students. Together, we conceived, designed and developed a web application. We used an Agile design methodology to build this app. The final project was judged on good UX/UI, complete documentation, and overall functionality.
 
 ## 📂 Installation
 
@@ -88,7 +88,7 @@ This is a list of 3rd party resources used in this project:
 
 A list of things left to accomplish.
 
-### Stretch/Future Goals
+### 🏁 Stretch/Future Goals
 * [ ] Stretch - Timer Pop-up - Fix CSS for landscape mode phones.
 * [ ] Stretch - Add Session Page - add functionality.
 * [ ] Stretch - Add Goal tracking to app.
