@@ -2,16 +2,14 @@
   <img alt="Logo" src="https://timeego-d54c4.firebaseapp.com/images/logo/blue.png" height="100px"/>
 </div>
 
-
+# 
 
 Timeego is a web application designed to help students with track their time spent studying. It allows users to add courses, log their time studying, and view their total study time in each course.
 
 
 <div align="center">
-  <img alt="Screen shot" src="./public/images/timeego.png" width="400px"/>
+  <img alt="Screen shot" src="./public/images/timeego.png" width="700px"/>
 </div>
-
-![Site Screenshot](./public/images/timeego.png)
 
 ## Project Information
 
