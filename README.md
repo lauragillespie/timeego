@@ -8,36 +8,42 @@ Timeego is a web application designed to help students with track their time spe
 
 
 <div align="center">
-  <img alt="Screen shot" src="./public/images/timeego.png" width="700px"/>
+  <img alt="Screenshot" src="./public/images/timeego.png" width="700px"/>
 </div>
 
-## Project Information
+## 📌 Project Information
 
 Timeego was built as a group project for [COMP 1930](https://www.bcit.ca/study/outlines/20193045320), a first-term course in the [Computer Systems Technology](https://www.bcit.ca/study/programs/5500dipma#courses) program at [BCIT](https://www.bcit.ca).
 
-Our team consisted of three BCIT students.
+Our team consisted of (Cyra Canonizado)[https://github.com/ccanoz], (Anthony Caron)[https://github.com/antcar112] and (Laura Gillespie)[https://github.com/legillespie5]; three BCIT students. Together, we conceived, designed and developed a web application. We used an Agile design methodology to build this app. The final project was judged on good UX/UI, complete documentation, and overall functionality.
 
-## Installation
+## 📂 Installation
 
 Simply clone the repository from GitHub, and open public/index.html to begin.
 
-## Hosting
+## ☁ Hosting
 
 Timeego is hosted publicly at https://timeego-d54c4.firebaseapp.com.
 
-## JavaScript File Organization
+## 🎨 Color Palette
+
+<div align="center">
+  <img alt="Color palette" src="./public/images/colors.png" width="700px"/>
+</div>
+
+## 🗃 JavaScript File Organization
 
 This section explains the JavaScript organization. We used a form of the MVC design pattern to divide our logic.
 
-### Controllers
+### 🎮 Controllers
 
 Each HTML file only imports controllers. Each page has it's own file. There is also a global.js controller that contains logic used across all pages (header, timer pop-up). There is also a helpers file that holds functions that are shared across multiple controller files.
 
 Controllers are the logic of the app. They are where we set up event-listeners (page specific or global), get data from forms, and make calls to our database files (models).
 
-### Models
+### 🗺 Models
 
-#### Firestore - Database
+#### 🔥 Firestore - Database
 
 There is one main database file (firebase.js).
 
@@ -47,7 +53,7 @@ The methods in the firebase objects are called by the controller files when they
 
 When HTML elements need to be rendered, the firebase methods do this by calling the appropriate view (from the views.js file) and passing in the data from the database as a parameter.
 
-#### Classes
+#### 🧱 Classes
 
 There are also two model files to track state across the app. Because we didn't have a true backend, we decided to use local storage to track the current time on the timer pop-up. Using this method reduced the number of database calls that would have had to be made otherwise.
 
@@ -55,7 +61,7 @@ stopwatch.js holds the majority of the state needed for the timer pop-up. On eve
 
 session.js is used to create a new session. This only tracks the time of that specific session. Separating it from the stopwatch class helps to make stopwatch.js less cluttered.
 
-### Views
+### 🔭 Views
 
 Each page has it's own view file. There is also a helpers file to hold functions that are shared across multiple view files.
 
@@ -63,11 +69,11 @@ There is a view object for each page. There is also a view for global elements (
 
 Views are called by the methods in the firebase file, or by controller files. They take data from the database, and render the dynamic HTML elements.
 
-### Config
+### ⚙ Config
 
 Files in the config directory hold settings for Firebase, Firestore and ApexChart.js.
 
-## 3rd Party Tools Used
+## 🛠 Technologies Used
 
 This is a list of 3rd party resources used in this project:
 
@@ -78,7 +84,7 @@ This is a list of 3rd party resources used in this project:
 * [ApexChart.js](https://apexcharts.com/)
 * [Color Picker by G Naga Subrahmanyam](https://codepen.io/GNSubrahmanyam/pen/OpmMjN)
 
-## To Do List
+## 📃 To Do List
 
 A list of things left to accomplish.
 
