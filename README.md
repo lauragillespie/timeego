@@ -28,7 +28,7 @@ Timeego is hosted publicly at https://timeego-d54c4.firebaseapp.com.
 ## 🎨 Color Palette
 
 <div align="center">
-  <img alt="Color palette" src="./public/images/colors.png" width="700px"/>
+  <img alt="Color palette" src="./public/images/colors.jpg" width="700px"/>
 </div>
 
 ## 🗃 JavaScript File Organization
