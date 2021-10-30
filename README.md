@@ -33,7 +33,7 @@ Timeego is hosted publicly at https://timeego-d54c4.firebaseapp.com.
 
 ## 🗃 JavaScript File Organization
 
-This section explains the JavaScript organization. We used a form of the MVC design pattern to divide our logic.
+We used a form of the MVC design pattern to divide our logic.
 
 ### 🎮 Controllers
 
@@ -84,9 +84,6 @@ This is a list of 3rd party resources used in this project:
 * [ApexChart.js](https://apexcharts.com/)
 * [Color Picker by G Naga Subrahmanyam](https://codepen.io/GNSubrahmanyam/pen/OpmMjN)
 
-## 📃 To Do List
-
-A list of things left to accomplish.
 
 ### 🏁 Stretch/Future Goals
 * [ ] Stretch - Timer Pop-up - Fix CSS for landscape mode phones.
